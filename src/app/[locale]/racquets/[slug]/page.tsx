@@ -144,11 +144,15 @@ export default async function RacquetPage({
             : []),
           ...(racket.balance ? [{ name: "Balance", value: racket.balance }] : []),
         ].map((p) => ({ "@type": "PropertyValue", ...p })),
+        // AggregateOffer, not Offer: the figure is the cheapest of several
+        // active sellers, which is what the page says too. Declaring it as
+        // `price` would claim a single fixed price and mismatch the "a partir
+        // de" on the page — the kind of disagreement that costs a rich result.
         ...(priceBRL !== null
           ? {
               offers: {
-                "@type": "Offer",
-                price: priceBRL,
+                "@type": "AggregateOffer",
+                lowPrice: priceBRL,
                 priceCurrency: "BRL",
                 availability: "https://schema.org/InStock",
                 url: canonical,
@@ -218,14 +222,25 @@ export default async function RacquetPage({
             </div>
             <div className="flex flex-col gap-2">
               <div className="flex flex-wrap items-center gap-4">
-                <span className="font-heading text-2xl font-semibold">
-                  {priceBRL !== null
-                    ? format.number(priceBRL, {
-                        style: "currency",
-                        currency: "BRL",
-                        maximumFractionDigits: 0,
-                      })
-                    : `US$ ${racket.priceUSD}`}
+                {/* "a partir de" because the figure is the cheapest of several
+                    active listings, and Mercado Livre opens on whichever seller
+                    it features — often a dearer one. Stating it flat invites the
+                    visitor to arrive at a higher number and feel baited. */}
+                <span className="flex items-baseline gap-1.5">
+                  {priceBRL !== null && (
+                    <span className="text-sm text-muted-foreground">
+                      {tStores("priceFrom")}
+                    </span>
+                  )}
+                  <span className="font-heading text-2xl font-semibold">
+                    {priceBRL !== null
+                      ? format.number(priceBRL, {
+                          style: "currency",
+                          currency: "BRL",
+                          maximumFractionDigits: 0,
+                        })
+                      : `US$ ${racket.priceUSD}`}
+                  </span>
                 </span>
                 <Button
                   nativeButton={false}
