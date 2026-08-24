@@ -1,4 +1,15 @@
 {
+  "stores": {
+    "at": {
+      "mercadolivre": "on Mercado Livre",
+      "amazon": "on Amazon",
+      "shopee": "on Shopee",
+      "tennis-warehouse": "at Tennis Warehouse"
+    },
+    "viewAt": "View {at}",
+    "priceChecked": "Price {at}, checked {date}. Subject to change.",
+    "priceReference": "Reference price {at}, in USD. Subject to change."
+  },
   "landing": {
     "metaTitle": "RaqMatch — the right tennis racquet for your game",
     "metaDescription": "Answer a quiz about your level, style and preferences and get 3 tennis racquets picked just for you, with the why behind each one.",
@@ -20,7 +31,6 @@
     "title": "Your 3 recommended racquets",
     "subtitle": "Picked based on your answers.",
     "bestMatch": "Best match",
-    "viewProduct": "View at Tennis Warehouse",
     "viewSpecs": "Specs",
     "share": "Share result",
     "linkCopied": "Link copied!",
@@ -276,8 +286,6 @@
       "price": "Reference price"
     },
     "unknown": "not listed",
-    "buy": "View at Tennis Warehouse",
-    "priceNote": "Reference price at Tennis Warehouse, in USD. Subject to change.",
     "profileTitle": "Who it suits",
     "relatedTitle": "Similar racquets",
     "relatedHint": "Frames with close specs, for comparison.",

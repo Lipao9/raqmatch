@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import { notFound } from "next/navigation";
-import { getTranslations, setRequestLocale } from "next-intl/server";
+import { getFormatter, getTranslations, setRequestLocale } from "next-intl/server";
 import { ArrowRight, ExternalLink } from "lucide-react";
 import { AdSlot } from "@/components/ads/AdSlot";
 import { CourtLines } from "@/components/CourtLines";
@@ -12,8 +12,8 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { getPathname, Link } from "@/i18n/navigation";
 import type { Locale } from "@/i18n/routing";
-import { DEFAULT_STORE, PLAIN_REL, relForKind, trackedUrl } from "@/lib/affiliate";
-import { resolveStore } from "@/lib/offers";
+import { PLAIN_REL, relForKind, trackedUrl } from "@/lib/affiliate";
+import { storefrontFor } from "@/lib/offers";
 import { findRelated, getRacketBySlug, loadCatalog } from "@/lib/catalog";
 import { absoluteUrl } from "@/lib/site";
 import { racketTraits } from "@/lib/traits";
@@ -69,14 +69,21 @@ export default async function RacquetPage({
 
   const t = await getTranslations("racquet");
   const tNav = await getTranslations("nav");
+  const tStores = await getTranslations("stores");
+  const format = await getFormatter();
   const name = `${racket.brand} ${racket.model}`;
   const related = findRelated(racket);
   const weight = weightFor(racket, locale);
   const traits = racketTraits(racket, weight.grams);
+
+  // One store, chosen for this visitor — a Brazilian with a mapped Mercado Livre
+  // offer is not offered Tennis Warehouse as well. See `primaryStore`.
+  const storefront = storefrontFor(racket, locale);
+  const storeAt = tStores(`at.${storefront?.store ?? "tennis-warehouse"}`);
+  const priceBRL = storefront?.priceBRL ?? null;
   // Through the click-tracking redirect rather than straight to the store, so
   // this statically generated page still reports which racquets get clicked.
-  const href = `${trackedUrl(racket.id, "racquet_page")}&locale=${locale}`;
-  const referenceLink = resolveStore(racket, DEFAULT_STORE);
+  const href = `${trackedUrl(racket.id, "racquet_page", storefront?.store)}&locale=${locale}`;
   const { canonical } = alternatesFor(`/racquets/${slug}`, locale as Locale);
 
   const specs: { label: string; value: string }[] = [
@@ -100,12 +107,19 @@ export default async function RacquetPage({
       label: t("specs.swingweight"),
       value: racket.swingweight !== null ? `${racket.swingweight}` : t("unknown"),
     },
-    { label: t("specs.price"), value: `US$ ${racket.priceUSD}` },
+    // The US reference price is dropped once a real Brazilian one is shown:
+    // two prices in two currencies on one page is not more information, it is a
+    // question about which one applies.
+    ...(priceBRL === null
+      ? [{ label: t("specs.price"), value: `US$ ${racket.priceUSD}` }]
+      : []),
   ];
 
-  // Product without `offers`: the price is a scraped reference value with no
-  // re-scrape cadence, and advertising a stale price in structured data is a
-  // rich-result mismatch risk. Specs go in additionalProperty instead.
+  // `offers` only when a checked Brazilian price is on the page. The USD figure
+  // is a scrape with no refresh cadence, and advertising a stale price in
+  // structured data is a rich-result mismatch risk; the BRL one is re-checked
+  // weekly and hidden past seven days, so it can be asserted to Google.
+  // Specs go in additionalProperty either way.
   const jsonLd = {
     "@context": "https://schema.org",
     "@graph": [
@@ -130,6 +144,17 @@ export default async function RacquetPage({
             : []),
           ...(racket.balance ? [{ name: "Balance", value: racket.balance }] : []),
         ].map((p) => ({ "@type": "PropertyValue", ...p })),
+        ...(priceBRL !== null
+          ? {
+              offers: {
+                "@type": "Offer",
+                price: priceBRL,
+                priceCurrency: "BRL",
+                availability: "https://schema.org/InStock",
+                url: canonical,
+              },
+            }
+          : {}),
       },
       {
         "@type": "BreadcrumbList",
@@ -194,7 +219,13 @@ export default async function RacquetPage({
             <div className="flex flex-col gap-2">
               <div className="flex flex-wrap items-center gap-4">
                 <span className="font-heading text-2xl font-semibold">
-                  US$ {racket.priceUSD}
+                  {priceBRL !== null
+                    ? format.number(priceBRL, {
+                        style: "currency",
+                        currency: "BRL",
+                        maximumFractionDigits: 0,
+                      })
+                    : `US$ ${racket.priceUSD}`}
                 </span>
                 <Button
                   nativeButton={false}
@@ -202,15 +233,24 @@ export default async function RacquetPage({
                     <a
                       href={href}
                       target="_blank"
-                      rel={referenceLink ? relForKind(referenceLink.kind) : PLAIN_REL}
+                      rel={storefront ? relForKind(storefront.kind) : PLAIN_REL}
                     />
                   }
                 >
-                  {t("buy")}
+                  {tStores("viewAt", { at: storeAt })}
                   <ExternalLink />
                 </Button>
               </div>
-              <p className="text-xs text-muted-foreground">{t("priceNote")}</p>
+              <p className="text-xs text-muted-foreground">
+                {storefront?.checkedAt
+                  ? tStores("priceChecked", {
+                      at: storeAt,
+                      date: format.dateTime(new Date(storefront.checkedAt), {
+                        dateStyle: "short",
+                      }),
+                    })
+                  : tStores("priceReference", { at: storeAt })}
+              </p>
             </div>
           </div>
         </header>

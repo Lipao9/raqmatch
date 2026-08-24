@@ -1,7 +1,7 @@
 import { z } from "zod";
 import offersFile from "../../data/offers.json";
 import type { Racket } from "./catalog";
-import { getStore, type StoreKey, STORE_KEYS } from "./stores";
+import { DEFAULT_STORE, getStore, type StoreKey, STORE_KEYS } from "./stores";
 
 /**
  * Brazilian store offers for catalog racquets.
@@ -168,4 +168,59 @@ export function resolveStore(
 
 export function isMonetised(kind: LinkKind): boolean {
   return kind === "affiliate_deep" || kind === "affiliate_search";
+}
+
+/**
+ * The one store this visitor is sent to.
+ *
+ * Brazil first, and exclusively: once a racquet has a mapped Mercado Livre
+ * offer, a `pt-BR` visitor is not shown Tennis Warehouse at all. A US listing
+ * priced in dollars that cannot ship here is not a useful second option — it
+ * reads as the site not knowing where its reader is, and it splits the click
+ * between a link that can earn and one that cannot.
+ *
+ * A mapped offer is the bar, not merely "Mercado Livre exists": `resolveStore`
+ * will happily fall back to a Mercado Livre *search*, and a search page is not
+ * worth displacing a real product page for.
+ *
+ * `/en` keeps Tennis Warehouse, which is the store that can actually ship to
+ * that reader — the same locale split as the weight convention.
+ */
+export function primaryStore(racket: Racket, locale: string): StoreKey {
+  const mapped = locale === "pt-BR" && getOffer(racket.id, "mercadolivre");
+  return mapped ? "mercadolivre" : DEFAULT_STORE;
+}
+
+export interface Storefront {
+  /** Where the buy button goes. */
+  store: StoreKey;
+  /** Link kind at that store, which decides the `rel` disclosure. */
+  kind: LinkKind;
+  /**
+   * Price in BRL, present only when the chosen store prices in BRL *and* the
+   * check is recent. Null means the page falls back to the catalog's USD
+   * reference — a stale price shown as current is worse than no price.
+   */
+  priceBRL: number | null;
+  /** ISO timestamp of that price check. Null exactly when `priceBRL` is. */
+  checkedAt: string | null;
+}
+
+/** Store, link kind and price for a racquet, resolved together. */
+export function storefrontFor(
+  racket: Racket,
+  locale: string,
+  now = new Date(),
+): Storefront | null {
+  const store = primaryStore(racket, locale);
+  const link = resolveStore(racket, store);
+  if (!link) return null;
+
+  const priceBRL = link.offer ? freshPriceBRL(link.offer, now) : null;
+  return {
+    store,
+    kind: link.kind,
+    priceBRL,
+    checkedAt: priceBRL === null ? null : link.offer!.checkedAt,
+  };
 }
