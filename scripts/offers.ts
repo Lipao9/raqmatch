@@ -53,16 +53,29 @@ const OFFERS_PATH = new URL("../data/offers.json", import.meta.url);
  */
 const MIN_SPEC_EVIDENCE = 2;
 
+/**
+ * How far down the ranked candidates to keep asking "but is it in stock?".
+ *
+ * Bounded because each probe is a request: unbounded, a racquet Brazil does not
+ * carry would walk all twenty candidates before admitting it. Five is well past
+ * where a real listing turns up — the frames that motivated this found one at
+ * rank two or three.
+ */
+const MAX_AVAILABILITY_PROBES = 5;
+
 const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
 
 interface Outcome {
   racket: Racket;
+  /** Every survivor of the deterministic gates, best first. */
+  matches: Match[];
+  /** The one actually chosen: highest-ranked candidate that is free and stocked. */
   best: Match | null;
-  /** Survivors beyond the best one — the cases an LLM would have to adjudicate. */
-  contenders: number;
+  /** Price of `best`, learned while proving it was buyable. */
+  priceBRL: number | null;
   searched: number;
-  /** Set when the match was surrendered to a racquet with a stronger claim. */
-  lostTo: string | null;
+  /** Why nothing was chosen, when there were candidates to choose from. */
+  reason: string | null;
 }
 
 /**
@@ -102,39 +115,78 @@ async function inspect(racket: Racket, catalog: Racket[]): Promise<Outcome> {
 
   return {
     racket,
-    best: matches[0] ?? null,
-    contenders: Math.max(0, matches.length - 1),
+    matches,
+    best: null,
+    priceBRL: null,
     searched: products.length,
-    lostTo: null,
+    reason: null,
   };
 }
 
 /**
- * One catalog product cannot be the offer for two different racquets — if it is,
- * at least one of them is wrong. The stronger claim keeps it; the weaker one is
- * left with no match, which is the honest outcome rather than a guess.
+ * Picks each racquet's offer: the best-ranked candidate that is both unclaimed
+ * and actually stocked.
+ *
+ * Availability belongs in the choice, not in a veto applied after it. Mercado
+ * Livre carries several catalog entries for one frame — grip sizes, colours,
+ * sellers' own submissions — and the entry with the richest attributes, which is
+ * exactly the one ranking highest, is routinely the one nobody stocks. Vetoing
+ * afterwards discarded the whole racquet: the Wilson Blade 98 16x19 v10 matched a
+ * dead entry and lost its link while a sibling entry with eight live listings sat
+ * one rank below it.
+ *
+ * Collisions resolve in the same walk. One catalog product cannot be the offer
+ * for two racquets, so racquets are served strongest-claim-first and a product
+ * already taken is simply skipped — the loser drops to its next candidate rather
+ * than being left with nothing, which is what a separate collision pass did.
  */
-function resolveCollisions(outcomes: Outcome[]): void {
-  const claims = new Map<string, Outcome[]>();
-  for (const outcome of outcomes) {
-    if (!outcome.best) continue;
-    const id = outcome.best.product.id;
-    claims.set(id, [...(claims.get(id) ?? []), outcome]);
-  }
+async function claimOffers(outcomes: Outcome[]): Promise<void> {
+  const claimed = new Map<string, Racket>();
 
-  for (const [, contenders] of claims) {
-    if (contenders.length < 2) continue;
-    const stronger = (a: Outcome, b: Outcome): Outcome => {
-      const byTier = tier(b.best!) - tier(a.best!);
-      if (byTier !== 0) return byTier > 0 ? b : a;
-      return b.best!.score > a.best!.score ? b : a;
-    };
-    const winner = contenders.reduce(stronger);
-    for (const loser of contenders) {
-      if (loser === winner) continue;
-      loser.lostTo = `${winner.racket.brand} ${winner.racket.model}`;
-      loser.best = null;
+  const strength = (o: Outcome) => o.matches[0];
+  const order = [...outcomes].sort((a, b) => {
+    const [x, y] = [strength(a), strength(b)];
+    if (!x || !y) return Number(Boolean(y)) - Number(Boolean(x));
+    return tier(y) - tier(x) || y.score - x.score;
+  });
+
+  for (const outcome of order) {
+    if (outcome.matches.length === 0) continue;
+
+    let probed = 0;
+    let eligible = 0;
+    let takenBy: Racket | null = null;
+
+    for (const match of outcome.matches) {
+      if (specEvidence(match) < MIN_SPEC_EVIDENCE) continue;
+      eligible++;
+
+      const owner = claimed.get(match.product.id);
+      if (owner) {
+        takenBy ??= owner;
+        continue;
+      }
+      if (probed >= MAX_AVAILABILITY_PROBES) break;
+
+      probed++;
+      const priceBRL = await priceOf(match.product.id);
+      await sleep(200); // polite, and well inside the rate limit
+      if (priceBRL === undefined) continue; // nothing for sale behind it
+
+      outcome.best = match;
+      outcome.priceBRL = priceBRL;
+      claimed.set(match.product.id, outcome.racket);
+      break;
     }
+
+    if (outcome.best) continue;
+    outcome.reason =
+      eligible === 0
+        ? `no candidate cleared ${MIN_SPEC_EVIDENCE} agreeing specs`
+        : probed === 0 && takenBy
+          ? `every candidate claimed by ${takenBy.brand} ${takenBy.model}`
+          : `no live listing among ${probed} probed candidate(s)`;
+    if (!VERBOSE) process.stdout.write("·");
   }
 }
 
@@ -168,25 +220,9 @@ async function priceOf(productId: string): Promise<number | null | undefined> {
   return prices.length > 0 ? Math.min(...prices) : null;
 }
 
-/**
- * Turns a match into a row, or explains why it did not become one. Both the
- * spec floor and the availability check reject here rather than earlier so the
- * dry-run listing still shows what the matcher found — the reason a racquet has
- * no offer is worth reading.
- */
-async function toOffer(
-  outcome: Outcome,
-  checkedAt: string,
-): Promise<Offer | { skipped: string }> {
+/** Row for a racquet whose offer `claimOffers` already chose and priced. */
+function toOffer(outcome: Outcome, checkedAt: string): Offer {
   const match = outcome.best!;
-  const specs = specEvidence(match);
-  if (specs < MIN_SPEC_EVIDENCE) {
-    return { skipped: `only ${specs} agreeing spec(s)` };
-  }
-
-  const priceBRL = await priceOf(match.product.id);
-  if (priceBRL === undefined) return { skipped: "no live listing" };
-
   return {
     racketId: outcome.racket.id,
     store: "mercadolivre",
@@ -195,7 +231,7 @@ async function toOffer(
     // composition is confirmed by the Métricas report. Neither has happened.
     affiliateUrl: null,
     title: match.product.name,
-    priceBRL,
+    priceBRL: outcome.priceBRL,
     unstrungWeightGrams: unstrungWeight(outcome.racket, match.product),
     matchKind: match.matchKind,
     variantNote: match.variantNote,
@@ -213,7 +249,7 @@ async function toOffer(
  * this run — a `--brand` pass, say — are kept too, so a narrow run cannot
  * silently delete the results of a wide one.
  */
-async function persist(outcomes: Outcome[]): Promise<void> {
+function persist(outcomes: Outcome[]): void {
   const checkedAt = new Date().toISOString();
   const existing = offersCatalogSchema.parse(
     JSON.parse(readFileSync(OFFERS_PATH, "utf8")),
@@ -235,15 +271,8 @@ async function persist(outcomes: Outcome[]): Promise<void> {
       skipped.push(`  ${outcome.racket.id} — kept the hand-curated row`);
       continue;
     }
-    const result = await toOffer(outcome, checkedAt);
-    if ("skipped" in result) {
-      skipped.push(`  ${outcome.racket.id} — ${result.skipped}`);
-      continue;
-    }
-    minted.push(result);
-    process.stdout.write(".");
+    minted.push(toOffer(outcome, checkedAt));
   }
-  process.stdout.write("\n");
 
   const kept = existing.offers.filter(
     (o) =>
@@ -293,19 +322,24 @@ async function main() {
   }
   if (!VERBOSE) console.log("\n");
 
-  resolveCollisions(outcomes);
+  console.log("Checking which candidates are actually stocked.");
+  await claimOffers(outcomes);
+  if (!VERBOSE) console.log("\n");
 
   for (const outcome of outcomes) {
     const name = `${outcome.racket.brand} ${outcome.racket.model}`.padEnd(34).slice(0, 34);
     if (outcome.best) {
       const { product, evidence } = outcome.best;
+      const rank = outcome.matches.indexOf(outcome.best);
       console.log(`  ${name} ${label(outcome.best).padEnd(14)} ${product.id}  [${evidence.join(", ")}]`);
       console.log(`  ${" ".repeat(34)} ${product.name.slice(0, 70)}`);
-      if (outcome.contenders > 0) {
-        console.log(`  ${" ".repeat(34)} +${outcome.contenders} other survivor(s) — needs adjudication`);
+      // Worth surfacing: a racquet served from further down the ranking means
+      // the better-described entries above it were dead or already taken.
+      if (rank > 0) {
+        console.log(`  ${" ".repeat(34)} rank ${rank + 1} of ${outcome.matches.length} — the ones above had no live listing`);
       }
-    } else if (outcome.lostTo) {
-      console.log(`  ${name} —              product claimed by ${outcome.lostTo}`);
+    } else if (outcome.reason) {
+      console.log(`  ${name} —              ${outcome.reason}`);
     } else {
       console.log(`  ${name} —              no match (${outcome.searched} candidates seen)`);
     }
@@ -317,10 +351,10 @@ async function main() {
   exact (year confirmed)   ${count((o) => o.best?.matchKind === "exact")}
   variant (other year)     ${count((o) => o.best?.matchKind === "variant_year")}
   matched, gen unknown     ${count((o) => o.best?.matchKind === "unknown_generation")}
-  lost a collision         ${count((o) => Boolean(o.lostTo))}
-  no match                 ${count((o) => !o.best && !o.lostTo)}
   ─────
-  needing adjudication     ${count((o) => Boolean(o.best) && o.contenders > 0)}
+  served below rank 1      ${count((o) => Boolean(o.best) && o.matches.indexOf(o.best!) > 0)}
+  matched, none stocked    ${count((o) => !o.best && Boolean(o.reason))}
+  no match at all          ${count((o) => !o.best && !o.reason)}
   total                    ${outcomes.length}`);
 
   if (!WRITE) {
@@ -328,8 +362,7 @@ async function main() {
     return;
   }
 
-  console.log(`\nChecking availability and price, then writing.`);
-  await persist(outcomes);
+  persist(outcomes);
 }
 
 main().catch((error) => {
