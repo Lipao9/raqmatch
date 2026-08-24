@@ -1,7 +1,35 @@
 {
   "version": 1,
-  "updatedAt": "2026-08-24T19:25:28.376Z",
+  "updatedAt": "2026-08-24T20:12:34.839Z",
   "offers": [
+    {
+      "racketId": "babolat-boost-aero-2026",
+      "store": "mercadolivre",
+      "listingUrl": "https://www.mercadolivre.com.br/p/MLB25359542",
+      "affiliateUrl": null,
+      "title": "Raquete De Tênis Babolat Boost S Vermelha",
+      "priceBRL": 919,
+      "unstrungWeightGrams": null,
+      "matchKind": "unknown_generation",
+      "variantNote": null,
+      "confidence": 0.85,
+      "source": "matcher",
+      "checkedAt": "2026-08-24T20:12:34.839Z"
+    },
+    {
+      "racketId": "babolat-boost-drive",
+      "store": "mercadolivre",
+      "listingUrl": "https://www.mercadolivre.com.br/p/MLB23584280",
+      "affiliateUrl": null,
+      "title": "Raquete De Tênis Babolat Boost Drive Woman 105 260g - L3",
+      "priceBRL": 949.9,
+      "unstrungWeightGrams": 260,
+      "matchKind": "unknown_generation",
+      "variantNote": null,
+      "confidence": 0.85,
+      "source": "matcher",
+      "checkedAt": "2026-08-24T20:12:34.839Z"
+    },
     {
       "racketId": "babolat-boost-strike",
       "store": "mercadolivre",
@@ -14,7 +42,7 @@
       "variantNote": null,
       "confidence": 0.85,
       "source": "matcher",
-      "checkedAt": "2026-08-24T19:25:28.376Z"
+      "checkedAt": "2026-08-24T20:12:34.839Z"
     },
     {
       "racketId": "babolat-evo-aero-2026",
@@ -28,7 +56,7 @@
       "variantNote": null,
       "confidence": 0.85,
       "source": "matcher",
-      "checkedAt": "2026-08-24T19:25:28.376Z"
+      "checkedAt": "2026-08-24T20:12:34.839Z"
     },
     {
       "racketId": "babolat-pure-aero-2023",
@@ -42,7 +70,7 @@
       "variantNote": null,
       "confidence": 1,
       "source": "matcher",
-      "checkedAt": "2026-08-24T19:25:28.376Z"
+      "checkedAt": "2026-08-24T20:12:34.839Z"
     },
     {
       "racketId": "babolat-pure-aero-2026",
@@ -56,7 +84,7 @@
       "variantNote": null,
       "confidence": 1,
       "source": "matcher",
-      "checkedAt": "2026-08-24T19:25:28.376Z"
+      "checkedAt": "2026-08-24T20:12:34.839Z"
     },
     {
       "racketId": "babolat-pure-aero-98-2026",
@@ -70,7 +98,7 @@
       "variantNote": null,
       "confidence": 1,
       "source": "matcher",
-      "checkedAt": "2026-08-24T19:25:28.376Z"
+      "checkedAt": "2026-08-24T20:12:34.839Z"
     },
     {
       "racketId": "babolat-pure-aero-lite-2026",
@@ -84,7 +112,7 @@
       "variantNote": null,
       "confidence": 0.85,
       "source": "matcher",
-      "checkedAt": "2026-08-24T19:25:28.376Z"
+      "checkedAt": "2026-08-24T20:12:34.839Z"
     },
     {
       "racketId": "babolat-pure-aero-plus-2026",
@@ -98,7 +126,35 @@
       "variantNote": null,
       "confidence": 1,
       "source": "matcher",
-      "checkedAt": "2026-08-24T19:25:28.376Z"
+      "checkedAt": "2026-08-24T20:12:34.839Z"
+    },
+    {
+      "racketId": "babolat-pure-aero-team-2026",
+      "store": "mercadolivre",
+      "listingUrl": "https://www.mercadolivre.com.br/p/MLB65423414",
+      "affiliateUrl": null,
+      "title": "Raquete De Tênis Babolat Pure Aero - Team 2026 Cinza L3",
+      "priceBRL": 1829.9,
+      "unstrungWeightGrams": 285,
+      "matchKind": "exact",
+      "variantNote": null,
+      "confidence": 1,
+      "source": "matcher",
+      "checkedAt": "2026-08-24T20:12:34.839Z"
+    },
+    {
+      "racketId": "babolat-pure-drive-2025",
+      "store": "mercadolivre",
+      "listingUrl": "https://www.mercadolivre.com.br/p/MLB38644727",
+      "affiliateUrl": null,
+      "title": "Raquete De Tênis Babolat Pure Drive Cor Azul",
+      "priceBRL": 1499.99,
+      "unstrungWeightGrams": 300,
+      "matchKind": "unknown_generation",
+      "variantNote": null,
+      "confidence": 0.7,
+      "source": "matcher",
+      "checkedAt": "2026-08-24T20:12:34.839Z"
     },
     {
       "racketId": "babolat-pure-drive-98-2025",
@@ -112,7 +168,7 @@
       "variantNote": null,
       "confidence": 1,
       "source": "matcher",
-      "checkedAt": "2026-08-24T19:25:28.376Z"
+      "checkedAt": "2026-08-24T20:12:34.839Z"
     },
     {
       "racketId": "babolat-pure-drive-team-2025",
@@ -126,7 +182,21 @@
       "variantNote": null,
       "confidence": 1,
       "source": "matcher",
-      "checkedAt": "2026-08-24T19:25:28.376Z"
+      "checkedAt": "2026-08-24T20:12:34.839Z"
+    },
+    {
+      "racketId": "babolat-pure-drive-wimbledon",
+      "store": "mercadolivre",
+      "listingUrl": "https://www.mercadolivre.com.br/p/MLB54895224",
+      "affiliateUrl": null,
+      "title": "Raquete Tênis Babolat Pure Drive Wimbledon 300g 2025 L3",
+      "priceBRL": 1679,
+      "unstrungWeightGrams": 300,
+      "matchKind": "unknown_generation",
+      "variantNote": null,
+      "confidence": 0.85,
+      "source": "matcher",
+      "checkedAt": "2026-08-24T20:12:34.839Z"
     },
     {
       "racketId": "head-boom-mp-2024",
@@ -140,7 +210,7 @@
       "variantNote": null,
       "confidence": 1,
       "source": "matcher",
-      "checkedAt": "2026-08-24T19:25:28.376Z"
+      "checkedAt": "2026-08-24T20:12:34.839Z"
     },
     {
       "racketId": "head-boom-mp-2026",
@@ -154,7 +224,35 @@
       "variantNote": null,
       "confidence": 1,
       "source": "matcher",
-      "checkedAt": "2026-08-24T19:25:28.376Z"
+      "checkedAt": "2026-08-24T20:12:34.839Z"
+    },
+    {
+      "racketId": "head-boom-mp-l-2026",
+      "store": "mercadolivre",
+      "listingUrl": "https://www.mercadolivre.com.br/p/MLB74491294",
+      "affiliateUrl": null,
+      "title": "Raquete De Tênis Head Boom Mp 2026 Azul - 295g - L3",
+      "priceBRL": 1742.16,
+      "unstrungWeightGrams": null,
+      "matchKind": "exact",
+      "variantNote": null,
+      "confidence": 1,
+      "source": "matcher",
+      "checkedAt": "2026-08-24T20:12:34.839Z"
+    },
+    {
+      "racketId": "head-boom-pro",
+      "store": "mercadolivre",
+      "listingUrl": "https://www.mercadolivre.com.br/p/MLB35348901",
+      "affiliateUrl": null,
+      "title": "Raquete De Tênis Head Boom Pro 2024",
+      "priceBRL": 1599,
+      "unstrungWeightGrams": 310,
+      "matchKind": "unknown_generation",
+      "variantNote": null,
+      "confidence": 0.85,
+      "source": "matcher",
+      "checkedAt": "2026-08-24T20:12:34.839Z"
     },
     {
       "racketId": "head-boom-pro-2026",
@@ -168,21 +266,35 @@
       "variantNote": null,
       "confidence": 1,
       "source": "matcher",
-      "checkedAt": "2026-08-24T19:25:28.376Z"
+      "checkedAt": "2026-08-24T20:12:34.839Z"
     },
     {
-      "racketId": "head-extreme-mp-l",
+      "racketId": "head-extreme-mp",
       "store": "mercadolivre",
       "listingUrl": "https://www.mercadolivre.com.br/p/MLB66591081",
       "affiliateUrl": null,
       "title": "Raquete De Tenis Head Extreme Mp Auxetic 2.0",
       "priceBRL": 1647,
-      "unstrungWeightGrams": null,
+      "unstrungWeightGrams": 300,
       "matchKind": "unknown_generation",
       "variantNote": null,
       "confidence": 0.85,
       "source": "matcher",
-      "checkedAt": "2026-08-24T19:25:28.376Z"
+      "checkedAt": "2026-08-24T20:12:34.839Z"
+    },
+    {
+      "racketId": "head-extreme-mp-l",
+      "store": "mercadolivre",
+      "listingUrl": "https://www.mercadolivre.com.br/p/MLB39006878",
+      "affiliateUrl": null,
+      "title": "Raquete De Tênis Head Extreme Mp L 2024",
+      "priceBRL": 1399,
+      "unstrungWeightGrams": 280,
+      "matchKind": "unknown_generation",
+      "variantNote": null,
+      "confidence": 0.85,
+      "source": "matcher",
+      "checkedAt": "2026-08-24T20:12:34.839Z"
     },
     {
       "racketId": "head-gravity-mp-2025",
@@ -196,7 +308,21 @@
       "variantNote": null,
       "confidence": 1,
       "source": "matcher",
-      "checkedAt": "2026-08-24T19:25:28.376Z"
+      "checkedAt": "2026-08-24T20:12:34.839Z"
+    },
+    {
+      "racketId": "head-gravity-mp-l-2025",
+      "store": "mercadolivre",
+      "listingUrl": "https://www.mercadolivre.com.br/p/MLB45999986",
+      "affiliateUrl": null,
+      "title": "Raquete De Tênis Head Gravity Mp L 2025 Armação De Dureza 57 Encordoamento 16x20 - Preta E Azul",
+      "priceBRL": 1850,
+      "unstrungWeightGrams": 280,
+      "matchKind": "exact",
+      "variantNote": null,
+      "confidence": 1,
+      "source": "matcher",
+      "checkedAt": "2026-08-24T20:12:34.839Z"
     },
     {
       "racketId": "head-gravity-pro-2025",
@@ -210,7 +336,21 @@
       "variantNote": null,
       "confidence": 1,
       "source": "matcher",
-      "checkedAt": "2026-08-24T19:25:28.376Z"
+      "checkedAt": "2026-08-24T20:12:34.839Z"
+    },
+    {
+      "racketId": "head-gravity-tour-2025",
+      "store": "mercadolivre",
+      "listingUrl": "https://www.mercadolivre.com.br/p/MLB45862169",
+      "affiliateUrl": null,
+      "title": "Raquete De Tênis Head Gravity Tour - 2025 Cor Preto Tamanho Da Empunhadura L2",
+      "priceBRL": 2184.9,
+      "unstrungWeightGrams": 305,
+      "matchKind": "exact",
+      "variantNote": null,
+      "confidence": 1,
+      "source": "matcher",
+      "checkedAt": "2026-08-24T20:12:34.839Z"
     },
     {
       "racketId": "head-ig-radical-xceed",
@@ -224,7 +364,21 @@
       "variantNote": null,
       "confidence": 0.85,
       "source": "matcher",
-      "checkedAt": "2026-08-24T19:25:28.376Z"
+      "checkedAt": "2026-08-24T20:12:34.839Z"
+    },
+    {
+      "racketId": "head-prestige-mp-l",
+      "store": "mercadolivre",
+      "listingUrl": "https://www.mercadolivre.com.br/p/MLB28505636",
+      "affiliateUrl": null,
+      "title": "Raquete De Tênis Head Prestige Tour Cor Preto Tamanho Da Empunhadura L3",
+      "priceBRL": 1249,
+      "unstrungWeightGrams": null,
+      "matchKind": "unknown_generation",
+      "variantNote": null,
+      "confidence": 0.7,
+      "source": "matcher",
+      "checkedAt": "2026-08-24T20:12:34.839Z"
     },
     {
       "racketId": "head-prestige-tour",
@@ -238,7 +392,7 @@
       "variantNote": null,
       "confidence": 0.85,
       "source": "matcher",
-      "checkedAt": "2026-08-24T19:25:28.376Z"
+      "checkedAt": "2026-08-24T20:12:34.839Z"
     },
     {
       "racketId": "head-pwr-110",
@@ -252,7 +406,7 @@
       "variantNote": null,
       "confidence": 0.85,
       "source": "matcher",
-      "checkedAt": "2026-08-24T19:25:28.376Z"
+      "checkedAt": "2026-08-24T20:12:34.839Z"
     },
     {
       "racketId": "head-radical-mp-2025",
@@ -266,7 +420,7 @@
       "variantNote": null,
       "confidence": 1,
       "source": "matcher",
-      "checkedAt": "2026-08-24T19:25:28.376Z"
+      "checkedAt": "2026-08-24T20:12:34.839Z"
     },
     {
       "racketId": "head-radical-pro-2023",
@@ -280,7 +434,7 @@
       "variantNote": null,
       "confidence": 0.85,
       "source": "matcher",
-      "checkedAt": "2026-08-24T19:25:28.376Z"
+      "checkedAt": "2026-08-24T20:12:34.839Z"
     },
     {
       "racketId": "head-radical-pro-2025",
@@ -294,7 +448,21 @@
       "variantNote": null,
       "confidence": 1,
       "source": "matcher",
-      "checkedAt": "2026-08-24T19:25:28.376Z"
+      "checkedAt": "2026-08-24T20:12:34.839Z"
+    },
+    {
+      "racketId": "head-radical-team-2025",
+      "store": "mercadolivre",
+      "listingUrl": "https://www.mercadolivre.com.br/p/MLB53976059",
+      "affiliateUrl": null,
+      "title": "Raquete De Tênis Head Radical Team 2025 Cor Laranja Tamanho Da Empunhadura L3",
+      "priceBRL": 1799,
+      "unstrungWeightGrams": 280,
+      "matchKind": "exact",
+      "variantNote": null,
+      "confidence": 1,
+      "source": "matcher",
+      "checkedAt": "2026-08-24T20:12:34.839Z"
     },
     {
       "racketId": "head-speed-mp-2024",
@@ -308,7 +476,7 @@
       "variantNote": null,
       "confidence": 1,
       "source": "matcher",
-      "checkedAt": "2026-08-24T19:25:28.376Z"
+      "checkedAt": "2026-08-24T20:12:34.839Z"
     },
     {
       "racketId": "head-speed-mp-2026",
@@ -322,7 +490,21 @@
       "variantNote": null,
       "confidence": 1,
       "source": "matcher",
-      "checkedAt": "2026-08-24T19:25:28.376Z"
+      "checkedAt": "2026-08-24T20:12:34.839Z"
+    },
+    {
+      "racketId": "head-speed-mp-l-2026",
+      "store": "mercadolivre",
+      "listingUrl": "https://www.mercadolivre.com.br/p/MLB53464060",
+      "affiliateUrl": null,
+      "title": "Raquete Head Speed Mp L 2024 280gr 4 3/8 Cor preta",
+      "priceBRL": 1850,
+      "unstrungWeightGrams": 280,
+      "matchKind": "variant_year",
+      "variantNote": "2024",
+      "confidence": 0.9,
+      "source": "matcher",
+      "checkedAt": "2026-08-24T20:12:34.839Z"
     },
     {
       "racketId": "head-speed-mp-legend-2025",
@@ -336,7 +518,7 @@
       "variantNote": null,
       "confidence": 1,
       "source": "matcher",
-      "checkedAt": "2026-08-24T19:25:28.376Z"
+      "checkedAt": "2026-08-24T20:12:34.839Z"
     },
     {
       "racketId": "head-speed-mp-ul-2026",
@@ -350,7 +532,7 @@
       "variantNote": null,
       "confidence": 1,
       "source": "matcher",
-      "checkedAt": "2026-08-24T19:25:28.376Z"
+      "checkedAt": "2026-08-24T20:12:34.839Z"
     },
     {
       "racketId": "head-speed-pro-2026",
@@ -364,7 +546,7 @@
       "variantNote": null,
       "confidence": 1,
       "source": "matcher",
-      "checkedAt": "2026-08-24T19:25:28.376Z"
+      "checkedAt": "2026-08-24T20:12:34.839Z"
     },
     {
       "racketId": "head-speed-pro-legend-2025",
@@ -378,7 +560,7 @@
       "variantNote": null,
       "confidence": 1,
       "source": "matcher",
-      "checkedAt": "2026-08-24T19:25:28.376Z"
+      "checkedAt": "2026-08-24T20:12:34.839Z"
     },
     {
       "racketId": "head-speed-tour-2026",
@@ -392,7 +574,7 @@
       "variantNote": null,
       "confidence": 0.85,
       "source": "matcher",
-      "checkedAt": "2026-08-24T19:25:28.376Z"
+      "checkedAt": "2026-08-24T20:12:34.839Z"
     },
     {
       "racketId": "head-squared",
@@ -406,7 +588,7 @@
       "variantNote": null,
       "confidence": 0.85,
       "source": "matcher",
-      "checkedAt": "2026-08-24T19:25:28.376Z"
+      "checkedAt": "2026-08-24T20:12:34.839Z"
     },
     {
       "racketId": "prince-ripstick-100-300g",
@@ -420,7 +602,7 @@
       "variantNote": null,
       "confidence": 0.85,
       "source": "matcher",
-      "checkedAt": "2026-08-24T19:25:28.376Z"
+      "checkedAt": "2026-08-24T20:12:34.839Z"
     },
     {
       "racketId": "tecnifibre-fire-300",
@@ -434,7 +616,7 @@
       "variantNote": null,
       "confidence": 0.85,
       "source": "matcher",
-      "checkedAt": "2026-08-24T19:25:28.376Z"
+      "checkedAt": "2026-08-24T20:12:34.839Z"
     },
     {
       "racketId": "tecnifibre-tfight-300-ig",
@@ -448,7 +630,7 @@
       "variantNote": null,
       "confidence": 0.85,
       "source": "matcher",
-      "checkedAt": "2026-08-24T19:25:28.376Z"
+      "checkedAt": "2026-08-24T20:12:34.839Z"
     },
     {
       "racketId": "tecnifibre-tfight-305s",
@@ -462,7 +644,35 @@
       "variantNote": null,
       "confidence": 0.85,
       "source": "matcher",
-      "checkedAt": "2026-08-24T19:25:28.376Z"
+      "checkedAt": "2026-08-24T20:12:34.839Z"
+    },
+    {
+      "racketId": "wilson-blade-100-v10",
+      "store": "mercadolivre",
+      "listingUrl": "https://www.mercadolivre.com.br/p/MLB70272686",
+      "affiliateUrl": null,
+      "title": "Raquete De Tênis Wilson Blade 100 16x19 V10 - 2026 - L4 Verde 4 1/2",
+      "priceBRL": 1891.91,
+      "unstrungWeightGrams": 300,
+      "matchKind": "unknown_generation",
+      "variantNote": null,
+      "confidence": 0.85,
+      "source": "matcher",
+      "checkedAt": "2026-08-24T20:12:34.839Z"
+    },
+    {
+      "racketId": "wilson-blade-98-16x19-v10",
+      "store": "mercadolivre",
+      "listingUrl": "https://www.mercadolivre.com.br/p/MLB68334263",
+      "affiliateUrl": null,
+      "title": "Raquete Wilson Blade 98 16x19 V10 2026 305 Gr S/Green 4 1/4",
+      "priceBRL": 1899,
+      "unstrungWeightGrams": 305,
+      "matchKind": "unknown_generation",
+      "variantNote": null,
+      "confidence": 0.85,
+      "source": "matcher",
+      "checkedAt": "2026-08-24T20:12:34.839Z"
     },
     {
       "racketId": "wilson-blade-98-16x19-v9",
@@ -476,7 +686,7 @@
       "variantNote": null,
       "confidence": 0.85,
       "source": "matcher",
-      "checkedAt": "2026-08-24T19:25:28.376Z"
+      "checkedAt": "2026-08-24T20:12:34.839Z"
     },
     {
       "racketId": "wilson-blade-98-18x20-v10",
@@ -490,7 +700,7 @@
       "variantNote": null,
       "confidence": 0.85,
       "source": "matcher",
-      "checkedAt": "2026-08-24T19:25:28.376Z"
+      "checkedAt": "2026-08-24T20:12:34.839Z"
     },
     {
       "racketId": "wilson-blade-98-18x20-v9",
@@ -504,7 +714,63 @@
       "variantNote": null,
       "confidence": 0.85,
       "source": "matcher",
-      "checkedAt": "2026-08-24T19:25:28.376Z"
+      "checkedAt": "2026-08-24T20:12:34.839Z"
+    },
+    {
+      "racketId": "wilson-blade-pro-98-16x19-v10",
+      "store": "mercadolivre",
+      "listingUrl": "https://www.mercadolivre.com.br/p/MLB76031609",
+      "affiliateUrl": null,
+      "title": "Raquete De Tênis Wilson Blade 98 Pro 16x19 V10 L3 Verde",
+      "priceBRL": 1999.9,
+      "unstrungWeightGrams": 305,
+      "matchKind": "unknown_generation",
+      "variantNote": null,
+      "confidence": 0.7,
+      "source": "matcher",
+      "checkedAt": "2026-08-24T20:12:34.839Z"
+    },
+    {
+      "racketId": "wilson-blade-pro-98-16x19-v9",
+      "store": "mercadolivre",
+      "listingUrl": "https://www.mercadolivre.com.br/p/MLB34012951",
+      "affiliateUrl": null,
+      "title": "Raqueta Blade V9 Pro 98 16x19 4 3/8 Wilson Color Esmeralda",
+      "priceBRL": 1600,
+      "unstrungWeightGrams": 305,
+      "matchKind": "unknown_generation",
+      "variantNote": null,
+      "confidence": 0.85,
+      "source": "matcher",
+      "checkedAt": "2026-08-24T20:12:34.839Z"
+    },
+    {
+      "racketId": "wilson-blade-pro-98-18x20-v9",
+      "store": "mercadolivre",
+      "listingUrl": "https://www.mercadolivre.com.br/p/MLB33980990",
+      "affiliateUrl": null,
+      "title": "Raquete De Tênis Wilson Blade V9 98 18x20 305g L2 Com Nota Azul-aço 2",
+      "priceBRL": 1583.03,
+      "unstrungWeightGrams": 305,
+      "matchKind": "unknown_generation",
+      "variantNote": null,
+      "confidence": 0.85,
+      "source": "matcher",
+      "checkedAt": "2026-08-24T20:12:34.839Z"
+    },
+    {
+      "racketId": "wilson-clash-100l-v3",
+      "store": "mercadolivre",
+      "listingUrl": "https://www.mercadolivre.com.br/p/MLB55373566",
+      "affiliateUrl": null,
+      "title": "Raquete De Tênis Wilson Clash 100l V3 L3 Preto L3",
+      "priceBRL": 1988.99,
+      "unstrungWeightGrams": 280,
+      "matchKind": "unknown_generation",
+      "variantNote": null,
+      "confidence": 0.85,
+      "source": "matcher",
+      "checkedAt": "2026-08-24T20:12:34.839Z"
     },
     {
       "racketId": "wilson-defyer-100l",
@@ -518,7 +784,7 @@
       "variantNote": null,
       "confidence": 0.7,
       "source": "matcher",
-      "checkedAt": "2026-08-24T19:25:28.376Z"
+      "checkedAt": "2026-08-24T20:12:34.839Z"
     },
     {
       "racketId": "wilson-pro-staff-97-classic",
@@ -532,7 +798,21 @@
       "variantNote": null,
       "confidence": 0.85,
       "source": "matcher",
-      "checkedAt": "2026-08-24T19:25:28.376Z"
+      "checkedAt": "2026-08-24T20:12:34.839Z"
+    },
+    {
+      "racketId": "wilson-pro-staff-97l-classic",
+      "store": "mercadolivre",
+      "listingUrl": "https://www.mercadolivre.com.br/p/MLB67927397",
+      "affiliateUrl": null,
+      "title": "Raquete De Tênis Wilson Pro Staff 97l Classic 2026 290g - L4 Preto L4",
+      "priceBRL": 1999.9,
+      "unstrungWeightGrams": 290,
+      "matchKind": "unknown_generation",
+      "variantNote": null,
+      "confidence": 0.85,
+      "source": "matcher",
+      "checkedAt": "2026-08-24T20:12:34.839Z"
     },
     {
       "racketId": "wilson-rf-01",
@@ -546,7 +826,21 @@
       "variantNote": null,
       "confidence": 0.85,
       "source": "matcher",
-      "checkedAt": "2026-08-24T19:25:28.376Z"
+      "checkedAt": "2026-08-24T20:12:34.839Z"
+    },
+    {
+      "racketId": "wilson-rf-01-future",
+      "store": "mercadolivre",
+      "listingUrl": "https://www.mercadolivre.com.br/p/MLB39360629",
+      "affiliateUrl": null,
+      "title": "Raquete de tênis Wilson RF 01 Future 16x19 Empunhadura 4 3/8",
+      "priceBRL": 1750,
+      "unstrungWeightGrams": 280,
+      "matchKind": "unknown_generation",
+      "variantNote": null,
+      "confidence": 0.85,
+      "source": "matcher",
+      "checkedAt": "2026-08-24T20:12:34.839Z"
     },
     {
       "racketId": "wilson-rf-01-pro",
@@ -560,7 +854,7 @@
       "variantNote": null,
       "confidence": 0.85,
       "source": "matcher",
-      "checkedAt": "2026-08-24T19:25:28.376Z"
+      "checkedAt": "2026-08-24T20:12:34.839Z"
     },
     {
       "racketId": "wilson-shift-99-pro",
@@ -574,21 +868,21 @@
       "variantNote": null,
       "confidence": 0.85,
       "source": "matcher",
-      "checkedAt": "2026-08-24T19:25:28.376Z"
+      "checkedAt": "2026-08-24T20:12:34.839Z"
     },
     {
       "racketId": "wilson-ultra-100-v5",
       "store": "mercadolivre",
-      "listingUrl": "https://www.mercadolivre.com.br/p/MLB55506009",
+      "listingUrl": "https://www.mercadolivre.com.br/p/MLB74489736",
       "affiliateUrl": null,
-      "title": "Raquete De Tênis Wilson Ultra 100 V5 300g Cor Azul Tamanho Da Empunhadura L2",
-      "priceBRL": 2000.9,
+      "title": "Raquete de tênis Wilson - Ultra 100 V5 azul 3",
+      "priceBRL": 1549,
       "unstrungWeightGrams": 300,
       "matchKind": "unknown_generation",
       "variantNote": null,
       "confidence": 0.85,
       "source": "matcher",
-      "checkedAt": "2026-08-24T19:25:28.376Z"
+      "checkedAt": "2026-08-24T20:12:34.839Z"
     },
     {
       "racketId": "wilson-ultra-100-v5-roland-garros",
@@ -602,7 +896,35 @@
       "variantNote": null,
       "confidence": 0.85,
       "source": "matcher",
-      "checkedAt": "2026-08-24T19:25:28.376Z"
+      "checkedAt": "2026-08-24T20:12:34.839Z"
+    },
+    {
+      "racketId": "wilson-ultra-100ul-v5",
+      "store": "mercadolivre",
+      "listingUrl": "https://www.mercadolivre.com.br/p/MLB53255820",
+      "affiliateUrl": null,
+      "title": "Raquete de tênis Wilson - Ultra 100ul V5, cor azul, tamanho 4 1/4",
+      "priceBRL": 1804.99,
+      "unstrungWeightGrams": 260,
+      "matchKind": "unknown_generation",
+      "variantNote": null,
+      "confidence": 0.85,
+      "source": "matcher",
+      "checkedAt": "2026-08-24T20:12:34.839Z"
+    },
+    {
+      "racketId": "yonex-ezone-100l-2025",
+      "store": "mercadolivre",
+      "listingUrl": "https://www.mercadolivre.com.br/p/MLB45521253",
+      "affiliateUrl": null,
+      "title": "Raquete de Tênis Yonex Ezone 100l 2025 Blast Blue 285g 4 1/4 Cor Azul",
+      "priceBRL": 2699,
+      "unstrungWeightGrams": 285,
+      "matchKind": "exact",
+      "variantNote": null,
+      "confidence": 1,
+      "source": "matcher",
+      "checkedAt": "2026-08-24T20:12:34.839Z"
     },
     {
       "racketId": "yonex-ezone-98-2025",
@@ -616,7 +938,7 @@
       "variantNote": null,
       "confidence": 1,
       "source": "matcher",
-      "checkedAt": "2026-08-24T19:25:28.376Z"
+      "checkedAt": "2026-08-24T20:12:34.839Z"
     },
     {
       "racketId": "yonex-ezone-98-tour-2025",
@@ -630,7 +952,7 @@
       "variantNote": null,
       "confidence": 0.85,
       "source": "matcher",
-      "checkedAt": "2026-08-24T19:25:28.376Z"
+      "checkedAt": "2026-08-24T20:12:34.839Z"
     },
     {
       "racketId": "yonex-muse-100",
@@ -644,7 +966,21 @@
       "variantNote": null,
       "confidence": 0.7,
       "source": "matcher",
-      "checkedAt": "2026-08-24T19:25:28.376Z"
+      "checkedAt": "2026-08-24T20:12:34.839Z"
+    },
+    {
+      "racketId": "yonex-muse-107",
+      "store": "mercadolivre",
+      "listingUrl": "https://www.mercadolivre.com.br/p/MLB68259958",
+      "affiliateUrl": null,
+      "title": "Raquete de tênis Yonex 01 Muse 107 Pearl Silver Grip 2",
+      "priceBRL": 2210.68,
+      "unstrungWeightGrams": 280,
+      "matchKind": "unknown_generation",
+      "variantNote": null,
+      "confidence": 0.7,
+      "source": "matcher",
+      "checkedAt": "2026-08-24T20:12:34.839Z"
     },
     {
       "racketId": "yonex-muse-98",
@@ -658,7 +994,21 @@
       "variantNote": null,
       "confidence": 0.7,
       "source": "matcher",
-      "checkedAt": "2026-08-24T19:25:28.376Z"
+      "checkedAt": "2026-08-24T20:12:34.839Z"
+    },
+    {
+      "racketId": "yonex-percept-97",
+      "store": "mercadolivre",
+      "listingUrl": "https://www.mercadolivre.com.br/p/MLB68938183",
+      "affiliateUrl": null,
+      "title": "Raquete De Tênis Yonex Percept 97 Roxa 310g Cor Roxo Tamanho Da Empunhadura L4",
+      "priceBRL": 2299.9,
+      "unstrungWeightGrams": 310,
+      "matchKind": "unknown_generation",
+      "variantNote": null,
+      "confidence": 0.85,
+      "source": "matcher",
+      "checkedAt": "2026-08-24T20:12:34.839Z"
     }
   ]
 }
