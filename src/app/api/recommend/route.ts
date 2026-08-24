@@ -1,6 +1,7 @@
 import { after, NextResponse } from "next/server";
 import { z } from "zod";
-import { outboundRel, trackedUrl } from "@/lib/affiliate";
+import { DEFAULT_STORE, PLAIN_REL, relForKind, trackedUrl } from "@/lib/affiliate";
+import { resolveStore } from "@/lib/offers";
 import { recordQuizRun } from "@/lib/analytics";
 import { answersSchemaFor, quizModeSchema, type Answers } from "@/lib/answers";
 import { loadCatalog } from "@/lib/catalog";
@@ -101,16 +102,21 @@ export async function POST(req: Request) {
       }),
     );
 
-    const rel = outboundRel();
     return NextResponse.json({
-      recommendations: result.picks.map((pick) => ({
-        racket: byId.get(pick.racketId)!,
-        justification: pick.justification,
-        // Points at our own click-tracking redirect, not the store: the
-        // affiliate configuration stays server-side and the click is counted.
-        buyUrl: trackedUrl(pick.racketId, "results"),
-        rel,
-      })),
+      recommendations: result.picks.map((pick) => {
+        const racket = byId.get(pick.racketId)!;
+        const link = resolveStore(racket, DEFAULT_STORE);
+        return {
+          racket,
+          justification: pick.justification,
+          // Points at our own click-tracking redirect, not the store: the
+          // affiliate configuration stays server-side and the click is counted.
+          buyUrl: trackedUrl(pick.racketId, "results"),
+          // Per link, not global: with several stores one can be monetised
+          // while another is still a plain listing.
+          rel: link ? relForKind(link.kind) : PLAIN_REL,
+        };
+      }),
     });
   } catch (error) {
     console.error("recommendation failed:", error);

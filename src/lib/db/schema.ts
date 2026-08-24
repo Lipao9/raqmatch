@@ -70,6 +70,22 @@ export const outboundClicks = pgTable(
     racketId: text("racket_id").notNull(),
     /** Hostname of the destination store, e.g. tennis-warehouse.com. */
     merchant: text("merchant").notNull(),
+    /**
+     * Affiliate program key (mercadolivre | amazon | shopee | tennis-warehouse).
+     * Distinct from `merchant`: one program can send clicks to more than one
+     * hostname — a Mercado Livre link lands on `mercadolivre.com.br` when it is
+     * a plain listing and on `meli.la` when it is a minted affiliate link.
+     * Nullable because rows written before multi-store support genuinely do not
+     * know, and backfilling a guess would be worse than a null.
+     */
+    store: text("store"),
+    /**
+     * affiliate_deep | plain_deep | affiliate_search | plain_search — how the
+     * destination was arrived at. This is what makes "is hand-curating a deep
+     * link worth the effort, versus just linking to a search?" a measurable
+     * question instead of an argument.
+     */
+    linkKind: text("link_kind"),
     /** results | racquet_page — where the click came from. */
     source: text("source").notNull(),
     locale: text("locale"),
