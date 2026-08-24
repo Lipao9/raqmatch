@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-08-24T21:55:43.257Z",
+  "updatedAt": "2026-08-24T22:08:12.944Z",
   "offers": [
     {
       "racketId": "babolat-boost-aero-2026",
@@ -14,7 +14,7 @@
       "variantNote": null,
       "confidence": 0.85,
       "source": "matcher",
-      "checkedAt": "2026-08-24T21:55:43.257Z"
+      "checkedAt": "2026-08-24T22:08:12.944Z"
     },
     {
       "racketId": "babolat-boost-drive",
@@ -28,7 +28,7 @@
       "variantNote": null,
       "confidence": 0.85,
       "source": "matcher",
-      "checkedAt": "2026-08-24T21:55:43.257Z"
+      "checkedAt": "2026-08-24T22:08:12.944Z"
     },
     {
       "racketId": "babolat-boost-strike",
@@ -42,7 +42,7 @@
       "variantNote": null,
       "confidence": 0.85,
       "source": "matcher",
-      "checkedAt": "2026-08-24T21:55:43.257Z"
+      "checkedAt": "2026-08-24T22:08:12.944Z"
     },
     {
       "racketId": "babolat-evo-aero-2026",
@@ -56,7 +56,7 @@
       "variantNote": null,
       "confidence": 0.85,
       "source": "matcher",
-      "checkedAt": "2026-08-24T21:55:43.257Z"
+      "checkedAt": "2026-08-24T22:08:12.944Z"
     },
     {
       "racketId": "babolat-pure-aero-2023",
@@ -70,7 +70,7 @@
       "variantNote": null,
       "confidence": 1,
       "source": "matcher",
-      "checkedAt": "2026-08-24T21:55:43.257Z"
+      "checkedAt": "2026-08-24T22:08:12.944Z"
     },
     {
       "racketId": "babolat-pure-aero-2026",
@@ -84,7 +84,7 @@
       "variantNote": null,
       "confidence": 1,
       "source": "matcher",
-      "checkedAt": "2026-08-24T21:55:43.257Z"
+      "checkedAt": "2026-08-24T22:08:12.944Z"
     },
     {
       "racketId": "babolat-pure-aero-98-2026",
@@ -98,7 +98,7 @@
       "variantNote": null,
       "confidence": 1,
       "source": "matcher",
-      "checkedAt": "2026-08-24T21:55:43.257Z"
+      "checkedAt": "2026-08-24T22:08:12.944Z"
     },
     {
       "racketId": "babolat-pure-aero-lite-2026",
@@ -112,7 +112,7 @@
       "variantNote": null,
       "confidence": 0.85,
       "source": "matcher",
-      "checkedAt": "2026-08-24T21:55:43.257Z"
+      "checkedAt": "2026-08-24T22:08:12.944Z"
     },
     {
       "racketId": "babolat-pure-aero-plus-2026",
@@ -126,7 +126,7 @@
       "variantNote": null,
       "confidence": 1,
       "source": "matcher",
-      "checkedAt": "2026-08-24T21:55:43.257Z"
+      "checkedAt": "2026-08-24T22:08:12.944Z"
     },
     {
       "racketId": "babolat-pure-aero-team-2026",
@@ -140,7 +140,7 @@
       "variantNote": null,
       "confidence": 1,
       "source": "matcher",
-      "checkedAt": "2026-08-24T21:55:43.257Z"
+      "checkedAt": "2026-08-24T22:08:12.944Z"
     },
     {
       "racketId": "babolat-pure-drive-2025",
@@ -154,7 +154,7 @@
       "variantNote": null,
       "confidence": 0.7,
       "source": "matcher",
-      "checkedAt": "2026-08-24T21:55:43.257Z"
+      "checkedAt": "2026-08-24T22:08:12.944Z"
     },
     {
       "racketId": "babolat-pure-drive-98-2025",
@@ -168,7 +168,7 @@
       "variantNote": null,
       "confidence": 1,
       "source": "matcher",
-      "checkedAt": "2026-08-24T21:55:43.257Z"
+      "checkedAt": "2026-08-24T22:08:12.944Z"
     },
     {
       "racketId": "babolat-pure-drive-team-2025",
@@ -182,7 +182,7 @@
       "variantNote": null,
       "confidence": 1,
       "source": "matcher",
-      "checkedAt": "2026-08-24T21:55:43.257Z"
+      "checkedAt": "2026-08-24T22:08:12.944Z"
     },
     {
       "racketId": "babolat-pure-drive-wimbledon",
@@ -196,7 +196,7 @@
       "variantNote": null,
       "confidence": 0.85,
       "source": "matcher",
-      "checkedAt": "2026-08-24T21:55:43.257Z"
+      "checkedAt": "2026-08-24T22:08:12.944Z"
     },
     {
       "racketId": "head-boom-mp-2024",
@@ -210,7 +210,7 @@
       "variantNote": null,
       "confidence": 1,
       "source": "matcher",
-      "checkedAt": "2026-08-24T21:55:43.257Z"
+      "checkedAt": "2026-08-24T22:08:12.944Z"
     },
     {
       "racketId": "head-boom-mp-2026",
@@ -224,7 +224,7 @@
       "variantNote": null,
       "confidence": 1,
       "source": "matcher",
-      "checkedAt": "2026-08-24T21:55:43.257Z"
+      "checkedAt": "2026-08-24T22:08:12.944Z"
     },
     {
       "racketId": "head-boom-pro",
@@ -238,7 +238,7 @@
       "variantNote": null,
       "confidence": 0.85,
       "source": "matcher",
-      "checkedAt": "2026-08-24T21:55:43.257Z"
+      "checkedAt": "2026-08-24T22:08:12.944Z"
     },
     {
       "racketId": "head-boom-pro-2026",
@@ -252,7 +252,7 @@
       "variantNote": null,
       "confidence": 1,
       "source": "matcher",
-      "checkedAt": "2026-08-24T21:55:43.257Z"
+      "checkedAt": "2026-08-24T22:08:12.944Z"
     },
     {
       "racketId": "head-extreme-mp",
@@ -266,7 +266,7 @@
       "variantNote": null,
       "confidence": 0.85,
       "source": "matcher",
-      "checkedAt": "2026-08-24T21:55:43.257Z"
+      "checkedAt": "2026-08-24T22:08:12.944Z"
     },
     {
       "racketId": "head-extreme-mp-l",
@@ -280,7 +280,7 @@
       "variantNote": null,
       "confidence": 0.85,
       "source": "matcher",
-      "checkedAt": "2026-08-24T21:55:43.257Z"
+      "checkedAt": "2026-08-24T22:08:12.944Z"
     },
     {
       "racketId": "head-gravity-mp-2025",
@@ -294,7 +294,7 @@
       "variantNote": null,
       "confidence": 1,
       "source": "matcher",
-      "checkedAt": "2026-08-24T21:55:43.257Z"
+      "checkedAt": "2026-08-24T22:08:12.944Z"
     },
     {
       "racketId": "head-gravity-mp-l-2025",
@@ -308,7 +308,7 @@
       "variantNote": null,
       "confidence": 1,
       "source": "matcher",
-      "checkedAt": "2026-08-24T21:55:43.257Z"
+      "checkedAt": "2026-08-24T22:08:12.944Z"
     },
     {
       "racketId": "head-gravity-pro-2025",
@@ -322,7 +322,7 @@
       "variantNote": null,
       "confidence": 1,
       "source": "matcher",
-      "checkedAt": "2026-08-24T21:55:43.257Z"
+      "checkedAt": "2026-08-24T22:08:12.944Z"
     },
     {
       "racketId": "head-gravity-tour-2025",
@@ -336,7 +336,7 @@
       "variantNote": null,
       "confidence": 1,
       "source": "matcher",
-      "checkedAt": "2026-08-24T21:55:43.257Z"
+      "checkedAt": "2026-08-24T22:08:12.944Z"
     },
     {
       "racketId": "head-ig-radical-xceed",
@@ -350,7 +350,7 @@
       "variantNote": null,
       "confidence": 0.85,
       "source": "matcher",
-      "checkedAt": "2026-08-24T21:55:43.257Z"
+      "checkedAt": "2026-08-24T22:08:12.944Z"
     },
     {
       "racketId": "head-prestige-tour",
@@ -364,7 +364,7 @@
       "variantNote": null,
       "confidence": 0.85,
       "source": "matcher",
-      "checkedAt": "2026-08-24T21:55:43.257Z"
+      "checkedAt": "2026-08-24T22:08:12.944Z"
     },
     {
       "racketId": "head-pwr-110",
@@ -378,7 +378,7 @@
       "variantNote": null,
       "confidence": 0.85,
       "source": "matcher",
-      "checkedAt": "2026-08-24T21:55:43.257Z"
+      "checkedAt": "2026-08-24T22:08:12.944Z"
     },
     {
       "racketId": "head-radical-mp-2025",
@@ -392,7 +392,7 @@
       "variantNote": null,
       "confidence": 1,
       "source": "matcher",
-      "checkedAt": "2026-08-24T21:55:43.257Z"
+      "checkedAt": "2026-08-24T22:08:12.944Z"
     },
     {
       "racketId": "head-radical-pro-2023",
@@ -406,7 +406,7 @@
       "variantNote": null,
       "confidence": 0.85,
       "source": "matcher",
-      "checkedAt": "2026-08-24T21:55:43.257Z"
+      "checkedAt": "2026-08-24T22:08:12.944Z"
     },
     {
       "racketId": "head-radical-pro-2025",
@@ -420,7 +420,7 @@
       "variantNote": null,
       "confidence": 1,
       "source": "matcher",
-      "checkedAt": "2026-08-24T21:55:43.257Z"
+      "checkedAt": "2026-08-24T22:08:12.944Z"
     },
     {
       "racketId": "head-radical-team-2025",
@@ -434,7 +434,7 @@
       "variantNote": null,
       "confidence": 1,
       "source": "matcher",
-      "checkedAt": "2026-08-24T21:55:43.257Z"
+      "checkedAt": "2026-08-24T22:08:12.944Z"
     },
     {
       "racketId": "head-speed-mp-2024",
@@ -448,7 +448,7 @@
       "variantNote": null,
       "confidence": 1,
       "source": "matcher",
-      "checkedAt": "2026-08-24T21:55:43.257Z"
+      "checkedAt": "2026-08-24T22:08:12.944Z"
     },
     {
       "racketId": "head-speed-mp-2026",
@@ -462,7 +462,7 @@
       "variantNote": null,
       "confidence": 1,
       "source": "matcher",
-      "checkedAt": "2026-08-24T21:55:43.257Z"
+      "checkedAt": "2026-08-24T22:08:12.944Z"
     },
     {
       "racketId": "head-speed-mp-l-2026",
@@ -476,7 +476,7 @@
       "variantNote": "2024",
       "confidence": 0.9,
       "source": "matcher",
-      "checkedAt": "2026-08-24T21:55:43.257Z"
+      "checkedAt": "2026-08-24T22:08:12.944Z"
     },
     {
       "racketId": "head-speed-mp-legend-2025",
@@ -490,7 +490,7 @@
       "variantNote": null,
       "confidence": 1,
       "source": "matcher",
-      "checkedAt": "2026-08-24T21:55:43.257Z"
+      "checkedAt": "2026-08-24T22:08:12.944Z"
     },
     {
       "racketId": "head-speed-mp-ul-2026",
@@ -504,7 +504,7 @@
       "variantNote": null,
       "confidence": 1,
       "source": "matcher",
-      "checkedAt": "2026-08-24T21:55:43.257Z"
+      "checkedAt": "2026-08-24T22:08:12.944Z"
     },
     {
       "racketId": "head-speed-pro-2026",
@@ -518,7 +518,7 @@
       "variantNote": null,
       "confidence": 1,
       "source": "matcher",
-      "checkedAt": "2026-08-24T21:55:43.257Z"
+      "checkedAt": "2026-08-24T22:08:12.944Z"
     },
     {
       "racketId": "head-speed-pro-legend-2025",
@@ -532,7 +532,7 @@
       "variantNote": null,
       "confidence": 1,
       "source": "matcher",
-      "checkedAt": "2026-08-24T21:55:43.257Z"
+      "checkedAt": "2026-08-24T22:08:12.944Z"
     },
     {
       "racketId": "head-speed-tour-2026",
@@ -546,7 +546,7 @@
       "variantNote": null,
       "confidence": 0.85,
       "source": "matcher",
-      "checkedAt": "2026-08-24T21:55:43.257Z"
+      "checkedAt": "2026-08-24T22:08:12.944Z"
     },
     {
       "racketId": "head-squared",
@@ -560,7 +560,7 @@
       "variantNote": null,
       "confidence": 0.85,
       "source": "matcher",
-      "checkedAt": "2026-08-24T21:55:43.257Z"
+      "checkedAt": "2026-08-24T22:08:12.944Z"
     },
     {
       "racketId": "prince-ripstick-100-300g",
@@ -574,7 +574,7 @@
       "variantNote": null,
       "confidence": 0.85,
       "source": "matcher",
-      "checkedAt": "2026-08-24T21:55:43.257Z"
+      "checkedAt": "2026-08-24T22:08:12.944Z"
     },
     {
       "racketId": "tecnifibre-fire-300",
@@ -588,7 +588,7 @@
       "variantNote": null,
       "confidence": 0.85,
       "source": "matcher",
-      "checkedAt": "2026-08-24T21:55:43.257Z"
+      "checkedAt": "2026-08-24T22:08:12.944Z"
     },
     {
       "racketId": "tecnifibre-tfight-300-ig",
@@ -602,7 +602,7 @@
       "variantNote": null,
       "confidence": 0.85,
       "source": "matcher",
-      "checkedAt": "2026-08-24T21:55:43.257Z"
+      "checkedAt": "2026-08-24T22:08:12.944Z"
     },
     {
       "racketId": "tecnifibre-tfight-305s",
@@ -616,7 +616,7 @@
       "variantNote": null,
       "confidence": 0.85,
       "source": "matcher",
-      "checkedAt": "2026-08-24T21:55:43.257Z"
+      "checkedAt": "2026-08-24T22:08:12.944Z"
     },
     {
       "racketId": "wilson-blade-100-v10",
@@ -630,7 +630,7 @@
       "variantNote": null,
       "confidence": 0.85,
       "source": "matcher",
-      "checkedAt": "2026-08-24T21:55:43.257Z"
+      "checkedAt": "2026-08-24T22:08:12.944Z"
     },
     {
       "racketId": "wilson-blade-98-16x19-v10",
@@ -644,7 +644,7 @@
       "variantNote": null,
       "confidence": 0.85,
       "source": "matcher",
-      "checkedAt": "2026-08-24T21:55:43.257Z"
+      "checkedAt": "2026-08-24T22:08:12.944Z"
     },
     {
       "racketId": "wilson-blade-98-16x19-v9",
@@ -658,7 +658,7 @@
       "variantNote": null,
       "confidence": 0.85,
       "source": "matcher",
-      "checkedAt": "2026-08-24T21:55:43.257Z"
+      "checkedAt": "2026-08-24T22:08:12.944Z"
     },
     {
       "racketId": "wilson-blade-98-18x20-v10",
@@ -672,7 +672,7 @@
       "variantNote": null,
       "confidence": 0.85,
       "source": "matcher",
-      "checkedAt": "2026-08-24T21:55:43.257Z"
+      "checkedAt": "2026-08-24T22:08:12.944Z"
     },
     {
       "racketId": "wilson-blade-98-18x20-v9",
@@ -686,7 +686,7 @@
       "variantNote": null,
       "confidence": 0.85,
       "source": "matcher",
-      "checkedAt": "2026-08-24T21:55:43.257Z"
+      "checkedAt": "2026-08-24T22:08:12.944Z"
     },
     {
       "racketId": "wilson-blade-pro-98-16x19-v10",
@@ -700,7 +700,7 @@
       "variantNote": null,
       "confidence": 0.7,
       "source": "matcher",
-      "checkedAt": "2026-08-24T21:55:43.257Z"
+      "checkedAt": "2026-08-24T22:08:12.944Z"
     },
     {
       "racketId": "wilson-blade-pro-98-16x19-v9",
@@ -714,7 +714,7 @@
       "variantNote": null,
       "confidence": 0.85,
       "source": "matcher",
-      "checkedAt": "2026-08-24T21:55:43.257Z"
+      "checkedAt": "2026-08-24T22:08:12.944Z"
     },
     {
       "racketId": "wilson-clash-100l-v3",
@@ -728,7 +728,7 @@
       "variantNote": null,
       "confidence": 0.85,
       "source": "matcher",
-      "checkedAt": "2026-08-24T21:55:43.257Z"
+      "checkedAt": "2026-08-24T22:08:12.944Z"
     },
     {
       "racketId": "wilson-defyer-100l",
@@ -742,7 +742,7 @@
       "variantNote": null,
       "confidence": 0.7,
       "source": "matcher",
-      "checkedAt": "2026-08-24T21:55:43.257Z"
+      "checkedAt": "2026-08-24T22:08:12.944Z"
     },
     {
       "racketId": "wilson-pro-staff-97-classic",
@@ -756,7 +756,7 @@
       "variantNote": null,
       "confidence": 0.85,
       "source": "matcher",
-      "checkedAt": "2026-08-24T21:55:43.257Z"
+      "checkedAt": "2026-08-24T22:08:12.944Z"
     },
     {
       "racketId": "wilson-pro-staff-97l-classic",
@@ -770,7 +770,7 @@
       "variantNote": null,
       "confidence": 0.85,
       "source": "matcher",
-      "checkedAt": "2026-08-24T21:55:43.257Z"
+      "checkedAt": "2026-08-24T22:08:12.944Z"
     },
     {
       "racketId": "wilson-rf-01",
@@ -784,7 +784,7 @@
       "variantNote": null,
       "confidence": 0.85,
       "source": "matcher",
-      "checkedAt": "2026-08-24T21:55:43.257Z"
+      "checkedAt": "2026-08-24T22:08:12.944Z"
     },
     {
       "racketId": "wilson-rf-01-future",
@@ -798,7 +798,7 @@
       "variantNote": null,
       "confidence": 0.85,
       "source": "matcher",
-      "checkedAt": "2026-08-24T21:55:43.257Z"
+      "checkedAt": "2026-08-24T22:08:12.944Z"
     },
     {
       "racketId": "wilson-rf-01-pro",
@@ -812,7 +812,7 @@
       "variantNote": null,
       "confidence": 0.85,
       "source": "matcher",
-      "checkedAt": "2026-08-24T21:55:43.257Z"
+      "checkedAt": "2026-08-24T22:08:12.944Z"
     },
     {
       "racketId": "wilson-shift-99-pro",
@@ -826,7 +826,7 @@
       "variantNote": null,
       "confidence": 0.85,
       "source": "matcher",
-      "checkedAt": "2026-08-24T21:55:43.257Z"
+      "checkedAt": "2026-08-24T22:08:12.944Z"
     },
     {
       "racketId": "wilson-ultra-100-v5",
@@ -840,7 +840,7 @@
       "variantNote": null,
       "confidence": 0.85,
       "source": "matcher",
-      "checkedAt": "2026-08-24T21:55:43.257Z"
+      "checkedAt": "2026-08-24T22:08:12.944Z"
     },
     {
       "racketId": "wilson-ultra-100-v5-roland-garros",
@@ -854,7 +854,7 @@
       "variantNote": null,
       "confidence": 0.85,
       "source": "matcher",
-      "checkedAt": "2026-08-24T21:55:43.257Z"
+      "checkedAt": "2026-08-24T22:08:12.944Z"
     },
     {
       "racketId": "wilson-ultra-100ul-v5",
@@ -868,7 +868,7 @@
       "variantNote": null,
       "confidence": 0.85,
       "source": "matcher",
-      "checkedAt": "2026-08-24T21:55:43.257Z"
+      "checkedAt": "2026-08-24T22:08:12.944Z"
     },
     {
       "racketId": "yonex-ezone-100l-2025",
@@ -882,7 +882,7 @@
       "variantNote": null,
       "confidence": 1,
       "source": "matcher",
-      "checkedAt": "2026-08-24T21:55:43.257Z"
+      "checkedAt": "2026-08-24T22:08:12.944Z"
     },
     {
       "racketId": "yonex-ezone-98-2025",
@@ -896,7 +896,7 @@
       "variantNote": null,
       "confidence": 1,
       "source": "matcher",
-      "checkedAt": "2026-08-24T21:55:43.257Z"
+      "checkedAt": "2026-08-24T22:08:12.944Z"
     },
     {
       "racketId": "yonex-ezone-98-tour-2025",
@@ -910,7 +910,7 @@
       "variantNote": null,
       "confidence": 0.85,
       "source": "matcher",
-      "checkedAt": "2026-08-24T21:55:43.257Z"
+      "checkedAt": "2026-08-24T22:08:12.944Z"
     },
     {
       "racketId": "yonex-muse-100",
@@ -924,7 +924,7 @@
       "variantNote": null,
       "confidence": 0.7,
       "source": "matcher",
-      "checkedAt": "2026-08-24T21:55:43.257Z"
+      "checkedAt": "2026-08-24T22:08:12.944Z"
     },
     {
       "racketId": "yonex-muse-107",
@@ -938,7 +938,7 @@
       "variantNote": null,
       "confidence": 0.7,
       "source": "matcher",
-      "checkedAt": "2026-08-24T21:55:43.257Z"
+      "checkedAt": "2026-08-24T22:08:12.944Z"
     },
     {
       "racketId": "yonex-muse-98",
@@ -952,7 +952,7 @@
       "variantNote": null,
       "confidence": 0.7,
       "source": "matcher",
-      "checkedAt": "2026-08-24T21:55:43.257Z"
+      "checkedAt": "2026-08-24T22:08:12.944Z"
     },
     {
       "racketId": "yonex-percept-97",
@@ -966,7 +966,7 @@
       "variantNote": null,
       "confidence": 0.85,
       "source": "matcher",
-      "checkedAt": "2026-08-24T21:55:43.257Z"
+      "checkedAt": "2026-08-24T22:08:12.944Z"
     }
   ]
 }
