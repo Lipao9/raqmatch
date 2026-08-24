@@ -262,12 +262,13 @@
     "quizCta": "Não sabe qual escolher? Faça o quiz"
   },
   "racquet": {
-    "metaDescription": "{name}: {headSize} in², {weight}g encordoada, padrão {pattern}. Especificações completas, raquetes parecidas e para quem esse frame faz sentido.",
+    "metaDescription": "{name}: {headSize} in², {weight} sem cordas, padrão {pattern}. Especificações completas, raquetes parecidas e para quem esse frame faz sentido.",
     "specsTitle": "Especificações",
     "specs": {
       "brand": "Marca",
       "headSize": "Tamanho da cabeça",
       "weight": "Peso (encordoada)",
+      "weightUnstrung": "Peso (sem cordas)",
       "balance": "Balanço",
       "stiffness": "Rigidez (RA)",
       "stringPattern": "Padrão de cordas",

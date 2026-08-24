@@ -11,6 +11,7 @@ import { Link } from "@/i18n/navigation";
 import type { Locale } from "@/i18n/routing";
 import { loadCatalog, racketsByBrand } from "@/lib/catalog";
 import { alternatesFor } from "@/lib/urls";
+import { weightLabel } from "@/lib/weight";
 
 function counts() {
   const rackets = loadCatalog();
@@ -87,7 +88,7 @@ export default async function RacquetsIndexPage({
                     >
                       <span className="font-medium">{racket.model}</span>
                       <span className="text-xs text-muted-foreground tabular-nums">
-                        {racket.headSizeIn2} in² · {racket.weightGrams} g ·{" "}
+                        {racket.headSizeIn2} in² · {weightLabel(racket, locale)} ·{" "}
                         {racket.stringPattern}
                         {racket.stiffnessRA !== null &&
                           ` · RA ${racket.stiffnessRA}`}

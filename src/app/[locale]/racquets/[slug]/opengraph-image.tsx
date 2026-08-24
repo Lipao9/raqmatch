@@ -1,5 +1,6 @@
 import { ImageResponse } from "next/og";
 import { getRacketBySlug, loadCatalog } from "@/lib/catalog";
+import { weightLabel } from "@/lib/weight";
 import { MARK_PATHS, MARK_VIEWBOX } from "@/components/BrandLogo";
 
 export const alt = "RaqMatch — racquet specs";
@@ -44,14 +45,14 @@ export default async function Image({
 }: {
   params: Promise<{ locale: string; slug: string }>;
 }) {
-  const { slug } = await params;
+  const { locale, slug } = await params;
   const racket = getRacketBySlug(slug);
 
   const specs = (
     racket
       ? [
           `${racket.headSizeIn2} in²`,
-          `${racket.weightGrams} g`,
+          weightLabel(racket, locale),
           racket.stringPattern,
           racket.stiffnessRA !== null ? `RA ${racket.stiffnessRA}` : null,
         ]

@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {
@@ -13,6 +13,7 @@ import {
 } from "@/components/ui/card";
 import { Link } from "@/i18n/navigation";
 import type { Racket } from "@/lib/catalog";
+import { weightLabel } from "@/lib/weight";
 
 interface RacketCardProps {
   racket: Racket;
@@ -30,11 +31,12 @@ export function RacketCard({
   rank,
 }: RacketCardProps) {
   const t = useTranslations("results");
+  const locale = useLocale();
   const isBestMatch = rank === 1;
 
   const specs = [
     `${racket.headSizeIn2} in²`,
-    `${racket.weightGrams}g`,
+    weightLabel(racket, locale),
     racket.stiffnessRA !== null ? `RA ${racket.stiffnessRA}` : null,
     racket.stringPattern,
     racket.swingweight !== null ? `SW ${racket.swingweight}` : null,
