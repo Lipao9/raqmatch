@@ -1,36 +1,14 @@
-import type { Racket } from "./catalog";
+import { type LinkKind, isMonetised, offersCatalogSchema } from "./offers";
+import { getStore, isStoreKey, STORE_KEYS, type StoreKey } from "./stores";
+import offersFile from "../../data/offers.json";
 
 /**
- * Outbound product links, optionally monetised.
+ * Outbound link policy: what `rel` a link gets, whether the site owes a
+ * disclosure, and the internal href that records the click.
  *
- * Affiliate networks deep-link in one of two shapes, so both are supported:
- *   1. a tracking param appended to the merchant URL (Amazon `tag`, AvantLink `ctc`)
- *   2. a wrapper URL that carries the merchant URL as an encoded parameter
- *      (Impact, AvantLink click.php, Skimlinks)
- *
- * Keeping this env-driven means `data/rackets.json` stays free of tracking data
- * — the program can change without re-scraping the catalog — and the ids are
- * read server-side only, so nothing about the program leaks into the bundle
- * beyond the outbound href itself.
- *
- * With nothing configured every helper degrades to the plain merchant URL, so
- * the site works unmonetised and no fake tracking params are ever emitted.
+ * Where the destination itself comes from is `offers.ts` / `stores.ts` — this
+ * module is only about how a link is presented and measured.
  */
-/**
- * Read on every call, not once at module scope. A module-scope constant is
- * captured the first time the module loads — which for a statically generated
- * page is build time — so a value set only at runtime would be silently
- * ignored. Statically rendered output (the `rel` attribute, whether the footer
- * disclosure shows) is still fixed at build by definition; the monetised URL
- * itself is resolved per request in /api/go, so it always reflects current env.
- */
-function config() {
-  return {
-    param: process.env.AFFILIATE_PARAM?.trim(),
-    value: process.env.AFFILIATE_ID?.trim(),
-    template: process.env.AFFILIATE_URL_TEMPLATE?.trim(),
-  };
-}
 
 /**
  * `sponsored` is what Google asks for on paid links; without it monetised
@@ -40,36 +18,57 @@ function config() {
 export const AFFILIATE_REL = "sponsored nofollow noopener noreferrer";
 export const PLAIN_REL = "noopener noreferrer";
 
-export function isAffiliateEnabled(): boolean {
-  const { param, value, template } = config();
-  return Boolean(template || (param && value));
+/**
+ * A per-link decision, not a global one: with three stores, the Amazon link can
+ * be monetised while the Mercado Livre one is still a plain listing, and
+ * claiming `sponsored` on a link that pays nothing is a false disclosure in the
+ * other direction.
+ */
+export function relForKind(kind: LinkKind): string {
+  return isMonetised(kind) ? AFFILIATE_REL : PLAIN_REL;
 }
 
-/** The rel attribute matching how the link is actually built. */
-export function outboundRel(): string {
-  return isAffiliateEnabled() ? AFFILIATE_REL : PLAIN_REL;
+/**
+ * Whether ANY monetisation is configured, which is what decides if the footer
+ * disclosure shows. Probing `decorate` rather than reading env names keeps the
+ * two in one place: a store that gains a new tracking scheme is picked up here
+ * without touching this function.
+ */
+export function isAffiliateEnabled(): boolean {
+  const probe = "https://example.com/";
+  if (STORE_KEYS.some((key) => getStore(key).decorate(probe) !== null)) {
+    return true;
+  }
+  // Stored links carry their own tracking, so they count even with no env set.
+  const parsed = offersCatalogSchema.safeParse(offersFile);
+  return parsed.success
+    ? parsed.data.offers.some((offer) => offer.affiliateUrl !== null)
+    : false;
 }
 
 export type ClickSource = "results" | "racquet_page";
 
 /**
  * Internal href that records the click before bouncing to the store. Every
- * outbound link goes through this so "which racquets do people actually click"
- * is answerable; /api/ is disallowed in robots.txt, so crawlers never follow it.
+ * outbound link goes through this so "which racquets, at which store, do people
+ * actually click" is answerable; /api/ is disallowed in robots.txt, so crawlers
+ * never follow it.
+ *
+ * `store` is optional to keep links minted before the multi-store change
+ * working — the redirect defaults to Tennis Warehouse when it is absent.
  */
-export function trackedUrl(racketId: string, source: ClickSource): string {
-  return `/api/go/${encodeURIComponent(racketId)}?src=${source}`;
+export function trackedUrl(
+  racketId: string,
+  source: ClickSource,
+  store?: StoreKey,
+): string {
+  const params = new URLSearchParams({ src: source });
+  if (store) params.set("store", store);
+  return `/api/go/${encodeURIComponent(racketId)}?${params}`;
 }
 
-export function buyUrl(racket: Pick<Racket, "productUrl">): string {
-  const { param, value, template } = config();
-  if (template) {
-    return template.replace("{url}", encodeURIComponent(racket.productUrl));
-  }
-  if (param && value) {
-    const url = new URL(racket.productUrl);
-    url.searchParams.set(param, value);
-    return url.toString();
-  }
-  return racket.productUrl;
+export const DEFAULT_STORE: StoreKey = "tennis-warehouse";
+
+export function parseStoreParam(value: string | null): StoreKey {
+  return value && isStoreKey(value) ? value : DEFAULT_STORE;
 }

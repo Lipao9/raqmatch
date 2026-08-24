@@ -61,6 +61,8 @@ export async function recordQuizRun(record: QuizRunRecord): Promise<void> {
 export interface OutboundClickRecord {
   racketId: string;
   merchant: string;
+  store?: string | null;
+  linkKind?: string | null;
   source: string;
   locale?: string | null;
   affiliate: boolean;
@@ -76,6 +78,8 @@ export async function recordOutboundClick(
     await db.insert(outboundClicks).values({
       racketId: record.racketId,
       merchant: record.merchant,
+      store: record.store ?? null,
+      linkKind: record.linkKind ?? null,
       source: record.source,
       locale: record.locale ?? null,
       affiliate: record.affiliate,

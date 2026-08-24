@@ -12,7 +12,8 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { getPathname, Link } from "@/i18n/navigation";
 import type { Locale } from "@/i18n/routing";
-import { outboundRel, trackedUrl } from "@/lib/affiliate";
+import { DEFAULT_STORE, PLAIN_REL, relForKind, trackedUrl } from "@/lib/affiliate";
+import { resolveStore } from "@/lib/offers";
 import { findRelated, getRacketBySlug, loadCatalog } from "@/lib/catalog";
 import { absoluteUrl } from "@/lib/site";
 import { racketTraits } from "@/lib/traits";
@@ -69,6 +70,7 @@ export default async function RacquetPage({
   // Through the click-tracking redirect rather than straight to the store, so
   // this statically generated page still reports which racquets get clicked.
   const href = `${trackedUrl(racket.id, "racquet_page")}&locale=${locale}`;
+  const referenceLink = resolveStore(racket, DEFAULT_STORE);
   const { canonical } = alternatesFor(`/racquets/${slug}`, locale as Locale);
 
   const specs: { label: string; value: string }[] = [
@@ -184,7 +186,11 @@ export default async function RacquetPage({
                 <Button
                   nativeButton={false}
                   render={
-                    <a href={href} target="_blank" rel={outboundRel()} />
+                    <a
+                      href={href}
+                      target="_blank"
+                      rel={referenceLink ? relForKind(referenceLink.kind) : PLAIN_REL}
+                    />
                   }
                 >
                   {t("buy")}

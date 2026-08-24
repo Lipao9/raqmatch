@@ -33,6 +33,10 @@ yarn-error.log*
 # env files (can opt-in for committing if needed)
 .env*
 
+# Mercado Livre OAuth: the refresh token rotates on every use, so the script
+# rewrites this file in place. Never commit it.
+.ml-token.json
+
 # vercel
 .vercel
 
