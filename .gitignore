@@ -47,3 +47,7 @@ next-env.d.ts
 
 # Neon CLI: IDs de projeto/branch, estado por desenvolvedor
 .neon
+
+# Transient batch manifest for `npm run mint` — order matters only between an
+# export and its apply, never across sessions.
+data/mint-batch.json
