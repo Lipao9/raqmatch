@@ -6,23 +6,29 @@
  *   npm run offers -- --limit 20       # dry run over the first 20 racquets
  *   npm run offers -- --brand Babolat  # dry run over one brand
  *   npm run offers -- --verbose        # also print why candidates were rejected
+ *   npm run offers -- --write          # persist the run to data/offers.json
  *
- * Dry run only, on purpose: nothing is written to `data/offers.json` until the
- * precision of the deterministic gates has been read off a real run. Writing
- * unvetted matches would put a wrong racquet behind a buy button, which is the
- * one failure this whole design exists to avoid.
+ * Dry run by default, on purpose: a wrong match puts a wrong racquet behind a
+ * buy button, which is the one failure this whole design exists to avoid. So
+ * `--write` is a deliberate act taken after reading a run, and it still refuses
+ * any match that rests on fewer than two agreeing specs.
  */
+import { readFileSync, writeFileSync } from "node:fs";
 import { loadCatalog, type Racket } from "../src/lib/catalog";
+import { offersCatalogSchema, type Offer } from "../src/lib/offers";
 import {
+  confidence,
   evaluate,
   isMatch,
   rank,
   searchTerms,
   siblingTokens,
+  specEvidence,
   tier,
+  unstrungWeight,
   type Match,
 } from "./lib/match";
-import { searchProducts } from "./lib/ml";
+import { productItems, productUrl, searchProducts } from "./lib/ml";
 
 const args = process.argv.slice(2);
 const flag = (name: string): string | undefined => {
@@ -32,6 +38,20 @@ const flag = (name: string): string | undefined => {
 const LIMIT = Number(flag("limit") ?? Infinity);
 const BRAND = flag("brand")?.toLowerCase();
 const VERBOSE = args.includes("--verbose");
+const WRITE = args.includes("--write");
+
+const OFFERS_PATH = new URL("../data/offers.json", import.meta.url);
+
+/**
+ * Agreeing specs required before a match may be written.
+ *
+ * The family name alone is not identity — Mercado Livre's own search answers
+ * "pure aero" with a Pure Aero *Lite* — and one agreeing spec can be a
+ * coincidence between two frames in the same line. Two independent specs
+ * agreeing, on top of the full family name and the sibling exclusions, is the
+ * point where being the wrong frame stops being plausible.
+ */
+const MIN_SPEC_EVIDENCE = 2;
 
 const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
 
@@ -120,7 +140,141 @@ function resolveCollisions(outcomes: Outcome[]): void {
 
 function label(match: Match): string {
   if (match.matchKind === "exact") return "exact";
-  return match.variantNote ? `variant ${match.variantNote}` : "year unknown";
+  return match.variantNote ? `variant ${match.variantNote}` : "gen unknown";
+}
+
+/**
+ * Lowest new-condition price, and proof the product is actually buyable.
+ *
+ * `null` means no live listing. Mercado Livre keeps a catalog product around
+ * after the last seller stops carrying it, so without this check a match would
+ * become a buy button landing on a page with nothing for sale.
+ *
+ * The lowest is taken because the items list is not ordered by price, and the
+ * base `price` rather than the headline figure, which can be conditioned on
+ * paying with Mercado Livre credit — not the price most visitors would pay. A
+ * product sold only used keeps its link but reports no price: the frame is
+ * right, the number would not describe what a new one costs.
+ */
+async function priceOf(productId: string): Promise<number | null | undefined> {
+  const items = await productItems(productId);
+  if (!items || items.length === 0) return undefined; // not buyable
+
+  const prices = items
+    .filter((item) => item.condition === "new")
+    .map((item) => item.price)
+    .filter((price): price is number => typeof price === "number" && price > 0);
+
+  return prices.length > 0 ? Math.min(...prices) : null;
+}
+
+/**
+ * Turns a match into a row, or explains why it did not become one. Both the
+ * spec floor and the availability check reject here rather than earlier so the
+ * dry-run listing still shows what the matcher found — the reason a racquet has
+ * no offer is worth reading.
+ */
+async function toOffer(
+  outcome: Outcome,
+  checkedAt: string,
+): Promise<Offer | { skipped: string }> {
+  const match = outcome.best!;
+  const specs = specEvidence(match);
+  if (specs < MIN_SPEC_EVIDENCE) {
+    return { skipped: `only ${specs} agreeing spec(s)` };
+  }
+
+  const priceBRL = await priceOf(match.product.id);
+  if (priceBRL === undefined) return { skipped: "no live listing" };
+
+  return {
+    racketId: outcome.racket.id,
+    store: "mercadolivre",
+    listingUrl: productUrl(match.product.id),
+    // Minted by hand in the affiliate panel, or composed once `matt_word`
+    // composition is confirmed by the Métricas report. Neither has happened.
+    affiliateUrl: null,
+    title: match.product.name,
+    priceBRL,
+    unstrungWeightGrams: unstrungWeight(outcome.racket, match.product),
+    matchKind: match.matchKind,
+    variantNote: match.variantNote,
+    confidence: confidence(match),
+    source: "matcher",
+    checkedAt,
+  };
+}
+
+/**
+ * Replaces this run's matcher rows and leaves everything else alone.
+ *
+ * Hand-curated rows are ground truth and double as the matcher's eval set, so a
+ * run yields to them rather than overwriting. Matcher rows for racquets outside
+ * this run — a `--brand` pass, say — are kept too, so a narrow run cannot
+ * silently delete the results of a wide one.
+ */
+async function persist(outcomes: Outcome[]): Promise<void> {
+  const checkedAt = new Date().toISOString();
+  const existing = offersCatalogSchema.parse(
+    JSON.parse(readFileSync(OFFERS_PATH, "utf8")),
+  );
+
+  const inRun = new Set(outcomes.map((o) => o.racket.id));
+  const manual = new Set(
+    existing.offers
+      .filter((o) => o.source === "manual")
+      .map((o) => `${o.racketId}::${o.store}`),
+  );
+
+  const minted: Offer[] = [];
+  const skipped: string[] = [];
+
+  for (const outcome of outcomes) {
+    if (!outcome.best) continue;
+    if (manual.has(`${outcome.racket.id}::mercadolivre`)) {
+      skipped.push(`  ${outcome.racket.id} — kept the hand-curated row`);
+      continue;
+    }
+    const result = await toOffer(outcome, checkedAt);
+    if ("skipped" in result) {
+      skipped.push(`  ${outcome.racket.id} — ${result.skipped}`);
+      continue;
+    }
+    minted.push(result);
+    process.stdout.write(".");
+  }
+  process.stdout.write("\n");
+
+  const kept = existing.offers.filter(
+    (o) =>
+      o.source === "manual" ||
+      o.store !== "mercadolivre" ||
+      !inRun.has(o.racketId),
+  );
+
+  const offers = [...kept, ...minted].sort(
+    (a, b) => a.racketId.localeCompare(b.racketId) || a.store.localeCompare(b.store),
+  );
+
+  const next = offersCatalogSchema.parse({
+    version: existing.version,
+    updatedAt: checkedAt,
+    offers,
+  });
+  writeFileSync(OFFERS_PATH, `${JSON.stringify(next, null, 2)}\n`);
+
+  if (skipped.length > 0) {
+    console.log(`\nMatched but not written (${skipped.length}):`);
+    for (const line of skipped) console.log(line);
+  }
+  const withWeight = minted.filter((o) => o.unstrungWeightGrams !== null).length;
+  const withPrice = minted.filter((o) => o.priceBRL !== null).length;
+  console.log(`
+  wrote                    ${minted.length} offer(s)
+  carrying a price         ${withPrice}
+  carrying unstrung weight ${withWeight}
+  kept from earlier runs   ${kept.length}
+  → data/offers.json`);
 }
 
 async function main() {
@@ -161,13 +315,21 @@ async function main() {
   console.log(`
 ─────────────────────────────────────────────
   exact (year confirmed)   ${count((o) => o.best?.matchKind === "exact")}
-  variant (other year)     ${count((o) => Boolean(o.best?.variantNote))}
-  matched, year unknown    ${count((o) => Boolean(o.best) && o.best!.matchKind !== "exact" && !o.best!.variantNote)}
+  variant (other year)     ${count((o) => o.best?.matchKind === "variant_year")}
+  matched, gen unknown     ${count((o) => o.best?.matchKind === "unknown_generation")}
   lost a collision         ${count((o) => Boolean(o.lostTo))}
   no match                 ${count((o) => !o.best && !o.lostTo)}
   ─────
   needing adjudication     ${count((o) => Boolean(o.best) && o.contenders > 0)}
   total                    ${outcomes.length}`);
+
+  if (!WRITE) {
+    console.log(`\nDry run. Re-run with --write to persist to data/offers.json.`);
+    return;
+  }
+
+  console.log(`\nChecking availability and price, then writing.`);
+  await persist(outcomes);
 }
 
 main().catch((error) => {

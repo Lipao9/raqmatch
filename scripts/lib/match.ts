@@ -106,7 +106,11 @@ export function siblingTokens(racket: Racket, catalog: Racket[]): Set<string> {
   return tokens;
 }
 
-export type MatchKind = "exact" | "variant_year" | "variant_spec";
+export type MatchKind =
+  | "exact"
+  | "variant_year"
+  | "variant_spec"
+  | "unknown_generation";
 
 export interface Match {
   product: MlProduct;
@@ -202,22 +206,21 @@ export function evaluate(
 
   const wanted = years(racket.model);
   const found = years(text);
-  let matchKind: MatchKind = "variant_year";
+  let matchKind: MatchKind = "unknown_generation";
   let variantNote: string | null = null;
 
-  if (wanted.length === 0) {
-    // Tennis Warehouse states no generation for this frame — a year on the
-    // listing contradicts nothing, so claiming "variant 2025" would invent a
-    // discrepancy. Left as an unasserted generation instead.
-    variantNote = null;
-  } else if (found.includes(wanted[0])) {
+  if (wanted.length > 0 && found.includes(wanted[0])) {
     matchKind = "exact";
     evidence.push(`year ${wanted[0]}`);
-  } else if (found.length > 0) {
+  } else if (wanted.length > 0 && found.length > 0) {
+    matchKind = "variant_year";
     variantNote = String(found[0]);
   }
-  // A null note means the generation could not be asserted either way, and the
-  // UI says exactly that rather than guessing.
+  // Otherwise one side or the other states no year, so the generations cannot be
+  // compared. That is `unknown_generation`, not `variant_year`: calling it a
+  // variant would assert a discrepancy nothing established, the same mistake as
+  // treating an absent attribute as agreement. The UI can then say "generation
+  // not confirmed" instead of inventing "2025".
 
   const score =
     evidence.length * 10 +
@@ -232,6 +235,45 @@ export function isMatch(result: Match | Rejection): result is Match {
 }
 
 /**
+ * The unstrung weight this listing states, when it is credible.
+ *
+ * Brazilian listings quote unstrung and Tennis Warehouse quotes strung, so the
+ * Mercado Livre figure normally sits 15-20 g below the catalog's. One that comes
+ * in at or near the strung figure is quoting the other convention — some say
+ * "Encordoada" outright — and recording it as unstrung would reintroduce exactly
+ * the overstatement this field exists to remove, while marking it exact.
+ * Rejecting is the better failure: an estimate that says so beats a wrong number
+ * that does not.
+ */
+export function unstrungWeight(racket: Racket, product: MlProduct): number | null {
+  const stated = grams(attr(product, "WEIGHT"));
+  if (stated === null) return null;
+  return stated <= racket.weightGrams - 8 ? stated : null;
+}
+
+/** Spec agreements, as distinct from the year — see `confidence`. */
+export function specEvidence(match: Match): number {
+  return match.evidence.filter((e) => !e.startsWith("year ")).length;
+}
+
+/**
+ * How much to trust this match, stored on the offer so a bad row can be found
+ * later without re-running the matcher.
+ *
+ * Specs and generation are scored separately because they answer different
+ * questions: the specs say it is the same frame, the year says it is the same
+ * generation. Being the wrong frame is the failure that matters, so a match
+ * confirmed on three specs but silent on the year outranks one that agrees on
+ * the year and nothing else.
+ */
+export function confidence(match: Match): number {
+  const base = 0.4 + 0.15 * Math.min(specEvidence(match), 3);
+  const generation =
+    match.matchKind === "exact" ? 0.15 : match.matchKind === "variant_year" ? 0.05 : 0;
+  return Math.round((base + generation) * 100) / 100;
+}
+
+/**
  * A confirmed model year beats everything. Ranking these together as one number
  * let a spec-rich 2023 listing outrank the actual 2026 frame, because agreeing
  * on head size is worth less than being the right generation — no amount of
@@ -239,7 +281,9 @@ export function isMatch(result: Match | Rejection): result is Match {
  */
 export function tier(match: Match): number {
   if (match.matchKind === "exact") return 2;
-  return match.variantNote ? 1 : 0; // a known other year beats an unknown one
+  // A known other year beats an unstated one: it is at least the right frame in
+  // a generation we can name and label.
+  return match.matchKind === "variant_year" ? 1 : 0;
 }
 
 /** Best first. */
