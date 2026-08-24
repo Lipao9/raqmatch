@@ -4,13 +4,13 @@
  *   npm run mint                       # export: URLs to paste into the panel
  *   npm run mint -- --limit 10         # only the first 10 still unminted
  *   npm run mint -- --by-clicks        # busiest racquets first, from the database
- *   npm run mint -- --apply minted.txt # ingest what the panel gave back
- *   npm run mint -- --apply minted.txt --yes
+ *   npm run mint -- --apply b1.txt --batch 1   # ingest one paste back
+ *   npm run mint -- --apply b1.txt --batch 1 --yes
  *
  * Mercado Livre publishes no affiliate API — twelve plausible endpoints all 404
- * on an app token, and the panel is the only way to mint a link. It does accept
- * a batch, so the manual step is pasting one block rather than doing this N
- * times.
+ * on an app token, and the panel is the only way to mint a link. It takes a
+ * batch, capped at 30 URLs, so the manual step is a handful of pastes rather
+ * than one per racquet.
  *
  * The awkward part is coming back. A minted link is `/social/<user>?…&ref=<opaque>`:
  * the product it points at is not recoverable from the URL, so the only thing
@@ -35,7 +35,11 @@ const flag = (name: string): string | undefined => {
 const LIMIT = Number(flag("limit") ?? Infinity);
 const BY_CLICKS = args.includes("--by-clicks");
 const APPLY = flag("apply");
+const BATCH = flag("batch") === undefined ? null : Number(flag("batch"));
 const CONFIRM = args.includes("--yes");
+
+/** The panel's own ceiling: it refuses a paste of more than 30 URLs. */
+const BATCH_SIZE = 30;
 
 const OFFERS_PATH = new URL("../data/offers.json", import.meta.url);
 const MANIFEST_PATH = new URL("../data/mint-batch.json", import.meta.url);
@@ -45,6 +49,8 @@ interface ManifestEntry {
   name: string;
   title: string;
   listingUrl: string;
+  /** 1-based paste this racquet belongs to. See `BATCH_SIZE`. */
+  batch: number;
 }
 
 function readOffers(): { version: number; updatedAt: string; offers: Offer[] } {
@@ -94,33 +100,45 @@ async function exportBatch(): Promise<void> {
   );
   const batch = ordered.slice(0, LIMIT);
 
-  const manifest: ManifestEntry[] = batch.map((o) => ({
+  const manifest: ManifestEntry[] = batch.map((o, i) => ({
     racketId: o.racketId,
     name: names.get(o.racketId) ?? o.racketId,
     title: o.title,
     listingUrl: o.listingUrl,
+    batch: Math.floor(i / BATCH_SIZE) + 1,
   }));
   writeFileSync(MANIFEST_PATH, `${JSON.stringify(manifest, null, 2)}\n`);
 
-  console.log(`${batch.length} racquet(s) to mint${alreadyMinted ? `, ${alreadyMinted} already done` : ""}.\n`);
-  manifest.forEach((e, i) => {
-    console.log(`${String(i + 1).padStart(3)}. ${e.name}${clicks.get(e.racketId) ? `  (${clicks.get(e.racketId)} clicks)` : ""}`);
-  });
+  const batches = Math.max(...manifest.map((e) => e.batch));
+  console.log(
+    `${batch.length} racquet(s) to mint${alreadyMinted ? `, ${alreadyMinted} already done` : ""}` +
+      ` — ${batches} paste(s) of at most ${BATCH_SIZE}.\n`,
+  );
 
-  console.log(`
-─── paste everything below into the panel's link generator ───
+  for (let n = 1; n <= batches; n++) {
+    const rows = manifest.filter((e) => e.batch === n);
+    console.log(`─── batch ${n} of ${batches} — ${rows.length} link(s) ───\n`);
+    rows.forEach((e, i) => {
+      const clicked = clicks.get(e.racketId);
+      console.log(`${String(i + 1).padStart(3)}. ${e.name}${clicked ? `  (${clicked} clicks)` : ""}`);
+    });
+    console.log(`\n${rows.map((e) => e.listingUrl).join("\n")}\n`);
+  }
 
-${manifest.map((e) => e.listingUrl).join("\n")}
+  console.log(`─── end ───
 
-─── end ───
+Paste each batch into the panel separately — it refuses more than ${BATCH_SIZE} URLs at
+once. Save each set of generated links to its own file, one per line, in the
+order they came back, then apply them one batch at a time:
 
-Order is recorded in data/mint-batch.json. Paste the generated links into a
-file, one per line, IN THE SAME ORDER, then:
+${Array.from({ length: batches }, (_, i) => `  npm run mint -- --apply batch${i + 1}.txt --batch ${i + 1}`).join("\n")}
 
-  npm run mint -- --apply <file>
+Applying per batch rather than concatenating everything: order is the only thing
+tying a link to a racquet, so a mistake stays inside one paste instead of
+shifting every row after it. Each command checks the count for that batch alone.
 
-The panel must return exactly ${batch.length} link(s). If it returns fewer, do not
-guess which one is missing — mint the batch again.`);
+The order is recorded in data/mint-batch.json — do not re-run the export before
+applying, or the batches will be renumbered under the links you already have.`);
 }
 
 /** Anything Mercado Livre could plausibly have minted. */
@@ -134,7 +152,27 @@ function looksMinted(url: string): boolean {
 }
 
 function applyBatch(path: string): void {
-  const manifest: ManifestEntry[] = JSON.parse(readFileSync(MANIFEST_PATH, "utf8"));
+  const full: ManifestEntry[] = JSON.parse(readFileSync(MANIFEST_PATH, "utf8"));
+  const batches = Math.max(...full.map((e) => e.batch));
+
+  if (BATCH === null && batches > 1) {
+    console.error(
+      `Refusing to write: this export is split across ${batches} batches, so --batch is required.\n\n` +
+        `The panel takes at most ${BATCH_SIZE} URLs per paste, and each paste comes back as its\n` +
+        `own set of links. Applying them together would rest on the concatenation being\n` +
+        `in exactly the right order, which nothing here can verify.\n\n` +
+        Array.from({ length: batches }, (_, i) => `  npm run mint -- --apply <file> --batch ${i + 1}`).join("\n"),
+    );
+    process.exit(1);
+  }
+  if (BATCH !== null && !(BATCH >= 1 && BATCH <= batches)) {
+    console.error(`Refusing to write: --batch ${BATCH} is outside the ${batches} batch(es) in the manifest.`);
+    process.exit(1);
+  }
+
+  const manifest = BATCH === null ? full : full.filter((e) => e.batch === BATCH);
+  const label = BATCH === null ? "the manifest" : `batch ${BATCH}`;
+
   const links = readFileSync(path, "utf8")
     .split("\n")
     .map((l) => l.trim())
@@ -142,10 +180,10 @@ function applyBatch(path: string): void {
 
   if (links.length !== manifest.length) {
     console.error(
-      `Refusing to write: the manifest has ${manifest.length} racquet(s) but ${path} has ${links.length} link(s).\n\n` +
+      `Refusing to write: ${label} has ${manifest.length} racquet(s) but ${path} has ${links.length} link(s).\n\n` +
         `Position is the only thing tying a link to a racquet — a minted URL does not\n` +
         `say which product it points at — so a mismatched count cannot be reconciled.\n` +
-        `Re-mint the batch rather than trimming either side to fit.`,
+        `Re-mint that batch rather than trimming either side to fit.`,
     );
     process.exit(1);
   }
@@ -167,7 +205,7 @@ function applyBatch(path: string): void {
     process.exit(1);
   }
 
-  console.log(`Pairing ${links.length} link(s) by position:\n`);
+  console.log(`Pairing ${links.length} link(s) from ${label} by position:\n`);
   manifest.forEach((e, i) => {
     console.log(`${String(i + 1).padStart(3)}. ${e.name}`);
     console.log(`     ${e.title.slice(0, 68)}`);
