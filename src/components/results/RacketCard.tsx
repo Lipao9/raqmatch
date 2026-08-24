@@ -105,14 +105,23 @@ export function RacketCard({
         </div>
       </CardContent>
       <CardFooter className="flex flex-wrap items-center justify-between gap-3 border-t border-border/60 pt-4">
-        <span className="font-heading text-lg font-semibold">
-          {priceBRL !== null
-            ? format.number(priceBRL, {
-                style: "currency",
-                currency: "BRL",
-                maximumFractionDigits: 0,
-              })
-            : `US$ ${racket.priceUSD}`}
+        {/* See the racquet page: the BRL figure is the cheapest of several
+            listings, so it is framed as a floor rather than the price. */}
+        <span className="flex items-baseline gap-1.5">
+          {priceBRL !== null && (
+            <span className="text-xs text-muted-foreground">
+              {tStores("priceFrom")}
+            </span>
+          )}
+          <span className="font-heading text-lg font-semibold">
+            {priceBRL !== null
+              ? format.number(priceBRL, {
+                  style: "currency",
+                  currency: "BRL",
+                  maximumFractionDigits: 0,
+                })
+              : `US$ ${racket.priceUSD}`}
+          </span>
         </span>
         <div className="flex items-center gap-2">
           <Button

@@ -7,7 +7,8 @@
       "tennis-warehouse": "na Tennis Warehouse"
     },
     "viewAt": "Ver {at}",
-    "priceChecked": "Preço {at}, verificado em {date}. Pode variar.",
+    "priceFrom": "a partir de",
+    "priceChecked": "Menor preço entre os vendedores {at}, verificado em {date}. Pode variar.",
     "priceReference": "Preço de referência {at}, em dólar. Pode variar."
   },
   "landing": {
