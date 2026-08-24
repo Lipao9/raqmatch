@@ -33,13 +33,29 @@ export const offerSchema = z.object({
   title: z.string().min(1),
   priceBRL: z.number().positive().nullable(),
   /**
+   * Unstrung weight as the store states it. Brazil quotes unstrung and Tennis
+   * Warehouse quotes strung, and deriving one from the other is only accurate to
+   * about ±5 g — enough to matter to someone choosing between a 300 and a 305.
+   * So the real figure is kept whenever a store publishes it.
+   */
+  unstrungWeightGrams: z.number().positive().nullable(),
+  /**
    * `exact` is the same frame and model year. `variant_year` is the same frame,
    * different generation — the common case in Brazil, and shown with a label
-   * rather than hidden. `variant_spec` is a sibling in the family (Lite, Team,
-   * Tour) and must never be presented as the racquet that was recommended.
+   * rather than hidden. `unknown_generation` is the same frame with no year
+   * stated on one side or the other: a distinct state from `variant_year`,
+   * because a listing that names no generation has not contradicted ours, and
+   * labelling it a variant would invent a discrepancy. `variant_spec` is a
+   * sibling in the family (Lite, Team, Tour) and must never be presented as the
+   * racquet that was recommended.
    */
-  matchKind: z.enum(["exact", "variant_year", "variant_spec"]),
-  /** Short, human-facing note for a variant, e.g. "2023". */
+  matchKind: z.enum([
+    "exact",
+    "variant_year",
+    "variant_spec",
+    "unknown_generation",
+  ]),
+  /** Short, human-facing note for a variant, e.g. "2023". Null unless `variant_year`. */
   variantNote: z.string().nullable(),
   /** Matcher confidence. Null for hand-curated rows, which are ground truth. */
   confidence: z.number().min(0).max(1).nullable(),
