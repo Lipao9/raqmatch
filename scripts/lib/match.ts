@@ -194,8 +194,15 @@ export function evaluate(
 
   // The family name has to be there in full. Specs alone are not identity: two
   // different frames can share a head size and a string pattern.
+  //
+  // Whole words, not substrings. A substring test makes short tokens match
+  // almost anything: "Prestige MP L" was satisfied by "Head Prestige Tour Cor
+  // Preto Tamanho Da Empunhadura L3", because "mp" is inside "empunhadura" and
+  // "l" is inside half the words on the page. That put a Prestige Tour behind
+  // the buy button for a Prestige MP L — the exact failure these gates exist to
+  // prevent, reached through the gate meant to prevent it.
   const family = modelFamily(racket);
-  const missing = family.split(" ").filter((token) => !text.includes(token));
+  const missing = family.split(" ").filter((token) => !words.has(token));
   if (missing.length > 0) {
     // Sellers also run the words together — "Superlite" for "Super Lite". Only
     // accepted as one unbroken run, so "Pure Aero Super Lite" still does not

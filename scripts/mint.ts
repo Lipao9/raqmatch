@@ -37,6 +37,7 @@ const BY_CLICKS = args.includes("--by-clicks");
 const APPLY = flag("apply");
 const BATCH = flag("batch") === undefined ? null : Number(flag("batch"));
 const CONFIRM = args.includes("--yes");
+const VERIFY = !args.includes("--no-verify");
 
 /** The panel's own ceiling: it refuses a paste of more than 30 URLs. */
 const BATCH_SIZE = 30;
@@ -151,7 +152,55 @@ function looksMinted(url: string): boolean {
   }
 }
 
-function applyBatch(path: string): void {
+/**
+ * A line the panel returned in place of a link, e.g. "Este URL não é permitido
+ * pelo Programa". Not every product is eligible, and the panel says so inline
+ * rather than dropping the row — which is what keeps the batch aligned.
+ *
+ * Recognised by not being a URL at all. A line that IS a URL but points
+ * somewhere else is a stray paste, not a refusal, and stays a hard error.
+ */
+function isRefusal(line: string): boolean {
+  try {
+    new URL(line);
+    return false;
+  } catch {
+    return true;
+  }
+}
+
+type Verdict = "ok" | "mismatch" | "unreachable";
+
+/**
+ * Confirms a minted link actually leads to the racquet it was paired with.
+ *
+ * Position is otherwise the only thing tying the two together, and the link
+ * itself is opaque — `/social/<user>?…&ref=<encrypted>` names no product. But
+ * the page behind it does: the featured product's id appears in the HTML, so
+ * fetching it turns a positional assumption into evidence.
+ *
+ * Asymmetric on purpose. Finding the id is strong confirmation; not finding it
+ * means this link is for some other racquet and the batch is misaligned. The
+ * page also carries carousel products, so presence is not proof of *featured* —
+ * but absence is proof of wrong.
+ */
+async function verify(listingUrl: string, minted: string): Promise<Verdict> {
+  const productId = listingUrl.match(/\/p\/(MLB\d+)/)?.[1];
+  if (!productId) return "unreachable";
+  try {
+    const res = await fetch(minted, {
+      redirect: "follow",
+      headers: { "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7)" },
+      signal: AbortSignal.timeout(25_000),
+    });
+    if (!res.ok) return "unreachable";
+    return (await res.text()).includes(productId) ? "ok" : "mismatch";
+  } catch {
+    return "unreachable";
+  }
+}
+
+async function applyBatch(path: string): Promise<void> {
   const full: ManifestEntry[] = JSON.parse(readFileSync(MANIFEST_PATH, "utf8"));
   const batches = Math.max(...full.map((e) => e.batch));
 
@@ -188,9 +237,9 @@ function applyBatch(path: string): void {
     process.exit(1);
   }
 
-  const bad = links.filter((l) => !looksMinted(l));
+  const bad = links.filter((l) => !isRefusal(l) && !looksMinted(l));
   if (bad.length > 0) {
-    console.error(`Refusing to write: ${bad.length} line(s) are not Mercado Livre URLs:`);
+    console.error(`Refusing to write: ${bad.length} line(s) are URLs, but not Mercado Livre ones:`);
     for (const l of bad.slice(0, 5)) console.error(`  ${l}`);
     process.exit(1);
   }
@@ -205,12 +254,41 @@ function applyBatch(path: string): void {
     process.exit(1);
   }
 
+  const verdicts: (Verdict | "refused")[] = [];
+  if (VERIFY) {
+    process.stdout.write(`Verifying ${links.filter((l) => !isRefusal(l)).length} link(s) against the page they lead to`);
+    for (let i = 0; i < links.length; i++) {
+      if (isRefusal(links[i])) { verdicts.push("refused"); continue; }
+      verdicts.push(await verify(manifest[i].listingUrl, links[i]));
+      process.stdout.write(".");
+    }
+    console.log("\n");
+  }
+
   console.log(`Pairing ${links.length} link(s) from ${label} by position:\n`);
+  const mark = { ok: "verified", mismatch: "WRONG RACQUET", unreachable: "unverified", refused: "not eligible" };
   manifest.forEach((e, i) => {
-    console.log(`${String(i + 1).padStart(3)}. ${e.name}`);
+    const v = verdicts[i];
+    console.log(`${String(i + 1).padStart(3)}. ${e.name}${v ? `  [${mark[v]}]` : ""}`);
     console.log(`     ${e.title.slice(0, 68)}`);
-    console.log(`     → ${links[i].slice(0, 96)}`);
+    console.log(`     → ${isRefusal(links[i]) ? "(refused by the programme — stays a plain link)" : links[i]}`);
   });
+
+  const mismatched = verdicts.filter((v) => v === "mismatch").length;
+  if (mismatched > 0) {
+    console.error(
+      `\nRefusing to write: ${mismatched} link(s) lead to a page that never mentions the\n` +
+        `product they were paired with. That is what a shifted batch looks like — one\n` +
+        `line added or dropped moves every row after it. Re-mint rather than reordering\n` +
+        `by hand.`,
+    );
+    process.exit(1);
+  }
+
+  const unreachable = verdicts.filter((v) => v === "unreachable").length;
+  if (unreachable > 0) {
+    console.log(`\n${unreachable} link(s) could not be checked — Mercado Livre blocks some IPs. Those rest on position alone.`);
+  }
 
   if (!CONFIRM) {
     console.log(`\nNothing written. Check the pairing above, then re-run with --yes.`);
@@ -218,7 +296,12 @@ function applyBatch(path: string): void {
   }
 
   const existing = readOffers();
-  const byRacket = new Map(manifest.map((e, i) => [e.racketId, links[i]]));
+  const byRacket = new Map(
+    manifest
+      .map((e, i) => [e.racketId, links[i]] as const)
+      .filter(([, link]) => !isRefusal(link)),
+  );
+  const refused = manifest.length - byRacket.size;
   let updated = 0;
 
   const offers = existing.offers.map((offer) => {
@@ -239,11 +322,15 @@ function applyBatch(path: string): void {
 
   const next = offersCatalogSchema.parse({ ...existing, offers });
   writeFileSync(OFFERS_PATH, `${JSON.stringify(next, null, 2)}\n`);
-  console.log(`\n  ${updated} offer(s) now carry an affiliate link → data/offers.json`);
+  console.log(
+    `\n  ${updated} offer(s) now carry an affiliate link` +
+      (refused ? `, ${refused} refused by the programme and left plain` : "") +
+      `\n  → data/offers.json`,
+  );
 }
 
 async function main() {
-  if (APPLY) applyBatch(APPLY);
+  if (APPLY) await applyBatch(APPLY);
   else await exportBatch();
 }
 
