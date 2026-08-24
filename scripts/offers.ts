@@ -220,16 +220,30 @@ async function priceOf(productId: string): Promise<number | null | undefined> {
   return prices.length > 0 ? Math.min(...prices) : null;
 }
 
-/** Row for a racquet whose offer `claimOffers` already chose and priced. */
-function toOffer(outcome: Outcome, checkedAt: string): Offer {
+/**
+ * Row for a racquet whose offer `claimOffers` already chose and priced.
+ *
+ * `previous` is the row this one replaces, and exists for one reason: an
+ * affiliate link is minted by hand in the panel — Mercado Livre publishes no API
+ * for it — so it is the most expensive field in the file and must survive a
+ * refresh. It is carried forward only when the listing is unchanged. A different
+ * `listingUrl` means the matcher moved to another product, and a minted link
+ * points at whatever product it was minted for: keeping it would put the wrong
+ * racquet behind the buy button, silently, a week after anyone looked.
+ */
+function toOffer(
+  outcome: Outcome,
+  checkedAt: string,
+  previous?: Offer,
+): Offer {
   const match = outcome.best!;
+  const listingUrl = productUrl(match.product.id);
   return {
     racketId: outcome.racket.id,
     store: "mercadolivre",
-    listingUrl: productUrl(match.product.id),
-    // Minted by hand in the affiliate panel, or composed once `matt_word`
-    // composition is confirmed by the Métricas report. Neither has happened.
-    affiliateUrl: null,
+    listingUrl,
+    affiliateUrl:
+      previous?.listingUrl === listingUrl ? previous.affiliateUrl : null,
     title: match.product.name,
     priceBRL: outcome.priceBRL,
     unstrungWeightGrams: unstrungWeight(outcome.racket, match.product),
@@ -256,6 +270,11 @@ function persist(outcomes: Outcome[]): void {
   );
 
   const inRun = new Set(outcomes.map((o) => o.racket.id));
+  const before = new Map(
+    existing.offers
+      .filter((o) => o.store === "mercadolivre")
+      .map((o) => [o.racketId, o]),
+  );
   const manual = new Set(
     existing.offers
       .filter((o) => o.source === "manual")
@@ -271,7 +290,7 @@ function persist(outcomes: Outcome[]): void {
       skipped.push(`  ${outcome.racket.id} — kept the hand-curated row`);
       continue;
     }
-    minted.push(toOffer(outcome, checkedAt));
+    minted.push(toOffer(outcome, checkedAt, before.get(outcome.racket.id)));
   }
 
   const kept = existing.offers.filter(
@@ -298,10 +317,26 @@ function persist(outcomes: Outcome[]): void {
   }
   const withWeight = minted.filter((o) => o.unstrungWeightGrams !== null).length;
   const withPrice = minted.filter((o) => o.priceBRL !== null).length;
+  const affiliate = minted.filter((o) => o.affiliateUrl !== null).length;
+
+  // A minted link that did not survive is hand work destroyed, so it is named
+  // rather than counted: the racquet has to be re-minted in the panel, and
+  // nothing else in this output would tell anyone that.
+  const lostAffiliate = minted.filter(
+    (o) => o.affiliateUrl === null && before.get(o.racketId)?.affiliateUrl,
+  );
+  if (lostAffiliate.length > 0) {
+    console.log(`\nAffiliate link dropped — the listing moved, re-mint these (${lostAffiliate.length}):`);
+    for (const o of lostAffiliate) {
+      console.log(`  ${o.racketId}\n    was ${before.get(o.racketId)!.listingUrl}\n    now ${o.listingUrl}`);
+    }
+  }
+
   console.log(`
   wrote                    ${minted.length} offer(s)
   carrying a price         ${withPrice}
   carrying unstrung weight ${withWeight}
+  carrying affiliate link  ${affiliate}
   kept from earlier runs   ${kept.length}
   → data/offers.json`);
 }
