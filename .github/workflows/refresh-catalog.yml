@@ -36,6 +36,10 @@ jobs:
           node-version: 22
           cache: npm
 
+      # See refresh-offers.yml: node 22 bundles npm 10, which rejects a lock
+      # written by npm 11 over an optional peer dependency neither needs.
+      - run: npm i -g npm@11
+
       - run: npm ci
 
       # Only Chromium, and only its own dependencies: the scraper drives one
