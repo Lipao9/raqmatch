@@ -1,5 +1,11 @@
 import { type LinkKind, isMonetised, offersCatalogSchema } from "./offers";
-import { getStore, isStoreKey, STORE_KEYS, type StoreKey } from "./stores";
+import {
+  DEFAULT_STORE,
+  getStore,
+  isStoreKey,
+  STORE_KEYS,
+  type StoreKey,
+} from "./stores";
 import offersFile from "../../data/offers.json";
 
 /**
@@ -66,8 +72,6 @@ export function trackedUrl(
   if (store) params.set("store", store);
   return `/api/go/${encodeURIComponent(racketId)}?${params}`;
 }
-
-export const DEFAULT_STORE: StoreKey = "tennis-warehouse";
 
 export function parseStoreParam(value: string | null): StoreKey {
   return value && isStoreKey(value) ? value : DEFAULT_STORE;

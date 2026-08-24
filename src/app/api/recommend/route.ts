@@ -1,7 +1,7 @@
 import { after, NextResponse } from "next/server";
 import { z } from "zod";
-import { DEFAULT_STORE, PLAIN_REL, relForKind, trackedUrl } from "@/lib/affiliate";
-import { resolveStore } from "@/lib/offers";
+import { PLAIN_REL, relForKind, trackedUrl } from "@/lib/affiliate";
+import { storefrontFor } from "@/lib/offers";
 import { recordQuizRun } from "@/lib/analytics";
 import { answersSchemaFor, quizModeSchema, type Answers } from "@/lib/answers";
 import { loadCatalog } from "@/lib/catalog";
@@ -105,16 +105,18 @@ export async function POST(req: Request) {
     return NextResponse.json({
       recommendations: result.picks.map((pick) => {
         const racket = byId.get(pick.racketId)!;
-        const link = resolveStore(racket, DEFAULT_STORE);
+        // Locale-aware: a Brazilian with a mapped Mercado Livre offer is sent
+        // there, not to a US store that cannot ship to them.
+        const storefront = storefrontFor(racket, body.locale);
         return {
           racket,
           justification: pick.justification,
           // Points at our own click-tracking redirect, not the store: the
           // affiliate configuration stays server-side and the click is counted.
-          buyUrl: trackedUrl(pick.racketId, "results"),
+          buyUrl: trackedUrl(pick.racketId, "results", storefront?.store),
           // Per link, not global: with several stores one can be monetised
           // while another is still a plain listing.
-          rel: link ? relForKind(link.kind) : PLAIN_REL,
+          rel: storefront ? relForKind(storefront.kind) : PLAIN_REL,
         };
       }),
     });

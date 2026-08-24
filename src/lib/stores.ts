@@ -158,3 +158,14 @@ export function getStore(key: StoreKey): StoreDefinition {
 export const BR_STORE_KEYS = STORE_KEYS.filter(
   (key) => STORES[key].market === "br",
 );
+
+/**
+ * Where a visitor goes when nothing better applies. Tennis Warehouse because it
+ * is the one store the catalog carries a URL for on every racquet — but it is a
+ * last resort for a Brazilian visitor, not a default in the ordinary sense. See
+ * `primaryStore` in `offers.ts` for what overrides it.
+ *
+ * Lives here rather than in `affiliate.ts` so `offers.ts` can reach it: link
+ * policy depends on which store was chosen, not the other way round.
+ */
+export const DEFAULT_STORE: StoreKey = "tennis-warehouse";

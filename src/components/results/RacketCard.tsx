@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useLocale, useTranslations } from "next-intl";
+import { useFormatter, useLocale, useTranslations } from "next-intl";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {
@@ -13,6 +13,7 @@ import {
 } from "@/components/ui/card";
 import { Link } from "@/i18n/navigation";
 import type { Racket } from "@/lib/catalog";
+import { storefrontFor } from "@/lib/offers";
 import { weightLabel } from "@/lib/weight";
 
 interface RacketCardProps {
@@ -31,8 +32,16 @@ export function RacketCard({
   rank,
 }: RacketCardProps) {
   const t = useTranslations("results");
+  const tStores = useTranslations("stores");
+  const format = useFormatter();
   const locale = useLocale();
   const isBestMatch = rank === 1;
+
+  // Same choice the buy URL was built from, and deterministic on the same
+  // inputs, so the label always names the store the click actually reaches.
+  const storefront = storefrontFor(racket, locale);
+  const storeAt = tStores(`at.${storefront?.store ?? "tennis-warehouse"}`);
+  const priceBRL = storefront?.priceBRL ?? null;
 
   const specs = [
     `${racket.headSizeIn2} in²`,
@@ -97,7 +106,13 @@ export function RacketCard({
       </CardContent>
       <CardFooter className="flex flex-wrap items-center justify-between gap-3 border-t border-border/60 pt-4">
         <span className="font-heading text-lg font-semibold">
-          US$ {racket.priceUSD}
+          {priceBRL !== null
+            ? format.number(priceBRL, {
+                style: "currency",
+                currency: "BRL",
+                maximumFractionDigits: 0,
+              })
+            : `US$ ${racket.priceUSD}`}
         </span>
         <div className="flex items-center gap-2">
           <Button
@@ -114,7 +129,7 @@ export function RacketCard({
             nativeButton={false}
             render={<a href={buyUrl} target="_blank" rel={rel} />}
           >
-            {t("viewProduct")}
+            {tStores("viewAt", { at: storeAt })}
           </Button>
         </div>
       </CardFooter>

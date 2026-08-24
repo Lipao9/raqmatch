@@ -1,4 +1,15 @@
 {
+  "stores": {
+    "at": {
+      "mercadolivre": "no Mercado Livre",
+      "amazon": "na Amazon",
+      "shopee": "na Shopee",
+      "tennis-warehouse": "na Tennis Warehouse"
+    },
+    "viewAt": "Ver {at}",
+    "priceChecked": "Preço {at}, verificado em {date}. Pode variar.",
+    "priceReference": "Preço de referência {at}, em dólar. Pode variar."
+  },
   "landing": {
     "metaTitle": "RaqMatch — a raquete de tênis ideal para o seu jogo",
     "metaDescription": "Responda um quiz sobre seu nível, estilo e preferências e receba 3 raquetes de tênis escolhidas sob medida, com o porquê de cada uma.",
@@ -20,7 +31,6 @@
     "title": "Suas 3 raquetes recomendadas",
     "subtitle": "Escolhidas com base nas suas respostas.",
     "bestMatch": "Melhor escolha",
-    "viewProduct": "Ver na Tennis Warehouse",
     "viewSpecs": "Especificações",
     "share": "Compartilhar resultado",
     "linkCopied": "Link copiado!",
@@ -276,8 +286,6 @@
       "price": "Preço de referência"
     },
     "unknown": "não informado",
-    "buy": "Ver na Tennis Warehouse",
-    "priceNote": "Preço de referência na Tennis Warehouse, em dólar. Pode variar.",
     "profileTitle": "Para quem faz sentido",
     "relatedTitle": "Raquetes parecidas",
     "relatedHint": "Frames com especificações próximas, para comparar.",
