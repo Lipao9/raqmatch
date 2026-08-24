@@ -34,7 +34,13 @@ export function isDensePattern(pattern: string): boolean {
   return /18x20|16x20/.test(pattern);
 }
 
-export function racketTraits(r: Racket): Trait[] {
+/**
+ * `displayWeight` only changes the number the copy shows, never which traits
+ * fire: the thresholds are calibrated on the strung figure the catalog holds, so
+ * classifying on a locale-dependent number would make the same frame read as
+ * "light" in one language and not the other.
+ */
+export function racketTraits(r: Racket, displayWeight = r.weightGrams): Trait[] {
   const traits: Trait[] = [];
   const open = isOpenPattern(r.stringPattern);
   const dense = isDensePattern(r.stringPattern);
@@ -53,9 +59,9 @@ export function racketTraits(r: Racket): Trait[] {
   }
 
   if (r.weightGrams <= 295) {
-    traits.push({ key: "light", values: { weight: r.weightGrams } });
+    traits.push({ key: "light", values: { weight: displayWeight } });
   } else if (r.weightGrams >= 310) {
-    traits.push({ key: "heavy", values: { weight: r.weightGrams } });
+    traits.push({ key: "heavy", values: { weight: displayWeight } });
   }
 
   if (open) {

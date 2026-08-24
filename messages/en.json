@@ -262,12 +262,13 @@
     "quizCta": "Not sure which one? Take the quiz"
   },
   "racquet": {
-    "metaDescription": "{name}: {headSize} in², {weight}g strung, {pattern} pattern. Full specs, similar racquets and who this frame suits.",
+    "metaDescription": "{name}: {headSize} in², {weight} strung, {pattern} pattern. Full specs, similar racquets and who this frame suits.",
     "specsTitle": "Specs",
     "specs": {
       "brand": "Brand",
       "headSize": "Head size",
       "weight": "Weight (strung)",
+      "weightUnstrung": "Weight (unstrung)",
       "balance": "Balance",
       "stiffness": "Stiffness (RA)",
       "stringPattern": "String pattern",

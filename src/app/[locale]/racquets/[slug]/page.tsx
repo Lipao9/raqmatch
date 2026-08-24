@@ -17,6 +17,7 @@ import { resolveStore } from "@/lib/offers";
 import { findRelated, getRacketBySlug, loadCatalog } from "@/lib/catalog";
 import { absoluteUrl } from "@/lib/site";
 import { racketTraits } from "@/lib/traits";
+import { weightFor, weightLabel } from "@/lib/weight";
 import { alternatesFor } from "@/lib/urls";
 
 // The parent [locale] layout generates the locale params, so this segment only
@@ -37,7 +38,11 @@ export async function generateMetadata({
   const description = t("metaDescription", {
     name,
     headSize: racket.headSizeIn2,
-    weight: racket.weightGrams,
+    // The snippet is the first thing a Brazilian sees on Google, so it quotes
+    // the convention they shop in — a strung figure here reads as a different
+    // racquet before the page is even opened. The label lives in the message,
+    // which is why this passes a formatted string rather than a number.
+    weight: weightLabel(racket, locale),
     pattern: racket.stringPattern,
   });
   const { canonical, languages } = alternatesFor(
@@ -66,7 +71,8 @@ export default async function RacquetPage({
   const tNav = await getTranslations("nav");
   const name = `${racket.brand} ${racket.model}`;
   const related = findRelated(racket);
-  const traits = racketTraits(racket);
+  const weight = weightFor(racket, locale);
+  const traits = racketTraits(racket, weight.grams);
   // Through the click-tracking redirect rather than straight to the store, so
   // this statically generated page still reports which racquets get clicked.
   const href = `${trackedUrl(racket.id, "racquet_page")}&locale=${locale}`;
@@ -76,6 +82,13 @@ export default async function RacquetPage({
   const specs: { label: string; value: string }[] = [
     { label: t("specs.brand"), value: racket.brand },
     { label: t("specs.headSize"), value: `${racket.headSizeIn2} in²` },
+    // Both conventions, always, each labelled. A Brazilian visitor needs the
+    // unstrung figure to recognise the frame; the strung one is what the specs
+    // were scraped in and what a US reader expects, and dropping either would
+    // make one audience think the page is about a different racquet.
+    ...(weight.convention === "unstrung"
+      ? [{ label: t("specs.weightUnstrung"), value: weightLabel(racket, locale) }]
+      : []),
     { label: t("specs.weight"), value: `${racket.weightGrams} g` },
     { label: t("specs.balance"), value: racket.balance || t("unknown") },
     {
@@ -172,7 +185,7 @@ export default async function RacquetPage({
             </div>
             <div className="flex flex-wrap gap-1.5">
               <Badge variant="secondary">{racket.headSizeIn2} in²</Badge>
-              <Badge variant="secondary">{racket.weightGrams} g</Badge>
+              <Badge variant="secondary">{weightLabel(racket, locale)}</Badge>
               <Badge variant="secondary">{racket.stringPattern}</Badge>
               {racket.stiffnessRA !== null && (
                 <Badge variant="secondary">RA {racket.stiffnessRA}</Badge>
@@ -288,7 +301,7 @@ export default async function RacquetPage({
                       {other.brand} {other.model}
                     </span>
                     <span className="text-xs text-muted-foreground">
-                      {other.headSizeIn2} in² · {other.weightGrams} g ·{" "}
+                      {other.headSizeIn2} in² · {weightLabel(other, locale)} ·{" "}
                       {other.stringPattern}
                       {other.stiffnessRA !== null && ` · RA ${other.stiffnessRA}`}
                     </span>
