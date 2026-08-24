@@ -321,15 +321,25 @@ function persist(outcomes: Outcome[]): void {
 
   // A minted link that did not survive is hand work destroyed, so it is named
   // rather than counted: the racquet has to be re-minted in the panel, and
-  // nothing else in this output would tell anyone that.
-  const lostAffiliate = minted.filter(
+  // nothing else in this output would tell anyone that. Two ways to lose one —
+  // the listing moved under it, or the racquet stopped matching at all.
+  const nowHasRow = new Set(minted.map((o) => o.racketId));
+  const moved = minted.filter(
     (o) => o.affiliateUrl === null && before.get(o.racketId)?.affiliateUrl,
   );
-  if (lostAffiliate.length > 0) {
-    console.log(`\nAffiliate link dropped — the listing moved, re-mint these (${lostAffiliate.length}):`);
-    for (const o of lostAffiliate) {
+  const vanished = [...before.values()].filter(
+    (o) => o.affiliateUrl && inRun.has(o.racketId) && !nowHasRow.has(o.racketId),
+  );
+
+  if (moved.length > 0) {
+    console.log(`\nAffiliate link dropped — the listing moved, re-mint these (${moved.length}):`);
+    for (const o of moved) {
       console.log(`  ${o.racketId}\n    was ${before.get(o.racketId)!.listingUrl}\n    now ${o.listingUrl}`);
     }
+  }
+  if (vanished.length > 0) {
+    console.log(`\nAffiliate link lost — the racquet no longer matches anything (${vanished.length}):`);
+    for (const o of vanished) console.log(`  ${o.racketId} — was ${o.title.slice(0, 60)}`);
   }
 
   console.log(`
