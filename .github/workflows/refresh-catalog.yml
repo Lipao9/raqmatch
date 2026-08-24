@@ -1,0 +1,61 @@
+# Monthly catalog refresh: re-scrape Tennis Warehouse specs, then re-match.
+#
+# Monthly because racquet specs are stable for a model year — a frame's head size
+# does not drift — and because this is the expensive, fragile half: a real
+# browser against a site whose markup we do not control.
+#
+# The scrape and the match run together on purpose. A scrape that adds a 2027
+# generation leaves those racquets with no Brazilian offer until the matcher sees
+# them, and a scrape that renames one orphans its existing offer. Running both in
+# one job means the pull request is internally consistent rather than a catalog
+# that has moved ahead of its offers.
+name: Refresh racquet catalog
+
+on:
+  schedule:
+    # 09:00 UTC on the 1st.
+    - cron: "0 9 1 * *"
+  workflow_dispatch:
+
+concurrency:
+  group: data-refresh
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+
+      # Only Chromium, and only its own dependencies: the scraper drives one
+      # browser, and pulling all three costs minutes for nothing.
+      - name: Install Chromium
+        run: npx playwright install --with-deps chromium
+
+      - name: Scrape Tennis Warehouse
+        run: npm run scrape
+
+      - name: Re-match offers against the new catalog
+        env:
+          ML_CLIENT_ID: ${{ secrets.ML_CLIENT_ID }}
+          ML_CLIENT_SECRET: ${{ secrets.ML_CLIENT_SECRET }}
+        run: npm run offers -- --write
+
+      - name: Check data integrity
+        run: npm run data:check
+
+      - name: Open a pull request if anything changed
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: bash .github/scripts/open-data-pr.sh catalog

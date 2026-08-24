@@ -1,0 +1,53 @@
+# Weekly Mercado Livre refresh: prices, availability and unstrung weights.
+#
+# Weekly rather than monthly because `freshPriceBRL` hides any price older than
+# seven days. On a monthly cadence the site would show a price for one week in
+# four and fall back to the US reference for the other three — the schedule has
+# to match the freshness rule, or the rule silently wins.
+#
+# Cheap enough to justify: this is the official API, no browser, ~7 minutes.
+name: Refresh Mercado Livre offers
+
+on:
+  schedule:
+    # 09:00 UTC Monday — 06:00 in São Paulo, so a bad price is caught during the
+    # working day rather than sitting live over a weekend.
+    - cron: "0 9 * * 1"
+  workflow_dispatch:
+
+# A refresh must never race another one: both write data/offers.json, and the
+# loser would open a PR from a tree the winner has already moved past.
+concurrency:
+  group: data-refresh
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+
+      - name: Match offers
+        env:
+          ML_CLIENT_ID: ${{ secrets.ML_CLIENT_ID }}
+          ML_CLIENT_SECRET: ${{ secrets.ML_CLIENT_SECRET }}
+        run: npm run offers -- --write
+
+      - name: Check data integrity
+        run: npm run data:check
+
+      - name: Open a pull request if anything changed
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: bash .github/scripts/open-data-pr.sh offers
