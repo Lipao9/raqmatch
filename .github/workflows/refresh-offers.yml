@@ -36,6 +36,16 @@ jobs:
           node-version: 22
           cache: npm
 
+      # Node 22 bundles npm 10, but the lock file in this repo is written by
+      # npm 11, and the two disagree about optional peer dependencies: npm 11
+      # leaves `@swc/core`'s optional peer on `@swc/helpers >=0.5.17` unsatisfied
+      # where npm 10 insists on a nested copy, then refuses the lock for not
+      # containing it. The lock is fine — `npm ci` passes on Linux under npm 11.
+      # Pinning here rather than regenerating the lock under npm 10, because the
+      # lock is rewritten by whoever runs `npm install` locally, and that is
+      # npm 11.
+      - run: npm i -g npm@11
+
       - run: npm ci
 
       - name: Match offers
