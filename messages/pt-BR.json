@@ -19,7 +19,7 @@
     "subtitle": "Responda um quiz sobre seu nível, estilo e preferências, e receba 3 raquetes escolhidas sob medida — com o porquê de cada uma.",
     "cta": "Começar o quiz",
     "ctaDetailed": "Prefiro o quiz detalhado",
-    "duration": "Quiz rápido de 3 minutos ou detalhado de 7",
+    "duration": "Quiz rápido de 2 minutos ou detalhado de 6",
     "stats": {
       "racquets": "raquetes analisadas",
       "brands": "marcas",
@@ -49,14 +49,14 @@
       "choose": "Escolher este",
       "quick": {
         "title": "Quiz rápido",
-        "duration": "~3 min",
-        "description": "11 perguntas de múltipla escolha.",
-        "detail": "Ideal para uma primeira recomendação: nível, estilo e preferências."
+        "duration": "~2 min",
+        "description": "7 perguntas rápidas.",
+        "detail": "Ideal para uma primeira recomendação: nível, swing, estilo e o que te incomoda hoje."
       },
       "detailed": {
         "title": "Quiz detalhado",
-        "duration": "~7 min",
-        "description": "18 perguntas, várias com resposta livre.",
+        "duration": "~6 min",
+        "description": "~18 perguntas, várias com resposta livre.",
         "detail": "Conte sobre seu swing, seu spin, seus pontos fortes e o que quer evoluir — quanto mais contexto, mais precisa a recomendação."
       }
     },
@@ -90,33 +90,26 @@
           "baseline": "Fundo de quadra — construo pontos com trocas",
           "serve_volley": "Saque e voleio — busco a rede",
           "all_court": "Quadra toda — me adapto ao ponto",
-          "counterpuncher": "Contra-atacante — devolvo tudo e espero o erro"
+          "counterpuncher": "Contra-atacante — devolvo tudo e espero o erro",
+          "not_sure": "Ainda não sei — estou descobrindo meu jogo"
         }
       },
       "powerControl": {
-        "title": "O que você prioriza na raquete?",
-        "options": {
-          "power": "Potência — quero mais força nos golpes",
-          "balanced": "Equilíbrio entre potência e controle",
-          "control": "Controle — quero precisão na colocação"
+        "title": "Entre controle e potência, o que você quer da raquete?",
+        "description": "3 = equilíbrio entre os dois.",
+        "anchors": {
+          "low": "Controle total",
+          "high": "Potência total"
         }
       },
       "armInjury": {
         "title": "Você tem histórico de lesão no braço, cotovelo ou ombro?",
-        "description": "Isso influencia a rigidez da raquete recomendada.",
+        "description": "Levamos isso a sério: raquete leve e rígida demais é a receita clássica de dor no cotovelo.",
         "options": {
           "none": "Não, nunca tive",
+          "occasional": "Dói às vezes depois de jogar",
           "past": "Já tive, mas estou recuperado",
           "current": "Tenho dores ou lesão ativa"
-        }
-      },
-      "weightPref": {
-        "title": "Que peso de raquete você prefere?",
-        "options": {
-          "light": "Leve — fácil de manobrar (menos de 290g)",
-          "medium": "Médio — equilíbrio geral (285-310g)",
-          "heavy": "Pesado — mais estabilidade (acima de 305g)",
-          "no_preference": "Não tenho preferência"
         }
       },
       "headSizePref": {
@@ -153,22 +146,13 @@
         "placeholder": "Ex.: Babolat Pure Drive 2021"
       },
       "courtType": {
-        "title": "Em que tipo de quadra você mais joga?",
+        "title": "Em que quadras você joga?",
+        "description": "Marque todas que se aplicam.",
         "options": {
-          "hard": "Rápida (cimento/acrílico)",
           "clay": "Saibro",
+          "hard": "Rápida (cimento/acrílico)",
           "grass": "Grama",
-          "mixed": "Vários tipos"
-        }
-      },
-      "swingSpeed": {
-        "title": "Como é a velocidade do seu swing?",
-        "description": "Swings mais rápidos aproveitam raquetes com mais controle; swings compactos pedem ajuda da raquete.",
-        "options": {
-          "compact": "Compacto — golpes curtos, preciso de potência da raquete",
-          "moderate": "Moderado — swing médio, equilibrado",
-          "fast": "Rápido — gero boa potência sozinho",
-          "very_fast": "Muito rápido — swing longo e agressivo"
+          "indoor": "Coberta (indoor)"
         }
       },
       "spinStyle": {
@@ -177,7 +161,8 @@
           "heavy_topspin": "Muito topspin — bola alta e carregada",
           "moderate_spin": "Spin moderado — misturo conforme o ponto",
           "flat": "Bola chapada — golpes rasantes e diretos",
-          "slice": "Muito slice — variação e bola baixa"
+          "slice": "Muito slice — variação e bola baixa",
+          "not_sure": "Não sei dizer"
         }
       },
       "racquetFeel": {
@@ -194,16 +179,67 @@
         "title": "O que você mais quer melhorar ou sente falta no seu jogo?",
         "placeholder": "Ex.: quero mais profundidade no backhand e me sinto travado na devolução de saques rápidos"
       },
-      "physicalProfile": {
-        "title": "Como é o seu físico e condicionamento?",
-        "description": "Altura, força, resistência, idade — o que achar relevante.",
-        "placeholder": "Ex.: 1,78m, 34 anos, bom condicionamento, mas sinto o ombro após jogos longos"
-      },
       "anythingElse": {
         "title": "Algo mais que a gente deveria saber?",
-        "placeholder": "Ex.: jogo torneios da liga local, tenho duas raquetes e cordo com multifilamento a 24kg"
+        "placeholder": "Ex.: 1,78m, 34 anos, jogo torneios da liga local e cordo com multifilamento a 24kg"
+      },
+      "swing": {
+        "title": "De onde vem a potência da sua bola?",
+        "description": "Pergunta mais importante depois do nível: define quanto a raquete precisa trabalhar por você.",
+        "options": {
+          "racquet_power": "Da raquete — meu swing é curto, preciso de ajuda no golpe",
+          "mixed": "Um pouco de cada — swing médio",
+          "self_power": "De mim — swing longo e rápido, gero minha própria potência"
+        }
+      },
+      "aggression": {
+        "title": "Quão agressivo é o seu jogo?",
+        "anchors": {
+          "low": "Consistência — espero o erro",
+          "high": "Ataque total — busco winners"
+        }
+      },
+      "fitness": {
+        "title": "Como é sua força e preparo físico?",
+        "description": "Raquete pesada demais para o físico cobra caro no fim do jogo.",
+        "anchors": {
+          "low": "Abaixo da média",
+          "high": "Muito forte"
+        }
+      },
+      "struggles": {
+        "title": "O que mais te incomoda no seu jogo hoje?",
+        "description": "As frustrações de hoje dizem mais sobre a raquete certa do que qualquer preferência.",
+        "options": {
+          "low_power": "Minha bola sai fraca ou curta",
+          "flies_long": "Minha bola sai longa — falta controle",
+          "off_center": "Erro muito fora do centro da raquete",
+          "low_spin": "Falta efeito (spin) nos meus golpes",
+          "arm_fatigue": "Meu braço cansa ou dói no fim do jogo",
+          "unstable": "A raquete 'tremula' contra bolas pesadas",
+          "nothing": "Nada — meu jogo está equilibrado"
+        }
+      },
+      "specKnowledge": {
+        "title": "Você entende de especificações de raquete?",
+        "options": {
+          "yes": "Sim — quero opinar em peso, cabeça e padrão de cordas",
+          "no": "Não — prefiro que vocês decidam pelas minhas respostas"
+        }
+      },
+      "weightSpec": {
+        "title": "Que faixa de peso (sem corda) você procura?",
+        "description": "Lojas brasileiras anunciam o peso sem corda; com corda soma ~16g.",
+        "options": {
+          "under_285": "Até 285g — leve",
+          "285_300": "285–300g — médio",
+          "300_315": "300–315g — pesado",
+          "over_315": "Acima de 315g — muito pesado",
+          "no_preference": "Tanto faz"
+        }
       }
-    }
+    },
+    "multiHint": "Selecione até {max}"
   },
   "nav": {
     "racquets": "Raquetes"

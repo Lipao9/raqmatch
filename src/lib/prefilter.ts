@@ -1,5 +1,6 @@
 import type { Answers } from "./answers";
 import type { Racket } from "./catalog";
+import { SCALE_NEUTRAL } from "./questions";
 
 const MAX_CANDIDATES = 25;
 const MIN_BEFORE_RELAX = 10;
@@ -18,11 +19,25 @@ type HardFilter = {
   test: (r: Racket, a: Answers) => boolean;
 };
 
-const WEIGHT_BANDS: Record<string, [number, number]> = {
-  light: [0, 290],
-  medium: [285, 310],
-  heavy: [305, Infinity],
-};
+// Answer accessors: `Answers` values are string | string[] | number, and the
+// scoring below only ever wants one shape per question.
+function str(a: Answers, id: keyof Answers): string | undefined {
+  const v = a[id];
+  return typeof v === "string" ? v : undefined;
+}
+function num(a: Answers, id: keyof Answers): number | undefined {
+  const v = a[id];
+  return typeof v === "number" ? v : undefined;
+}
+function arr(a: Answers, id: keyof Answers): string[] {
+  const v = a[id];
+  return Array.isArray(v) ? v : [];
+}
+
+/** 0 = neutral/unanswered, 1 = mild lean, 2 = strong lean. */
+function scaleMagnitude(value: number | undefined): number {
+  return value === undefined ? 0 : Math.abs(value - SCALE_NEUTRAL);
+}
 
 const SKILL_BANDS: Record<string, [number, number]> = {
   beginner: [0, 300],
@@ -31,39 +46,124 @@ const SKILL_BANDS: Record<string, [number, number]> = {
   competitive: [295, Infinity],
 };
 
+/**
+ * How the swing answer shifts the skill weight band: a racquet-powered swing
+ * needs a lighter frame than the level alone suggests, a self-powered swing
+ * carries a heavier one.
+ */
+const SWING_SHIFT: Record<string, number> = {
+  "racquet-power": -10,
+  "self-power": 5,
+};
+
+/**
+ * `weightSpec` is answered in unstrung grams (the Brazilian retail convention)
+ * behind the spec-knowledge gate; the catalog holds strung weights, ~16g
+ * heavier. Band edges overlap a few grams on purpose — the conversion is only
+ * accurate to about ±5g.
+ */
+const WEIGHT_SPEC_BANDS: Record<string, [number, number]> = {
+  "under-285": [0, 300],
+  "285-300": [299, 318],
+  "300-315": [314, 333],
+  "over-315": [329, Infinity],
+};
+
 // Ordered: the LAST relaxable filter is dropped first when candidates run low.
 const HARD_FILTERS: HardFilter[] = [
   {
+    // Active arm pain rules out stiff frames AND very light ones — too little
+    // mass means the arm absorbs the shock the racquet doesn't.
     name: "armInjury",
     relaxable: false,
     test: (r, a) =>
-      a.armInjury !== "current" ||
-      (r.stiffnessRA !== null && r.stiffnessRA <= 65),
+      str(a, "armInjury") !== "current" ||
+      (r.stiffnessRA !== null &&
+        r.stiffnessRA <= 64 &&
+        r.weightGrams >= 295),
   },
   {
     name: "beginnerHeadSize",
     relaxable: true,
-    test: (r, a) => a.skill !== "beginner" || r.headSizeIn2 >= 100,
+    test: (r, a) => str(a, "skill") !== "beginner" || r.headSizeIn2 >= 100,
   },
   {
-    name: "skillWeight",
+    name: "skillSwingWeight",
     relaxable: true,
     test: (r, a) => {
-      const band = SKILL_BANDS[a.skill ?? ""];
+      const band = skillSwingBand(a);
       if (!band) return true;
       return r.weightGrams >= band[0] && r.weightGrams <= band[1];
     },
   },
   {
-    name: "weightPref",
+    name: "weightSpec",
     relaxable: true,
     test: (r, a) => {
-      const band = WEIGHT_BANDS[a.weightPref ?? ""];
-      if (!band) return true; // no-preference
+      const band = WEIGHT_SPEC_BANDS[str(a, "weightSpec") ?? ""];
+      if (!band) return true; // no-preference or gate closed
       return r.weightGrams >= band[0] && r.weightGrams <= band[1];
     },
   },
+  {
+    name: "fitnessCap",
+    relaxable: true,
+    test: (r, a) => {
+      const fitness = num(a, "fitness");
+      return fitness === undefined || fitness > 2 || r.weightGrams <= 305;
+    },
+  },
 ];
+
+function skillSwingBand(a: Answers): [number, number] | null {
+  const band = SKILL_BANDS[str(a, "skill") ?? ""];
+  if (!band) return null;
+  const shift = SWING_SHIFT[str(a, "swing") ?? ""] ?? 0;
+  return [Math.max(0, band[0] + shift), band[1] + shift];
+}
+
+/**
+ * Per-selection contributions of the struggles multi-select. The question's
+ * total is normalised by the number of selections (weight × matched/selected),
+ * so ticking three boxes never outweighs a question answered with one.
+ */
+function strugglesScore(r: Racket, selections: string[]): number {
+  if (selections.length === 0) return 0;
+  const open = /16x1[89]/.test(r.stringPattern);
+  const dense = /18x20|16x20/.test(r.stringPattern);
+  let total = 0;
+  for (const struggle of selections) {
+    switch (struggle) {
+      case "low-power":
+        if (r.headSizeIn2 >= 100) total += 2;
+        if (r.stiffnessRA !== null && r.stiffnessRA >= 67) total += 1;
+        if (open) total += 1;
+        break;
+      case "flies-long":
+        if (dense) total += 2;
+        if (r.headSizeIn2 <= 100) total += 1;
+        if (r.stiffnessRA !== null && r.stiffnessRA <= 65) total += 1;
+        break;
+      case "off-center":
+        if (r.headSizeIn2 >= 102) total += 2;
+        break;
+      case "low-spin":
+        if (open) total += 2;
+        break;
+      case "arm-fatigue":
+        if (r.weightGrams <= 295) total += 1;
+        if (r.swingweight !== null && r.swingweight <= 315) total += 1;
+        if (r.stiffnessRA !== null && r.stiffnessRA <= 65) total += 1;
+        break;
+      case "unstable":
+        if (r.weightGrams >= 300) total += 1;
+        if (r.swingweight !== null && r.swingweight >= 320) total += 1;
+        break;
+      // "nothing" contributes zero by design.
+    }
+  }
+  return total / selections.length;
+}
 
 function score(r: Racket, a: Answers): number {
   let s = 0;
@@ -71,44 +171,84 @@ function score(r: Racket, a: Answers): number {
   const dense = /18x20|16x20/.test(r.stringPattern);
 
   // Keep relaxed-away hard constraints influencing the ranking.
-  const weightBand = WEIGHT_BANDS[a.weightPref ?? ""];
-  if (weightBand && r.weightGrams >= weightBand[0] && r.weightGrams <= weightBand[1]) {
+  const specBand = WEIGHT_SPEC_BANDS[str(a, "weightSpec") ?? ""];
+  if (specBand && r.weightGrams >= specBand[0] && r.weightGrams <= specBand[1]) {
     s += 3;
   }
-  const skillBand = SKILL_BANDS[a.skill ?? ""];
+  const skillBand = skillSwingBand(a);
   if (skillBand && r.weightGrams >= skillBand[0] && r.weightGrams <= skillBand[1]) {
     s += 2;
   }
 
-  if (a.powerControl === "power") {
-    if (r.headSizeIn2 >= 102) s += 2;
-    if (open) s += 1;
-    if (r.stiffnessRA !== null && r.stiffnessRA >= 67) s += 1;
-  } else if (a.powerControl === "control") {
-    if (r.headSizeIn2 <= 100) s += 2;
-    if (dense) s += 1;
-    if (r.stiffnessRA !== null && r.stiffnessRA <= 65) s += 1;
+  // Scales: distance from the neutral midpoint is the weight multiplier, so a
+  // 4 counts half as strongly as a 5 and a 3 counts for nothing.
+  const powerControl = num(a, "powerControl");
+  const pcMag = scaleMagnitude(powerControl);
+  if (powerControl !== undefined && pcMag > 0) {
+    if (powerControl > SCALE_NEUTRAL) {
+      if (r.headSizeIn2 >= 102) s += 2 * pcMag;
+      if (open) s += 1 * pcMag;
+      if (r.stiffnessRA !== null && r.stiffnessRA >= 67) s += 1 * pcMag;
+    } else {
+      if (r.headSizeIn2 <= 100) s += 2 * pcMag;
+      if (dense) s += 1 * pcMag;
+      if (r.stiffnessRA !== null && r.stiffnessRA <= 65) s += 1 * pcMag;
+    }
   }
 
-  if (a.headSizePref === "midsize" && r.headSizeIn2 <= 98) s += 2;
-  if (a.headSizePref === "midplus" && r.headSizeIn2 >= 99 && r.headSizeIn2 <= 102) s += 2;
-  if (a.headSizePref === "oversize" && r.headSizeIn2 >= 104) s += 2;
+  const aggression = num(a, "aggression");
+  const agMag = scaleMagnitude(aggression);
+  if (aggression !== undefined && agMag > 0) {
+    if (aggression > SCALE_NEUTRAL) {
+      if (r.swingweight !== null && r.swingweight >= 320) s += 1 * agMag;
+      if (r.weightGrams >= 300) s += 1 * agMag;
+    } else {
+      if (r.weightGrams <= 305) s += 1 * agMag;
+      if (r.swingweight !== null && r.swingweight <= 315) s += 1 * agMag;
+    }
+  }
 
-  if (a.stringPattern === "open" && open) s += 2;
-  if (a.stringPattern === "dense" && dense) s += 2;
+  s += strugglesScore(r, arr(a, "struggles"));
 
-  if (a.style === "baseline" && r.swingweight !== null && r.swingweight >= 320) s += 1;
-  if (a.style === "serve-volley" && r.balancePoints !== null && r.balancePoints <= -5) s += 1;
-  if (a.style === "counterpuncher" && r.weightGrams <= 315) s += 1;
+  const swing = str(a, "swing");
+  if (swing === "racquet-power") {
+    if (r.weightGrams <= 295) s += 2;
+    if (r.headSizeIn2 >= 102) s += 1;
+  } else if (swing === "self-power") {
+    if (r.weightGrams >= 300) s += 1;
+    if (r.headSizeIn2 <= 100) s += 1;
+  }
 
-  if (a.armInjury === "past" && r.stiffnessRA !== null && r.stiffnessRA <= 67) s += 2;
+  const headSizePref = str(a, "headSizePref");
+  if (headSizePref === "midsize" && r.headSizeIn2 <= 98) s += 2;
+  if (headSizePref === "midplus" && r.headSizeIn2 >= 99 && r.headSizeIn2 <= 102) s += 2;
+  if (headSizePref === "oversize" && r.headSizeIn2 >= 104) s += 2;
 
-  // Detailed-mode questions.
-  if (a.swingSpeed === "compact" && r.weightGrams <= 295 && r.headSizeIn2 >= 102) s += 2;
-  if (a.swingSpeed === "fast" && r.weightGrams >= 300) s += 1;
-  if (a.swingSpeed === "very-fast" && r.weightGrams >= 305 && r.headSizeIn2 <= 100) s += 2;
-  if (a.spinStyle === "heavy-topspin" && open) s += 2;
-  if (a.spinStyle === "flat" && dense) s += 1;
+  const stringPattern = str(a, "stringPattern");
+  if (stringPattern === "open" && open) s += 2;
+  if (stringPattern === "dense" && dense) s += 2;
+
+  const style = str(a, "style");
+  if (style === "baseline" && r.swingweight !== null && r.swingweight >= 320) s += 1;
+  if (style === "serve-volley" && r.balancePoints !== null && r.balancePoints <= -5) s += 1;
+  if (style === "counterpuncher" && r.weightGrams <= 315) s += 1;
+
+  const armInjury = str(a, "armInjury");
+  if (
+    (armInjury === "past" || armInjury === "occasional") &&
+    r.stiffnessRA !== null &&
+    r.stiffnessRA <= 66
+  ) {
+    s += 2;
+  }
+
+  const spinStyle = str(a, "spinStyle");
+  if (spinStyle === "heavy-topspin" && open) s += 2;
+  if (spinStyle === "flat" && dense) s += 1;
+
+  // Surface is deliberately a near-zero tiebreaker: club players keep the same
+  // frame on every surface; clay only mildly rewards spin-friendly patterns.
+  if (arr(a, "courtType").includes("clay") && open) s += 0.5;
 
   return s;
 }

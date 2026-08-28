@@ -50,12 +50,18 @@ const WORST_CASES: { name: string; answers: Answers }[] = [
     answers: { skill: "beginner", armInjury: "current" },
   },
   {
-    name: "beginner preferring a light racquet",
-    answers: { skill: "beginner", armInjury: "none", weightPref: "light" },
+    name: "beginner with a racquet-powered swing",
+    answers: { skill: "beginner", armInjury: "none", swing: "racquet-power" },
   },
   {
-    name: "injured player preferring a light racquet",
-    answers: { skill: "intermediate", armInjury: "current", weightPref: "light" },
+    name: "injured player wanting a light frame",
+    answers: {
+      skill: "intermediate",
+      armInjury: "current",
+      specKnowledge: "yes",
+      weightSpec: "under-285",
+      fitness: 2,
+    },
   },
 ];
 
