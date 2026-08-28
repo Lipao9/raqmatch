@@ -26,6 +26,12 @@ export const quizRuns = pgTable(
     locale: text("locale").notNull(),
     mode: text("mode").notNull(),
     answers: jsonb("answers").$type<Answers>().notNull(),
+    /**
+     * Catalog size after the locale availability filter, before the prefilter.
+     * Nullable because rows written before the pt-BR availability filter
+     * existed genuinely do not know it.
+     */
+    poolSize: integer("pool_size"),
     candidateCount: integer("candidate_count").notNull(),
     /** ok | no_candidates | failed */
     status: text("status").notNull(),

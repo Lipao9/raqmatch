@@ -93,6 +93,23 @@ export function getOffer(racketId: string, store: StoreKey): Offer | null {
 }
 
 /**
+ * Racquets that can actually be bought at a store — the availability bar the
+ * pt-BR recommendation pool is filtered on. A `variant_spec` offer does not
+ * count: a Team/Lite/Tour sibling in stock is not the recommended frame being
+ * purchasable (see `matchKind` above), so recommending on its strength would
+ * send the player to a different racquet.
+ */
+export function availableRacketIds(store: StoreKey): Set<string> {
+  const ids = new Set<string>();
+  for (const offer of index().values()) {
+    if (offer.store === store && offer.matchKind !== "variant_spec") {
+      ids.add(offer.racketId);
+    }
+  }
+  return ids;
+}
+
+/**
  * How a price is only shown while it is plausibly still true. Evaluated when the
  * page renders, which for the statically generated racquet pages is build time —
  * correct here, because `data/offers.json` itself only changes at build.
