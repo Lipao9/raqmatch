@@ -19,7 +19,7 @@
     "subtitle": "Answer a quiz about your level, style and preferences, and get 3 racquets picked just for you — with the why behind each one.",
     "cta": "Start the quiz",
     "ctaDetailed": "I prefer the detailed quiz",
-    "duration": "3-minute quick quiz or 7-minute detailed one",
+    "duration": "2-minute quick quiz or 6-minute detailed one",
     "stats": {
       "racquets": "racquets analyzed",
       "brands": "brands",
@@ -49,14 +49,14 @@
       "choose": "Choose this one",
       "quick": {
         "title": "Quick quiz",
-        "duration": "~3 min",
-        "description": "11 multiple-choice questions.",
-        "detail": "Great for a first recommendation: level, style and preferences."
+        "duration": "~2 min",
+        "description": "7 quick questions.",
+        "detail": "Great for a first recommendation: level, swing, style and what bothers you today."
       },
       "detailed": {
         "title": "Detailed quiz",
-        "duration": "~7 min",
-        "description": "18 questions, several free-text.",
+        "duration": "~6 min",
+        "description": "~18 questions, several free-text.",
         "detail": "Tell us about your swing, your spin, your strengths and what you want to improve — the more context, the sharper the recommendation."
       }
     },
@@ -90,33 +90,26 @@
           "baseline": "Baseliner — building points from the back",
           "serve_volley": "Serve and volley — rushing the net",
           "all_court": "All-court — adapting to the point",
-          "counterpuncher": "Counterpuncher — getting everything back"
+          "counterpuncher": "Counterpuncher — getting everything back",
+          "not_sure": "Not sure yet — still finding my game"
         }
       },
       "powerControl": {
-        "title": "What do you prioritize in a racquet?",
-        "options": {
-          "power": "Power — more pace on my shots",
-          "balanced": "A balance of power and control",
-          "control": "Control — precise shot placement"
+        "title": "Between control and power, what do you want from a racquet?",
+        "description": "3 = an even balance.",
+        "anchors": {
+          "low": "Total control",
+          "high": "Total power"
         }
       },
       "armInjury": {
         "title": "Any history of arm, elbow or shoulder injury?",
-        "description": "This influences the recommended racquet stiffness.",
+        "description": "We take this seriously: a too-light, too-stiff racquet is the classic tennis-elbow recipe.",
         "options": {
           "none": "No, never",
+          "occasional": "It aches sometimes after playing",
           "past": "In the past, but recovered",
           "current": "Current pain or active injury"
-        }
-      },
-      "weightPref": {
-        "title": "What racquet weight do you prefer?",
-        "options": {
-          "light": "Light — easy to maneuver (under 290g)",
-          "medium": "Medium — all-around balance (285-310g)",
-          "heavy": "Heavy — more stability (over 305g)",
-          "no_preference": "No preference"
         }
       },
       "headSizePref": {
@@ -153,22 +146,13 @@
         "placeholder": "E.g. Babolat Pure Drive 2021"
       },
       "courtType": {
-        "title": "What surface do you play on most?",
+        "title": "Which surfaces do you play on?",
+        "description": "Select all that apply.",
         "options": {
-          "hard": "Hard court",
           "clay": "Clay",
+          "hard": "Hard court",
           "grass": "Grass",
-          "mixed": "A mix of surfaces"
-        }
-      },
-      "swingSpeed": {
-        "title": "How fast is your swing?",
-        "description": "Faster swings reward control-oriented racquets; compact swings need help from the frame.",
-        "options": {
-          "compact": "Compact — short strokes, I need power from the racquet",
-          "moderate": "Moderate — average, balanced swing",
-          "fast": "Fast — I generate good pace myself",
-          "very_fast": "Very fast — long, aggressive swing"
+          "indoor": "Indoor"
         }
       },
       "spinStyle": {
@@ -177,7 +161,8 @@
           "heavy_topspin": "Heavy topspin — high, loaded balls",
           "moderate_spin": "Moderate spin — I mix it up",
           "flat": "Flat hitter — low, direct shots",
-          "slice": "Lots of slice — variety and low balls"
+          "slice": "Lots of slice — variety and low balls",
+          "not_sure": "Hard to say"
         }
       },
       "racquetFeel": {
@@ -194,16 +179,67 @@
         "title": "What do you most want to improve or feel is missing?",
         "placeholder": "E.g. I want more depth on my backhand and feel rushed returning fast serves"
       },
-      "physicalProfile": {
-        "title": "What's your physical profile and conditioning?",
-        "description": "Height, strength, endurance, age — whatever feels relevant.",
-        "placeholder": "E.g. 5'10\", 34 years old, good conditioning, but my shoulder aches after long matches"
-      },
       "anythingElse": {
         "title": "Anything else we should know?",
-        "placeholder": "E.g. I play local league tournaments and string with multifilament at 53 lbs"
+        "placeholder": "E.g. 5'10\", 34 years old, I play local league tournaments and string multifilament at 53 lbs"
+      },
+      "swing": {
+        "title": "Where does your shot power come from?",
+        "description": "The most important question after level: it sets how much work the racquet must do for you.",
+        "options": {
+          "racquet_power": "The racquet — my swing is short, I need help from the frame",
+          "mixed": "A bit of both — medium swing",
+          "self_power": "Me — long, fast swing, I generate my own power"
+        }
+      },
+      "aggression": {
+        "title": "How aggressive is your game?",
+        "anchors": {
+          "low": "Consistency — I wait for errors",
+          "high": "All-out attack — I hunt winners"
+        }
+      },
+      "fitness": {
+        "title": "How strong is your body and conditioning?",
+        "description": "A racquet too heavy for your body taxes you late in matches.",
+        "anchors": {
+          "low": "Below average",
+          "high": "Very strong"
+        }
+      },
+      "struggles": {
+        "title": "What bothers you most in your game today?",
+        "description": "Today's frustrations say more about the right racquet than any preference.",
+        "options": {
+          "low_power": "My shots come out weak or short",
+          "flies_long": "My shots fly long — I lack control",
+          "off_center": "I mishit outside the sweet spot a lot",
+          "low_spin": "I can't generate enough spin",
+          "arm_fatigue": "My arm tires or aches late in sessions",
+          "unstable": "The racquet twists against heavy balls",
+          "nothing": "Nothing — my game feels balanced"
+        }
+      },
+      "specKnowledge": {
+        "title": "Do you know your way around racquet specs?",
+        "options": {
+          "yes": "Yes — I want a say in weight, head size and string pattern",
+          "no": "No — work it out from my answers"
+        }
+      },
+      "weightSpec": {
+        "title": "What unstrung weight range are you after?",
+        "description": "Brazilian and European stores list unstrung weight; US stores list strung (~16g more).",
+        "options": {
+          "under_285": "Up to 285g — light",
+          "285_300": "285–300g — medium",
+          "300_315": "300–315g — heavy",
+          "over_315": "Over 315g — very heavy",
+          "no_preference": "No preference"
+        }
       }
-    }
+    },
+    "multiHint": "Select up to {max}"
   },
   "nav": {
     "racquets": "Racquets"
