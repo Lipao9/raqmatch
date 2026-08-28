@@ -1,7 +1,7 @@
 import { after, NextResponse } from "next/server";
 import { z } from "zod";
 import { PLAIN_REL, relForKind, trackedUrl } from "@/lib/affiliate";
-import { storefrontFor } from "@/lib/offers";
+import { availableRacketIds, storefrontFor } from "@/lib/offers";
 import { recordQuizRun } from "@/lib/analytics";
 import { answersSchemaFor, quizModeSchema, type Answers } from "@/lib/answers";
 import { loadCatalog } from "@/lib/catalog";
@@ -58,9 +58,22 @@ export async function POST(req: Request) {
     );
   }
 
+  // Availability is a property of the market, not the player, so it narrows
+  // the pool before the prefilter rather than joining its relaxable filters: a
+  // pt-BR visitor is never recommended a racquet they cannot buy in Brazil,
+  // no matter how few candidates remain. /en keeps the full catalog — Tennis
+  // Warehouse can ship to that reader.
+  const pool =
+    body.locale === "pt-BR"
+      ? (() => {
+          const available = availableRacketIds("mercadolivre");
+          return loadCatalog().filter((r) => available.has(r.id));
+        })()
+      : loadCatalog();
+
   let candidates;
   try {
-    candidates = prefilter(body.answers, loadCatalog());
+    candidates = prefilter(body.answers, pool);
   } catch (error) {
     if (error instanceof InsufficientCandidatesError) {
       after(() =>
@@ -68,6 +81,7 @@ export async function POST(req: Request) {
           locale: body.locale,
           mode: body.mode,
           answers: body.answers,
+          poolSize: pool.length,
           candidateCount: 0,
           status: "no_candidates",
         }),
@@ -88,6 +102,7 @@ export async function POST(req: Request) {
         locale: body.locale,
         mode: body.mode,
         answers: body.answers,
+        poolSize: pool.length,
         candidateCount: candidates.length,
         status: "ok",
         model: result.model,
@@ -127,6 +142,7 @@ export async function POST(req: Request) {
         locale: body.locale,
         mode: body.mode,
         answers: body.answers,
+        poolSize: pool.length,
         candidateCount: candidates.length,
         status: "failed",
         errorKind:

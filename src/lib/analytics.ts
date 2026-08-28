@@ -12,6 +12,8 @@ export interface QuizRunRecord {
   locale: string;
   mode: string;
   answers: Answers;
+  /** Catalog size after the availability filter, before the prefilter. */
+  poolSize: number;
   candidateCount: number;
   status: "ok" | "no_candidates" | "failed";
   errorKind?: string | null;
@@ -33,6 +35,7 @@ export async function recordQuizRun(record: QuizRunRecord): Promise<void> {
         locale: record.locale,
         mode: record.mode,
         answers: record.answers,
+        poolSize: record.poolSize,
         candidateCount: record.candidateCount,
         status: record.status,
         errorKind: record.errorKind ?? null,

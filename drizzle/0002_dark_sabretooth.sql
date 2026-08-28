@@ -1,0 +1,1 @@
+ALTER TABLE "quiz_runs" ADD COLUMN "pool_size" integer;

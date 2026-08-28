@@ -15,6 +15,13 @@
       "when": 1787347003350,
       "tag": "0001_broken_blonde_phantom",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1787948405763,
+      "tag": "0002_dark_sabretooth",
+      "breakpoints": true
     }
   ]
 }
