@@ -2,8 +2,12 @@ import type Anthropic from "@anthropic-ai/sdk";
 import type { Answers } from "./answers";
 import type { Racket } from "./catalog";
 
+// AI_PROVIDER picks where model calls go: "gateway" routes through the Vercel
+// AI Gateway, anything else (or unset) calls the Anthropic API directly.
+export const USE_GATEWAY = process.env.AI_PROVIDER === "gateway";
+
 // Same model either way; the AI Gateway addresses it by provider/model slug.
-export const RECOMMEND_MODEL = process.env.AI_GATEWAY_API_KEY
+export const RECOMMEND_MODEL = USE_GATEWAY
   ? "anthropic/claude-haiku-4.5"
   : "claude-haiku-4-5-20251001";
 
