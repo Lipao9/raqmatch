@@ -7,6 +7,7 @@ import {
   buildUserMessage,
   RECOMMEND_MODEL,
   recommendTool,
+  USE_GATEWAY,
 } from "./prompt";
 
 export class RecommendationError extends Error {
@@ -45,14 +46,21 @@ const toolOutputSchema = z.object({
 let client: Anthropic | null = null;
 
 function getClient(): Anthropic {
-  // AI_GATEWAY_API_KEY set: route through Vercel AI Gateway (same Messages
-  // API, zero markup). Unset it to fall back to the Anthropic API directly.
-  client ??= process.env.AI_GATEWAY_API_KEY
-    ? new Anthropic({
-        apiKey: process.env.AI_GATEWAY_API_KEY,
-        baseURL: "https://ai-gateway.vercel.sh",
-      })
-    : new Anthropic(); // reads ANTHROPIC_API_KEY; throws if missing
+  if (client) return client;
+  if (USE_GATEWAY) {
+    const apiKey = process.env.AI_GATEWAY_API_KEY;
+    if (!apiKey) {
+      // Without this guard the SDK would fall back to ANTHROPIC_API_KEY and
+      // send the wrong key to the gateway, failing with an opaque 401.
+      throw new Error("AI_PROVIDER=gateway requires AI_GATEWAY_API_KEY");
+    }
+    client = new Anthropic({
+      apiKey,
+      baseURL: "https://ai-gateway.vercel.sh",
+    });
+  } else {
+    client = new Anthropic(); // reads ANTHROPIC_API_KEY; throws if missing
+  }
   return client;
 }
 
