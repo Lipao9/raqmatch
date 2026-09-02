@@ -6,10 +6,12 @@ import type { Racket } from "./catalog";
 // AI Gateway, anything else (or unset) calls the Anthropic API directly.
 export const USE_GATEWAY = process.env.AI_PROVIDER === "gateway";
 
-// Same model either way; the AI Gateway addresses it by provider/model slug.
-export const RECOMMEND_MODEL = USE_GATEWAY
-  ? "anthropic/claude-haiku-4.5"
-  : "claude-haiku-4-5-20251001";
+// AI_MODEL overrides the model verbatim, so its format must match the
+// provider: gateway slugs ("anthropic/claude-haiku-4.5") vs Anthropic model
+// ids ("claude-haiku-4-5-20251001"). Unset, both default to Haiku 4.5.
+export const RECOMMEND_MODEL =
+  process.env.AI_MODEL ||
+  (USE_GATEWAY ? "anthropic/claude-haiku-4.5" : "claude-haiku-4-5-20251001");
 
 // Static schema (no per-request candidate enum) so the compiled strict
 // schema stays cacheable server-side. IDs are validated in recommend.ts.
