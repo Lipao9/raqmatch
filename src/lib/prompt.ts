@@ -2,7 +2,10 @@ import type Anthropic from "@anthropic-ai/sdk";
 import type { Answers } from "./answers";
 import type { Racket } from "./catalog";
 
-export const RECOMMEND_MODEL = "claude-haiku-4-5-20251001";
+// Same model either way; the AI Gateway addresses it by provider/model slug.
+export const RECOMMEND_MODEL = process.env.AI_GATEWAY_API_KEY
+  ? "anthropic/claude-haiku-4.5"
+  : "claude-haiku-4-5-20251001";
 
 // Static schema (no per-request candidate enum) so the compiled strict
 // schema stays cacheable server-side. IDs are validated in recommend.ts.

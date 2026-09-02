@@ -45,7 +45,14 @@ const toolOutputSchema = z.object({
 let client: Anthropic | null = null;
 
 function getClient(): Anthropic {
-  client ??= new Anthropic(); // reads ANTHROPIC_API_KEY; throws if missing
+  // AI_GATEWAY_API_KEY set: route through Vercel AI Gateway (same Messages
+  // API, zero markup). Unset it to fall back to the Anthropic API directly.
+  client ??= process.env.AI_GATEWAY_API_KEY
+    ? new Anthropic({
+        apiKey: process.env.AI_GATEWAY_API_KEY,
+        baseURL: "https://ai-gateway.vercel.sh",
+      })
+    : new Anthropic(); // reads ANTHROPIC_API_KEY; throws if missing
   return client;
 }
 
