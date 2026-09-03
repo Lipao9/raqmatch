@@ -39,12 +39,31 @@ function scaleMagnitude(value: number | undefined): number {
   return value === undefined ? 0 : Math.abs(value - SCALE_NEUTRAL);
 }
 
+/**
+ * Bands are in STRUNG grams (the catalog's convention), ~17g above the unstrung
+ * figure Brazilian players think in. The advanced/competitive floors put the
+ * unstrung minimum near 290/295g — club-level players do not swing 280g frames,
+ * and recommending one reads as the site not knowing tennis.
+ */
 const SKILL_BANDS: Record<string, [number, number]> = {
   beginner: [0, 300],
   intermediate: [285, 315],
-  advanced: [295, Infinity],
-  competitive: [295, Infinity],
+  advanced: [305, Infinity],
+  competitive: [310, Infinity],
 };
+
+/**
+ * Static weight alone lets stability outliers through (a 310g frame swinging
+ * like 303 plays lighter than its scale weight), so higher levels also get a
+ * swingweight floor. Frames with unknown swingweight pass — absence of data is
+ * not evidence of instability.
+ */
+const SKILL_SWINGWEIGHT_FLOOR: Record<string, number> = {
+  advanced: 310,
+  competitive: 315,
+};
+
+const HIGH_SKILL = new Set(["advanced", "competitive"]);
 
 /**
  * How the swing answer shifts the skill weight band: a racquet-powered swing
@@ -92,8 +111,15 @@ const HARD_FILTERS: HardFilter[] = [
     relaxable: true,
     test: (r, a) => {
       const band = skillSwingBand(a);
-      if (!band) return true;
-      return r.weightGrams >= band[0] && r.weightGrams <= band[1];
+      if (band && (r.weightGrams < band[0] || r.weightGrams > band[1])) {
+        return false;
+      }
+      const swFloor = SKILL_SWINGWEIGHT_FLOOR[str(a, "skill") ?? ""];
+      return (
+        swFloor === undefined ||
+        r.swingweight === null ||
+        r.swingweight >= swFloor
+      );
     },
   },
   {
@@ -116,9 +142,13 @@ const HARD_FILTERS: HardFilter[] = [
 ];
 
 function skillSwingBand(a: Answers): [number, number] | null {
-  const band = SKILL_BANDS[str(a, "skill") ?? ""];
+  const skill = str(a, "skill") ?? "";
+  const band = SKILL_BANDS[skill];
   if (!band) return null;
-  const shift = SWING_SHIFT[str(a, "swing") ?? ""] ?? 0;
+  let shift = SWING_SHIFT[str(a, "swing") ?? ""] ?? 0;
+  // The advanced/competitive floor is about stability against pace, which a
+  // shorter swing does not change — never shift those floors downward.
+  if (shift < 0 && HIGH_SKILL.has(skill)) shift = 0;
   return [Math.max(0, band[0] + shift), band[1] + shift];
 }
 
@@ -212,7 +242,9 @@ function score(r: Racket, a: Answers): number {
 
   const swing = str(a, "swing");
   if (swing === "racquet-power") {
-    if (r.weightGrams <= 295) s += 2;
+    // The light-frame bonus stops at advanced/competitive: whatever powers the
+    // swing, a sub-295g frame is below what that level's pace tolerates.
+    if (r.weightGrams <= 295 && !HIGH_SKILL.has(str(a, "skill") ?? "")) s += 2;
     if (r.headSizeIn2 >= 102) s += 1;
   } else if (swing === "self-power") {
     if (r.weightGrams >= 300) s += 1;

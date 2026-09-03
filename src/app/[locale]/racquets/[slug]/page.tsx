@@ -81,6 +81,12 @@ export default async function RacquetPage({
   const storefront = storefrontFor(racket, locale);
   const storeAt = tStores(`at.${storefront?.store ?? "tennis-warehouse"}`);
   const priceBRL = storefront?.priceBRL ?? null;
+  // The USD reference only belongs next to a Tennis Warehouse button. When the
+  // buy button goes to a Brazilian store and the BRL price is missing or stale,
+  // showing no price beats a dollar figure the store will never charge.
+  const showUSD =
+    priceBRL === null &&
+    (storefront?.store ?? "tennis-warehouse") === "tennis-warehouse";
   // Through the click-tracking redirect rather than straight to the store, so
   // this statically generated page still reports which racquets get clicked.
   const href = `${trackedUrl(racket.id, "racquet_page", storefront?.store)}&locale=${locale}`;
@@ -110,7 +116,7 @@ export default async function RacquetPage({
     // The US reference price is dropped once a real Brazilian one is shown:
     // two prices in two currencies on one page is not more information, it is a
     // question about which one applies.
-    ...(priceBRL === null
+    ...(showUSD
       ? [{ label: t("specs.price"), value: `US$ ${racket.priceUSD}` }]
       : []),
   ];
@@ -239,7 +245,7 @@ export default async function RacquetPage({
                           currency: "BRL",
                           maximumFractionDigits: 0,
                         })
-                      : `US$ ${racket.priceUSD}`}
+                      : showUSD && `US$ ${racket.priceUSD}`}
                   </span>
                 </span>
                 <Button
