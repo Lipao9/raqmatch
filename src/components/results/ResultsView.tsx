@@ -18,7 +18,7 @@ interface Recommendation {
   /** Built server-side in /api/recommend so affiliate config stays off the client. */
   buyUrl: string;
   rel: string;
-  stringPick: StringPickView | null;
+  stringPicks: StringPickView[];
 }
 
 type State =
@@ -155,7 +155,7 @@ export function ResultsView({
                   buyUrl={rec.buyUrl}
                   rel={rec.rel}
                   rank={i + 1}
-                  stringPick={rec.stringPick}
+                  stringPicks={rec.stringPicks}
                 />
               </div>
             ))}

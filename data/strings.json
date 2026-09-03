@@ -8,8 +8,12 @@
       "model": "Alu Power",
       "gaugeMm": "1.25",
       "category": "poly",
-      "tags": ["control", "durability"],
-      "priceTier": "premium"
+      "tags": [
+        "control",
+        "durability"
+      ],
+      "priceTier": "premium",
+      "imageUrl": "https://http2.mlstatic.com/D_NQ_NP_838340-MLA99904112469_112025-F.jpg"
     },
     {
       "id": "solinco-confidential-130",
@@ -17,8 +21,12 @@
       "model": "Confidential",
       "gaugeMm": "1.30",
       "category": "poly",
-      "tags": ["control", "durability"],
-      "priceTier": "mid"
+      "tags": [
+        "control",
+        "durability"
+      ],
+      "priceTier": "mid",
+      "imageUrl": "https://http2.mlstatic.com/D_NQ_NP_746077-MLA99506684120_112025-F.jpg"
     },
     {
       "id": "tecnifibre-razor-code-125",
@@ -26,8 +34,11 @@
       "model": "Razor Code",
       "gaugeMm": "1.25",
       "category": "poly",
-      "tags": ["control"],
-      "priceTier": "premium"
+      "tags": [
+        "control"
+      ],
+      "priceTier": "premium",
+      "imageUrl": "https://http2.mlstatic.com/D_NQ_NP_810326-MLA83365032748_042025-F.jpg"
     },
     {
       "id": "babolat-rpm-blast-125",
@@ -35,8 +46,12 @@
       "model": "RPM Blast",
       "gaugeMm": "1.25",
       "category": "poly",
-      "tags": ["spin", "control"],
-      "priceTier": "mid"
+      "tags": [
+        "spin",
+        "control"
+      ],
+      "priceTier": "mid",
+      "imageUrl": "https://http2.mlstatic.com/D_NQ_NP_962842-MLA107465721683_022026-F.jpg"
     },
     {
       "id": "solinco-hyper-g-125",
@@ -44,8 +59,13 @@
       "model": "Hyper-G",
       "gaugeMm": "1.25",
       "category": "poly",
-      "tags": ["spin", "control", "value"],
-      "priceTier": "mid"
+      "tags": [
+        "spin",
+        "control",
+        "value"
+      ],
+      "priceTier": "mid",
+      "imageUrl": "https://http2.mlstatic.com/D_NQ_NP_741535-MLA95526016242_102025-F.jpg"
     },
     {
       "id": "luxilon-alu-power-rough-125",
@@ -53,8 +73,12 @@
       "model": "Alu Power Rough",
       "gaugeMm": "1.25",
       "category": "poly",
-      "tags": ["spin", "control"],
-      "priceTier": "premium"
+      "tags": [
+        "spin",
+        "control"
+      ],
+      "priceTier": "premium",
+      "imageUrl": "https://http2.mlstatic.com/D_NQ_NP_808527-MLA99472149948_112025-F.jpg"
     },
     {
       "id": "yonex-poly-tour-pro-125",
@@ -62,8 +86,12 @@
       "model": "Poly Tour Pro",
       "gaugeMm": "1.25",
       "category": "soft-poly",
-      "tags": ["spin", "value"],
-      "priceTier": "budget"
+      "tags": [
+        "spin",
+        "value"
+      ],
+      "priceTier": "budget",
+      "imageUrl": "https://http2.mlstatic.com/D_NQ_NP_704480-MLA106704698318_022026-F.jpg"
     },
     {
       "id": "luxilon-element-125",
@@ -71,8 +99,11 @@
       "model": "Element",
       "gaugeMm": "1.25",
       "category": "soft-poly",
-      "tags": ["control"],
-      "priceTier": "mid"
+      "tags": [
+        "control"
+      ],
+      "priceTier": "mid",
+      "imageUrl": "https://http2.mlstatic.com/D_NQ_NP_812302-MLA99513162822_112025-F.jpg"
     },
     {
       "id": "solinco-hyper-g-soft-125",
@@ -80,8 +111,11 @@
       "model": "Hyper-G Soft",
       "gaugeMm": "1.25",
       "category": "soft-poly",
-      "tags": ["spin"],
-      "priceTier": "mid"
+      "tags": [
+        "spin"
+      ],
+      "priceTier": "mid",
+      "imageUrl": "https://http2.mlstatic.com/D_NQ_NP_841167-MLA95742279756_102025-F.jpg"
     },
     {
       "id": "head-hawk-130",
@@ -89,8 +123,12 @@
       "model": "Hawk",
       "gaugeMm": "1.30",
       "category": "poly",
-      "tags": ["control", "value"],
-      "priceTier": "budget"
+      "tags": [
+        "control",
+        "value"
+      ],
+      "priceTier": "budget",
+      "imageUrl": "https://http2.mlstatic.com/D_NQ_NP_956882-MLA100000241337_112025-F.jpg"
     },
     {
       "id": "kirschbaum-max-power-130",
@@ -98,8 +136,12 @@
       "model": "Max Power",
       "gaugeMm": "1.30",
       "category": "poly",
-      "tags": ["durability", "value"],
-      "priceTier": "budget"
+      "tags": [
+        "durability",
+        "value"
+      ],
+      "priceTier": "budget",
+      "imageUrl": "https://http2.mlstatic.com/D_NQ_NP_789101-MLA100061628737_122025-F.jpg"
     },
     {
       "id": "babolat-xcel-130",
@@ -107,8 +149,11 @@
       "model": "Xcel",
       "gaugeMm": "1.30",
       "category": "multi",
-      "tags": ["power"],
-      "priceTier": "premium"
+      "tags": [
+        "power"
+      ],
+      "priceTier": "premium",
+      "imageUrl": "https://http2.mlstatic.com/D_NQ_NP_767682-MLA99559701522_122025-F.jpg"
     },
     {
       "id": "wilson-nxt-power-126",
@@ -116,8 +161,11 @@
       "model": "NXT Power",
       "gaugeMm": "1.26",
       "category": "multi",
-      "tags": ["power"],
-      "priceTier": "premium"
+      "tags": [
+        "power"
+      ],
+      "priceTier": "premium",
+      "imageUrl": "https://http2.mlstatic.com/D_NQ_NP_703752-MLA99527274132_122025-F.jpg"
     },
     {
       "id": "wilson-sensation-130",
@@ -125,8 +173,11 @@
       "model": "Sensation",
       "gaugeMm": "1.30",
       "category": "multi",
-      "tags": ["value"],
-      "priceTier": "budget"
+      "tags": [
+        "value"
+      ],
+      "priceTier": "budget",
+      "imageUrl": "https://http2.mlstatic.com/D_NQ_NP_969447-MLA99475095414_112025-F.jpg"
     },
     {
       "id": "babolat-vs-touch-125",
@@ -134,8 +185,11 @@
       "model": "VS Touch (tripa natural)",
       "gaugeMm": "1.25",
       "category": "natural-gut",
-      "tags": ["power"],
-      "priceTier": "premium"
+      "tags": [
+        "power"
+      ],
+      "priceTier": "premium",
+      "imageUrl": "https://http2.mlstatic.com/D_NQ_NP_646239-MLA99448677076_112025-F.jpg"
     }
   ]
 }

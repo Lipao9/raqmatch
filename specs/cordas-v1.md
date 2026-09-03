@@ -40,6 +40,9 @@ resultado do quiz (personalizado pelo perfil do jogador).
    `data/string-offers.json` (listagem + preço + `affiliateUrl` opaco
    `meli.la/...`, rot semanal). Degradação em uma direção só:
    afiliado mintado → listagem decorada → busca decorada → busca crua.
+   A foto de cada corda é a primeira imagem do produto de catálogo do ML
+   (`http2.mlstatic.com`, hotlink com `unoptimized`, igual às raquetes com a
+   TW). O CDN responde 405 a HEAD — qualquer checagem precisa ser GET.
 
 5. **Clique registrado com `product_kind`.** Rota irmã
    `/api/go/string/[stringId]` (segmento literal, não param de query — o
@@ -50,11 +53,11 @@ resultado do quiz (personalizado pelo perfil do jogador).
 
 6. **Perfil do jogador entra quando existe.** No quiz, `/api/recommend` deriva
    `StringProfile` das respostas (armInjury/struggles → conforto; skill →
-   categoria; spinStyle → spin; powerControl → tensão) e anexa **um** pick por
-   raquete ao payload (o card já é denso; a lista completa vive na página da
-   raquete). Na página estática não há perfil: o frame representa seu comprador
-   típico. Lesão ativa **exclui** poli rígido em vez de só pontuar contra —
-   mesma postura do prefilter com `armInjury === "current"`.
+   categoria; spinStyle → spin; powerControl → tensão) e anexa os picks (até 3,
+   com foto) por raquete ao payload. Na página estática não há perfil: o frame
+   representa seu comprador típico. Lesão ativa **exclui** poli rígido em vez
+   de só pontuar contra — mesma postura do prefilter com
+   `armInjury === "current"`.
 
 7. **Botão de compra só em pt-BR.** Oferta de corda só existe no ML; para o
    leitor `/en` a página mostra o conselho (pick + tensão, que é o valor SEO)
