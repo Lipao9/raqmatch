@@ -11,6 +11,23 @@
     "priceChecked": "Menor preço entre os vendedores {at}, verificado em {date}. Pode variar.",
     "priceReference": "Preço de referência {at}, em dólar. Pode variar."
   },
+  "strings": {
+    "sectionTitle": "Cordas recomendadas",
+    "sectionHint": "Sugestões baseadas nas especificações deste frame — ajuste fino com o seu encordoador.",
+    "reasons": {
+      "comfort": "Conforto para o braço",
+      "spin": "Mais spin",
+      "control": "Controle e precisão",
+      "value": "Custo-benefício",
+      "durability": "Durabilidade",
+      "allround": "Equilíbrio geral"
+    },
+    "gauge": "{gauge} mm",
+    "tensionLabel": "Tensão sugerida",
+    "tensionRange": "{lowKg}–{highKg} kg ({lowLbs}–{highLbs} lbs)",
+    "resultLabel": "Corda para encordoar",
+    "tensionDisclaimer": "A faixa de tensão é um ponto de partida: o encordoador ajusta pelo seu jogo, pelo clima e pela máquina."
+  },
   "landing": {
     "metaTitle": "RaqMatch — a raquete de tênis ideal para o seu jogo",
     "metaDescription": "Responda um quiz sobre seu nível, estilo e preferências e receba 3 raquetes de tênis escolhidas sob medida, com o porquê de cada uma.",

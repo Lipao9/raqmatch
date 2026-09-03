@@ -73,7 +73,20 @@ export const outboundClicks = pgTable(
     createdAt: timestamp("created_at", { withTimezone: true })
       .defaultNow()
       .notNull(),
+    /**
+     * Catalog id of the clicked product. The column name predates strings:
+     * for `product_kind = 'string'` rows this holds the string id. Renaming it
+     * to `product_id` would be truer but costs a rename migration for zero
+     * analytical gain — every query already filters on `product_kind` first.
+     */
     racketId: text("racket_id").notNull(),
+    /**
+     * 'string' for string clicks. Null means racquet: rows written before
+     * strings existed genuinely did not know the distinction, and backfilling
+     * 'racket' would invent certainty the rows never had — same stance as
+     * `store` below.
+     */
+    productKind: text("product_kind"),
     /** Hostname of the destination store, e.g. tennis-warehouse.com. */
     merchant: text("merchant").notNull(),
     /**

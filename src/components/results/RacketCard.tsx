@@ -14,7 +14,20 @@ import {
 import { Link } from "@/i18n/navigation";
 import type { Racket } from "@/lib/catalog";
 import { storefrontFor } from "@/lib/offers";
+// Type-only, so the strings catalog JSON never enters the client bundle.
+import type { StringReason, TensionRange } from "@/lib/string-advice";
 import { weightLabel } from "@/lib/weight";
+
+/** The one string suggestion /api/recommend attaches to each pick. */
+export interface StringPickView {
+  name: string;
+  gaugeMm: string;
+  reason: StringReason;
+  tension: TensionRange;
+  /** Null for locales with no string store (/en) — advice only, no button. */
+  buyUrl: string | null;
+  rel: string;
+}
 
 interface RacketCardProps {
   racket: Racket;
@@ -22,6 +35,7 @@ interface RacketCardProps {
   buyUrl: string;
   rel: string;
   rank: number;
+  stringPick?: StringPickView | null;
 }
 
 export function RacketCard({
@@ -30,9 +44,11 @@ export function RacketCard({
   buyUrl,
   rel,
   rank,
+  stringPick,
 }: RacketCardProps) {
   const t = useTranslations("results");
   const tStores = useTranslations("stores");
+  const tStrings = useTranslations("strings");
   const format = useFormatter();
   const locale = useLocale();
   const isBestMatch = rank === 1;
@@ -108,6 +124,34 @@ export function RacketCard({
           <p className="text-sm leading-relaxed text-foreground/90">
             {justification}
           </p>
+          {stringPick && (
+            <div className="flex flex-wrap items-baseline gap-x-2 gap-y-1 rounded-lg bg-accent/30 px-3 py-2 text-xs">
+              <span className="text-muted-foreground">
+                {tStrings("resultLabel")}:
+              </span>
+              <span className="font-medium">
+                {stringPick.name} {stringPick.gaugeMm}
+              </span>
+              <span className="tabular-nums text-muted-foreground">
+                {tStrings("tensionRange", {
+                  lowKg: stringPick.tension.kg[0],
+                  highKg: stringPick.tension.kg[1],
+                  lowLbs: stringPick.tension.lbs[0],
+                  highLbs: stringPick.tension.lbs[1],
+                })}
+              </span>
+              {stringPick.buyUrl && (
+                <a
+                  href={stringPick.buyUrl}
+                  target="_blank"
+                  rel={stringPick.rel}
+                  className="font-medium text-primary underline-offset-2 hover:underline"
+                >
+                  {tStores("viewAt", { at: tStores("at.mercadolivre") })}
+                </a>
+              )}
+            </div>
+          )}
         </div>
       </CardContent>
       <CardFooter className="flex flex-wrap items-center justify-between gap-3 border-t border-border/60 pt-4">

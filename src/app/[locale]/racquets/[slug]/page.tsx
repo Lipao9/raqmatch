@@ -5,6 +5,7 @@ import { getFormatter, getTranslations, setRequestLocale } from "next-intl/serve
 import { ArrowRight, ExternalLink } from "lucide-react";
 import { AdSlot } from "@/components/ads/AdSlot";
 import { CourtLines } from "@/components/CourtLines";
+import { RecommendedStrings } from "@/components/racquet/RecommendedStrings";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
 import { Badge } from "@/components/ui/badge";
@@ -314,6 +315,11 @@ export default async function RacquetPage({
             ))}
           </dl>
         </section>
+
+        {/* Between the specs and the ad: it answers the question a spec reader
+            has next ("what do I string it with"), and its buy buttons are
+            affiliate clicks — worth keeping above the ad slot. */}
+        <RecommendedStrings racket={racket} locale={locale} />
 
         {/* After the spec table, which is what organic visitors came for, and
             well below the buy button in the header — the affiliate click is worth
