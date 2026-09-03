@@ -67,6 +67,42 @@ test("a racquet-powered swing shifts the skill weight band down", () => {
   assert.ok(!survivors.some((r) => r.id === atOldBandEdge.id));
 });
 
+test("competitive level filters out light and low-swingweight frames", () => {
+  const specFrames = Array.from({ length: 10 }, () =>
+    racket({ weightGrams: 318, swingweight: 325 }),
+  );
+  // 295g strung ≈ 280g unstrung — the frame that triggered this rule.
+  const tooLight = racket({ weightGrams: 295, swingweight: 303 });
+  // Heavy on the scale but swings like a lighter frame.
+  const lowSW = racket({ weightGrams: 312, swingweight: 305 });
+  // Unknown swingweight is not held against a heavy-enough frame.
+  const noSW = racket({ weightGrams: 315, swingweight: null });
+
+  const survivors = prefilter({ skill: "competitive" }, [
+    ...specFrames,
+    tooLight,
+    lowSW,
+    noSW,
+  ]);
+  const ids = new Set(survivors.map((r) => r.id));
+  assert.ok(!ids.has(tooLight.id), "295g strung is below the competitive floor");
+  assert.ok(!ids.has(lowSW.id), "SW 305 is below the competitive floor");
+  assert.ok(ids.has(noSW.id), "unknown swingweight still passes");
+});
+
+test("racquet-power never lowers the advanced/competitive floor", () => {
+  const specFrames = Array.from({ length: 10 }, () =>
+    racket({ weightGrams: 318, swingweight: 325 }),
+  );
+  // Would pass a [300, ∞] band if the -10 shift applied to competitive.
+  const light = racket({ weightGrams: 302, swingweight: 320 });
+  const survivors = prefilter(
+    { skill: "competitive", swing: "racquet-power" },
+    [...specFrames, light],
+  );
+  assert.ok(!survivors.some((r) => r.id === light.id));
+});
+
 test("weightSpec band filters in strung grams", () => {
   const inBand = Array.from({ length: 10 }, () =>
     racket({ weightGrams: 298 }), // ~282g unstrung

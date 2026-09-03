@@ -1,6 +1,7 @@
 import type Anthropic from "@anthropic-ai/sdk";
 import type { Answers } from "./answers";
 import type { Racket } from "./catalog";
+import { weightFor } from "./weight";
 
 // AI_PROVIDER picks where model calls go: "gateway" routes through the Vercel
 // AI Gateway, anything else (or unset) calls the Anthropic API directly.
@@ -58,6 +59,14 @@ export function buildSystemPrompt(locale: "pt-BR" | "en"): string {
     "You are an expert tennis racquet advisor.",
     "From the numbered candidate list in the user message, pick exactly 3 racquets best suited to the player profile, ordered best-first.",
     `Justify each pick in 2-3 sentences written in ${LANGUAGE_NAMES[locale]}, referencing the player's specific answers (skill, style, arm health) and the racquet's concrete specs.`,
+    // Spec conventions, spelled out because they are exactly where a fluent
+    // justification goes confidently wrong: quoting the weight in the other
+    // market's convention, or calling a head-light balance head-heavy.
+    locale === "pt-BR"
+      ? "Candidate weights are UNSTRUNG grams (the Brazilian retail convention, the same figure shown to the player) — quote them exactly as given, never convert or adjust them. A '~' prefix means the figure is approximate."
+      : "Candidate weights are STRUNG grams — quote them exactly as given, never convert them to unstrung.",
+    "Balance: 'pts HL' means points HEAD-LIGHT (mass toward the handle); 'pts HH' means points head-heavy. Never describe an HL racquet as head-heavy.",
+    "String patterns: 16x18 and 16x19 are OPEN (spin-friendly, livelier); 18x20 and 16x20 are DENSE (control-oriented). Never call a 16x19 dense.",
     "Answers on 1-5 scales use 3 as neutral; treat distance from 3 as intensity.",
     "The struggles answer lists the player's stated problems — address them explicitly in the justifications.",
     "When the profile includes free-text answers in the player's own words, weigh them heavily and echo their concerns in the justifications.",
@@ -107,12 +116,15 @@ function formatValue(key: string, value: string | string[] | number): string {
   return value;
 }
 
-function racketLine(r: Racket, index: number): string {
+function racketLine(r: Racket, index: number, locale: string): string {
+  // The same figure and convention the result card's badge shows, so the
+  // justification text can never contradict the tags next to it.
+  const w = weightFor(r, locale);
   const parts = [
     `${index + 1}. ${r.id}`,
     `${r.brand} ${r.model}`,
     `${r.headSizeIn2} in²`,
-    `${r.weightGrams}g strung`,
+    `${w.exact ? "" : "~"}${w.grams}g ${w.convention}`,
     r.stiffnessRA !== null ? `RA ${r.stiffnessRA}` : "RA n/a",
     r.stringPattern,
     r.swingweight !== null ? `SW ${r.swingweight}` : "SW n/a",
@@ -124,6 +136,7 @@ function racketLine(r: Racket, index: number): string {
 export function buildUserMessage(
   candidates: Racket[],
   answers: Answers,
+  locale: "pt-BR" | "en",
 ): string {
   const profile = Object.entries(answers)
     .filter(
@@ -132,7 +145,7 @@ export function buildUserMessage(
     .map(([k, v]) => `- ${ANSWER_LABELS[k] ?? k}: ${formatValue(k, v)}`)
     .join("\n");
 
-  const list = candidates.map(racketLine).join("\n");
+  const list = candidates.map((r, i) => racketLine(r, i, locale)).join("\n");
 
   return `Player profile:\n${profile}\n\nCandidate racquets (id | name | head size | weight | stiffness | pattern | swingweight | balance):\n${list}`;
 }

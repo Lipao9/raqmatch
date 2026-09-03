@@ -128,7 +128,7 @@ export async function recommend(
   locale: "pt-BR" | "en",
 ): Promise<RecommendResult> {
   const validIds = new Set(candidates.map((r) => r.id));
-  const userMessage = buildUserMessage(candidates, answers);
+  const userMessage = buildUserMessage(candidates, answers, locale);
   const messages: Anthropic.MessageParam[] = [
     { role: "user", content: userMessage },
   ];

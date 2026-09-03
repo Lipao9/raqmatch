@@ -42,6 +42,12 @@ export function RacketCard({
   const storefront = storefrontFor(racket, locale);
   const storeAt = tStores(`at.${storefront?.store ?? "tennis-warehouse"}`);
   const priceBRL = storefront?.priceBRL ?? null;
+  // The USD reference only makes sense next to a Tennis Warehouse button. When
+  // the button goes to a Brazilian store and the BRL price is missing or stale,
+  // no price beats a dollar figure the store will never charge.
+  const showUSD =
+    priceBRL === null &&
+    (storefront?.store ?? "tennis-warehouse") === "tennis-warehouse";
 
   const specs = [
     `${racket.headSizeIn2} in²`,
@@ -120,7 +126,7 @@ export function RacketCard({
                   currency: "BRL",
                   maximumFractionDigits: 0,
                 })
-              : `US$ ${racket.priceUSD}`}
+              : showUSD && `US$ ${racket.priceUSD}`}
           </span>
         </span>
         <div className="flex items-center gap-2">
