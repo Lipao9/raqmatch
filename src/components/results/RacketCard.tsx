@@ -18,10 +18,11 @@ import { storefrontFor } from "@/lib/offers";
 import type { StringReason, TensionRange } from "@/lib/string-advice";
 import { weightLabel } from "@/lib/weight";
 
-/** The one string suggestion /api/recommend attaches to each pick. */
+/** A string suggestion /api/recommend attaches to each pick. */
 export interface StringPickView {
   name: string;
   gaugeMm: string;
+  imageUrl: string;
   reason: StringReason;
   tension: TensionRange;
   /** Null for locales with no string store (/en) — advice only, no button. */
@@ -35,7 +36,7 @@ interface RacketCardProps {
   buyUrl: string;
   rel: string;
   rank: number;
-  stringPick?: StringPickView | null;
+  stringPicks?: StringPickView[];
 }
 
 export function RacketCard({
@@ -44,7 +45,7 @@ export function RacketCard({
   buyUrl,
   rel,
   rank,
-  stringPick,
+  stringPicks,
 }: RacketCardProps) {
   const t = useTranslations("results");
   const tStores = useTranslations("stores");
@@ -124,32 +125,54 @@ export function RacketCard({
           <p className="text-sm leading-relaxed text-foreground/90">
             {justification}
           </p>
-          {stringPick && (
-            <div className="flex flex-wrap items-baseline gap-x-2 gap-y-1 rounded-lg bg-accent/30 px-3 py-2 text-xs">
+          {stringPicks && stringPicks.length > 0 && (
+            <div className="flex flex-col gap-1.5 rounded-lg bg-accent/30 px-3 py-2 text-xs">
               <span className="text-muted-foreground">
                 {tStrings("resultLabel")}:
               </span>
-              <span className="font-medium">
-                {stringPick.name} {stringPick.gaugeMm}
-              </span>
-              <span className="tabular-nums text-muted-foreground">
-                {tStrings("tensionRange", {
-                  lowKg: stringPick.tension.kg[0],
-                  highKg: stringPick.tension.kg[1],
-                  lowLbs: stringPick.tension.lbs[0],
-                  highLbs: stringPick.tension.lbs[1],
-                })}
-              </span>
-              {stringPick.buyUrl && (
-                <a
-                  href={stringPick.buyUrl}
-                  target="_blank"
-                  rel={stringPick.rel}
-                  className="font-medium text-primary underline-offset-2 hover:underline"
-                >
-                  {tStores("viewAt", { at: tStores("at.mercadolivre") })}
-                </a>
-              )}
+              <ul className="flex flex-col gap-1.5">
+                {stringPicks.map((pick) => (
+                  <li
+                    key={pick.name}
+                    className="flex flex-wrap items-center gap-x-2 gap-y-1"
+                  >
+                    <span className="relative size-7 shrink-0 rounded bg-accent/50">
+                      <Image
+                        src={pick.imageUrl}
+                        alt={pick.name}
+                        fill
+                        sizes="28px"
+                        className="object-contain p-0.5"
+                        unoptimized
+                      />
+                    </span>
+                    <span className="font-medium">
+                      {pick.name} {pick.gaugeMm}
+                    </span>
+                    <span className="text-muted-foreground">
+                      {tStrings(`reasons.${pick.reason}`)}
+                    </span>
+                    <span className="tabular-nums text-muted-foreground">
+                      {tStrings("tensionRange", {
+                        lowKg: pick.tension.kg[0],
+                        highKg: pick.tension.kg[1],
+                        lowLbs: pick.tension.lbs[0],
+                        highLbs: pick.tension.lbs[1],
+                      })}
+                    </span>
+                    {pick.buyUrl && (
+                      <a
+                        href={pick.buyUrl}
+                        target="_blank"
+                        rel={pick.rel}
+                        className="font-medium text-primary underline-offset-2 hover:underline"
+                      >
+                        {tStores("viewAt", { at: tStores("at.mercadolivre") })}
+                      </a>
+                    )}
+                  </li>
+                ))}
+              </ul>
             </div>
           )}
         </div>

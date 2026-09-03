@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { getFormatter, getTranslations } from "next-intl/server";
 import { ExternalLink } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
@@ -52,27 +53,39 @@ export async function RecommendedStrings({
               key={pick.string.id}
               className="flex flex-col gap-3 rounded-xl border border-border/60 p-4 sm:flex-row sm:items-center sm:justify-between"
             >
-              <div className="flex flex-col gap-1.5">
-                <div className="flex flex-wrap items-center gap-2">
-                  <span className="font-heading font-semibold">
-                    {pick.string.brand} {pick.string.model}
-                  </span>
-                  <Badge variant="secondary">
-                    {t("gauge", { gauge: pick.string.gaugeMm })}
-                  </Badge>
-                  <Badge>{t(`reasons.${pick.reason}`)}</Badge>
+              <div className="flex items-center gap-3">
+                <div className="relative size-14 shrink-0 rounded-lg bg-accent/40 p-1">
+                  <Image
+                    src={pick.string.imageUrl}
+                    alt={`${pick.string.brand} ${pick.string.model}`}
+                    fill
+                    sizes="56px"
+                    className="object-contain p-1"
+                    unoptimized
+                  />
                 </div>
-                <span className="text-xs text-muted-foreground">
-                  {t("tensionLabel")}:{" "}
-                  <span className="font-medium tabular-nums text-foreground/80">
-                    {t("tensionRange", {
-                      lowKg: pick.tension.kg[0],
-                      highKg: pick.tension.kg[1],
-                      lowLbs: pick.tension.lbs[0],
-                      highLbs: pick.tension.lbs[1],
-                    })}
+                <div className="flex flex-col gap-1.5">
+                  <div className="flex flex-wrap items-center gap-2">
+                    <span className="font-heading font-semibold">
+                      {pick.string.brand} {pick.string.model}
+                    </span>
+                    <Badge variant="secondary">
+                      {t("gauge", { gauge: pick.string.gaugeMm })}
+                    </Badge>
+                    <Badge>{t(`reasons.${pick.reason}`)}</Badge>
+                  </div>
+                  <span className="text-xs text-muted-foreground">
+                    {t("tensionLabel")}:{" "}
+                    <span className="font-medium tabular-nums text-foreground/80">
+                      {t("tensionRange", {
+                        lowKg: pick.tension.kg[0],
+                        highKg: pick.tension.kg[1],
+                        lowLbs: pick.tension.lbs[0],
+                        highLbs: pick.tension.lbs[1],
+                      })}
+                    </span>
                   </span>
-                </span>
+                </div>
               </div>
               {locale === "pt-BR" && (
                 <div className="flex items-center gap-3">

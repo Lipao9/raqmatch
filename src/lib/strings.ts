@@ -49,6 +49,12 @@ export const tennisStringSchema = z.object({
   category: z.enum(STRING_CATEGORIES),
   tags: z.array(z.enum(STRING_TAGS)),
   priceTier: z.enum(["budget", "mid", "premium"]),
+  /**
+   * First carousel picture of the Mercado Livre catalog product — the same
+   * hotlink-and-`unoptimized` arrangement the racquet images use with Tennis
+   * Warehouse. The CDN rejects HEAD (405), so any checker must probe with GET.
+   */
+  imageUrl: z.string().url(),
 });
 
 export type TennisString = z.infer<typeof tennisStringSchema>;
