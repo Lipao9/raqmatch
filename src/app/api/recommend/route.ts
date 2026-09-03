@@ -1,6 +1,16 @@
 import { after, NextResponse } from "next/server";
 import { z } from "zod";
-import { PLAIN_REL, relForKind, trackedUrl } from "@/lib/affiliate";
+import {
+  PLAIN_REL,
+  relForKind,
+  trackedStringUrl,
+  trackedUrl,
+} from "@/lib/affiliate";
+import { resolveStringLink } from "@/lib/strings";
+import {
+  stringAdviceFor,
+  stringProfileFromAnswers,
+} from "@/lib/string-advice";
 import { availableRacketIds, storefrontFor } from "@/lib/offers";
 import { recordQuizRun } from "@/lib/analytics";
 import { answersSchemaFor, quizModeSchema, type Answers } from "@/lib/answers";
@@ -117,12 +127,19 @@ export async function POST(req: Request) {
       }),
     );
 
+    // Derived once — the profile is a property of the answers, not of a pick.
+    const stringProfile = stringProfileFromAnswers(body.answers);
+
     return NextResponse.json({
       recommendations: result.picks.map((pick) => {
         const racket = byId.get(pick.racketId)!;
         // Locale-aware: a Brazilian with a mapped Mercado Livre offer is sent
         // there, not to a US store that cannot ship to them.
         const storefront = storefrontFor(racket, body.locale);
+        // Deterministic, so it rides along free on a request that already paid
+        // for a model call. Only the top pick: the results card is dense
+        // already, and the racquet page carries the full list.
+        const stringPick = stringAdviceFor(racket, stringProfile).picks[0];
         return {
           racket,
           justification: pick.justification,
@@ -132,6 +149,22 @@ export async function POST(req: Request) {
           // Per link, not global: with several stores one can be monetised
           // while another is still a plain listing.
           rel: storefront ? relForKind(storefront.kind) : PLAIN_REL,
+          stringPick: stringPick
+            ? {
+                name: `${stringPick.string.brand} ${stringPick.string.model}`,
+                gaugeMm: stringPick.string.gaugeMm,
+                reason: stringPick.reason,
+                tension: stringPick.tension,
+                // String offers only exist for Mercado Livre, so an /en reader
+                // gets the advice without a buy link — a Brazilian marketplace
+                // page is dead weight for someone it will not ship to.
+                buyUrl:
+                  body.locale === "pt-BR"
+                    ? trackedStringUrl(stringPick.string.id, "results")
+                    : null,
+                rel: relForKind(resolveStringLink(stringPick.string).kind),
+              }
+            : null,
         };
       }),
     });

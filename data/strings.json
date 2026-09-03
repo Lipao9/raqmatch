@@ -1,0 +1,141 @@
+{
+  "version": 1,
+  "updatedAt": "2026-09-03",
+  "strings": [
+    {
+      "id": "luxilon-alu-power-125",
+      "brand": "Luxilon",
+      "model": "Alu Power",
+      "gaugeMm": "1.25",
+      "category": "poly",
+      "tags": ["control", "durability"],
+      "priceTier": "premium"
+    },
+    {
+      "id": "solinco-confidential-130",
+      "brand": "Solinco",
+      "model": "Confidential",
+      "gaugeMm": "1.30",
+      "category": "poly",
+      "tags": ["control", "durability"],
+      "priceTier": "mid"
+    },
+    {
+      "id": "tecnifibre-razor-code-125",
+      "brand": "Tecnifibre",
+      "model": "Razor Code",
+      "gaugeMm": "1.25",
+      "category": "poly",
+      "tags": ["control"],
+      "priceTier": "premium"
+    },
+    {
+      "id": "babolat-rpm-blast-125",
+      "brand": "Babolat",
+      "model": "RPM Blast",
+      "gaugeMm": "1.25",
+      "category": "poly",
+      "tags": ["spin", "control"],
+      "priceTier": "mid"
+    },
+    {
+      "id": "solinco-hyper-g-125",
+      "brand": "Solinco",
+      "model": "Hyper-G",
+      "gaugeMm": "1.25",
+      "category": "poly",
+      "tags": ["spin", "control", "value"],
+      "priceTier": "mid"
+    },
+    {
+      "id": "luxilon-alu-power-rough-125",
+      "brand": "Luxilon",
+      "model": "Alu Power Rough",
+      "gaugeMm": "1.25",
+      "category": "poly",
+      "tags": ["spin", "control"],
+      "priceTier": "premium"
+    },
+    {
+      "id": "yonex-poly-tour-pro-125",
+      "brand": "Yonex",
+      "model": "Poly Tour Pro",
+      "gaugeMm": "1.25",
+      "category": "soft-poly",
+      "tags": ["spin", "value"],
+      "priceTier": "budget"
+    },
+    {
+      "id": "luxilon-element-125",
+      "brand": "Luxilon",
+      "model": "Element",
+      "gaugeMm": "1.25",
+      "category": "soft-poly",
+      "tags": ["control"],
+      "priceTier": "mid"
+    },
+    {
+      "id": "solinco-hyper-g-soft-125",
+      "brand": "Solinco",
+      "model": "Hyper-G Soft",
+      "gaugeMm": "1.25",
+      "category": "soft-poly",
+      "tags": ["spin"],
+      "priceTier": "mid"
+    },
+    {
+      "id": "head-hawk-130",
+      "brand": "Head",
+      "model": "Hawk",
+      "gaugeMm": "1.30",
+      "category": "poly",
+      "tags": ["control", "value"],
+      "priceTier": "budget"
+    },
+    {
+      "id": "kirschbaum-max-power-130",
+      "brand": "Kirschbaum",
+      "model": "Max Power",
+      "gaugeMm": "1.30",
+      "category": "poly",
+      "tags": ["durability", "value"],
+      "priceTier": "budget"
+    },
+    {
+      "id": "babolat-xcel-130",
+      "brand": "Babolat",
+      "model": "Xcel",
+      "gaugeMm": "1.30",
+      "category": "multi",
+      "tags": ["power"],
+      "priceTier": "premium"
+    },
+    {
+      "id": "wilson-nxt-power-126",
+      "brand": "Wilson",
+      "model": "NXT Power",
+      "gaugeMm": "1.26",
+      "category": "multi",
+      "tags": ["power"],
+      "priceTier": "premium"
+    },
+    {
+      "id": "wilson-sensation-130",
+      "brand": "Wilson",
+      "model": "Sensation",
+      "gaugeMm": "1.30",
+      "category": "multi",
+      "tags": ["value"],
+      "priceTier": "budget"
+    },
+    {
+      "id": "babolat-vs-touch-125",
+      "brand": "Babolat",
+      "model": "VS Touch (tripa natural)",
+      "gaugeMm": "1.25",
+      "category": "natural-gut",
+      "tags": ["power"],
+      "priceTier": "premium"
+    }
+  ]
+}

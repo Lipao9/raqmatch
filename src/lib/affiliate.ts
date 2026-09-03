@@ -76,3 +76,14 @@ export function trackedUrl(
 export function parseStoreParam(value: string | null): StoreKey {
   return value && isStoreKey(value) ? value : DEFAULT_STORE;
 }
+
+/**
+ * Same contract as `trackedUrl`, for a string. A separate literal segment
+ * (`/api/go/string/...`) rather than a product-kind query param on the racquet
+ * route, so the racquet route's "the slug resolves against the racquet catalog"
+ * invariant stays exactly as simple as it reads.
+ */
+export function trackedStringUrl(stringId: string, source: ClickSource): string {
+  const params = new URLSearchParams({ src: source });
+  return `/api/go/string/${encodeURIComponent(stringId)}?${params}`;
+}

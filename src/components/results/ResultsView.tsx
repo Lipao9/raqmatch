@@ -9,7 +9,7 @@ import { Link } from "@/i18n/navigation";
 import type { Answers } from "@/lib/answers";
 import type { Racket } from "@/lib/catalog";
 import type { QuizMode } from "@/lib/questions";
-import { RacketCard } from "./RacketCard";
+import { RacketCard, type StringPickView } from "./RacketCard";
 import { ShareButton } from "./ShareButton";
 
 interface Recommendation {
@@ -18,6 +18,7 @@ interface Recommendation {
   /** Built server-side in /api/recommend so affiliate config stays off the client. */
   buyUrl: string;
   rel: string;
+  stringPick: StringPickView | null;
 }
 
 type State =
@@ -154,6 +155,7 @@ export function ResultsView({
                   buyUrl={rec.buyUrl}
                   rel={rec.rel}
                   rank={i + 1}
+                  stringPick={rec.stringPick}
                 />
               </div>
             ))}

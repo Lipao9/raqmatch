@@ -62,7 +62,10 @@ export async function recordQuizRun(record: QuizRunRecord): Promise<void> {
 }
 
 export interface OutboundClickRecord {
+  /** Catalog id of what was clicked — a racquet unless `productKind` says otherwise. */
   racketId: string;
+  /** "string" for string clicks; omitted for racquets (null in older rows too). */
+  productKind?: "racket" | "string" | null;
   merchant: string;
   store?: string | null;
   linkKind?: string | null;
@@ -80,6 +83,7 @@ export async function recordOutboundClick(
   try {
     await db.insert(outboundClicks).values({
       racketId: record.racketId,
+      productKind: record.productKind ?? null,
       merchant: record.merchant,
       store: record.store ?? null,
       linkKind: record.linkKind ?? null,

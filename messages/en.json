@@ -11,6 +11,23 @@
     "priceChecked": "Lowest price among sellers {at}, checked {date}. Subject to change.",
     "priceReference": "Reference price {at}, in USD. Subject to change."
   },
+  "strings": {
+    "sectionTitle": "Recommended strings",
+    "sectionHint": "Suggestions based on this frame's specs — fine-tune with your stringer.",
+    "reasons": {
+      "comfort": "Arm comfort",
+      "spin": "More spin",
+      "control": "Control and precision",
+      "value": "Best value",
+      "durability": "Durability",
+      "allround": "All-round balance"
+    },
+    "gauge": "{gauge} mm",
+    "tensionLabel": "Suggested tension",
+    "tensionRange": "{lowLbs}–{highLbs} lbs ({lowKg}–{highKg} kg)",
+    "resultLabel": "String it with",
+    "tensionDisclaimer": "The tension range is a starting point: your stringer adjusts for your game, the weather and the machine."
+  },
   "landing": {
     "metaTitle": "RaqMatch — the right tennis racquet for your game",
     "metaDescription": "Answer a quiz about your level, style and preferences and get 3 tennis racquets picked just for you, with the why behind each one.",

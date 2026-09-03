@@ -1,0 +1,1 @@
+ALTER TABLE "outbound_clicks" ADD COLUMN "product_kind" text;

@@ -13,8 +13,11 @@
 import { readFileSync } from "node:fs";
 import { loadCatalog } from "../src/lib/catalog";
 import { offersCatalogSchema } from "../src/lib/offers";
+import { stringOffersCatalogSchema, stringsCatalogSchema } from "../src/lib/strings";
 
 const OFFERS_PATH = new URL("../data/offers.json", import.meta.url);
+const STRINGS_PATH = new URL("../data/strings.json", import.meta.url);
+const STRING_OFFERS_PATH = new URL("../data/string-offers.json", import.meta.url);
 
 function main() {
   const catalog = loadCatalog();
@@ -44,7 +47,31 @@ function main() {
     (offer) => offer.unstrungWeightGrams !== null,
   ).length;
   console.log(`         ${priced} priced, ${weighed} with unstrung weight`);
-  console.log(`\nOK — every offer resolves to a catalog racquet.`);
+
+  // Same cross-file agreement check for strings: both files are hand-curated,
+  // so the orphan risk is an id typo rather than a scrape rename — cheaper to
+  // make, just as invisible in review.
+  const strings = stringsCatalogSchema.parse(
+    JSON.parse(readFileSync(STRINGS_PATH, "utf8")),
+  ).strings;
+  const stringOffers = stringOffersCatalogSchema.parse(
+    JSON.parse(readFileSync(STRING_OFFERS_PATH, "utf8")),
+  ).offers;
+  const stringIds = new Set(strings.map((s) => s.id));
+  const stringOrphans = stringOffers.filter((o) => !stringIds.has(o.stringId));
+
+  console.log(`strings  ${strings.length} strings, ${stringOffers.length} offers`);
+  if (stringOrphans.length > 0) {
+    console.error(
+      `\n${stringOrphans.length} string offer(s) point at a string that no longer exists:`,
+    );
+    for (const orphan of stringOrphans) {
+      console.error(`  ${orphan.stringId} — ${orphan.title}`);
+    }
+    process.exit(1);
+  }
+
+  console.log(`\nOK — every offer resolves to a catalog product.`);
 }
 
 main();
