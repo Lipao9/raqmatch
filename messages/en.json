@@ -259,7 +259,8 @@
     "multiHint": "Select up to {max}"
   },
   "nav": {
-    "racquets": "Racquets"
+    "racquets": "Racquets",
+    "season": "{slam} season"
   },
   "footer": {
     "disclosure": "Some store links are affiliate links: if you buy through them we may earn a commission — at no extra cost to you.",

@@ -259,7 +259,8 @@
     "multiHint": "Selecione até {max}"
   },
   "nav": {
-    "racquets": "Raquetes"
+    "racquets": "Raquetes",
+    "season": "Temporada {slam}"
   },
   "footer": {
     "disclosure": "Alguns links para lojas são de afiliado: se você comprar por eles, podemos receber uma comissão — sem custo extra para você.",
