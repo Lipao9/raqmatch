@@ -82,9 +82,15 @@ Core Web Vitals is treated as a revenue input rather than a nicety.
 - Mark: a racquet head — hoop plus string bed — in `src/components/BrandLogo.tsx`.
   Rejected alternatives are recorded in that file's comment; a round hoop with a
   short 45° handle reads as a magnifying glass and must not be retried.
-- Visual identity is "Monte Carlo": terracotta clay, Mediterranean blue, warm sand,
-  Fraunces for display and Geist for body. The owner chose to **refine** this
-  identity rather than replace it.
+- Visual identity is the equipment, not a venue: graphite racquet frames,
+  natural-gut cream and the optic ball's citron, with Fraunces for display and
+  Geist for body. It is deliberately tied to no tournament — during each Grand
+  Slam's season the site retints to that major's palette (`src/lib/slam.ts` +
+  the `[data-theme]` blocks in `globals.css`) and returns to the house palette
+  between seasons. Brand surfaces that leave the site (favicon, OG images)
+  stay on the house palette year-round. (Replaced the original "Monte Carlo"
+  terracotta identity in Sep 2026: next to the seasonal themes it read as
+  Roland-Garros.)
 - Voice: plain and specific, never hype. The privacy policy states its own
   practical limits rather than papering over them; product copy explains the
   trade-off in a recommendation instead of asserting a "perfect match".

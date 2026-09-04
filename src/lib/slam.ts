@@ -14,7 +14,7 @@ export type SlamWindow = {
 
 /**
  * Main-draw dates. They move every year, so each season is listed explicitly
- * and a year nobody added yet simply falls back to the Monte-Carlo default.
+ * and a year nobody added yet simply falls back to the house palette.
  * The 2027 US Open is projected from its traditional slot (last Monday of
  * August, two weeks long) — confirm once the USTA announces it.
  */
@@ -29,22 +29,55 @@ export const SLAM_WINDOWS: SlamWindow[] = [
   { slam: "us-open", start: "2027-08-30", end: "2027-09-12" },
 ];
 
-/**
- * Qualifying starts roughly a week before the main draw, and that is when
- * attention on the tournament starts climbing — the theme goes up with it.
- */
-export const QUALIFYING_LEAD_DAYS = 6;
-
 function shiftDays(isoDate: string, days: number): string {
   const d = new Date(`${isoDate}T00:00:00Z`);
   d.setUTCDate(d.getUTCDate() + days);
   return d.toISOString().slice(0, 10);
 }
 
-/** The windows the theme actually uses: main draw plus the qualifying lead. */
+function slamEnd(slam: SlamId, year: string): string | null {
+  const w = SLAM_WINDOWS.find(
+    (x) => x.slam === slam && x.start.startsWith(year),
+  );
+  return w?.end ?? null;
+}
+
+/**
+ * The theme follows the tennis calendar's seasons, not just the fortnights.
+ * Each season ends with its slam's final and starts when attention turns to
+ * that swing; between seasons the house palette holds.
+ */
+/** The year opens already pointed at Melbourne. */
+const AO_SEASON_FROM_JAN_1 = true;
+/** European clay swing: Houston/Marrakech/Monte-Carlo open it in early April. */
+const CLAY_SEASON_START = "-04-01";
+/** Grass starts this many days after the clay final ("2–3 days later"). */
+const GRASS_GAP_DAYS = 3;
+/** The US Open Series starts roughly two weeks after the Wimbledon final. */
+const US_SWING_GAP_DAYS = 14;
+
+function seasonStart(w: SlamWindow): string {
+  const year = w.start.slice(0, 4);
+  switch (w.slam) {
+    case "australian-open":
+      return AO_SEASON_FROM_JAN_1 ? `${year}-01-01` : w.start;
+    case "roland-garros":
+      return `${year}${CLAY_SEASON_START}`;
+    case "wimbledon": {
+      const clayFinal = slamEnd("roland-garros", year);
+      return clayFinal ? shiftDays(clayFinal, GRASS_GAP_DAYS) : w.start;
+    }
+    case "us-open": {
+      const grassFinal = slamEnd("wimbledon", year);
+      return grassFinal ? shiftDays(grassFinal, US_SWING_GAP_DAYS) : w.start;
+    }
+  }
+}
+
+/** The windows the theme actually uses: full seasons, final-day inclusive. */
 export const THEME_WINDOWS = SLAM_WINDOWS.map((w) => ({
   ...w,
-  start: shiftDays(w.start, -QUALIFYING_LEAD_DAYS),
+  start: seasonStart(w),
 }));
 
 /**

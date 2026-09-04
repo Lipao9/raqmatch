@@ -17,19 +17,22 @@ export function generateStaticParams() {
   return loadCatalog().map((racket) => ({ slug: racket.id }));
 }
 
-// Hex approximations of the Monte Carlo tokens in globals.css: Satori resolves
-// neither CSS variables nor oklch(), so the palette is duplicated here.
-const SAND_BG = "#faf7f2";
-const INK = "#22303f";
-const TERRACOTTA = "#b65f3c";
-const MUTED = "#5c6a80";
-const BORDER = "#e3dcd2";
+// Hex approximations of the house-palette tokens in globals.css: Satori
+// resolves neither CSS variables nor oklch(), so the palette is duplicated
+// here. OG images stay on the house palette year-round — they are the brand
+// leaving the site, so they never follow the seasonal slam themes.
+const PAPER_BG = "#f8f7f4";
+const INK = "#29261e";
+const CITRON = "#796900";
+const MUTED = "#615d54";
+const BORDER = "#e0ded7";
+const CHIP_BG = "#edebe3"; // --secondary
 
 // The brand mark, as a data URI. Satori renders `<img>` reliably but supports only
 // a subset of inline SVG, so the mark travels as an image rather than as elements.
 // Geometry is imported rather than transcribed — see the note on MARK_PATHS.
 const MARK = `data:image/svg+xml;base64,${Buffer.from(
-  `<svg xmlns="http://www.w3.org/2000/svg" viewBox="${MARK_VIEWBOX}" fill="${TERRACOTTA}">` +
+  `<svg xmlns="http://www.w3.org/2000/svg" viewBox="${MARK_VIEWBOX}" fill="${CITRON}">` +
     MARK_PATHS.map((d) => `<path d="${d}"/>`).join("") +
     `</svg>`,
 ).toString("base64")}`;
@@ -69,7 +72,7 @@ export default async function Image({
           flexDirection: "column",
           justifyContent: "space-between",
           padding: "64px 72px",
-          background: SAND_BG,
+          background: PAPER_BG,
           color: INK,
           position: "relative",
         }}
@@ -89,7 +92,7 @@ export default async function Image({
           }}
         >
           {[0, 1, 2, 3].map((i) => (
-            <div key={i} style={{ width: 6, height: "100%", background: TERRACOTTA }} />
+            <div key={i} style={{ width: 6, height: "100%", background: CITRON }} />
           ))}
         </div>
 
@@ -114,7 +117,7 @@ export default async function Image({
               fontSize: 30,
               letterSpacing: 6,
               textTransform: "uppercase",
-              color: TERRACOTTA,
+              color: CITRON,
             }}
           >
             {racket?.brand ?? "Tennis racquets"}
@@ -147,7 +150,7 @@ export default async function Image({
                 display: "flex",
                 fontSize: 28,
                 color: INK,
-                background: "#f2e6da",
+                background: CHIP_BG,
                 border: `2px solid ${BORDER}`,
                 borderRadius: 999,
                 padding: "10px 24px",
