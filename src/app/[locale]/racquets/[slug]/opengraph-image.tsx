@@ -17,16 +17,16 @@ export function generateStaticParams() {
   return loadCatalog().map((racket) => ({ slug: racket.id }));
 }
 
-// Hex approximations of the house-palette tokens in globals.css: Satori
+// Hex approximations of the "Leitura de Jogo" tokens in globals.css: Satori
 // resolves neither CSS variables nor oklch(), so the palette is duplicated
-// here. OG images stay on the house palette year-round — they are the brand
-// leaving the site, so they never follow the seasonal slam themes.
-const PAPER_BG = "#f8f7f4";
-const INK = "#29261e";
-const CITRON = "#796900";
-const MUTED = "#615d54";
-const BORDER = "#e0ded7";
-const CHIP_BG = "#edebe3"; // --secondary
+// here. OG images stay on the neutral house look year-round — they are the
+// brand leaving the site, so they never follow the seasonal slam surfaces.
+const PAPER_BG = "#090e12"; // --background (night ground)
+const INK = "#efeeea"; // --foreground
+const CITRON = "#d1e14a"; // --primary (the ball)
+const MUTED = "#a1a9b1"; // --muted-foreground
+const BORDER = "#31363d"; // --border flattened over the ground
+const CHIP_BG = "#11171c"; // --card
 
 // The brand mark, as a data URI. Satori renders `<img>` reliably but supports only
 // a subset of inline SVG, so the mark travels as an image rather than as elements.

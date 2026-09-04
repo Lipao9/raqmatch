@@ -31,16 +31,55 @@
   "landing": {
     "metaTitle": "RaqMatch — the right tennis racquet for your game",
     "metaDescription": "Answer a quiz about your level, style and preferences and get 3 tennis racquets picked just for you, with the why behind each one.",
-    "kicker": "AI-powered recommendations",
+    "kicker": "Game reading · AI",
     "title": "The <em>perfect</em> racquet for your game",
-    "subtitle": "Answer a quiz about your level, style and preferences, and get 3 racquets picked just for you — with the why behind each one.",
-    "cta": "Start the quiz",
-    "ctaDetailed": "I prefer the detailed quiz",
-    "duration": "2-minute quick quiz or 6-minute detailed one",
+    "subtitle": "Tell us how you play — level, style, what's missing — and get 3 racquets picked just for you, with the why behind each one.",
+    "cta": "Read my game",
+    "ctaDetailed": "Full reading · 7 min",
+    "duration": "3-minute quick reading or a full 7-minute one",
     "stats": {
       "racquets": "racquets analyzed",
       "brands": "brands",
       "picks": "tailored picks"
+    },
+    "how": {
+      "title": "How RaqMatch reads your game",
+      "steps": {
+        "answer": {
+          "title": "You tell us how you play",
+          "body": "Level, style, what hurts and what your current racquet doesn't deliver — in your own words."
+        },
+        "filter": {
+          "title": "The catalog gets filtered",
+          "body": "272 racquets with real specs; deterministic rules cut what doesn't fit before the AI sees anything."
+        },
+        "picks": {
+          "title": "Three justified picks",
+          "body": "The AI explains each racquet by reading what you wrote — and it never sees price or commission."
+        }
+      }
+    },
+    "proof": {
+      "title": "Measured specs, not adjectives",
+      "subtitle": "Every racquet in the catalog carries the measurements Brazilian retailers don't publish — here is one of them against the whole catalog's ruler.",
+      "rangeNote": "scale: minimum to maximum across the catalog's {count} racquets",
+      "labels": {
+        "headSize": "Head size",
+        "weight": "Strung weight",
+        "stiffness": "Stiffness (RA)",
+        "swingweight": "Swingweight"
+      }
+    },
+    "seasons": {
+      "title": "The site lives the calendar",
+      "subtitle": "During each Grand Slam the surface changes color. The ball never does.",
+      "now": "now",
+      "windows": {
+        "australian-open": "Jan – Feb",
+        "roland-garros": "Apr – Jun",
+        "wimbledon": "Jun – Jul",
+        "us-open": "Jul – Sep"
+      }
     }
   },
   "results": {
@@ -329,6 +368,7 @@
   "racquet": {
     "metaDescription": "{name}: {headSize} in², {weight} strung, {pattern} pattern. Full specs, similar racquets and who this frame suits.",
     "specsTitle": "Specs",
+    "specsScale": "Scale: minimum to maximum across the catalog's {count} racquets",
     "specs": {
       "brand": "Brand",
       "headSize": "Head size",

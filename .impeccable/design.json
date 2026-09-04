@@ -1,0 +1,214 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-09-04T00:00:00Z",
+  "title": "Design System: RaqMatch",
+  "extensions": {
+    "colorMeta": {
+      "citron": {
+        "role": "primary",
+        "displayName": "Optic Citron",
+        "canonical": "oklch(0.87 0.17 115)",
+        "tonalRamp": [
+          "oklch(0.2 0.05 115)",
+          "oklch(0.32 0.08 115)",
+          "oklch(0.44 0.11 115)",
+          "oklch(0.56 0.14 115)",
+          "oklch(0.68 0.16 115)",
+          "oklch(0.78 0.17 115)",
+          "oklch(0.87 0.17 115)",
+          "oklch(0.94 0.09 115)"
+        ]
+      },
+      "night-graphite": {
+        "role": "neutral",
+        "displayName": "Night Graphite",
+        "canonical": "oklch(0.16 0.012 250)",
+        "tonalRamp": [
+          "oklch(0.16 0.012 250)",
+          "oklch(0.2 0.014 250)",
+          "oklch(0.23 0.014 250)",
+          "oklch(0.28 0.022 250)",
+          "oklch(0.45 0.018 250)",
+          "oklch(0.6 0.016 250)",
+          "oklch(0.73 0.015 250)",
+          "oklch(0.95 0.006 95)"
+        ]
+      },
+      "chalk": {
+        "role": "neutral",
+        "displayName": "Chalk",
+        "canonical": "oklch(0.95 0.006 95)",
+        "tonalRamp": [
+          "oklch(0.3 0.006 95)",
+          "oklch(0.42 0.006 95)",
+          "oklch(0.54 0.006 95)",
+          "oklch(0.65 0.006 95)",
+          "oklch(0.75 0.006 95)",
+          "oklch(0.85 0.006 95)",
+          "oklch(0.92 0.006 95)",
+          "oklch(0.97 0.004 95)"
+        ]
+      },
+      "court": {
+        "role": "secondary",
+        "displayName": "Season Surface (house / practice court)",
+        "canonical": "oklch(0.3 0.035 255)",
+        "tonalRamp": [
+          "oklch(0.16 0.02 255)",
+          "oklch(0.22 0.028 255)",
+          "oklch(0.3 0.035 255)",
+          "oklch(0.38 0.06 255)",
+          "oklch(0.46 0.09 255)",
+          "oklch(0.58 0.1 255)",
+          "oklch(0.72 0.08 255)",
+          "oklch(0.88 0.04 255)"
+        ]
+      },
+      "fault-red": {
+        "role": "destructive",
+        "displayName": "Fault Red",
+        "canonical": "oklch(0.66 0.19 25)",
+        "tonalRamp": [
+          "oklch(0.2 0.09 25)",
+          "oklch(0.3 0.12 25)",
+          "oklch(0.4 0.15 25)",
+          "oklch(0.5 0.17 25)",
+          "oklch(0.58 0.18 25)",
+          "oklch(0.66 0.19 25)",
+          "oklch(0.78 0.13 25)",
+          "oklch(0.9 0.06 25)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Chyron Display",
+        "purpose": "Hero chyron headline only; Archivo at 112% width, citron enters via <em>, never a full line."
+      },
+      "headline": { "displayName": "Section Headline", "purpose": "Section titles across landing and content pages." },
+      "title": { "displayName": "Card Title", "purpose": "Card, quiz option, and racquet-name titles." },
+      "body": { "displayName": "Body", "purpose": "Prose; supporting copy in Readout Grey, width-capped." },
+      "label": {
+        "displayName": "Mono Readout",
+        "purpose": "Status lines, spec values, season badges, scale endpoints; uppercase Geist Mono with wide tracking."
+      }
+    },
+    "shadows": [],
+    "motion": [
+      {
+        "name": "trace-cycle",
+        "value": "7s cubic-bezier(0.16, 1, 0.3, 1) infinite",
+        "purpose": "The authored tracking moment: trace-draw and impact-ring keyframes plus the SMIL ball share this cycle."
+      },
+      {
+        "name": "scanner-sweep",
+        "value": "16s linear infinite",
+        "purpose": "Slow white scan gradient crossing the hero court; hidden under prefers-reduced-motion."
+      },
+      {
+        "name": "panel-entrance",
+        "value": "animate-in fade-in slide-in-from-bottom-4 700ms",
+        "purpose": "Chyron and content blocks enter from below once, on load."
+      },
+      {
+        "name": "hover-lift",
+        "value": "transform translateY(-2px) + border-color shift, ~150ms",
+        "purpose": "Interactive cards lift and warm their border toward citron; no shadow appears."
+      }
+    ],
+    "breakpoints": [
+      { "name": "sm", "value": "640px" },
+      { "name": "lg", "value": "1024px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "The bounce point: solid citron CTA, one per view whenever possible.",
+      "html": "<button class=\"ds-btn-primary\">Start the reading<svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M5 12h14\"/><path d=\"m12 5 7 7-7 7\"/></svg></button>",
+      "css": ".ds-btn-primary { display: inline-flex; align-items: center; gap: 0.5rem; background: var(--primary, oklch(0.87 0.17 115)); color: var(--primary-foreground, oklch(0.2 0.03 110)); font-family: Geist, ui-sans-serif, sans-serif; font-size: 1rem; font-weight: 600; height: 3rem; padding: 0 1.75rem; border: 1px solid transparent; border-radius: 0.375rem; cursor: pointer; transition: background-color 0.15s, transform 0.15s; } .ds-btn-primary:hover { background: color-mix(in oklch, var(--primary, oklch(0.87 0.17 115)), transparent 20%); } .ds-btn-primary:focus-visible { outline: none; border-color: var(--ring, oklch(0.87 0.17 115)); box-shadow: 0 0 0 3px color-mix(in oklch, var(--ring, oklch(0.87 0.17 115)), transparent 50%); } .ds-btn-primary:active { transform: translateY(1px); }"
+    },
+    {
+      "name": "Outline Button",
+      "kind": "button",
+      "refersTo": "button-outline",
+      "description": "Secondary action: hairline border, quiet grey text, no fill.",
+      "html": "<button class=\"ds-btn-outline\">Detailed reading</button>",
+      "css": ".ds-btn-outline { display: inline-flex; align-items: center; gap: 0.5rem; background: transparent; color: var(--muted-foreground, oklch(0.73 0.015 250)); font-family: Geist, ui-sans-serif, sans-serif; font-size: 1rem; font-weight: 500; height: 3rem; padding: 0 1.25rem; border: 1px solid var(--border, oklch(1 0 0 / 14%)); border-radius: 0.375rem; cursor: pointer; transition: background-color 0.15s, color 0.15s; } .ds-btn-outline:hover { background: var(--muted, oklch(0.23 0.014 250)); color: var(--foreground, oklch(0.95 0.006 95)); } .ds-btn-outline:focus-visible { outline: none; border-color: var(--ring, oklch(0.87 0.17 115)); box-shadow: 0 0 0 3px color-mix(in oklch, var(--ring, oklch(0.87 0.17 115)), transparent 50%); }"
+    },
+    {
+      "name": "Chyron Panel",
+      "kind": "card",
+      "refersTo": "card",
+      "description": "Signature container: square translucent blurred panel that carries the hero headline bottom-left over the court.",
+      "html": "<div class=\"ds-chyron\"><h1 class=\"ds-chyron-title\">Your game, <em>read</em>.</h1><p class=\"ds-chyron-sub\">Answer as you play; leave with three justified racquets.</p><p class=\"ds-chyron-readout\">2 min &middot; 272 racquets</p></div>",
+      "css": ".ds-chyron { max-width: 36rem; background: color-mix(in oklch, var(--background, oklch(0.16 0.012 250)), transparent 15%); border: 1px solid var(--border, oklch(1 0 0 / 14%)); border-radius: 0; padding: 2.5rem; backdrop-filter: blur(12px); } .ds-chyron-title { font-family: Archivo, ui-sans-serif, sans-serif; font-stretch: 112%; font-size: 2.75rem; font-weight: 700; line-height: 1.02; letter-spacing: -0.025em; color: var(--foreground, oklch(0.95 0.006 95)); margin: 0; } .ds-chyron-title em { font-style: normal; color: var(--primary, oklch(0.87 0.17 115)); } .ds-chyron-sub { margin: 1.25rem 0 0; max-width: 28rem; font-family: Geist, ui-sans-serif, sans-serif; font-size: 1.125rem; line-height: 1.625; color: var(--muted-foreground, oklch(0.73 0.015 250)); } .ds-chyron-readout { margin: 1rem 0 0; font-family: 'Geist Mono', ui-monospace, monospace; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.16em; color: var(--muted-foreground, oklch(0.73 0.015 250)); }"
+    },
+    {
+      "name": "Graticule (marker)",
+      "kind": "custom",
+      "description": "The measured track: hairline scale with ten divisions; a citron marker places a value on the catalog's min-max ruler.",
+      "html": "<div class=\"ds-graticule-row\"><div class=\"ds-graticule-head\"><span class=\"ds-graticule-label\">Swingweight</span><span class=\"ds-graticule-value\">322 SW</span></div><div class=\"ds-graticule\"><span class=\"ds-g-line\"></span><span class=\"ds-g-tick\" style=\"left:10%\"></span><span class=\"ds-g-tick\" style=\"left:20%\"></span><span class=\"ds-g-tick\" style=\"left:30%\"></span><span class=\"ds-g-tick\" style=\"left:40%\"></span><span class=\"ds-g-tick\" style=\"left:50%\"></span><span class=\"ds-g-tick\" style=\"left:60%\"></span><span class=\"ds-g-tick\" style=\"left:70%\"></span><span class=\"ds-g-tick\" style=\"left:80%\"></span><span class=\"ds-g-tick\" style=\"left:90%\"></span><span class=\"ds-g-marker\" style=\"left:62%\"></span></div><div class=\"ds-graticule-ends\"><span>280</span><span>360</span></div></div>",
+      "css": ".ds-graticule-row { min-width: 16rem; font-family: Geist, ui-sans-serif, sans-serif; } .ds-graticule-head { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; } .ds-graticule-label { font-size: 0.875rem; color: var(--foreground, oklch(0.95 0.006 95)); } .ds-graticule-value { font-family: 'Geist Mono', ui-monospace, monospace; font-size: 0.875rem; color: var(--primary, oklch(0.87 0.17 115)); } .ds-graticule { position: relative; height: 0.75rem; margin-top: 0.5rem; border-left: 1px solid var(--border, oklch(1 0 0 / 14%)); border-right: 1px solid var(--border, oklch(1 0 0 / 14%)); } .ds-g-line { position: absolute; left: 0; right: 0; top: 50%; height: 1px; background: var(--border, oklch(1 0 0 / 14%)); } .ds-g-tick { position: absolute; top: 50%; transform: translateY(-50%); height: 0.375rem; width: 1px; background: var(--border, oklch(1 0 0 / 14%)); } .ds-g-marker { position: absolute; top: 50%; transform: translate(-50%, -50%); height: 0.75rem; width: 0.25rem; background: var(--primary, oklch(0.87 0.17 115)); } .ds-graticule-ends { display: flex; justify-content: space-between; margin-top: 0.25rem; font-family: 'Geist Mono', ui-monospace, monospace; font-size: 0.65rem; color: var(--muted-foreground, oklch(0.73 0.015 250)); }"
+    },
+    {
+      "name": "Season Badge",
+      "kind": "chip",
+      "description": "Header season readout: square mono chip with the citron live dot; only the active [data-theme]'s badge is revealed by CSS.",
+      "html": "<span class=\"ds-season-badge\"><span class=\"ds-season-dot\"></span>US Open season</span>",
+      "css": ".ds-season-badge { display: inline-flex; align-items: center; gap: 0.5rem; border: 1px solid var(--border, oklch(1 0 0 / 14%)); background: color-mix(in oklch, var(--accent, oklch(0.28 0.022 250)), transparent 40%); color: var(--accent-foreground, oklch(0.9 0.02 250)); padding: 0.25rem 0.625rem; font-family: 'Geist Mono', ui-monospace, monospace; font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.14em; border-radius: 0; } .ds-season-dot { width: 0.375rem; height: 0.375rem; border-radius: 9999px; background: var(--primary, oklch(0.87 0.17 115)); }"
+    },
+    {
+      "name": "Quiz Answer Row",
+      "kind": "input",
+      "description": "Selectable answer: hairline card at rest, lifts on hover, citron border plus accent wash when selected.",
+      "html": "<div style=\"display:flex;flex-direction:column;gap:0.5rem;min-width:18rem\"><button class=\"ds-answer\">Baseline grinder</button><button class=\"ds-answer ds-answer-selected\">Serve and volley</button></div>",
+      "css": ".ds-answer { display: flex; align-items: center; gap: 0.75rem; width: 100%; text-align: left; padding: 1rem; border: 1px solid var(--input, oklch(1 0 0 / 18%)); border-radius: 0.75rem; background: color-mix(in oklch, var(--card, oklch(0.2 0.014 250)), transparent 40%); color: var(--foreground, oklch(0.95 0.006 95)); font-family: Geist, ui-sans-serif, sans-serif; font-size: 0.95rem; cursor: pointer; transition: transform 0.15s, border-color 0.15s, background-color 0.15s; } .ds-answer:hover { transform: translateY(-2px); border-color: color-mix(in oklch, var(--primary, oklch(0.87 0.17 115)), transparent 50%); background: color-mix(in oklch, var(--accent, oklch(0.28 0.022 250)), transparent 60%); } .ds-answer:focus-visible { outline: none; border-color: var(--ring, oklch(0.87 0.17 115)); box-shadow: 0 0 0 3px color-mix(in oklch, var(--ring, oklch(0.87 0.17 115)), transparent 50%); } .ds-answer-selected { border-color: var(--primary, oklch(0.87 0.17 115)); background: var(--accent, oklch(0.28 0.022 250)); }"
+    },
+    {
+      "name": "Result Card",
+      "kind": "card",
+      "description": "A pick landing as a bounce point: ringed card with a citron top strip and a rank medallion (solid citron for #1 only).",
+      "html": "<div class=\"ds-result\"><span class=\"ds-result-strip\"></span><div class=\"ds-result-head\"><span class=\"ds-result-rank\">1</span><span class=\"ds-result-name\">Babolat Pure Aero</span></div><p class=\"ds-result-body\">Fast-swinging spin frame matched to your full western forehand and baseline patterns.</p></div>",
+      "css": ".ds-result { position: relative; overflow: hidden; max-width: 24rem; background: var(--card, oklch(0.2 0.014 250)); color: var(--card-foreground, oklch(0.95 0.006 95)); border-radius: 0.75rem; box-shadow: 0 0 0 1px color-mix(in oklch, var(--foreground, oklch(0.95 0.006 95)), transparent 90%); padding: 1rem; } .ds-result-strip { position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--primary, oklch(0.87 0.17 115)); } .ds-result-head { display: flex; align-items: center; gap: 0.75rem; } .ds-result-rank { display: flex; align-items: center; justify-content: center; width: 2rem; height: 2rem; border-radius: 9999px; background: var(--primary, oklch(0.87 0.17 115)); color: var(--primary-foreground, oklch(0.2 0.03 110)); font-family: 'Geist Mono', ui-monospace, monospace; font-weight: 600; } .ds-result-name { font-family: Archivo, ui-sans-serif, sans-serif; font-stretch: 112%; font-size: 1.375rem; font-weight: 600; } .ds-result-body { margin: 0.75rem 0 0; font-family: Geist, ui-sans-serif, sans-serif; font-size: 0.875rem; line-height: 1.625; color: var(--muted-foreground, oklch(0.73 0.015 250)); }"
+    }
+  ],
+  "narrative": {
+    "northStar": "Leitura de Jogo",
+    "overview": "The site is a match-analytics instrument, not a quiz tool with a hero. The ground is a night-graphite broadcast studio; the court surface of the current Grand Slam season owns the large fields; the visitor's answers become a tracked trace and the three recommendations land as bounce points. Everything on screen behaves like a replay graphic: hairline court geometry, mono uppercase readouts, values measured against a scale, and one optic-citron ball that is the only thing allowed to act. This is a committed single dark look: there is deliberately no light mode and no .dark block — the seasonal [data-theme] blocks retint the same night, they never lighten it. The world refuses the centered-hero landing: the first viewport is a full-bleed court with the headline in a chyron panel bottom-left and the CTA at the serve's bounce point.",
+    "keyCharacteristics": [
+      "Night graphite ground; the season's court surface (--court) carries the large fields.",
+      "Optic citron is the only action color — the ball is the constant, the surface is the season.",
+      "Hairline court lines and hairline borders; depth is drawn, never cast.",
+      "Numbers never float: every spec sits on a graticule against the catalog's min–max ruler.",
+      "Broadcast typography: wide Archivo display, Geist body, Geist Mono readouts."
+    ],
+    "rules": [
+      { "name": "The Constant Ball Rule", "body": "The season retints the surface and its washes; the ball never changes. --primary, --primary-foreground, and --ring are identical in all four [data-theme] blocks. Never introduce a seasonal accent that competes with citron for action.", "section": "colors" },
+      { "name": "The Flood Gate Rule", "body": "Saturated color floods only the active or selected element (a chosen quiz answer goes border-primary bg-accent; the rank-1 badge alone is solid citron). Everything at rest is graphite, hairline, and grey.", "section": "colors" },
+      { "name": "The Fringe First Rule", "body": "Season color enters as narrow fringes before fields: the header badge's citron dot, a season chip's color-mix border, the accent wash — the full --court field appears only on the hero court itself.", "section": "colors" },
+      { "name": "The Away Colors Rule", "body": "Brand surfaces that leave the site (favicon, OG images) stay on the neutral house look year-round; only the live page follows the calendar.", "section": "colors" },
+      { "name": "The Mono Readout Rule", "body": "Data speaks mono: spec values, ranges, timestamps, season names, and counts are Geist Mono, uppercase where they label, citron where they are the measured value.", "section": "typography" },
+      { "name": "The Hairline Elevation Rule", "body": "No box-shadow on any surface. Depth = hairline border + tonal step + blur, and citron ring only for focus (focus-visible:ring-3 ring-ring/50).", "section": "elevation" },
+      { "name": "The Shared Coordinates Rule", "body": "Within each serve variant, trace path, ball animateMotion path, and impact ring center are the same coordinates. A trace that lands where the ring is not is a broken replay.", "section": "components" }
+    ],
+    "dos": [
+      "Do keep citron (oklch(0.87 0.17 115)) the only action color and identical across every seasonal theme; text on it is Citron Ink.",
+      "Do put every numeric spec on a Graticule with mono min/max endpoints — no number floats without a scale.",
+      "Do separate surfaces with hairline borders (oklch(1 0 0 / 14%)), tonal steps, and backdrop blur; lift on hover with translate + border shift.",
+      "Do render season-dependent chrome (badges, \"now\" tags) as all-variants-in-HTML revealed by [data-theme] CSS, so pages stay static and the pre-paint head script from src/lib/slam.ts remains the only theme logic.",
+      "Do honor prefers-reduced-motion the built way: freeze the trace drawn, hide the moving ball, keep the impact ring static where the CTA anchors.",
+      "Do speak data in Geist Mono uppercase with 0.12–0.2em tracking, and display in wide Archivo (.font-heading, font-stretch: 112%)."
+    ],
+    "donts": [
+      "Don't add soft/blurred box-shadows on the dark ground — elevation is border and ring only.",
+      "Don't add a light mode or a .dark block; the single night look is a committed decision, and seasonal themes retint without lightening.",
+      "Don't let a seasonal palette touch --primary, --primary-foreground, or --ring, or recolor favicon/OG surfaces — assets that leave the site stay on the house look year-round.",
+      "Don't flood a resting element with saturated color; solid citron marks only the active, selected, or #1-ranked element.",
+      "Don't center the landing hero — the headline lives in the bottom-left chyron panel over the full-bleed court.",
+      "Don't freeze the season server-side: pages are statically generated, so the visitor's clock (via the inline head script) decides data-theme."
+    ]
+  }
+}
