@@ -1,7 +1,7 @@
 "use client";
 
 import { useLayoutEffect } from "react";
-import { getActiveSlam } from "@/lib/slam";
+import { getActiveSlam, slamOverride } from "@/lib/slam";
 
 /**
  * The inline head script (see slamThemeScript) sets data-theme during HTML
@@ -12,7 +12,10 @@ import { getActiveSlam } from "@/lib/slam";
  */
 export function SlamThemeSync() {
   useLayoutEffect(() => {
-    const slam = getActiveSlam(new Date());
+    // Honour the same ?slam= preview override as the head script, or the
+    // Strict Mode remount would snap a forced preview back to today's date.
+    const override = slamOverride(window.location.search);
+    const slam = override === undefined ? getActiveSlam(new Date()) : override;
     if (slam) {
       document.documentElement.setAttribute("data-theme", slam);
     } else {

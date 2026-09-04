@@ -2,6 +2,7 @@ import assert from "node:assert/strict";
 import { test } from "node:test";
 import {
   getActiveSlam,
+  slamOverride,
   slamThemeScript,
   SLAM_WINDOWS,
   THEME_WINDOWS,
@@ -63,6 +64,15 @@ test("every listed year covers all four seasons", () => {
     const slams = SLAM_WINDOWS.filter((w) => w.start.startsWith(year));
     assert.equal(slams.length, 4, `year ${year} is missing slams`);
   }
+});
+
+test("?slam= override forces a theme, off forces the house palette", () => {
+  assert.equal(slamOverride("?slam=wimbledon"), "wimbledon");
+  assert.equal(slamOverride("?utm_source=x&slam=us-open"), "us-open");
+  assert.equal(slamOverride("?slam=off"), null);
+  // No or invalid override: the date decides.
+  assert.equal(slamOverride(""), undefined);
+  assert.equal(slamOverride("?slam=miami-open"), undefined);
 });
 
 test("inline script embeds every window and stays inert markup", () => {
