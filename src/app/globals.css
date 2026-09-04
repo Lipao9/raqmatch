@@ -49,86 +49,92 @@
 }
 
 /*
- * Palette inspired by the Rolex Monte-Carlo Masters: terracotta clay courts,
- * deep Mediterranean blue, warm sand whites and cypress green.
+ * House palette — the equipment, not a venue: graphite racquet frames,
+ * natural-gut cream and the optic ball's citron, darkened until it holds
+ * contrast. Deliberately tied to no tournament; the seasonal Grand Slam
+ * blocks below own the tournament references, and between seasons this
+ * palette holds. (Replaced the original Monte-Carlo terracotta, which read
+ * as Roland-Garros next to the seasonal themes.)
  */
 :root {
-  --background: oklch(0.977 0.008 75);
-  --foreground: oklch(0.29 0.05 245);
-  --card: oklch(0.995 0.004 80);
-  --card-foreground: oklch(0.29 0.05 245);
-  --popover: oklch(0.995 0.004 80);
-  --popover-foreground: oklch(0.29 0.05 245);
-  --primary: oklch(0.58 0.145 40);
-  --primary-foreground: oklch(0.985 0.01 75);
-  --secondary: oklch(0.93 0.025 235);
-  --secondary-foreground: oklch(0.32 0.06 245);
-  --muted: oklch(0.945 0.012 75);
-  --muted-foreground: oklch(0.5 0.035 245);
-  --accent: oklch(0.93 0.035 55);
-  --accent-foreground: oklch(0.42 0.12 40);
+  --background: oklch(0.977 0.004 95);
+  --foreground: oklch(0.27 0.015 90);
+  --card: oklch(0.995 0.002 95);
+  --card-foreground: oklch(0.27 0.015 90);
+  --popover: oklch(0.995 0.002 95);
+  --popover-foreground: oklch(0.27 0.015 90);
+  --primary: oklch(0.52 0.115 100);
+  --primary-foreground: oklch(0.985 0.008 100);
+  --secondary: oklch(0.94 0.012 100);
+  --secondary-foreground: oklch(0.31 0.03 95);
+  --muted: oklch(0.95 0.006 95);
+  --muted-foreground: oklch(0.48 0.015 90);
+  --accent: oklch(0.95 0.075 115);
+  --accent-foreground: oklch(0.42 0.09 110);
   --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.895 0.02 65);
-  --input: oklch(0.895 0.02 65);
-  --ring: oklch(0.68 0.12 42);
-  --chart-1: oklch(0.58 0.145 40);
-  --chart-2: oklch(0.45 0.08 245);
-  --chart-3: oklch(0.55 0.07 140);
-  --chart-4: oklch(0.8 0.06 70);
-  --chart-5: oklch(0.35 0.06 250);
+  --border: oklch(0.9 0.01 95);
+  --input: oklch(0.9 0.01 95);
+  --ring: oklch(0.62 0.11 105);
+  --chart-1: oklch(0.52 0.115 100);
+  --chart-2: oklch(0.35 0.015 90);
+  --chart-3: oklch(0.65 0.03 85);
+  --chart-4: oklch(0.87 0.1 115);
+  --chart-5: oklch(0.4 0.06 105);
   --radius: 0.625rem;
-  --sidebar: oklch(0.96 0.01 75);
-  --sidebar-foreground: oklch(0.29 0.05 245);
-  --sidebar-primary: oklch(0.58 0.145 40);
-  --sidebar-primary-foreground: oklch(0.985 0.01 75);
-  --sidebar-accent: oklch(0.93 0.035 55);
-  --sidebar-accent-foreground: oklch(0.42 0.12 40);
-  --sidebar-border: oklch(0.895 0.02 65);
-  --sidebar-ring: oklch(0.68 0.12 42);
+  --sidebar: oklch(0.96 0.006 95);
+  --sidebar-foreground: oklch(0.27 0.015 90);
+  --sidebar-primary: oklch(0.52 0.115 100);
+  --sidebar-primary-foreground: oklch(0.985 0.008 100);
+  --sidebar-accent: oklch(0.95 0.075 115);
+  --sidebar-accent-foreground: oklch(0.42 0.09 110);
+  --sidebar-border: oklch(0.9 0.01 95);
+  --sidebar-ring: oklch(0.62 0.11 105);
 }
 
 .dark {
-  --background: oklch(0.22 0.035 250);
-  --foreground: oklch(0.96 0.01 75);
-  --card: oklch(0.26 0.04 248);
-  --card-foreground: oklch(0.96 0.01 75);
-  --popover: oklch(0.26 0.04 248);
-  --popover-foreground: oklch(0.96 0.01 75);
-  --primary: oklch(0.68 0.14 42);
-  --primary-foreground: oklch(0.17 0.03 250);
-  --secondary: oklch(0.32 0.045 245);
-  --secondary-foreground: oklch(0.94 0.012 75);
-  --muted: oklch(0.3 0.04 246);
-  --muted-foreground: oklch(0.72 0.025 240);
-  --accent: oklch(0.35 0.06 45);
-  --accent-foreground: oklch(0.9 0.06 55);
+  --background: oklch(0.21 0.012 90);
+  --foreground: oklch(0.96 0.005 95);
+  --card: oklch(0.25 0.015 90);
+  --card-foreground: oklch(0.96 0.005 95);
+  --popover: oklch(0.25 0.015 90);
+  --popover-foreground: oklch(0.96 0.005 95);
+  --primary: oklch(0.78 0.14 112);
+  --primary-foreground: oklch(0.2 0.02 95);
+  --secondary: oklch(0.31 0.02 95);
+  --secondary-foreground: oklch(0.94 0.008 95);
+  --muted: oklch(0.29 0.015 90);
+  --muted-foreground: oklch(0.72 0.02 95);
+  --accent: oklch(0.34 0.05 105);
+  --accent-foreground: oklch(0.9 0.09 112);
   --destructive: oklch(0.704 0.191 22.216);
   --border: oklch(1 0 0 / 12%);
   --input: oklch(1 0 0 / 16%);
-  --ring: oklch(0.68 0.14 42);
-  --chart-1: oklch(0.68 0.14 42);
-  --chart-2: oklch(0.62 0.08 240);
-  --chart-3: oklch(0.65 0.08 140);
-  --chart-4: oklch(0.82 0.06 70);
-  --chart-5: oklch(0.5 0.06 250);
-  --sidebar: oklch(0.26 0.04 248);
-  --sidebar-foreground: oklch(0.96 0.01 75);
-  --sidebar-primary: oklch(0.68 0.14 42);
-  --sidebar-primary-foreground: oklch(0.17 0.03 250);
-  --sidebar-accent: oklch(0.35 0.06 45);
-  --sidebar-accent-foreground: oklch(0.9 0.06 55);
+  --ring: oklch(0.78 0.14 112);
+  --chart-1: oklch(0.78 0.14 112);
+  --chart-2: oklch(0.7 0.02 90);
+  --chart-3: oklch(0.55 0.03 85);
+  --chart-4: oklch(0.87 0.1 115);
+  --chart-5: oklch(0.5 0.06 105);
+  --sidebar: oklch(0.25 0.015 90);
+  --sidebar-foreground: oklch(0.96 0.005 95);
+  --sidebar-primary: oklch(0.78 0.14 112);
+  --sidebar-primary-foreground: oklch(0.2 0.02 95);
+  --sidebar-accent: oklch(0.34 0.05 105);
+  --sidebar-accent-foreground: oklch(0.9 0.09 112);
   --sidebar-border: oklch(1 0 0 / 12%);
-  --sidebar-ring: oklch(0.68 0.14 42);
+  --sidebar-ring: oklch(0.78 0.14 112);
 }
 
 /*
- * Seasonal Grand Slam themes. Monte-Carlo above stays the year-round default;
- * while a major is on, an inline head script (src/lib/slam.ts) stamps
- * data-theme on <html> before first paint and one of these blocks retints the
- * same token roles. Only light values exist here on purpose: the .dark block
- * never activates today (no ThemeProvider), so slam dark variants would be
- * dead code — add them when dark mode actually ships. Brand surfaces that
- * leave the page (favicon, OG images) stay Monte-Carlo year-round.
+ * Seasonal Grand Slam themes. The house palette above holds between seasons;
+ * during a slam's season (src/lib/slam.ts — the year opens in Australian Open,
+ * clay leads into Roland-Garros, grass into Wimbledon, the US swing into the
+ * US Open) an inline head script stamps data-theme on <html> before first
+ * paint and one of these blocks retints the same token roles. Only light
+ * values exist here on purpose: the .dark block never activates today (no
+ * ThemeProvider), so slam dark variants would be dead code — add them when
+ * dark mode actually ships. Brand surfaces that leave the page (favicon, OG
+ * images) stay on the house palette year-round.
  */
 
 /* Australian Open: summer cobalt over sunlit white, a sunrise-warm accent. */
