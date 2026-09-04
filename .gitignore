@@ -51,3 +51,8 @@ next-env.d.ts
 # Transient batch manifest for `npm run mint` — order matters only between an
 # export and its apply, never across sessions.
 data/mint-batch.json
+
+# Impeccable working evidence (screenshots, review artifacts) — the design.json sidecar IS versioned
+.impeccable/review/
+.impeccable/mocks/
+.impeccable/questions/

@@ -77,12 +77,14 @@ export function RacketCard({
 
   return (
     <Card
-      className={`relative overflow-hidden transition-shadow hover:shadow-lg hover:shadow-primary/5 ${
-        isBestMatch ? "border-primary/60 shadow-md shadow-primary/10" : ""
+      className={`relative overflow-hidden transition-colors hover:ring-foreground/25 ${
+        isBestMatch ? "ring-primary/60" : ""
       }`}
     >
+      {/* Flat citron hairline on the best match: the world's fringes do not
+          fade (raise 2). */}
       {isBestMatch && (
-        <span className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-primary via-primary/70 to-primary/30" />
+        <span className="absolute inset-x-0 top-0 h-0.5 bg-primary" />
       )}
       <CardHeader>
         <div className="flex items-start justify-between gap-4">

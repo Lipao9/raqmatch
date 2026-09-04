@@ -31,16 +31,55 @@
   "landing": {
     "metaTitle": "RaqMatch — a raquete de tênis ideal para o seu jogo",
     "metaDescription": "Responda um quiz sobre seu nível, estilo e preferências e receba 3 raquetes de tênis escolhidas sob medida, com o porquê de cada uma.",
-    "kicker": "Recomendação com inteligência artificial",
+    "kicker": "Leitura de jogo · IA",
     "title": "A raquete <em>perfeita</em> para o seu jogo",
-    "subtitle": "Responda um quiz sobre seu nível, estilo e preferências, e receba 3 raquetes escolhidas sob medida — com o porquê de cada uma.",
-    "cta": "Começar o quiz",
-    "ctaDetailed": "Prefiro o quiz detalhado",
-    "duration": "Quiz rápido de 2 minutos ou detalhado de 6",
+    "subtitle": "Conte como você joga — nível, estilo, o que falta — e receba 3 raquetes escolhidas sob medida, com o porquê de cada uma.",
+    "cta": "Ler meu jogo",
+    "ctaDetailed": "Leitura completa · 7 min",
+    "duration": "Leitura rápida de 3 minutos ou completa de 7",
     "stats": {
       "racquets": "raquetes analisadas",
       "brands": "marcas",
       "picks": "escolhas sob medida"
+    },
+    "how": {
+      "title": "Como o RaqMatch lê o seu jogo",
+      "steps": {
+        "answer": {
+          "title": "Você conta como joga",
+          "body": "Nível, estilo, o que dói e o que a raquete atual não entrega — nas suas palavras."
+        },
+        "filter": {
+          "title": "O catálogo é filtrado",
+          "body": "272 raquetes com specs reais; regras determinísticas cortam o que não serve antes de a IA ver qualquer coisa."
+        },
+        "picks": {
+          "title": "Três escolhas justificadas",
+          "body": "A IA explica cada raquete lendo o que você escreveu — sem nunca ver preço nem comissão."
+        }
+      }
+    },
+    "proof": {
+      "title": "Specs medidas, não adjetivos",
+      "subtitle": "Cada raquete do catálogo carrega as medições que as lojas brasileiras não publicam — aqui, uma delas contra a régua do catálogo inteiro.",
+      "rangeNote": "escala: mínimo ao máximo entre as {count} raquetes do catálogo",
+      "labels": {
+        "headSize": "Cabeça",
+        "weight": "Peso encordoada",
+        "stiffness": "Rigidez (RA)",
+        "swingweight": "Swingweight"
+      }
+    },
+    "seasons": {
+      "title": "O site vive o calendário",
+      "subtitle": "Durante cada Grand Slam a superfície muda de cor. A bola, nunca.",
+      "now": "agora",
+      "windows": {
+        "australian-open": "jan – fev",
+        "roland-garros": "abr – jun",
+        "wimbledon": "jun – jul",
+        "us-open": "jul – set"
+      }
     }
   },
   "results": {
@@ -329,6 +368,7 @@
   "racquet": {
     "metaDescription": "{name}: {headSize} in², {weight} sem cordas, padrão {pattern}. Especificações completas, raquetes parecidas e para quem esse frame faz sentido.",
     "specsTitle": "Especificações",
+    "specsScale": "Escala: do mínimo ao máximo entre as {count} raquetes do catálogo",
     "specs": {
       "brand": "Marca",
       "headSize": "Tamanho da cabeça",
