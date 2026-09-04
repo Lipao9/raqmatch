@@ -20,10 +20,10 @@ const optionCardClass = (selected: boolean, disabled = false) =>
   `flex items-center gap-3 rounded-xl border p-4 transition-all duration-150 ${
     disabled
       ? "cursor-not-allowed opacity-50 border-input bg-card/60"
-      : "cursor-pointer hover:-translate-y-0.5 hover:border-primary/50 hover:bg-accent/60 hover:shadow-sm"
+      : "cursor-pointer hover:-translate-y-0.5 hover:border-primary/50 hover:bg-accent/60"
   } ${
     selected
-      ? "border-primary bg-accent shadow-sm shadow-primary/10"
+      ? "border-primary bg-accent"
       : "border-input bg-card/60"
   }`;
 
@@ -121,7 +121,7 @@ function ScaleOptions({ question, value, onChange }: QuestionCardProps) {
             onClick={() => onChange(point)}
             className={`h-12 flex-1 rounded-xl border text-base font-medium transition-all duration-150 outline-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 ${
               value === point
-                ? "border-primary bg-accent shadow-sm shadow-primary/10"
+                ? "border-primary bg-accent"
                 : "cursor-pointer border-input bg-card/60 hover:-translate-y-0.5 hover:border-primary/50 hover:bg-accent/60"
             }`}
           >
