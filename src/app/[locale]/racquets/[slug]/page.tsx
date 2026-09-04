@@ -15,7 +15,8 @@ import { getPathname, Link } from "@/i18n/navigation";
 import type { Locale } from "@/i18n/routing";
 import { PLAIN_REL, relForKind, trackedUrl } from "@/lib/affiliate";
 import { storefrontFor } from "@/lib/offers";
-import { findRelated, getRacketBySlug, loadCatalog } from "@/lib/catalog";
+import { findRelated, getRacketBySlug, loadCatalog, specRanges } from "@/lib/catalog";
+import { Graticule } from "@/components/Graticule";
 import { absoluteUrl } from "@/lib/site";
 import { racketTraits } from "@/lib/traits";
 import { weightFor, weightLabel } from "@/lib/weight";
@@ -93,9 +94,47 @@ export default async function RacquetPage({
   const href = `${trackedUrl(racket.id, "racquet_page", storefront?.store)}&locale=${locale}`;
   const { canonical } = alternatesFor(`/racquets/${slug}`, locale as Locale);
 
+  // The numeric specs are measured, not listed: each is placed on the whole
+  // catalog's min–max ruler (raise 3 of the direction contract — no number
+  // floats without a scale).
+  const ranges = specRanges();
+  const measured = [
+    {
+      label: t("specs.headSize"),
+      value: racket.headSizeIn2,
+      unit: "in²",
+      ...ranges.headSize,
+    },
+    {
+      label: t("specs.weight"),
+      value: racket.weightGrams,
+      unit: "g",
+      ...ranges.weight,
+    },
+    ...(racket.stiffnessRA !== null
+      ? [
+          {
+            label: t("specs.stiffness"),
+            value: racket.stiffnessRA,
+            unit: "RA",
+            ...ranges.stiffness,
+          },
+        ]
+      : []),
+    ...(racket.swingweight !== null
+      ? [
+          {
+            label: t("specs.swingweight"),
+            value: racket.swingweight,
+            unit: "SW",
+            ...ranges.swingweight,
+          },
+        ]
+      : []),
+  ];
+
   const specs: { label: string; value: string }[] = [
     { label: t("specs.brand"), value: racket.brand },
-    { label: t("specs.headSize"), value: `${racket.headSizeIn2} in²` },
     // Both conventions, always, each labelled. A Brazilian visitor needs the
     // unstrung figure to recognise the frame; the strung one is what the specs
     // were scraped in and what a US reader expects, and dropping either would
@@ -103,17 +142,8 @@ export default async function RacquetPage({
     ...(weight.convention === "unstrung"
       ? [{ label: t("specs.weightUnstrung"), value: weightLabel(racket, locale) }]
       : []),
-    { label: t("specs.weight"), value: `${racket.weightGrams} g` },
     { label: t("specs.balance"), value: racket.balance || t("unknown") },
-    {
-      label: t("specs.stiffness"),
-      value: racket.stiffnessRA !== null ? `${racket.stiffnessRA}` : t("unknown"),
-    },
     { label: t("specs.stringPattern"), value: racket.stringPattern },
-    {
-      label: t("specs.swingweight"),
-      value: racket.swingweight !== null ? `${racket.swingweight}` : t("unknown"),
-    },
     // The US reference price is dropped once a real Brazilian one is shown:
     // two prices in two currencies on one page is not more information, it is a
     // question about which one applies.
@@ -271,7 +301,12 @@ export default async function RacquetPage({
                         dateStyle: "short",
                       }),
                     })
-                  : tStores("priceReference", { at: storeAt })}
+                  : // The USD figure is always the Tennis Warehouse scrape,
+                    // whatever store the CTA points at — attributing it to
+                    // that store would invent a claim about their pricing.
+                    tStores("priceReference", {
+                      at: tStores("at.tennis-warehouse"),
+                    })}
               </p>
             </div>
           </div>
@@ -299,10 +334,35 @@ export default async function RacquetPage({
           </section>
         )}
 
-        <section className="flex flex-col gap-4">
+        <section className="flex flex-col gap-6">
           <h2 className="font-heading text-2xl font-semibold">
             {t("specsTitle")}
           </h2>
+          <dl className="grid gap-x-10 gap-y-6 sm:grid-cols-2">
+            {measured.map((spec) => (
+              <div key={spec.label}>
+                <div className="flex items-baseline justify-between gap-4">
+                  <dt className="text-sm text-muted-foreground">
+                    {spec.label}
+                  </dt>
+                  <dd className="font-mono text-sm text-primary">
+                    {spec.value} {spec.unit}
+                  </dd>
+                </div>
+                <Graticule
+                  pct={((spec.value - spec.min) / (spec.max - spec.min)) * 100}
+                  className="mt-2"
+                />
+                <div className="mt-1 flex justify-between font-mono text-[0.65rem] text-muted-foreground">
+                  <span>{spec.min}</span>
+                  <span>{spec.max}</span>
+                </div>
+              </div>
+            ))}
+          </dl>
+          <p className="font-mono text-[0.65rem] uppercase tracking-[0.14em] text-muted-foreground">
+            {t("specsScale", { count: loadCatalog().length })}
+          </p>
           <dl className="grid gap-x-8 sm:grid-cols-2">
             {specs.map((spec) => (
               <div

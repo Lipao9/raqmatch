@@ -44,6 +44,33 @@ export function catalogUpdatedAt(): Date {
   return new Date(parsed().updatedAt);
 }
 
+export type SpecRange = { min: number; max: number };
+
+/**
+ * Min–max across the whole catalog for each measured spec — the ruler every
+ * graticule on the site measures a racquet against.
+ */
+export function specRanges(): {
+  headSize: SpecRange;
+  weight: SpecRange;
+  stiffness: SpecRange;
+  swingweight: SpecRange;
+} {
+  const rackets = loadCatalog();
+  const range = (pick: (r: Racket) => number | null): SpecRange => {
+    const values = rackets
+      .map(pick)
+      .filter((v): v is number => v !== null && Number.isFinite(v));
+    return { min: Math.min(...values), max: Math.max(...values) };
+  };
+  return {
+    headSize: range((r) => r.headSizeIn2),
+    weight: range((r) => r.weightGrams),
+    stiffness: range((r) => r.stiffnessRA),
+    swingweight: range((r) => r.swingweight),
+  };
+}
+
 /**
  * Racket ids are already slug-shaped (`babolat-pure-aero-2026`), so they double
  * as the URL segment — no separate slug field to keep in sync.

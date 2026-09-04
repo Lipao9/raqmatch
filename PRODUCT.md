@@ -82,15 +82,17 @@ Core Web Vitals is treated as a revenue input rather than a nicety.
 - Mark: a racquet head — hoop plus string bed — in `src/components/BrandLogo.tsx`.
   Rejected alternatives are recorded in that file's comment; a round hoop with a
   short 45° handle reads as a magnifying glass and must not be retried.
-- Visual identity is the equipment, not a venue: graphite racquet frames,
-  natural-gut cream and the optic ball's citron, with Fraunces for display and
-  Geist for body. It is deliberately tied to no tournament — during each Grand
-  Slam's season the site retints to that major's palette (`src/lib/slam.ts` +
-  the `[data-theme]` blocks in `globals.css`) and returns to the house palette
-  between seasons. Brand surfaces that leave the site (favicon, OG images)
-  stay on the house palette year-round. (Replaced the original "Monte Carlo"
-  terracotta identity in Sep 2026: next to the seasonal themes it read as
-  Roland-Garros.)
+- Visual identity is "Leitura de Jogo": Hawk-Eye ball-tracking graphics on a
+  night-graphite ground (see DESIGN.md, seed 75c9d8a4). The current Grand
+  Slam season's court surface owns the large fields (`src/lib/slam.ts` + the
+  `[data-theme]` blocks in `globals.css`); optic citron is the only action
+  color — the ball is the constant, the surface is the season. Archivo (wide)
+  for display, Geist for body, Geist Mono for readouts; specs are measured on
+  graticules, elevation is hairline borders, never shadows; there is
+  deliberately no light mode. Brand surfaces that leave the site (favicon, OG
+  images) stay on the neutral night look year-round. (This Sep 2026 redesign
+  replaced the short-lived "equipment" light palette, which had replaced the
+  original "Monte Carlo" terracotta.)
 - Voice: plain and specific, never hype. The privacy policy states its own
   practical limits rather than papering over them; product copy explains the
   trade-off in a recommendation instead of asserting a "perfect match".

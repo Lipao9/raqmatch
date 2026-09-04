@@ -19,7 +19,7 @@ export async function SiteHeader() {
           <span
             key={slam}
             data-slam-badge={slam}
-            className="items-center gap-1.5 rounded-full border border-accent-foreground/15 bg-accent/50 px-2.5 py-0.5 text-xs text-accent-foreground"
+            className="items-center gap-2 border border-border bg-accent/60 px-2.5 py-1 font-mono text-[0.65rem] uppercase tracking-[0.14em] text-accent-foreground"
           >
             <span aria-hidden className="size-1.5 rounded-full bg-primary" />
             {t("season", { slam: SLAM_NAMES[slam] })}

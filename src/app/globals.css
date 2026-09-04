@@ -9,15 +9,7 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
-  --font-heading: var(--font-fraunces);
-  --color-sidebar-ring: var(--sidebar-ring);
-  --color-sidebar-border: var(--sidebar-border);
-  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
-  --color-sidebar-accent: var(--sidebar-accent);
-  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
-  --color-sidebar-primary: var(--sidebar-primary);
-  --color-sidebar-foreground: var(--sidebar-foreground);
-  --color-sidebar: var(--sidebar);
+  --font-heading: var(--font-archivo);
   --color-chart-5: var(--chart-5);
   --color-chart-4: var(--chart-4);
   --color-chart-3: var(--chart-3);
@@ -39,6 +31,8 @@
   --color-popover: var(--popover);
   --color-card-foreground: var(--card-foreground);
   --color-card: var(--card);
+  --color-court: var(--court);
+  --color-court-line: var(--court-line);
   --radius-sm: calc(var(--radius) * 0.6);
   --radius-md: calc(var(--radius) * 0.8);
   --radius-lg: var(--radius);
@@ -49,197 +43,110 @@
 }
 
 /*
- * House palette — the equipment, not a venue: graphite racquet frames,
- * natural-gut cream and the optic ball's citron, darkened until it holds
- * contrast. Deliberately tied to no tournament; the seasonal Grand Slam
- * blocks below own the tournament references, and between seasons this
- * palette holds. (Replaced the original Monte-Carlo terracotta, which read
- * as Roland-Garros next to the seasonal themes.)
+ * "Leitura de Jogo" — the world of Hawk-Eye ball-tracking graphics (seed
+ * 75c9d8a4). Night graphite ground; the current Grand Slam season's court
+ * surface (--court) owns the large fields; optic citron (--primary) is the
+ * only action color — the ball is the constant, the surface is the season.
+ * Court lines are hairlines, specs are measured on graticules, and readouts
+ * are mono. This is a committed single dark look: there is no light mode
+ * and no .dark block by design.
  */
 :root {
-  --background: oklch(0.977 0.004 95);
-  --foreground: oklch(0.27 0.015 90);
-  --card: oklch(0.995 0.002 95);
-  --card-foreground: oklch(0.27 0.015 90);
-  --popover: oklch(0.995 0.002 95);
-  --popover-foreground: oklch(0.27 0.015 90);
-  --primary: oklch(0.52 0.115 100);
-  --primary-foreground: oklch(0.985 0.008 100);
-  --secondary: oklch(0.94 0.012 100);
-  --secondary-foreground: oklch(0.31 0.03 95);
-  --muted: oklch(0.95 0.006 95);
-  --muted-foreground: oklch(0.48 0.015 90);
-  --accent: oklch(0.95 0.075 115);
-  --accent-foreground: oklch(0.42 0.09 110);
-  --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.9 0.01 95);
-  --input: oklch(0.9 0.01 95);
-  --ring: oklch(0.62 0.11 105);
-  --chart-1: oklch(0.52 0.115 100);
-  --chart-2: oklch(0.35 0.015 90);
-  --chart-3: oklch(0.65 0.03 85);
-  --chart-4: oklch(0.87 0.1 115);
-  --chart-5: oklch(0.4 0.06 105);
-  --radius: 0.625rem;
-  --sidebar: oklch(0.96 0.006 95);
-  --sidebar-foreground: oklch(0.27 0.015 90);
-  --sidebar-primary: oklch(0.52 0.115 100);
-  --sidebar-primary-foreground: oklch(0.985 0.008 100);
-  --sidebar-accent: oklch(0.95 0.075 115);
-  --sidebar-accent-foreground: oklch(0.42 0.09 110);
-  --sidebar-border: oklch(0.9 0.01 95);
-  --sidebar-ring: oklch(0.62 0.11 105);
-}
-
-.dark {
-  --background: oklch(0.21 0.012 90);
-  --foreground: oklch(0.96 0.005 95);
-  --card: oklch(0.25 0.015 90);
-  --card-foreground: oklch(0.96 0.005 95);
-  --popover: oklch(0.25 0.015 90);
-  --popover-foreground: oklch(0.96 0.005 95);
-  --primary: oklch(0.78 0.14 112);
-  --primary-foreground: oklch(0.2 0.02 95);
-  --secondary: oklch(0.31 0.02 95);
-  --secondary-foreground: oklch(0.94 0.008 95);
-  --muted: oklch(0.29 0.015 90);
-  --muted-foreground: oklch(0.72 0.02 95);
-  --accent: oklch(0.34 0.05 105);
-  --accent-foreground: oklch(0.9 0.09 112);
-  --destructive: oklch(0.704 0.191 22.216);
-  --border: oklch(1 0 0 / 12%);
-  --input: oklch(1 0 0 / 16%);
-  --ring: oklch(0.78 0.14 112);
-  --chart-1: oklch(0.78 0.14 112);
-  --chart-2: oklch(0.7 0.02 90);
-  --chart-3: oklch(0.55 0.03 85);
-  --chart-4: oklch(0.87 0.1 115);
-  --chart-5: oklch(0.5 0.06 105);
-  --sidebar: oklch(0.25 0.015 90);
-  --sidebar-foreground: oklch(0.96 0.005 95);
-  --sidebar-primary: oklch(0.78 0.14 112);
-  --sidebar-primary-foreground: oklch(0.2 0.02 95);
-  --sidebar-accent: oklch(0.34 0.05 105);
-  --sidebar-accent-foreground: oklch(0.9 0.09 112);
-  --sidebar-border: oklch(1 0 0 / 12%);
-  --sidebar-ring: oklch(0.78 0.14 112);
+  --background: oklch(0.16 0.012 250);
+  --foreground: oklch(0.95 0.006 95);
+  --card: oklch(0.2 0.014 250);
+  --card-foreground: oklch(0.95 0.006 95);
+  --popover: oklch(0.2 0.014 250);
+  --popover-foreground: oklch(0.95 0.006 95);
+  --primary: oklch(0.87 0.17 115);
+  --primary-foreground: oklch(0.2 0.03 110);
+  --secondary: oklch(0.26 0.016 250);
+  --secondary-foreground: oklch(0.93 0.008 95);
+  --muted: oklch(0.23 0.014 250);
+  --muted-foreground: oklch(0.73 0.015 250);
+  --accent: oklch(0.28 0.022 250);
+  --accent-foreground: oklch(0.9 0.02 250);
+  --destructive: oklch(0.66 0.19 25);
+  --border: oklch(1 0 0 / 14%);
+  --input: oklch(1 0 0 / 18%);
+  --ring: oklch(0.87 0.17 115);
+  --court: oklch(0.3 0.035 255);
+  --court-line: oklch(1 0 0 / 55%);
+  --chart-1: oklch(0.87 0.17 115);
+  --chart-2: oklch(0.62 0.08 255);
+  --chart-3: oklch(0.75 0.015 250);
+  --chart-4: oklch(0.5 0.05 255);
+  --chart-5: oklch(0.9 0.006 95);
+  --radius: 0.375rem;
 }
 
 /*
- * Seasonal Grand Slam themes. The house palette above holds between seasons;
- * during a slam's season (src/lib/slam.ts — the year opens in Australian Open,
- * clay leads into Roland-Garros, grass into Wimbledon, the US swing into the
- * US Open) an inline head script stamps data-theme on <html> before first
- * paint and one of these blocks retints the same token roles. Only light
- * values exist here on purpose: the .dark block never activates today (no
- * ThemeProvider), so slam dark variants would be dead code — add them when
- * dark mode actually ships. Brand surfaces that leave the page (favicon, OG
- * images) stay on the house palette year-round.
+ * Seasonal Grand Slam surfaces. The season retints the court and its washes;
+ * the ball (--primary) never changes. Windows come from src/lib/slam.ts —
+ * the year opens in Australian Open, clay leads into Roland-Garros, grass
+ * into Wimbledon, the US swing into the US Open; between seasons the neutral
+ * practice court above holds. Brand surfaces that leave the page (favicon,
+ * OG images) stay on the house look year-round.
  */
 
-/* Australian Open: summer cobalt over sunlit white, a sunrise-warm accent. */
+/* Australian Open: summer cyan-cobalt hard court. */
 [data-theme="australian-open"] {
-  --background: oklch(0.98 0.007 90);
-  --foreground: oklch(0.27 0.05 242);
-  --card: oklch(0.995 0.003 90);
-  --card-foreground: oklch(0.27 0.05 242);
-  --popover: oklch(0.995 0.003 90);
-  --popover-foreground: oklch(0.27 0.05 242);
-  --primary: oklch(0.54 0.125 233);
-  --primary-foreground: oklch(0.985 0.008 220);
-  --secondary: oklch(0.935 0.03 225);
-  --secondary-foreground: oklch(0.3 0.06 240);
-  --muted: oklch(0.95 0.012 95);
-  --muted-foreground: oklch(0.49 0.035 240);
-  --accent: oklch(0.94 0.045 70);
-  --accent-foreground: oklch(0.44 0.11 45);
-  --border: oklch(0.9 0.018 210);
-  --input: oklch(0.9 0.018 210);
-  --ring: oklch(0.64 0.12 230);
-  --chart-1: oklch(0.54 0.125 233);
-  --chart-2: oklch(0.62 0.13 45);
-  --chart-3: oklch(0.45 0.08 150);
-  --chart-4: oklch(0.82 0.07 85);
-  --chart-5: oklch(0.35 0.06 245);
+  --background: oklch(0.16 0.02 235);
+  --card: oklch(0.2 0.024 235);
+  --popover: oklch(0.2 0.024 235);
+  --secondary: oklch(0.27 0.032 232);
+  --muted: oklch(0.23 0.026 235);
+  --muted-foreground: oklch(0.74 0.025 230);
+  --accent: oklch(0.31 0.06 230);
+  --accent-foreground: oklch(0.9 0.045 225);
+  --court: oklch(0.5 0.115 225);
+  --chart-2: oklch(0.65 0.12 225);
+  --chart-4: oklch(0.42 0.08 230);
 }
 
-/* Roland-Garros: terre battue burnt deeper than Monte-Carlo's terracotta,
-   with the ink and cool surfaces shifted to Parisian green. */
+/* Roland-Garros: terre battue. */
 [data-theme="roland-garros"] {
-  --background: oklch(0.975 0.01 60);
-  --foreground: oklch(0.3 0.05 155);
-  --card: oklch(0.993 0.005 70);
-  --card-foreground: oklch(0.3 0.05 155);
-  --popover: oklch(0.993 0.005 70);
-  --popover-foreground: oklch(0.3 0.05 155);
-  --primary: oklch(0.55 0.135 52);
-  --primary-foreground: oklch(0.985 0.01 75);
-  --secondary: oklch(0.93 0.028 150);
-  --secondary-foreground: oklch(0.31 0.06 155);
-  --muted: oklch(0.945 0.014 65);
-  --muted-foreground: oklch(0.48 0.035 150);
-  --accent: oklch(0.93 0.04 58);
-  --accent-foreground: oklch(0.42 0.12 48);
-  --border: oklch(0.89 0.025 60);
-  --input: oklch(0.89 0.025 60);
-  --ring: oklch(0.65 0.12 52);
-  --chart-1: oklch(0.55 0.135 52);
-  --chart-2: oklch(0.45 0.09 150);
-  --chart-3: oklch(0.4 0.06 250);
-  --chart-4: oklch(0.82 0.06 75);
-  --chart-5: oklch(0.35 0.07 45);
+  --background: oklch(0.17 0.018 40);
+  --card: oklch(0.21 0.022 42);
+  --popover: oklch(0.21 0.022 42);
+  --secondary: oklch(0.27 0.028 45);
+  --muted: oklch(0.23 0.022 42);
+  --muted-foreground: oklch(0.75 0.025 50);
+  --accent: oklch(0.31 0.05 48);
+  --accent-foreground: oklch(0.9 0.04 55);
+  --court: oklch(0.5 0.115 45);
+  --chart-2: oklch(0.65 0.12 50);
+  --chart-4: oklch(0.42 0.08 45);
 }
 
-/* Wimbledon: lawn green and royal purple on ivory. */
+/* Wimbledon: lawn under lights, royal purple in the washes. */
 [data-theme="wimbledon"] {
-  --background: oklch(0.978 0.01 105);
-  --foreground: oklch(0.27 0.05 160);
-  --card: oklch(0.995 0.005 105);
-  --card-foreground: oklch(0.27 0.05 160);
-  --popover: oklch(0.995 0.005 105);
-  --popover-foreground: oklch(0.27 0.05 160);
-  --primary: oklch(0.46 0.11 155);
-  --primary-foreground: oklch(0.985 0.01 110);
-  --secondary: oklch(0.94 0.03 150);
-  --secondary-foreground: oklch(0.3 0.06 160);
-  --muted: oklch(0.95 0.012 110);
-  --muted-foreground: oklch(0.47 0.03 160);
-  --accent: oklch(0.93 0.035 305);
-  --accent-foreground: oklch(0.38 0.11 305);
-  --border: oklch(0.9 0.02 120);
-  --input: oklch(0.9 0.02 120);
-  --ring: oklch(0.58 0.1 155);
-  --chart-1: oklch(0.46 0.11 155);
-  --chart-2: oklch(0.42 0.12 305);
-  --chart-3: oklch(0.75 0.1 90);
-  --chart-4: oklch(0.84 0.05 110);
-  --chart-5: oklch(0.32 0.06 160);
+  --background: oklch(0.16 0.016 155);
+  --card: oklch(0.2 0.02 155);
+  --popover: oklch(0.2 0.02 155);
+  --secondary: oklch(0.26 0.026 155);
+  --muted: oklch(0.22 0.02 155);
+  --muted-foreground: oklch(0.74 0.02 150);
+  --accent: oklch(0.32 0.06 305);
+  --accent-foreground: oklch(0.9 0.045 305);
+  --court: oklch(0.42 0.1 150);
+  --chart-2: oklch(0.6 0.11 150);
+  --chart-4: oklch(0.45 0.1 305);
 }
 
-/* US Open: stadium blue with a championship-yellow accent on cool white. */
+/* US Open: stadium blue. */
 [data-theme="us-open"] {
-  --background: oklch(0.978 0.005 240);
-  --foreground: oklch(0.26 0.055 255);
-  --card: oklch(0.995 0.002 240);
-  --card-foreground: oklch(0.26 0.055 255);
-  --popover: oklch(0.995 0.002 240);
-  --popover-foreground: oklch(0.26 0.055 255);
-  --primary: oklch(0.51 0.14 252);
-  --primary-foreground: oklch(0.985 0.005 240);
-  --secondary: oklch(0.935 0.025 245);
-  --secondary-foreground: oklch(0.29 0.06 252);
-  --muted: oklch(0.945 0.01 240);
-  --muted-foreground: oklch(0.49 0.035 250);
-  --accent: oklch(0.95 0.07 95);
-  --accent-foreground: oklch(0.47 0.1 80);
-  --border: oklch(0.9 0.015 240);
-  --input: oklch(0.9 0.015 240);
-  --ring: oklch(0.6 0.13 250);
-  --chart-1: oklch(0.51 0.14 252);
-  --chart-2: oklch(0.8 0.14 95);
-  --chart-3: oklch(0.6 0.09 140);
-  --chart-4: oklch(0.35 0.06 255);
-  --chart-5: oklch(0.7 0.09 235);
+  --background: oklch(0.16 0.022 255);
+  --card: oklch(0.2 0.026 255);
+  --popover: oklch(0.2 0.026 255);
+  --secondary: oklch(0.27 0.034 253);
+  --muted: oklch(0.23 0.028 255);
+  --muted-foreground: oklch(0.74 0.025 250);
+  --accent: oklch(0.31 0.065 252);
+  --accent-foreground: oklch(0.9 0.045 248);
+  --court: oklch(0.44 0.115 255);
+  --chart-2: oklch(0.65 0.12 250);
+  --chart-4: oklch(0.38 0.08 255);
 }
 
 /*
@@ -259,6 +166,105 @@
   }
 }
 
+/*
+ * Season strip on the landing: every chip renders its "now" tag in the HTML
+ * and the active theme reveals its own, same pattern as the header badge.
+ */
+[data-season-now] {
+  display: none;
+}
+[data-theme="australian-open"] [data-season-chip="australian-open"] [data-season-now],
+[data-theme="roland-garros"] [data-season-chip="roland-garros"] [data-season-now],
+[data-theme="wimbledon"] [data-season-chip="wimbledon"] [data-season-now],
+[data-theme="us-open"] [data-season-chip="us-open"] [data-season-now] {
+  display: inline-flex;
+}
+[data-theme="australian-open"] [data-season-chip="australian-open"],
+[data-theme="roland-garros"] [data-season-chip="roland-garros"],
+[data-theme="wimbledon"] [data-season-chip="wimbledon"],
+[data-theme="us-open"] [data-season-chip="us-open"] {
+  border-color: color-mix(in oklch, var(--primary), transparent 40%);
+}
+
+/*
+ * Tracking animation. One authored moment, looped: the serve trace draws,
+ * the ball rides it, the bounce ring blooms where the CTA sits. SMIL moves
+ * the ball; these keyframes draw the trace and pulse the ring in sync with
+ * the 7s SMIL cycle.
+ */
+@keyframes trace-draw {
+  0% {
+    stroke-dashoffset: 1;
+    opacity: 0;
+  }
+  4% {
+    opacity: 1;
+  }
+  40% {
+    stroke-dashoffset: 0;
+    opacity: 1;
+  }
+  78% {
+    stroke-dashoffset: 0;
+    opacity: 1;
+  }
+  92%,
+  100% {
+    stroke-dashoffset: 0;
+    opacity: 0;
+  }
+}
+@keyframes impact-ring {
+  0%,
+  38% {
+    transform: scale(0.2);
+    opacity: 0;
+  }
+  44% {
+    transform: scale(0.55);
+    opacity: 0.9;
+  }
+  70% {
+    transform: scale(1);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0;
+  }
+}
+/* Pairs with pathLength={1} on the SVG element. */
+.trace-path {
+  stroke-dasharray: 1;
+  animation: trace-draw 7s cubic-bezier(0.16, 1, 0.3, 1) infinite;
+}
+.impact-ring {
+  transform-origin: center;
+  transform-box: fill-box;
+  animation: impact-ring 7s cubic-bezier(0.16, 1, 0.3, 1) infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .trace-path {
+    animation: none;
+    stroke-dashoffset: 0;
+  }
+  .tracking-motion {
+    display: none;
+  }
+  /* The bounce marker anchors the CTA; without motion it holds still. */
+  .impact-ring {
+    animation: none;
+    transform: none;
+    opacity: 0.7;
+  }
+}
+
+/* The display voice is wide everywhere, not only where someone remembered an
+   arbitrary property: every font-heading element speaks at broadcast width. */
+.font-heading {
+  font-stretch: 112%;
+}
+
 @layer base {
   * {
     @apply border-border outline-ring/50;
@@ -268,5 +274,9 @@
   }
   html {
     @apply font-sans;
+  }
+  ::selection {
+    background: color-mix(in oklch, var(--primary), transparent 70%);
+    color: var(--foreground);
   }
 }
