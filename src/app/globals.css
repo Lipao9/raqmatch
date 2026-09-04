@@ -121,6 +121,138 @@
   --sidebar-ring: oklch(0.68 0.14 42);
 }
 
+/*
+ * Seasonal Grand Slam themes. Monte-Carlo above stays the year-round default;
+ * while a major is on, an inline head script (src/lib/slam.ts) stamps
+ * data-theme on <html> before first paint and one of these blocks retints the
+ * same token roles. Only light values exist here on purpose: the .dark block
+ * never activates today (no ThemeProvider), so slam dark variants would be
+ * dead code — add them when dark mode actually ships. Brand surfaces that
+ * leave the page (favicon, OG images) stay Monte-Carlo year-round.
+ */
+
+/* Australian Open: summer cobalt over sunlit white, a sunrise-warm accent. */
+[data-theme="australian-open"] {
+  --background: oklch(0.98 0.007 90);
+  --foreground: oklch(0.27 0.05 242);
+  --card: oklch(0.995 0.003 90);
+  --card-foreground: oklch(0.27 0.05 242);
+  --popover: oklch(0.995 0.003 90);
+  --popover-foreground: oklch(0.27 0.05 242);
+  --primary: oklch(0.54 0.125 233);
+  --primary-foreground: oklch(0.985 0.008 220);
+  --secondary: oklch(0.935 0.03 225);
+  --secondary-foreground: oklch(0.3 0.06 240);
+  --muted: oklch(0.95 0.012 95);
+  --muted-foreground: oklch(0.49 0.035 240);
+  --accent: oklch(0.94 0.045 70);
+  --accent-foreground: oklch(0.44 0.11 45);
+  --border: oklch(0.9 0.018 210);
+  --input: oklch(0.9 0.018 210);
+  --ring: oklch(0.64 0.12 230);
+  --chart-1: oklch(0.54 0.125 233);
+  --chart-2: oklch(0.62 0.13 45);
+  --chart-3: oklch(0.45 0.08 150);
+  --chart-4: oklch(0.82 0.07 85);
+  --chart-5: oklch(0.35 0.06 245);
+}
+
+/* Roland-Garros: terre battue burnt deeper than Monte-Carlo's terracotta,
+   with the ink and cool surfaces shifted to Parisian green. */
+[data-theme="roland-garros"] {
+  --background: oklch(0.975 0.01 60);
+  --foreground: oklch(0.3 0.05 155);
+  --card: oklch(0.993 0.005 70);
+  --card-foreground: oklch(0.3 0.05 155);
+  --popover: oklch(0.993 0.005 70);
+  --popover-foreground: oklch(0.3 0.05 155);
+  --primary: oklch(0.55 0.135 52);
+  --primary-foreground: oklch(0.985 0.01 75);
+  --secondary: oklch(0.93 0.028 150);
+  --secondary-foreground: oklch(0.31 0.06 155);
+  --muted: oklch(0.945 0.014 65);
+  --muted-foreground: oklch(0.48 0.035 150);
+  --accent: oklch(0.93 0.04 58);
+  --accent-foreground: oklch(0.42 0.12 48);
+  --border: oklch(0.89 0.025 60);
+  --input: oklch(0.89 0.025 60);
+  --ring: oklch(0.65 0.12 52);
+  --chart-1: oklch(0.55 0.135 52);
+  --chart-2: oklch(0.45 0.09 150);
+  --chart-3: oklch(0.4 0.06 250);
+  --chart-4: oklch(0.82 0.06 75);
+  --chart-5: oklch(0.35 0.07 45);
+}
+
+/* Wimbledon: lawn green and royal purple on ivory. */
+[data-theme="wimbledon"] {
+  --background: oklch(0.978 0.01 105);
+  --foreground: oklch(0.27 0.05 160);
+  --card: oklch(0.995 0.005 105);
+  --card-foreground: oklch(0.27 0.05 160);
+  --popover: oklch(0.995 0.005 105);
+  --popover-foreground: oklch(0.27 0.05 160);
+  --primary: oklch(0.46 0.11 155);
+  --primary-foreground: oklch(0.985 0.01 110);
+  --secondary: oklch(0.94 0.03 150);
+  --secondary-foreground: oklch(0.3 0.06 160);
+  --muted: oklch(0.95 0.012 110);
+  --muted-foreground: oklch(0.47 0.03 160);
+  --accent: oklch(0.93 0.035 305);
+  --accent-foreground: oklch(0.38 0.11 305);
+  --border: oklch(0.9 0.02 120);
+  --input: oklch(0.9 0.02 120);
+  --ring: oklch(0.58 0.1 155);
+  --chart-1: oklch(0.46 0.11 155);
+  --chart-2: oklch(0.42 0.12 305);
+  --chart-3: oklch(0.75 0.1 90);
+  --chart-4: oklch(0.84 0.05 110);
+  --chart-5: oklch(0.32 0.06 160);
+}
+
+/* US Open: stadium blue with a championship-yellow accent on cool white. */
+[data-theme="us-open"] {
+  --background: oklch(0.978 0.005 240);
+  --foreground: oklch(0.26 0.055 255);
+  --card: oklch(0.995 0.002 240);
+  --card-foreground: oklch(0.26 0.055 255);
+  --popover: oklch(0.995 0.002 240);
+  --popover-foreground: oklch(0.26 0.055 255);
+  --primary: oklch(0.51 0.14 252);
+  --primary-foreground: oklch(0.985 0.005 240);
+  --secondary: oklch(0.935 0.025 245);
+  --secondary-foreground: oklch(0.29 0.06 252);
+  --muted: oklch(0.945 0.01 240);
+  --muted-foreground: oklch(0.49 0.035 250);
+  --accent: oklch(0.95 0.07 95);
+  --accent-foreground: oklch(0.47 0.1 80);
+  --border: oklch(0.9 0.015 240);
+  --input: oklch(0.9 0.015 240);
+  --ring: oklch(0.6 0.13 250);
+  --chart-1: oklch(0.51 0.14 252);
+  --chart-2: oklch(0.8 0.14 95);
+  --chart-3: oklch(0.6 0.09 140);
+  --chart-4: oklch(0.35 0.06 255);
+  --chart-5: oklch(0.7 0.09 235);
+}
+
+/*
+ * Header season badge: all four ship in the static HTML and the active theme
+ * reveals its own. CSS-only, so the statically generated header needs no
+ * client date logic. Hidden below the sm breakpoint — the header is tight.
+ */
+[data-slam-badge] {
+  display: none;
+}
+@media (min-width: 40rem) {
+  [data-theme="australian-open"] [data-slam-badge="australian-open"],
+  [data-theme="roland-garros"] [data-slam-badge="roland-garros"],
+  [data-theme="wimbledon"] [data-slam-badge="wimbledon"],
+  [data-theme="us-open"] [data-slam-badge="us-open"] {
+    display: inline-flex;
+  }
+}
+
 @layer base {
   * {
     @apply border-border outline-ring/50;

@@ -8,7 +8,9 @@ import { siteUrl } from "@/lib/site";
 import { AdsenseLoader } from "@/components/ads/AdsenseLoader";
 import { ConsentBanner } from "@/components/ads/ConsentBanner";
 import { GoogleAnalytics } from "@/components/analytics/GoogleAnalytics";
+import { SlamThemeSync } from "@/components/SlamThemeSync";
 import { Toaster } from "@/components/ui/sonner";
+import { slamThemeScript } from "@/lib/slam";
 import "../globals.css";
 
 const geistSans = Geist({
@@ -69,10 +71,19 @@ export default async function LocaleLayout({
   setRequestLocale(locale);
 
   return (
+    // suppressHydrationWarning: the head script below stamps data-theme on
+    // <html> before React hydrates; React must accept the DOM, not "fix" it.
     <html
       lang={locale}
+      suppressHydrationWarning
       className={`${geistSans.variable} ${geistMono.variable} ${fraunces.variable} h-full antialiased`}
     >
+      <head>
+        {/* Grand Slam season theming. Runs synchronously during parsing so
+            the seasonal palette applies before first paint — these pages are
+            statically generated, so the server cannot know today's date. */}
+        <script dangerouslySetInnerHTML={{ __html: slamThemeScript() }} />
+      </head>
       <body className="min-h-full flex flex-col">
         <NextIntlClientProvider>
           {children}
@@ -84,6 +95,7 @@ export default async function LocaleLayout({
           <AdsenseLoader />
           <ConsentBanner />
           <Toaster />
+          <SlamThemeSync />
         </NextIntlClientProvider>
       </body>
     </html>
