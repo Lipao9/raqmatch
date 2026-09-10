@@ -20,6 +20,24 @@ export async function SiteFooter() {
         <span aria-hidden className="text-border">
           ·
         </span>
+        <Link
+          href="/about"
+          className="transition-colors hover:text-primary hover:underline"
+        >
+          {t("about")}
+        </Link>
+        <span aria-hidden className="text-border">
+          ·
+        </span>
+        <Link
+          href="/contact"
+          className="transition-colors hover:text-primary hover:underline"
+        >
+          {t("contact")}
+        </Link>
+        <span aria-hidden className="text-border">
+          ·
+        </span>
         {/* Unconditional, not gated on ads being enabled: AdSense review needs to
             reach this from every page, and LGPD disclosure is owed regardless of
             whether ads happen to be switched on. */}
