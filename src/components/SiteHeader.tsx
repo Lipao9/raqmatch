@@ -35,6 +35,12 @@ export async function SiteHeader() {
         >
           {t("racquets")}
         </Link>
+        <Link
+          href="/guides"
+          className="text-sm text-muted-foreground transition-colors hover:text-primary"
+        >
+          {t("guides")}
+        </Link>
         <LocaleSwitcher />
       </div>
     </header>

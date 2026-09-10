@@ -299,11 +299,14 @@
   },
   "nav": {
     "racquets": "Racquets",
-    "season": "{slam} season"
+    "season": "{slam} season",
+    "guides": "Guides"
   },
   "footer": {
     "disclosure": "Some store links are affiliate links: if you buy through them we may earn a commission — at no extra cost to you.",
-    "privacy": "Privacy"
+    "privacy": "Privacy",
+    "about": "About",
+    "contact": "Contact"
   },
   "ads": {
     "label": "Advertisement"
@@ -396,6 +399,77 @@
       "heavy": "{weight}g: stable through contact, wants a firm swing and good conditioning.",
       "spin": "{pattern} pattern: wider string spacing helps generate topspin.",
       "maneuverable": "Swingweight {sw}: quick through the air, good for short exchanges and volleys."
+    }
+  },
+  "guides": {
+    "metaTitle": "Guides",
+    "metaDescription": "Plain-spoken guides to the specs that define a racquet — weight, stiffness, head size, string pattern — written over a real catalog, hype-free.",
+    "title": "Guides",
+    "subtitle": "How to read the specifications that define a racquet. Every number cited here is measured on the real catalog's ruler — no \"best of the year\" lists.",
+    "updated": "Updated {date}",
+    "citedTitle": "Racquets cited in this guide",
+    "citedHint": "Each one's full specs, measured on the catalog's ruler, are on its racquet page.",
+    "categories": {
+      "choosing": "Choosing",
+      "specs": "Specifications",
+      "strings": "Strings"
+    }
+  },
+  "about": {
+    "metaTitle": "About",
+    "metaDescription": "What RaqMatch is, where the spec data comes from, and the rules that keep the recommendation independent from monetisation.",
+    "title": "About RaqMatch",
+    "intro": "RaqMatch turns answers about how you play into three specific racquets, each with a written justification. This page explains how that works — and the rules we hold ourselves to so the result can be trusted.",
+    "sections": {
+      "what": {
+        "title": "What it is",
+        "body": "A bilingual site, built in Brazil, for players choosing a racquet without a coach or a trusted shop nearby. The catalog holds 272 racquets from 8 brands, with real factory specifications: head size, weight, balance, stiffness (RA), swingweight and string pattern.\n\nThe core product is the quiz: you describe your game — level, style, what's missing, whether your arm complains — and get three racquets with the reasoning behind each."
+      },
+      "howItWorks": {
+        "title": "How the match is calculated",
+        "body": "In two stages. First, a deterministic rules filter narrows the catalog to candidates compatible with your answers — fixed thresholds over the specs, the same ones published in our guides.\n\nThen a language model (Claude, by Anthropic) reads your answers — including the free-text ones, in your own words — and picks three racquets from that filtered set, writing the justification for each. The model's response is validated server-side: it can only name racquets that passed the filter."
+      },
+      "dataSources": {
+        "title": "Where the data comes from",
+        "body": "Specifications come from the Tennis Warehouse catalog, which publishes measurements most retailers don't — RA stiffness, swingweight and balance. We use TW as a spec database, not as a store.\n\nBrazilian prices come from verified Mercado Livre listings, each showing the date it was last checked. Prices unverified for more than seven days stop being displayed. Weight is shown in each market's convention, converted and marked with ≈ when derived — the method is explained in the weight guide."
+      },
+      "methodology": {
+        "title": "What the model never sees",
+        "body": "Price and commission never enter the context of the model that recommends. The quiz never asks about budget. The affiliate-link layer is applied to pages after the three picks already exist — which means the recommendation cannot follow the payout."
+      },
+      "editorial": {
+        "title": "How we write about racquets",
+        "body": "All editorial text on this site — guides and per-racquet write-ups — is derived from catalog specifications and each racquet's position on the collection's ruler. We don't run playtests, we have no reviewer network, and we don't invent reviews: where a text is spec-derived analysis, the page says so.\n\nIf you find a spec error or a claim that doesn't hold up, the contact page exists exactly for that."
+      },
+      "independence": {
+        "title": "Monetisation and independence",
+        "body": "The site is funded two declared ways: affiliate links to stores (with a footer disclosure on every page when active) and ads. Two rules never change: the quiz never carries an ad, and neither funding path alters which racquets get recommended — by the architecture described above, not by promise."
+      },
+      "reach": {
+        "title": "Reach us",
+        "body": "Questions, spec corrections or suggestions:",
+        "link": "contact page"
+      }
+    }
+  },
+  "contact": {
+    "metaTitle": "Contact",
+    "metaDescription": "How to reach RaqMatch: general questions, personal-data requests (LGPD) and spec corrections.",
+    "title": "Contact",
+    "intro": "All contact is by email:",
+    "sections": {
+      "general": {
+        "title": "General",
+        "body": "Questions about the site, suggestions of racquets or stores for the catalog, partnerships. We reply from the same address."
+      },
+      "data": {
+        "title": "Privacy and data (LGPD)",
+        "body": "Requests to access, correct or delete personal data can be made at the same email. What we collect and for how long is described in the privacy policy."
+      },
+      "corrections": {
+        "title": "Spec corrections",
+        "body": "If a spec, weight or price looks wrong, send the page link and your source. A wrong spec leads to the wrong racquet — that kind of email gets priority."
+      }
     }
   }
 }

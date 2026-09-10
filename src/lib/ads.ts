@@ -23,7 +23,8 @@ export type AdPlacement =
   | "home_below_hero"
   | "catalog_infeed"
   | "racquet_below_specs"
-  | "results_below_picks";
+  | "results_below_picks"
+  | "guide_in_article";
 
 /**
  * Reserved height per format, in pixels.
@@ -53,13 +54,17 @@ export type AdFormat = keyof typeof AD_MIN_HEIGHT;
  * that loads the script, regardless of where we placed slots. Blocking the script
  * is the only enforcement that does not depend on a dashboard setting.
  *
+ * `/contact` shares that rationale: a mailto page has no publisher content.
+ * `/about` and `/guides` are deliberately NOT here — they are exactly the
+ * publisher content AdSense reviews for.
+ *
  * `/results` is deliberately *not* ad-free, but it is the page carrying the
  * affiliate CTAs: one click on a R$1.500 racquet at Mercado Livre's 16% is worth
  * on the order of a thousand AdSense impressions in this niche. So its slot sits
  * below all three recommendations, after the outbound buttons, where it can only
  * catch attention that was already on its way out.
  */
-const AD_FREE_PREFIXES = ["/quiz", "/privacy"] as const;
+const AD_FREE_PREFIXES = ["/quiz", "/privacy", "/contact"] as const;
 
 /** Expects a locale-stripped pathname, i.e. what `usePathname` from `@/i18n/navigation` returns. */
 export function isAdFreePath(pathname: string): boolean {
@@ -92,5 +97,7 @@ export function adSlotId(placement: AdPlacement): string | undefined {
       return process.env.NEXT_PUBLIC_ADSENSE_SLOT_RACQUET?.trim() || undefined;
     case "results_below_picks":
       return process.env.NEXT_PUBLIC_ADSENSE_SLOT_RESULTS?.trim() || undefined;
+    case "guide_in_article":
+      return process.env.NEXT_PUBLIC_ADSENSE_SLOT_GUIDE?.trim() || undefined;
   }
 }

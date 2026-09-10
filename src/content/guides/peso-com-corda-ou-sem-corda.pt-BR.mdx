@@ -1,0 +1,93 @@
+Você acha a raquete perfeita num comparativo americano: 318 g. Vai ao Mercado
+Livre e o anúncio da mesma raquete diz 300 g. Alguém está errado?
+
+Ninguém. **Os dois números estão certos — eles só medem coisas diferentes.**
+Essa é provavelmente a maior fonte de confusão para quem pesquisa raquete no
+Brasil lendo material em inglês, e entender a diferença evita tanto comprar a
+raquete errada quanto descartar a certa.
+
+## As duas convenções
+
+- **Peso com corda (strung):** a raquete pronta para jogar, encordoada. É a
+  convenção dos catálogos e reviews americanos — Tennis Warehouse, por
+  exemplo, publica tudo com corda.
+- **Peso sem corda (unstrung):** o quadro pelado, como sai da fábrica. É o
+  número impresso no próprio quadro pela fabricante e a convenção das lojas
+  brasileiras — e dos anúncios no Mercado Livre.
+
+Um jogo de cordas pesa em torno de **15 a 20 g**, dependendo do calibre e do
+padrão. Ou seja: a mesma raquete aparece ~17 g "mais pesada" num catálogo
+americano do que num anúncio brasileiro.
+
+## Por que isso importa na prática
+
+Dezessete gramas parecem pouco, mas no tênis são uma categoria inteira. A
+diferença entre uma raquete de 285 g e uma de 300 g (sem corda) é exatamente o
+tipo de escolha que define manobrabilidade contra estabilidade — e é menor que
+a diferença entre as duas convenções.
+
+<SpecScale spec="weight" value={318} label="Pure Aero 2026 com corda, na régua do catálogo" unit="g" />
+
+O erro clássico tem dois sentidos:
+
+1. **"Essa raquete é pesada demais para mim"** — dito sobre o número com
+   corda, comparado com a raquete atual medida sem corda. A raquete parecia 17 g
+   mais pesada do que é na convenção local.
+2. **"Comprei a mesma raquete do review"** — mas comparando o peso sem corda
+   do anúncio com o peso com corda do review, a pessoa levou um quadro uma
+   categoria mais pesado do que imaginava.
+
+Exemplos reais do catálogo, para calibrar o olho:
+
+<RacquetCard slug="babolat-pure-aero-2026" />
+
+<RacquetCard slug="head-speed-mp-l-2026" />
+
+<RacquetCard slug="wilson-ultra-100ul-v5" />
+
+## Como comparar sem errar
+
+A regra é uma só: **nunca compare pesos sem saber a convenção de cada número.**
+Na prática:
+
+- Anúncio de loja brasileira ou número impresso no quadro → **sem corda**.
+- Catálogo, review ou comparativo em inglês → quase sempre **com corda**.
+- Na dúvida, subtraia ~17 g do número americano para chegar à convenção
+  brasileira — ou some ~17 g no caminho inverso.
+- Compare sempre **na mesma convenção**. Qual delas, tanto faz; misturar as
+  duas é que produz decisões erradas.
+
+E lembre que o peso publicado é do quadro na especificação de fábrica: corda
+escolhida, antivibrador e overgrip somam alguns gramas a mais no peso final de
+jogo — mais um motivo para não tratar diferenças de 5 g entre anúncios como
+decisivas.
+
+## Como o RaqMatch mostra o peso
+
+Nosso catálogo de specs vem de fonte americana, então o número de origem é
+sempre o peso **com corda**. Para visitantes no Brasil, convertemos para a
+convenção local — e somos transparentes sobre o método:
+
+- Quando uma loja brasileira publica o peso sem corda daquela raquete, usamos
+  **o número da loja**, exato.
+- Quando não há número local, derivamos o peso sem corda subtraindo um jogo de
+  cordas típico e arredondando para o múltiplo de 5 g — a granularidade que as
+  fabricantes realmente publicam. Esse valor derivado aparece marcado com
+  **≈**, porque a conversão tem precisão de ±5 g: um jogo de cordas não pesa o
+  mesmo em todo quadro.
+- Nas páginas de raquete, as duas convenções aparecem lado a lado, cada uma
+  com o seu rótulo — assim o número que você vê aqui bate tanto com o anúncio
+  brasileiro quanto com o review americano.
+
+## O resumo
+
+- **Loja brasileira / Mercado Livre** → sem corda.
+- **Impresso no quadro** → sem corda.
+- **Tennis Warehouse e reviews em inglês** → com corda.
+- **RaqMatch, visitando em português** → sem corda, com ≈ quando o valor é
+  derivado.
+
+Se você está montando sua lista de candidatas, o
+[catálogo completo](/racquets) mostra cada raquete já na convenção local — e o
+[nosso quiz](/quiz/quick) filtra por peso levando a conversão em conta, para
+que a raquete recomendada seja a que você reconhece na loja.

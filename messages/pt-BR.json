@@ -299,11 +299,14 @@
   },
   "nav": {
     "racquets": "Raquetes",
-    "season": "Temporada {slam}"
+    "season": "Temporada {slam}",
+    "guides": "Guias"
   },
   "footer": {
     "disclosure": "Alguns links para lojas são de afiliado: se você comprar por eles, podemos receber uma comissão — sem custo extra para você.",
-    "privacy": "Privacidade"
+    "privacy": "Privacidade",
+    "about": "Sobre",
+    "contact": "Contato"
   },
   "ads": {
     "label": "Publicidade"
@@ -396,6 +399,77 @@
       "heavy": "{weight}g: estabilidade no impacto, pede swing firme e bom condicionamento.",
       "spin": "Padrão {pattern}: cordas mais espaçadas ajudam a gerar topspin.",
       "maneuverable": "Swingweight {sw}: giro rápido, bom para trocas curtas e voleios."
+    }
+  },
+  "guides": {
+    "metaTitle": "Guias",
+    "metaDescription": "Guias diretos sobre as especificações que definem uma raquete — peso, rigidez, tamanho da cabeça, padrão de cordas — escritos sobre um catálogo real, sem hype.",
+    "title": "Guias",
+    "subtitle": "Como ler as especificações que definem uma raquete. Cada número citado aqui é medido na régua do catálogo real — nada de listas de \"melhores do ano\".",
+    "updated": "Atualizado em {date}",
+    "citedTitle": "Raquetes citadas neste guia",
+    "citedHint": "As specs completas de cada uma, medidas na régua do catálogo, estão na página da raquete.",
+    "categories": {
+      "choosing": "Escolha",
+      "specs": "Especificações",
+      "strings": "Cordas"
+    }
+  },
+  "about": {
+    "metaTitle": "Sobre",
+    "metaDescription": "O que é o RaqMatch, de onde vêm os dados de especificação e as regras que mantêm a recomendação independente da monetização.",
+    "title": "Sobre o RaqMatch",
+    "intro": "O RaqMatch transforma respostas sobre como você joga em três raquetes específicas, cada uma com uma justificativa escrita. Esta página explica como isso funciona — e as regras que a gente se impõe para o resultado ser confiável.",
+    "sections": {
+      "what": {
+        "title": "O que é",
+        "body": "Um site brasileiro, bilíngue, para quem precisa escolher raquete sem um professor ou vendedor de confiança por perto. O catálogo tem 272 raquetes de 8 marcas, com especificações reais de fábrica: tamanho da cabeça, peso, balanço, rigidez (RA), swingweight e padrão de cordas.\n\nO produto principal é o quiz: você descreve seu jogo — nível, estilo, o que falta, se o braço reclama — e recebe três raquetes com o porquê de cada uma."
+      },
+      "howItWorks": {
+        "title": "Como o match é calculado",
+        "body": "Em duas etapas. Primeiro, um filtro determinístico de regras reduz o catálogo às candidatas compatíveis com as suas respostas — limiares fixos sobre as specs, os mesmos publicados nos nossos guias.\n\nDepois, um modelo de linguagem (Claude, da Anthropic) lê as suas respostas — inclusive as de texto livre, nas suas palavras — e escolhe três raquetes dentro desse conjunto filtrado, escrevendo a justificativa de cada escolha. A resposta do modelo é validada no servidor: ele só pode indicar raquetes que passaram pelo filtro."
+      },
+      "dataSources": {
+        "title": "De onde vêm os dados",
+        "body": "As especificações vêm do catálogo da Tennis Warehouse, que publica medições que lojas brasileiras não publicam — rigidez RA, swingweight e balanço. Usamos a TW como banco de specs, não como loja.\n\nOs preços em reais vêm de anúncios verificados no Mercado Livre, cada um com a data da última checagem visível na página. Preços com mais de sete dias sem verificação deixam de ser exibidos. O peso aparece na convenção brasileira (sem corda), convertido e marcado com ≈ quando é derivado — o método está explicado no guia sobre peso."
+      },
+      "methodology": {
+        "title": "O que o modelo nunca vê",
+        "body": "Preço e comissão nunca entram no contexto do modelo que recomenda. O quiz não pergunta orçamento. A camada de links de afiliado é aplicada às páginas depois que as três escolhas já existem — o que significa que a recomendação não tem como seguir o pagamento."
+      },
+      "editorial": {
+        "title": "Como escrevemos sobre raquetes",
+        "body": "Todo texto editorial do site — guias e análises por raquete — é derivado das especificações de catálogo e da posição de cada raquete na régua do acervo. Não fazemos playtests, não temos rede de testadores e não inventamos reviews: quando um texto é análise derivada de specs, a página diz isso.\n\nSe você encontrar um erro de especificação ou uma afirmação que não se sustenta, a página de contato existe exatamente para isso."
+      },
+      "independence": {
+        "title": "Monetização e independência",
+        "body": "O site se sustenta por duas vias, ambas declaradas: links de afiliado para lojas (com aviso no rodapé de todas as páginas quando ativos) e anúncios. Duas regras não mudam: o quiz nunca carrega anúncio, e nenhuma das duas vias altera quais raquetes são recomendadas — pela arquitetura descrita acima, não por promessa."
+      },
+      "reach": {
+        "title": "Fale com a gente",
+        "body": "Dúvidas, correções de especificação ou sugestões:",
+        "link": "página de contato"
+      }
+    }
+  },
+  "contact": {
+    "metaTitle": "Contato",
+    "metaDescription": "Como falar com o RaqMatch: dúvidas gerais, pedidos sobre dados pessoais (LGPD) e correções de especificação.",
+    "title": "Contato",
+    "intro": "Todo contato é por e-mail:",
+    "sections": {
+      "general": {
+        "title": "Assuntos gerais",
+        "body": "Dúvidas sobre o site, sugestões de raquetes ou lojas para o catálogo, parcerias. Respondemos no mesmo endereço."
+      },
+      "data": {
+        "title": "Privacidade e dados (LGPD)",
+        "body": "Pedidos de acesso, correção ou exclusão de dados pessoais podem ser feitos pelo mesmo e-mail. O que coletamos e por quanto tempo está descrito na política de privacidade."
+      },
+      "corrections": {
+        "title": "Correções de especificação",
+        "body": "Se uma spec, um peso ou um preço parecer errado, mande o link da página e a fonte. Especificação errada leva a raquete errada — esse tipo de e-mail tem prioridade."
+      }
     }
   }
 }
