@@ -55,7 +55,7 @@
         },
         "picks": {
           "title": "Three justified picks",
-          "body": "The AI explains each racquet by reading what you wrote — and it never sees price or commission."
+          "body": "The AI reads what you wrote and scores each candidate; the reasoning comes from the specs — and it never sees price or commission."
         }
       }
     },
@@ -340,7 +340,7 @@
       },
       "ai": {
         "title": "Use of artificial intelligence",
-        "body": "To generate a recommendation, your answers are sent to Anthropic's API (Claude), which runs on servers outside Brazil. We send only the quiz content — never your IP or any identifier of yours. Under Anthropic's commercial terms, this data is not used to train models.\n\nPlease avoid writing personally identifying details in the free-text fields: they are not needed for the recommendation."
+        "body": "To generate a recommendation, your answers are sent to Jev, TypeSafe AI's evaluation model, through the Vercel AI Gateway — servers outside Brazil. We send only the quiz content — never your IP or any identifier of yours. The provider operates with zero data retention and does not use the content to train models.\n\nPlease avoid writing personally identifying details in the free-text fields: they are not needed for the recommendation."
       },
       "affiliate": {
         "title": "Affiliate links",
@@ -427,7 +427,7 @@
       },
       "howItWorks": {
         "title": "How the match is calculated",
-        "body": "In two stages. First, a deterministic rules filter narrows the catalog to candidates compatible with your answers — fixed thresholds over the specs, the same ones published in our guides.\n\nThen a language model (Claude, by Anthropic) reads your answers — including the free-text ones, in your own words — and picks three racquets from that filtered set, writing the justification for each. The model's response is validated server-side: it can only name racquets that passed the filter."
+        "body": "In two stages. First, a deterministic rules filter narrows the catalog to candidates compatible with your answers — fixed thresholds over the specs, the same ones published in our guides.\n\nThen an evaluation model (Jev, by TypeSafe AI) reads your answers — including the free-text ones, in your own words — and rates, for each candidate, how well it fits your game along separate dimensions: power, control, arm comfort, style and what you wrote. The ratings are combined server-side with weights that follow from your answers, the top three are chosen, and each justification is composed from the specs and the rules — not AI-generated text, so it never contradicts the numbers on the card. If the model is unavailable, the filter's own order decides."
       },
       "dataSources": {
         "title": "Where the data comes from",

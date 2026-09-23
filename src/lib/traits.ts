@@ -3,7 +3,7 @@ import type { Racket } from "./catalog";
 /**
  * Plain-language traits derived from the specs, so a racquet page says something
  * about how the frame plays instead of just listing numbers. Pure and
- * deterministic on purpose: no LLM call on a statically generated page, and it
+ * deterministic on purpose: no model call on a statically generated page, and it
  * stays cheap to unit-test.
  *
  * Thresholds mirror the ones the prefilter scores on (see lib/prefilter.ts) so

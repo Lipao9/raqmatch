@@ -30,13 +30,14 @@ for studying AI, architecture and Next.js. Work is chosen to serve both.
 
 ## Positioning
 
-The recommendation is made by an LLM reading the player's own words, over a
-rules-prefiltered candidate set from a real spec catalog — not a decision tree and
-not a "best racquets of 2026" listicle. Two things a neighbouring product could not
-truthfully copy without doing the same work:
+The recommendation is made by an evaluation model (Jev) rating every candidate
+against the player's own words, over a rules-prefiltered candidate set from a real
+spec catalog — not a decision tree and not a "best racquets of 2026" listicle. Two
+things a neighbouring product could not truthfully copy without doing the same work:
 
 - The free-text answers (swing, injuries, what the current racquet lacks) actually
-  reach the model, so the justification references the player's situation.
+  reach the model, which scores each candidate against them; the pick it rates
+  highest for those words quotes them back in its justification.
 - The model never sees price or commission, so the picks cannot be accused of
   following the payout.
 
@@ -59,14 +60,18 @@ Core Web Vitals is treated as a revenue input rather than a nicety.
 - Catalog is scraped from Tennis Warehouse into a versioned `data/rackets.json`.
   Tennis Warehouse is the **spec database**, not the store: it supplies RA,
   swingweight and balance, which Brazilian retailers do not publish.
-- Recommendation = rules prefilter → Claude Haiku with strict tool use, static
-  schema, and server-side validation of returned racquet ids.
+- Recommendation = rules prefilter → Jev (TypeSafe AI's evaluation model, via
+  the Vercel AI Gateway) answering one yes/no question per candidate per
+  dimension → weighted combination and version-deduplicated top three in code →
+  deterministic justifications composed from the specs. Jev cannot write; the
+  text is composed, so it never contradicts the card. Falls back to prefilter
+  order when the gateway is down.
 - Postgres (Neon) via Drizzle over `postgres.js` TCP — chosen over Neon's HTTP
   driver so the same code runs against a local Postgres in test and CI. Quiz runs,
   recommendations and outbound clicks are recorded; every write is best-effort and
   degrades to a no-op without a database.
 - No accounts, no auth, no payments. Rate limiting on `/api/recommend` because each
-  call costs an Anthropic request.
+  call costs a gateway request.
 - **Never asks about budget, and the model never sees price.**
 - Monetisation is two independent, env-driven layers, both inert unless configured:
   affiliate deep links (`src/lib/affiliate.ts`) and Google AdSense

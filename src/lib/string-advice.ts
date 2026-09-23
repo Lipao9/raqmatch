@@ -7,9 +7,9 @@ import { loadStrings, type StringCategory, type TennisString } from "./strings";
  * Deterministic string advice: racquet specs (always available) plus the quiz
  * profile (when there is one) → ranked string picks and a tension range.
  *
- * Same design bet as `traits.ts`: pure and testable, no LLM call, so it runs
+ * Same design bet as `traits.ts`: pure and testable, no model call, so it runs
  * on the statically generated racquet pages as well as inside /api/recommend.
- * The LLM never sees strings at all — the catalog is 15 hand-curated products
+ * The ranker never sees strings at all — the catalog is 15 hand-curated products
  * and a scoring table covers it; a model call would add cost and
  * nondeterminism to a decision a table already makes well.
  *

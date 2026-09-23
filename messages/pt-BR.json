@@ -55,7 +55,7 @@
         },
         "picks": {
           "title": "Três escolhas justificadas",
-          "body": "A IA explica cada raquete lendo o que você escreveu — sem nunca ver preço nem comissão."
+          "body": "A IA lê o que você escreveu e pontua cada candidata; a justificativa vem das specs — sem nunca ver preço nem comissão."
         }
       }
     },
@@ -340,7 +340,7 @@
       },
       "ai": {
         "title": "Uso de inteligência artificial",
-        "body": "Para gerar a recomendação, suas respostas são enviadas à API da Anthropic (Claude), que roda em servidores fora do Brasil. Enviamos apenas o conteúdo do quiz — nunca seu IP ou qualquer identificador seu. Segundo os termos comerciais da Anthropic, esses dados não são usados para treinar modelos.\n\nEvite escrever dados pessoais identificáveis nos campos de texto livre: eles não são necessários para a recomendação."
+        "body": "Para gerar a recomendação, suas respostas são enviadas ao Jev, modelo de avaliação da TypeSafe AI, através do Vercel AI Gateway — servidores fora do Brasil. Enviamos apenas o conteúdo do quiz — nunca seu IP ou qualquer identificador seu. O provedor opera sem retenção de dados e não usa o conteúdo para treinar modelos.\n\nEvite escrever dados pessoais identificáveis nos campos de texto livre: eles não são necessários para a recomendação."
       },
       "affiliate": {
         "title": "Links de afiliado",
@@ -427,7 +427,7 @@
       },
       "howItWorks": {
         "title": "Como o match é calculado",
-        "body": "Em duas etapas. Primeiro, um filtro determinístico de regras reduz o catálogo às candidatas compatíveis com as suas respostas — limiares fixos sobre as specs, os mesmos publicados nos nossos guias.\n\nDepois, um modelo de linguagem (Claude, da Anthropic) lê as suas respostas — inclusive as de texto livre, nas suas palavras — e escolhe três raquetes dentro desse conjunto filtrado, escrevendo a justificativa de cada escolha. A resposta do modelo é validada no servidor: ele só pode indicar raquetes que passaram pelo filtro."
+        "body": "Em duas etapas. Primeiro, um filtro determinístico de regras reduz o catálogo às candidatas compatíveis com as suas respostas — limiares fixos sobre as specs, os mesmos publicados nos nossos guias.\n\nDepois, um modelo de avaliação (Jev, da TypeSafe AI) lê as suas respostas — inclusive as de texto livre, nas suas palavras — e responde, para cada candidata, quão bem ela atende ao seu jogo em dimensões separadas: potência, controle, conforto para o braço, estilo e o que você escreveu. As notas são combinadas no servidor com pesos que seguem das suas respostas, as três melhores são escolhidas e a justificativa de cada uma é montada a partir das specs e das regras — não é texto gerado por IA, então nunca contradiz os números do card. Se o modelo estiver indisponível, a ordem do próprio filtro decide."
       },
       "dataSources": {
         "title": "De onde vêm os dados",
