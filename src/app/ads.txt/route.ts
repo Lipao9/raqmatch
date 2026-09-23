@@ -33,7 +33,13 @@ export function GET() {
     {
       headers: {
         "content-type": "text/plain; charset=utf-8",
-        "cache-control": "public, max-age=3600",
+        // `s-maxage` so Vercel's CDN answers the crawler instead of waking this
+        // function every time. The file only ever changes with a deploy, and a
+        // deploy purges the CDN, so a long shared TTL costs nothing and removes
+        // a cold start from the one request whose failure is invisible to us —
+        // a crawl that times out is simply reported back as "no ads.txt found".
+        "cache-control":
+          "public, max-age=3600, s-maxage=86400, stale-while-revalidate=604800",
       },
     },
   );

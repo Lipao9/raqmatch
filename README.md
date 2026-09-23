@@ -39,8 +39,8 @@ não chegar ao bundle do cliente.
 ## Anúncios (Google AdSense)
 
 `src/lib/ads.ts` é a única fonte de verdade. **Sem `NEXT_PUBLIC_ADSENSE_CLIENT_ID`
-nada acontece**: o script não carrega, nenhum slot renderiza, `/ads.txt` dá 404 e o
-banner de consentimento não aparece.
+nada acontece**: o script não carrega, nenhum slot renderiza, `/ads.txt` dá 404, a
+meta tag de propriedade some do `<head>` e o banner de consentimento não aparece.
 
 ```bash
 NEXT_PUBLIC_ADSENSE_CLIENT_ID=ca-pub-...   # habilita o loader, /ads.txt e o banner
@@ -88,12 +88,44 @@ anúncios a visitantes do EEE/Reino Unido. Quando `/en` começar a receber tráf
 europeu de verdade, `src/lib/consent.ts` é o ponto de troca — os componentes só
 pedem um tri-state a ele.
 
+### Propriedade do site e `/ads.txt`
+
+Duas coisas distintas, fáceis de confundir quando o painel reclama:
+
+| O quê | Onde mora | Para quê serve |
+| --- | --- | --- |
+| `<meta name="google-adsense-account">` | `generateMetadata` do layout de locale | diz ao Google que **este domínio é desta conta** |
+| `/ads.txt` | `src/app/ads.txt/route.ts` | diz aos compradores que **o Google pode vender** este inventário |
+
+A meta tag é renderizada **no servidor**, e isso é o ponto: o `AdsenseLoader` só
+injeta a biblioteca depois da hidratação *e* depois que o efeito de consentimento
+lê o `localStorage`, então o HTML cru não carrega publisher id nenhum. Um crawler
+que não executa JS não via a conta em lugar algum do documento.
+
+Ela vale em **toda** rota, inclusive nas de `AD_FREE_PREFIXES` — a tag não exibe
+anúncio, só assina a propriedade. `/privacy` e `/contact` são livres de anúncio,
+não deserdadas.
+
+O status "ads.txt: não encontrado" no painel do AdSense **não prova que o arquivo
+caiu**. Confira você mesmo antes de mexer em qualquer coisa:
+
+```bash
+curl -s https://raqmatch.com/ads.txt   # google.com, pub-…, DIRECT, f08c47fec0942fa0
+```
+
+Se isso responde 200 com o publisher id certo, o arquivo está bom e o status é só
+o Google ainda não ter recrawleado: ele leva de dias a algumas semanas, e enquanto
+o site está em "Preparando" (em revisão, sem servir anúncio) o Google não tem
+motivo para voltar. `f08c47fec0942fa0` é o id da autoridade de certificação TAG do
+Google, constante para todo publisher do AdSense — não é um valor a customizar.
+
 ### Antes de pedir aprovação no AdSense
 
 - `/privacy` existe, está no sitemap e é linkada do rodapé de toda página (requisito).
 - `NEXT_PUBLIC_CONTACT_EMAIL` precisa ser um endereço que **realmente receba**
   e-mail; o default é `contato@raqmatch.com`.
 - `/ads.txt` responde com o publisher id (confira depois do primeiro deploy).
+- `curl -s https://raqmatch.com/pt-BR | grep google-adsense-account` acha a meta tag.
 - Considere adicionar páginas "Sobre" e "Contato" — não são obrigatórias como a de
   privacidade, mas ajudam na revisão.
 

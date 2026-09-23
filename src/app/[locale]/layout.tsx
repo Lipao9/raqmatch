@@ -4,6 +4,7 @@ import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
+import { adsenseClientId } from "@/lib/ads";
 import { siteUrl } from "@/lib/site";
 import { AdsenseLoader } from "@/components/ads/AdsenseLoader";
 import { ConsentBanner } from "@/components/ads/ConsentBanner";
@@ -44,6 +45,20 @@ export async function generateMetadata({
 
   const t = await getTranslations({ locale, namespace: "landing" });
 
+  // Ownership marker for AdSense, rendered by the server.
+  //
+  // Google's crawler reads the document the server sends; it does not wait for
+  // hydration. `AdsenseLoader` injects the library only after React mounts *and*
+  // after the consent effect has read localStorage, so the raw HTML carries no
+  // publisher id anywhere — which is how a correctly served `/ads.txt` can still
+  // be reported as "not found" in the AdSense console: the crawl never tied the
+  // domain to the account, so there was no account to look for a file on.
+  //
+  // This tag is Google's documented answer for exactly that case. It renders no
+  // ad, so unlike the loader it belongs on every route, `AD_FREE_PREFIXES`
+  // included — `/privacy` and `/contact` are ad-free, not disowned.
+  const clientId = adsenseClientId();
+
   return {
     metadataBase: new URL(siteUrl()),
     title: {
@@ -56,6 +71,9 @@ export async function generateMetadata({
       type: "website",
       locale,
     },
+    verification: clientId
+      ? { other: { "google-adsense-account": clientId } }
+      : undefined,
   };
 }
 
