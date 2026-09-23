@@ -1,14 +1,13 @@
-import Anthropic from "@anthropic-ai/sdk";
-import { z } from "zod";
 import type { Answers } from "./answers";
 import type { Racket } from "./catalog";
 import {
-  buildSystemPrompt,
-  buildUserMessage,
-  RECOMMEND_MODEL,
-  recommendTool,
-  USE_GATEWAY,
-} from "./prompt";
+  fallbackRanking,
+  JevUnavailableError,
+  rankCandidates,
+  type Locale,
+  type RankedCandidate,
+} from "./jev";
+import { justifyPicks } from "./justify";
 
 export class RecommendationError extends Error {
   constructor(message: string) {
@@ -24,156 +23,138 @@ export interface Pick {
 
 export interface RecommendResult {
   picks: Pick[];
+  /** Gateway slug of the ranker, or FALLBACK_MODEL when it did not run. */
   model: string;
-  /** Summed across the corrective retry, so cost per quiz is the real cost. */
   inputTokens: number;
+  /** Always 0 with Jev: evaluation models emit probabilities, not tokens. */
   outputTokens: number;
-  /** Time spent in the model call(s) only, not the whole request. */
+  /** Time spent ranking only, not the whole request. */
   latencyMs: number;
 }
 
-const toolOutputSchema = z.object({
-  recommendations: z
-    .array(
-      z.object({
-        racket_id: z.string(),
-        justification: z.string().min(1),
-      }),
-    )
-    .min(3),
-});
+/** Recorded as the run's model when Jev was unavailable, so the rate is measurable. */
+export const FALLBACK_MODEL = "prefilter-order";
 
-let client: Anthropic | null = null;
+const PICKS = 3;
 
-function getClient(): Anthropic {
-  if (client) return client;
-  if (USE_GATEWAY) {
-    const apiKey = process.env.AI_GATEWAY_API_KEY;
-    if (!apiKey) {
-      // Without this guard the SDK would fall back to ANTHROPIC_API_KEY and
-      // send the wrong key to the gateway, failing with an opaque 401.
-      throw new Error("AI_PROVIDER=gateway requires AI_GATEWAY_API_KEY");
-    }
-    client = new Anthropic({
-      apiKey,
-      baseURL: "https://ai-gateway.vercel.sh",
-    });
-  } else {
-    client = new Anthropic(); // reads ANTHROPIC_API_KEY; throws if missing
-  }
-  return client;
-}
+/**
+ * Tokens that distinguish versions and editions of the same frame, not frames.
+ * "Blade 98 18x20 v9" and "v10", "Speed MP 2024" and "2026", a US Open paint
+ * job: the same racquet to the player, and two of them in a top three is one
+ * recommendation wasted.
+ */
+const EDITION_TOKENS = new Set([
+  "limited",
+  "edition",
+  "us",
+  "open",
+  "racquet",
+  "roland",
+  "garros",
+  "wimbledon",
+  "spectra",
+  "purple",
+  "pink",
+  "reverse",
+  "midnight",
+  "navy",
+  "session",
+  "soiree",
+  "carbon",
+  "grey",
+  "gen",
+  "ig",
+]);
 
-interface ModelCall {
-  picks: Pick[];
-  inputTokens: number;
-  outputTokens: number;
-}
-
-async function callModel(
-  messages: Anthropic.MessageParam[],
-  locale: "pt-BR" | "en",
-): Promise<ModelCall> {
-  const response = await getClient().messages.create({
-    model: RECOMMEND_MODEL,
-    max_tokens: 2048,
-    system: buildSystemPrompt(locale),
-    tools: [recommendTool],
-    tool_choice: { type: "tool", name: "recommend_rackets" },
-    messages,
-  });
-
-  const usage = {
-    inputTokens: response.usage.input_tokens,
-    outputTokens: response.usage.output_tokens,
-  };
-
-  const toolUse = response.content.find(
-    (b): b is Anthropic.ToolUseBlock => b.type === "tool_use",
+function isVersionToken(token: string): boolean {
+  return (
+    /^v\d+$/.test(token) ||
+    /^(19|20)\d{2}$/.test(token) ||
+    /^\d+(st|nd|rd|th)$/.test(token)
   );
-  if (!toolUse) {
-    throw new RecommendationError("Model returned no tool_use block");
-  }
-
-  const parsed = toolOutputSchema.safeParse(toolUse.input);
-  if (!parsed.success) {
-    throw new RecommendationError(
-      `Tool output failed validation: ${parsed.error.message}`,
-    );
-  }
-  return {
-    ...usage,
-    picks: parsed.data.recommendations.map((r) => ({
-      racketId: r.racket_id,
-      justification: r.justification,
-    })),
-  };
 }
 
-function validatePicks(picks: Pick[], validIds: Set<string>): string[] {
-  const seen = new Set<string>();
-  const invalid: string[] = [];
-  for (const p of picks.slice(0, 3)) {
-    if (!validIds.has(p.racketId) || seen.has(p.racketId)) {
-      invalid.push(p.racketId);
-    }
-    seen.add(p.racketId);
+/** Brand plus the model name with version and edition tokens removed. */
+export function familyKey(racket: Racket): string {
+  const tokens = `${racket.brand} ${racket.model}`
+    .toLowerCase()
+    .split(/[^a-z0-9]+/)
+    .filter((t) => t && !isVersionToken(t) && !EDITION_TOKENS.has(t));
+  return tokens.join(" ");
+}
+
+/**
+ * Best-first, one per family. If the candidate list has fewer distinct
+ * families than picks (tiny pools after the availability filter), the
+ * remaining slots are filled by rank rather than left empty.
+ */
+export function pickDistinct(
+  ranked: RankedCandidate[],
+  count = PICKS,
+): RankedCandidate[] {
+  const chosen: RankedCandidate[] = [];
+  const families = new Set<string>();
+  for (const c of ranked) {
+    if (chosen.length >= count) break;
+    const family = familyKey(c.racket);
+    if (families.has(family)) continue;
+    families.add(family);
+    chosen.push(c);
   }
-  return invalid;
+  for (const c of ranked) {
+    if (chosen.length >= count) break;
+    if (!chosen.includes(c)) chosen.push(c);
+  }
+  return chosen;
 }
 
 export async function recommend(
   candidates: Racket[],
   answers: Answers,
-  locale: "pt-BR" | "en",
+  locale: Locale,
 ): Promise<RecommendResult> {
-  const validIds = new Set(candidates.map((r) => r.id));
-  const userMessage = buildUserMessage(candidates, answers, locale);
-  const messages: Anthropic.MessageParam[] = [
-    { role: "user", content: userMessage },
-  ];
-
   const startedAt = Date.now();
+
+  let ranked: RankedCandidate[];
+  let model: string;
   let inputTokens = 0;
   let outputTokens = 0;
-  const result = (picks: Pick[]): RecommendResult => ({
-    picks,
-    model: RECOMMEND_MODEL,
+  try {
+    const result = await rankCandidates(candidates, answers, locale);
+    ranked = result.ranked;
+    model = result.model;
+    inputTokens = result.inputTokens;
+    outputTokens = result.outputTokens;
+  } catch (error) {
+    if (!(error instanceof JevUnavailableError)) throw error;
+    // Degrade, don't fail: the prefilter order is a ranking too, and a slower
+    // provider must not turn into an error page for the player.
+    console.warn("jev unavailable, using prefilter order:", error.message);
+    ranked = fallbackRanking(candidates);
+    model = FALLBACK_MODEL;
+  }
+
+  const chosen = pickDistinct(ranked, PICKS);
+  if (chosen.length < PICKS) {
+    throw new RecommendationError(
+      `Only ${chosen.length} candidates available to pick from`,
+    );
+  }
+
+  const justifications = justifyPicks(
+    chosen.map((c) => ({ racket: c.racket, dims: c.dims })),
+    answers,
+    locale,
+  );
+
+  return {
+    picks: chosen.map((c, i) => ({
+      racketId: c.racket.id,
+      justification: justifications[i],
+    })),
+    model,
     inputTokens,
     outputTokens,
     latencyMs: Date.now() - startedAt,
-  });
-
-  let call = await callModel(messages, locale);
-  inputTokens += call.inputTokens;
-  outputTokens += call.outputTokens;
-
-  let picks = call.picks;
-  let invalid = validatePicks(picks, validIds);
-  if (invalid.length > 0) {
-    // One corrective retry: restate the valid ids and ask again.
-    messages.push(
-      {
-        role: "assistant",
-        content: `Previous attempt used invalid or duplicate racket_id values: ${invalid.join(", ")}.`,
-      },
-      {
-        role: "user",
-        content: `Some racket_id values were not in the candidate list. Pick again using ONLY these exact ids, no duplicates: ${[...validIds].join(", ")}`,
-      },
-    );
-    call = await callModel(messages, locale);
-    inputTokens += call.inputTokens;
-    outputTokens += call.outputTokens;
-
-    picks = call.picks;
-    invalid = validatePicks(picks, validIds);
-    if (invalid.length > 0) {
-      throw new RecommendationError(
-        `Model returned invalid ids after retry: ${invalid.join(", ")}`,
-      );
-    }
-  }
-
-  return result(picks.slice(0, 3));
+  };
 }

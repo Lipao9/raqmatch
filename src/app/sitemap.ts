@@ -6,7 +6,7 @@ import { alternatesFor } from "@/lib/urls";
 
 // Every indexable route, listed once under the default locale with the other
 // locales as hreflang alternates — the shape Google prefers over one entry per
-// locale. /results is deliberately absent: it is a parameterised, LLM-generated
+// locale. /results is deliberately absent: it is a parameterised, per-visitor
 // page, marked noindex at the page level so shared links still get OG previews.
 const STATIC_PATHS = [
   "/",

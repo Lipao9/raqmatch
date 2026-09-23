@@ -1,12 +1,12 @@
 # RaqMatch
 
-Quiz bilíngue (pt-BR/en) para tenistas: responda 12 perguntas e receba 3 raquetes recomendadas pelo Claude, com justificativas no seu idioma.
+Quiz bilíngue (pt-BR/en) para tenistas: responda 12 perguntas e receba 3 raquetes escolhidas para o seu jogo, com justificativas no seu idioma.
 
 ## Como funciona
 
 1. O quiz codifica suas respostas na URL (`/results?skill=...`) — o link do resultado é compartilhável, nada é persistido.
 2. `src/lib/prefilter.ts` reduz o catálogo (`data/rackets.json`) a ~25 candidatas por regras (orçamento, nível, peso, lesão no braço).
-3. `/api/recommend` envia perfil + candidatas para o **Claude Haiku 4.5**, que escolhe 3 e justifica (tool use estrito; IDs validados server-side com retry corretivo).
+3. `/api/recommend` envia perfil + candidatas para o **Jev** (TypeSafe AI, via Vercel AI Gateway), um modelo de avaliação que não gera texto: para cada candidata responde, com probabilidade, uma pergunta por dimensão (potência, controle, braço, estilo, o que o jogador escreveu). `src/lib/jev.ts` combina as notas com pesos derivados das respostas, `src/lib/recommend.ts` escolhe 3 sem repetir versões da mesma raquete e `src/lib/justify.ts` monta a justificativa determinística a partir das specs e das regras — por isso ela nunca contradiz os badges do card. Se o gateway falhar, a ordem do prefilter decide e `quiz_runs.model` registra `prefilter-order`.
 
 ## Páginas de raquete (SEO)
 
@@ -146,7 +146,7 @@ deploys de PR rodam no caminho degradado e não sujam os dados reais.
 
 ## Rate limiting
 
-`/api/recommend` gasta uma chamada paga à Anthropic por request, então tem duas
+`/api/recommend` gasta uma chamada paga ao AI Gateway por request, então tem duas
 janelas: por IP (padrão 10/hora) e global (padrão 500/dia). A global é a que
 limita o prejuízo máximo. Responde `429` com `Retry-After`. Configurável por
 `RATE_LIMIT_*` no `.env`.
@@ -162,11 +162,25 @@ nenhum segue esses links.
 
 ```bash
 npm install
-cp .env.example .env.local   # preencha ANTHROPIC_API_KEY
+cp .env.example .env.local   # preencha AI_GATEWAY_API_KEY
 npm run dev                  # http://localhost:3000
 ```
 
-Sem `ANTHROPIC_API_KEY`, a API retorna 502 e a UI mostra o estado de erro.
+Sem `AI_GATEWAY_API_KEY`, a recomendação cai na ordem do prefilter: a UI funciona
+normalmente e `quiz_runs.model` registra `prefilter-order`.
+
+## Eval das escolhas
+
+```bash
+npm run eval:picks            # replays os últimos 20 quiz runs de produção
+npm run eval:picks -- 40 5    # 40 runs, imprime as justificativas de 5
+```
+
+Lê `DATABASE_URL` de `.env.production.local` (só SELECT) e imprime, por run, o que
+foi recomendado na época versus o que o código atual escolhe, com as
+probabilidades por dimensão e as justificativas geradas. Sobreposição com as
+escolhas antigas é sinal de sanidade, não nota: o que vale é ler os rankings com
+o perfil ao lado e julgar se fazem sentido tenístico.
 
 ## Catálogo / Scraper
 
@@ -182,9 +196,9 @@ Playwright é devDependency — não entra no bundle da Vercel. Seletores/URLs d
 ## Deploy (Vercel)
 
 1. Importe o repo na Vercel.
-2. Configure `ANTHROPIC_API_KEY` nas env vars do projeto.
+2. Configure `AI_GATEWAY_API_KEY` nas env vars do projeto.
 3. `git push` — build automático.
 
 ## Stack
 
-Next.js (App Router) + TypeScript · Tailwind + shadcn/ui (Base UI) · next-intl (`/[locale]/`, pt-BR default) · zod · @anthropic-ai/sdk · Playwright (scraper offline)
+Next.js (App Router) + TypeScript · Tailwind + shadcn/ui (Base UI) · next-intl (`/[locale]/`, pt-BR default) · zod · Jev via Vercel AI Gateway (fetch, sem SDK) · Playwright (scraper offline)

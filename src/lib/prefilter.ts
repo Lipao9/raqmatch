@@ -313,7 +313,7 @@ export function prefilter(answers: Answers, rackets: Racket[]): Racket[] {
     .map((r) => ({ r, s: score(r, answers) }))
     .sort((a, b) => b.s - a.s);
 
-  // Cap per brand so the LLM sees variety.
+  // Cap per brand so the ranker sees variety.
   const perBrand = new Map<string, number>();
   const diverse: Racket[] = [];
   for (const { r } of ranked) {

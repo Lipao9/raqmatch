@@ -44,7 +44,7 @@ export function ResultsView({
   // Serialised, and the effect keys off the string rather than the objects.
   // `answers` arrives as a prop deserialised from the server component, so an
   // equal-but-new object identity would otherwise re-run the effect and spend a
-  // second paid Anthropic request for the same quiz.
+  // second paid model request for the same quiz.
   const body = useMemo(
     () => JSON.stringify({ answers, locale, mode }),
     [answers, locale, mode],
