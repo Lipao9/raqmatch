@@ -16,6 +16,7 @@ import type { Locale } from "@/i18n/routing";
 import { PLAIN_REL, relForKind, trackedUrl } from "@/lib/affiliate";
 import { storefrontFor } from "@/lib/offers";
 import { findRelated, getRacketBySlug, loadCatalog, specRanges } from "@/lib/catalog";
+import { getRacketNotes } from "@/lib/racket-notes";
 import { Graticule } from "@/components/Graticule";
 import { absoluteUrl } from "@/lib/site";
 import { racketTraits } from "@/lib/traits";
@@ -77,6 +78,7 @@ export default async function RacquetPage({
   const related = findRelated(racket);
   const weight = weightFor(racket, locale);
   const traits = racketTraits(racket, weight.grams);
+  const notes = getRacketNotes(racket.id, locale as Locale);
 
   // One store, chosen for this visitor — a Brazilian with a mapped Mercado Livre
   // offer is not offered Tennis Warehouse as well. See `primaryStore`.
@@ -375,6 +377,29 @@ export default async function RacquetPage({
             ))}
           </dl>
         </section>
+
+        {/* After the spec table, not before it: the prose reads the numbers the
+            visitor has just seen, and it was written on that premise (see the
+            system prompt in scripts/notes.ts). The disclosure line is what
+            makes it defensible — the analysis is derived from the catalog, and
+            claiming anything more on 272 pages would be a lie at scale. */}
+        {notes && (
+          <section className="flex flex-col gap-4">
+            <h2 className="font-heading text-2xl font-semibold">
+              {t("notesTitle")}
+            </h2>
+            <div className="flex flex-col gap-4">
+              {notes.map((paragraph) => (
+                <p key={paragraph} className="leading-relaxed text-foreground/85">
+                  {paragraph}
+                </p>
+              ))}
+            </div>
+            <p className="font-mono text-[0.65rem] uppercase tracking-[0.14em] text-muted-foreground">
+              {t("notesDisclosure")}
+            </p>
+          </section>
+        )}
 
         {/* Between the specs and the ad: it answers the question a spec reader
             has next ("what do I string it with"), and its buy buttons are

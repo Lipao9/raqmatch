@@ -108,7 +108,11 @@ Core Web Vitals is treated as a revenue input rather than a nicety.
 - Live end-to-end run confirmed: `POST /api/recommend` returned 200 in ~6s with
   pt-BR justifications.
 - No testimonials, no user counts, no traffic figures, no revenue, and no reviews
-  exist. Future work must not fabricate any of them. The "272 racquets / 8 brands /
+  exist. Future work must not fabricate any of them. This binds generated text
+  hardest: the per-racquet prose in `data/racket-notes.json` is written by a
+  model from catalog specs alone, and `findBannedClaim` rejects any draft that
+  reaches for a playtest, a player quote, tour use or an award. The site has
+  never hit a ball with these racquets and its pages must not imply otherwise. The "272 racquets / 8 brands /
   3 picks" figures on the landing page are the only quantitative claims that can be
   substantiated.
 - Affiliate research on hand: Mercado Livre pays 16% cash in sports; Pró Spin pays

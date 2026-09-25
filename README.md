@@ -225,6 +225,32 @@ npm run scrape                # run completo: substitui o arquivo atomicamente (
 
 Playwright é devDependency — não entra no bundle da Vercel. Seletores/URLs do site ficam no const `SELECTORS` em `scripts/scrape.ts`.
 
+## Texto por raquete
+
+Cada página de raquete traz três parágrafos próprios, em pt-BR e en, guardados
+em `data/racket-notes.json` (versionado) e escritos offline:
+
+```bash
+npm run notes                 # todas as raquetes que ainda não têm texto
+npm run notes -- --limit 10   # calibração: as 10 primeiras
+npm run notes -- --only wilson-blade-98-16x19-v10
+npm run notes -- --force --only <id>   # reescreve uma que já existe
+```
+
+Precisa de `ANTHROPIC_API_KEY`; nada no site em produção chama a Anthropic. O
+script é retomável — grava o arquivo a cada raquete concluída e, por padrão,
+pula as que já têm texto.
+
+A regra que sustenta esse texto: **o site nunca jogou com nenhuma dessas
+raquetes.** O prompt recebe apenas as specs do catálogo e os percentis do
+próprio catálogo, e o lint rejeita qualquer rascunho que cite teste, review,
+relato de jogador, uso no circuito, prêmio, preço — ou **qualquer numeral que
+não esteja nas specs enviadas**, que é a invenção que realmente enganaria quem
+está comprando. Uma geração reprovada é refeita uma vez com a violação citada
+de volta; se reprovar de novo, a raquete fica sem texto e a seção não renderiza.
+`findBannedClaim` mora em `src/lib/racket-notes.ts` porque o teste revalida o
+arquivo já commitado — edição manual passa pela mesma régua.
+
 ## Deploy (Vercel)
 
 1. Importe o repo na Vercel.

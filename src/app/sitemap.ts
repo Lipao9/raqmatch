@@ -2,6 +2,7 @@ import type { MetadataRoute } from "next";
 import { routing } from "@/i18n/routing";
 import { catalogUpdatedAt, loadCatalog } from "@/lib/catalog";
 import { GUIDES, guideLastModified, latestGuideDate } from "@/lib/guides";
+import { racketNoteGeneratedAt } from "@/lib/racket-notes";
 import { alternatesFor } from "@/lib/urls";
 
 // Every indexable route, listed once under the default locale with the other
@@ -38,7 +39,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
   return [
     ...STATIC_PATHS.map((href) => entry(href)),
     entry("/racquets", updatedAt),
-    ...loadCatalog().map((racket) => entry(`/racquets/${racket.id}`, updatedAt)),
+    ...loadCatalog().map((racket) => {
+      // Whichever of the two sources of this page's content changed last.
+      const note = racketNoteGeneratedAt(racket.id);
+      return entry(
+        `/racquets/${racket.id}`,
+        note && note > updatedAt ? note : updatedAt,
+      );
+    }),
     entry("/guides", latestGuideDate()),
     ...GUIDES.map((guide) =>
       entry(`/guides/${guide.slug}`, guideLastModified(guide)),
