@@ -372,6 +372,8 @@
     "metaDescription": "{name}: {headSize} in², {weight} sem cordas, padrão {pattern}. Especificações completas, raquetes parecidas e para quem esse frame faz sentido.",
     "specsTitle": "Especificações",
     "specsScale": "Escala: do mínimo ao máximo entre as {count} raquetes do catálogo",
+    "notesTitle": "Leitura das especificações",
+    "notesDisclosure": "Análise derivada das especificações de catálogo desta raquete. Não é um teste em quadra.",
     "specs": {
       "brand": "Marca",
       "headSize": "Tamanho da cabeça",

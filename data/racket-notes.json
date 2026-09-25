@@ -1,0 +1,824 @@
+{
+  "version": 1,
+  "updatedAt": "2026-09-25T18:52:42.731Z",
+  "notes": [
+    {
+      "racketId": "babolat-boost-aero-2026",
+      "generatedAt": "2026-09-25T18:51:24.033Z",
+      "reviewed": false,
+      "model": "claude-opus-5",
+      "locales": {
+        "pt-BR": {
+          "paragraphs": [
+            "Aro grande de 102 in², padrão aberto 16x19 e um ponto de equilíbrio na cabeça formam um conjunto com propósito claro: gerar velocidade de bola quando o braço não gera. Com cerca de 260 g sem corda (valor aproximado), é uma raquete leve, mas a massa não está toda no cabo — o swingweight fica abaixo da mediana do catálogo sem ser dos menores, então a cabeça ainda carrega algo no impacto.",
+            "Faz sentido para quem está começando, para juniores em transição ao quadro adulto e para jogadores recreativos de golpes curtos ou incompletos, que precisam que o quadro devolva profundidade sozinho. Também serve a quem limita carga no ombro pelo peso estático baixo. Não serve a quem já tem golpe longo e acelera bem: esse jogador vai achar o conjunto solto no controle e pouco firme para redirecionar bolas pesadas.",
+            "O que se perde é estabilidade. Pouca massa significa que bolas fortes e impactos fora do centro torcem mais o aro, e a rigidez é intermediária no catálogo — ou seja, o conforto não vem nem de um quadro macio nem de massa que absorva choque. O equilíbrio na cabeça concentra a sensação de peso no contato. O padrão aberto ajuda no giro, mas desgasta as cordas mais rápido.",
+            "Vale notar que boa parte desse comportamento vem da combinação, não de um número isolado: cabeça grande e peso baixo puxam para o mesmo lado, facilitando o giro do braço e ampliando a margem de erro."
+          ]
+        },
+        "en": {
+          "paragraphs": [
+            "At 275 g strung, this sits in the lightest few percent of the catalog, yet the weight distribution tells more than the total: one point head-heavy, with a swingweight below the catalog median but not near the floor. Pair that with a 102 in² hitting area — larger than most frames listed here — and an open 16x19 pattern, and you have a frame built to supply pace and spin on short, unhurried swings.",
+            "This fits beginners, juniors stepping into a full-size frame, and recreational players whose strokes are compact and who need the racquet to contribute depth. Low static weight also helps anyone managing shoulder or arm load. It does not fit a player with long, fast swings who already generates pace: that player will find it short on control and unwilling to hold its line against a heavy ball.",
+            "Stability is what gets given up. There is little mass to resist incoming pace, so hard hitting and off-center contact twist the head more than a heavier frame would. Stiffness is mid-range for this catalog, meaning comfort comes neither from a soft layup nor from mass absorbing shock, while the head-heavy balance puts the felt weight out at contact. The open pattern aids spin but wears strings faster."
+          ]
+        }
+      }
+    },
+    {
+      "racketId": "babolat-boost-aero-pink-2026",
+      "generatedAt": "2026-09-25T18:51:28.748Z",
+      "reviewed": false,
+      "model": "claude-opus-5",
+      "locales": {
+        "pt-BR": {
+          "paragraphs": [
+            "Equilíbrio 1 ponto para a cabeça em uma armação de cerca de 260 g sem corda muda a conta: a raquete chega ao impacto com mais massa à frente do que o número da balança sugere, e o peso de balanço, abaixo da média do catálogo, mantém o giro fácil. Junte a cabeça de 102 in², maior que a da maioria das raquetes daqui, ao padrão aberto 16x19, e o desenho fica claro — velocidade de cabeça e rotação sem exigir aceleração completa.",
+            "O perfil favorece quem ainda constrói o golpe, quem tem movimento curto e quem precisa de mãos rápidas na rede em duplas. Também serve a jogadores que não sustentam raquetes pesadas por um jogo inteiro. Não serve a quem já produz a própria potência com golpes longos e acelerados, nem a quem enfrenta bolas pesadas com frequência: com peso encordoado entre os 5% mais baixos do catálogo, a armação cede no contato em vez de devolver a bola.",
+            "Isso cobra em três frentes. Pouca massa absorve pouco choque, e a rigidez mediana não compensa essa falta — o braço sente mais do que sentiria em um quadro pesado. O padrão aberto em cabeça grande deixa as cordas se moverem bastante, o que acelera o desgaste. E o leve viés para a cabeça, útil na potência, dá uma sensação menos firme em bloqueios e voleios contra ritmo alto."
+          ]
+        },
+        "en": {
+          "paragraphs": [
+            "The one-point head-heavy balance is doing real work here: at 275 g strung this frame carries very little static mass, yet the weight sits far enough forward that it arrives at contact with more behind it than the scale implies. Swingweight stays below the catalog average, so the racquet still turns over quickly. Add a 102 in² head, larger than most frames listed here, and an open 16x19 pattern, and the design reads as head speed and spin rather than mass.",
+            "It fits players still building a stroke, players with compact or shortened swings, and doubles players who want quick hands at the net. It also suits anyone who cannot carry a heavy frame for a full match. It does not fit ball strikers who already generate their own pace, or anyone who regularly faces heavy hitting — a strung weight in the lightest five percent of the catalog gets moved backward on contact instead of holding its line.",
+            "Three caveats follow from that. Low mass absorbs little of the shock at impact, and a mid-range stiffness rating does nothing to offset it, so the arm feels more than it would in a heavier frame. The open pattern in a large head lets strings shift freely, which shortens string life. And the slight head-heavy bias, helpful for pace, makes blocks and reaction volleys feel less settled against a quick ball."
+          ]
+        }
+      }
+    },
+    {
+      "racketId": "babolat-boost-drive",
+      "generatedAt": "2026-09-25T18:51:34.792Z",
+      "reviewed": false,
+      "model": "claude-opus-5",
+      "locales": {
+        "pt-BR": {
+          "paragraphs": [
+            "A massa aqui está deslocada para a ponta, não para o punho: com 260 g sem corda, o quadro é leve, e o balanço de 3 pontos head-heavy é o que devolve alguma inércia ao impacto. A cabeça de 105 in² fica entre as maiores do catálogo e o padrão aberto 16x19 amplia o ângulo de saída da bola e a mordida para efeito. A rigidez está no meio da faixa do catálogo, então a potência vem da geometria e do equilíbrio, não de um quadro duro.",
+            "Isso atende a quem precisa que a raquete trabalhe: jogador em formação, quem voltou ao tênis depois de um tempo parado, quem joga muita dupla e depende de bloqueios e voleios rápidos. O swingweight abaixo da média do catálogo deixa a raquete fácil de acelerar com golpes curtos e preparo atrasado. Quem já gera a própria velocidade de cabeça tende a passar longe: há pouca massa para se apoiar quando chega uma bola realmente pesada.",
+            "As contrapartidas aparecem em duas frentes. Rigidez mediana não compensa a falta de massa — há pouco material para absorver choque, e impactos fora do centro ou bolas fortes chegam ao braço com mais clareza. A combinação de cabeça grande com padrão aberto também faz as cordas se moverem bastante, o que encurta a vida delas. Controlar profundidade exige topspin consistente; sem ele, a potência do quadro vira bola comprida.",
+            "O balanço na ponta também cobra atenção em trocas rápidas na rede, apesar do peso total baixo."
+          ]
+        },
+        "en": {
+          "paragraphs": [
+            "Weight distribution is the story here. At 275 g strung this sits in the lightest 5% of the catalog, and the 3 points head-heavy balance exists to put some of that scarce mass back behind the ball. A 105 in² hoop — larger than most frames here — combined with an open 16x19 pattern raises launch angle and gives the strings room to grip for spin. Stiffness lands mid-catalog, so the power comes from shape and balance rather than a rigid frame.",
+            "The frame suits a player who needs help generating pace: someone still building strokes, returning to the game after time away, or playing doubles where quick preparation matters more than heavy loading. A swingweight below the catalog middle means it accelerates easily from short, late swings. Players who already produce their own racquet-head speed will hit long, and the low mass gives little to lean on when a heavy ball arrives.",
+            "Two caveats follow from the numbers. Moderate stiffness does not offset the lack of mass — there is little material to absorb impact, so shock from off-centre contact and incoming pace reaches the arm more directly. The large head with an open pattern also lets strings move a lot, which shortens their working life. Depth control depends on applying topspin; without it, the frame's built-in power pushes balls past the baseline."
+          ]
+        }
+      }
+    },
+    {
+      "racketId": "babolat-boost-strike",
+      "generatedAt": "2026-09-25T18:52:16.054Z",
+      "reviewed": false,
+      "model": "claude-opus-5",
+      "locales": {
+        "pt-BR": {
+          "paragraphs": [
+            "Potência aqui vem do quadro, não do braço. A cabeça de 102 in² é maior que a da maioria das raquetes do catálogo, o perfil está entre os mais rígidos listados (percentil 85 de RA) e o padrão aberto 16x19 deixa as cordas morderem e lançarem a bola. Com 280 g sem cordas e swingweight moderado, o movimento é fácil de conduzir, e o balanço quase neutro, a 1 ponto cabeça-leve, mantém alguma massa à frente no impacto.",
+            "Faz sentido para quem está em evolução e usa swing curto ou médio: o conjunto entrega profundidade e giro sem exigir aceleração total. Também funciona para jogo de duplas, em que a resposta rápida no toque de rede importa mais que massa. Não serve a quem já bate forte e longo — a combinação de cabeça grande, quadro rígido e padrão aberto oferece pouca margem de controle — nem a quem procura toque macio e amortecido.",
+            "O conforto é o ponto fraco previsível. Rigidez alta somada a peso abaixo da média do catálogo deixa pouca massa para absorver impacto, e quem tem histórico de dor no cotovelo ou no punho deve considerar isso seriamente, inclusive na escolha da corda. O padrão 16x19 movimenta e desgasta as cordas mais rápido. O swingweight moderado também limita a estabilidade: bolas pesadas tendem a empurrar a cabeça em devoluções bloqueadas."
+          ]
+        },
+        "en": {
+          "paragraphs": [
+            "The hoop does the work on this one. At 102 in² it is larger than most frames in the catalog, the layup sits among the stiffest listed here, and the open 16x19 pattern lets the strings move and launch the ball. Strung at 301 g it is lighter than the majority of the catalog, with a swingweight in the lower third, while the near-even balance at 1 point head-light keeps a little mass out front at contact.",
+            "That points to an improving or club-level player with a compact to moderate swing who wants depth and spin without having to generate all of it. It also reads well for doubles, where quick handling at the net matters more than mass. It is a poor match for someone who already swings long and fast — the big head, stiff frame and open pattern leave little margin — or for anyone chasing a soft, muted response.",
+            "Comfort is the obvious caveat. High stiffness with a below-average strung weight means there is not much mass to absorb shock, so impact travels through to the hand; arm-sensitive players should weigh that carefully and treat string choice as part of the decision. The open pattern also moves strings around and shortens their life. And with a modest swingweight, heavy incoming pace can push the head on blocked returns."
+          ]
+        }
+      }
+    },
+    {
+      "racketId": "babolat-boost-wimbledon",
+      "generatedAt": "2026-09-25T18:51:22.528Z",
+      "reviewed": false,
+      "model": "claude-opus-5",
+      "locales": {
+        "pt-BR": {
+          "paragraphs": [
+            "Cerca de 260 g sem cordas, com equilíbrio 3 pontos na cabeça: a massa que falta no cabo foi deslocada para a ponta, e é de lá que vem boa parte da profundidade. A cabeça de 105 in² é maior que a da maioria das raquetes do catálogo, o que amplia a área útil e o efeito trampolim. Com peso de balanço abaixo da média e padrão aberto 16x19, o quadro fecha o gesto rápido e ainda morde a bola.",
+            "Serve bem a quem tem swing curto ou está construindo técnica, a quem joga muitas duplas e precisa de volume de braço leve, e a quem sente cansaço com quadros pesados. Não serve a quem já gera velocidade sozinho: o jogador de golpe longo e acelerado vai passar da linha com facilidade e sentir falta de massa para segurar a bola. Contra sacadores fortes, também haverá pouca inércia para absorver o impacto.",
+            "A contrapartida da leveza é a estabilidade: bolas fora do centro torcem o aro, e a rigidez mediana significa que o conforto depende mais da técnica do que do quadro. O equilíbrio na cabeça compensa a falta de massa no fundo da quadra, mas deixa a raquete menos ágil em trocas rápidas na rede. O padrão aberto em uma cabeça grande espaça as cordas, que se movem mais e duram menos."
+          ]
+        },
+        "en": {
+          "paragraphs": [
+            "The defining tension here is between a 275 g strung weight — in the lightest 5% of the catalog — and a balance sitting 3 points head heavy. The mass taken out of the handle end lives in the hoop, so the frame still carries something into contact despite weighing very little. Add a 105 in² head, larger than most here, an open 16x19 pattern and a below-average swingweight, and you get a frame built to launch the ball on short swings.",
+            "This fits a developing player, a doubles player who wants an easy frame to hold up over long matches, or anyone who needs depth handed to them rather than generated. It fits poorly for a full-swing baseliner with their own pace: control will run out before the swing does. Against heavy hitters, there is simply not much mass to push back with, and blocked returns will get pushed around.",
+            "Low weight gains maneuverability and gives up stability — off-center contact twists the head, and shock absorption relies on the arm more than the frame, since stiffness sits right at the catalog midpoint. The head-heavy balance that helps on groundstrokes also makes quick hands at net harder work. Wide spacing from an open pattern in a large head lets strings shift and saw, so expect to restring more often than a denser bed would need."
+          ]
+        }
+      }
+    },
+    {
+      "racketId": "babolat-evo-aero-2026",
+      "generatedAt": "2026-09-25T18:51:40.916Z",
+      "reviewed": false,
+      "model": "claude-opus-5",
+      "locales": {
+        "pt-BR": {
+          "paragraphs": [
+            "Tudo aqui parte da flexibilidade: um RA de 59 coloca o quadro entre os mais macios de todo o catálogo, e as demais medidas seguem a mesma lógica. Com 275 g sem cordas, equilíbrio 5 pontos leve na cabeça e swingweight baixo, é uma raquete que atravessa o ar rápido e pede que o jogador produza a própria velocidade. A cabeça de 102 in², maior que a da maioria aqui, e o padrão aberto 16x19 completam o desenho: margem de erro e acesso fácil ao efeito.",
+            "Faz sentido para quem tem swing curto ou ainda em construção, para quem sente o braço e o cotovelo depois de jogos longos, e para o jogador de duplas que precisa de mão rápida na rede e em bolas de reação. Não faz sentido para quem já tem swing longo e acelera muito: um quadro leve e flexível devolve pouco em bola plana forte e tende a ficar vago quando o ritmo do adversário sobe.",
+            "O que se abre mão é estabilidade. Entre as raquetes mais leves do catálogo e com swingweight baixo, ela é empurrada em devoluções de saque pesado e em bloqueios perto da rede — o punho precisa firmar. A cabeça grande perdoa o acerto fora do centro, mas também dá mais alavanca para a torção. E o padrão aberto, que ajuda no efeito, move os fios com liberdade e encurta a vida da corda."
+          ]
+        },
+        "en": {
+          "paragraphs": [
+            "Flex is the organising idea here: at RA 59 the frame sits among the softest in this catalogue, and the other numbers follow from it. At 289 g strung, five points head-light and with a modest swingweight, it moves through the air quickly rather than ploughing through the ball. The 102 in² head — larger than most frames listed here — and the open 16x19 pattern add hitting margin and easy access to spin.",
+            "This is a frame for a player still building swing length, for someone managing arm or elbow soreness who needs a softer impact, and for doubles play where quick hands at the net matter more than raw mass. It is a poor fit for a long, fast swing that already generates its own pace: a light, flexible frame gives back little on flat drives and can feel imprecise when the incoming ball is heavy.",
+            "Stability is what you give up. With weight among the lower end of the catalogue and a swingweight to match, the frame gets pushed around by big serves and hard passing shots, and blocked returns need a firm wrist to hold the line. The large head keeps off-centre hits playable but also gives the ball more leverage to twist it. The open string bed, meanwhile, lets strings saw against each other and wear out sooner."
+          ]
+        }
+      }
+    },
+    {
+      "racketId": "babolat-evo-drive",
+      "generatedAt": "2026-09-25T18:51:43.101Z",
+      "reviewed": false,
+      "model": "claude-opus-5",
+      "locales": {
+        "pt-BR": {
+          "paragraphs": [
+            "O swingweight é o número que comanda esse projeto: está entre os 5% mais baixos do catálogo. Com cerca de 285 g sem cordas e equilíbrio 4 pontos para o cabo, a massa se concentra perto da mão, e o quadro atravessa a zona de impacto com pouca inércia. Some a isso uma cabeça de 102 in², maior que a da maioria das raquetes aqui, e o padrão aberto 16x19: área de impacto generosa, bola saindo alta e com giro.",
+            "Serve bem a quem depende de velocidade de braço e swing rápido — jogo de fundo com topspin, trocas em que é preciso reposicionar a raquete depressa, e a rede nas duplas, onde a reação vale mais que a massa. Não é a escolha de quem já produz potência sozinho e bate liso e pesado, nem de quem quer inércia para absorver bolas rápidas: falta massa em movimento para isso.",
+            "Em troca dessa facilidade, perde-se estabilidade. Contra bolas com peso, ou em impactos longe do centro, um quadro tão leve de balançar tende a ceder, e a profundidade passa a depender inteiramente do seu swing. A potência vem do próprio quadro, então o controle fica por conta do giro que você imprime — e o padrão aberto, que ajuda nesse giro, também consome cordas mais rápido. O RA 64, mais flexível que a média daqui, joga a favor do conforto."
+          ]
+        },
+        "en": {
+          "paragraphs": [
+            "Swingweight is the defining figure on this sheet, sitting in the lowest few percent of the catalog. At 303 g strung with the balance 4 points head-light, the mass sits close to the hand, so the frame moves through contact with very little resistance. Add a 102 in² head — larger than most frames here — and an open 16x19 pattern, and you get a wide hitting area with a high, spin-friendly launch.",
+            "This fits a player who swings fast and wants the racquet to keep up: topspin baseline rallies, quick resets when you are pushed out of position, and doubles net play where reaction time matters more than mass. It is a poor match for someone who already generates plenty of pace and hits flat and heavy, or for anyone who wants weight in the swing to absorb an opponent's power.",
+            "What you give up for that ease is stability. Against heavy incoming balls, and on contact away from the center, a frame this light to swing gives ground, and depth ends up resting entirely on your own racquet speed. Power comes from the frame, which leaves control to the spin you supply — and the open pattern that helps produce that spin will also wear strings faster. At RA 64, on the softer side of this catalog, comfort is at least on your side."
+          ]
+        }
+      }
+    },
+    {
+      "racketId": "babolat-evo-drive-lite",
+      "generatedAt": "2026-09-25T18:52:16.974Z",
+      "reviewed": false,
+      "model": "claude-opus-5",
+      "locales": {
+        "pt-BR": {
+          "paragraphs": [
+            "Quase tudo aqui existe para reduzir o esforço do swing: a massa praticamente não participa do golpe e o swingweight está no piso da faixa do catálogo. Com cerca de 250 g sem corda, a potência precisa vir da cabeça de 104 in² e de uma rigidez entre as mais baixas da lista, não da inércia. O equilíbrio 4 pontos head-light e o padrão 16x17 completam o desenho: ponta leve e cordas com liberdade para se mover.",
+            "Faz sentido para quem ainda está construindo velocidade de raquete — iniciantes, jovens migrando para um quadro adulto — e para quem joga com movimentos curtos, muito perto da rede ou em duplas, onde reagir rápido pesa mais do que carregar o golpe. Faz pouco sentido para quem já bate forte e plano ou encara bola pesada com frequência: não há massa nem swingweight para absorver esse tipo de impacto.",
+            "O que se perde em troca é estabilidade. Com tão pouca massa, a bola fora do centro torce o aro e o impacto empurra a raquete para trás; devoluções bloqueadas tendem a cair curtas se o jogador não acelerar o braço. A flexibilidade baixa poupa o braço, mas devolve à técnica a tarefa de produzir velocidade. E um padrão 16x17 numa cabeça grande movimenta mais as cordas, o que encurta a vida delas."
+          ]
+        },
+        "en": {
+          "paragraphs": [
+            "Almost everything here is arranged to reduce the effort of swinging. This is among the lightest frames in the catalog at 269 grams strung, and its swingweight sits at the floor of the range, so momentum contributes little; the power has to come instead from a 104 in² hoop and a flex on the soft side of the catalog. The head-light balance keeps the tip quick, and the 16x17 pattern leaves the strings free to move.",
+            "It fits a player still building swing speed, or one who has gone back to compact strokes — beginners, juniors moving into a full-size frame, adults who want something easy to get around in fast exchanges and at the net. It suits far less well a player who already hits hard and flat, or who regularly faces heavy pace: there is nothing in this weight or swingweight to absorb an incoming ball.",
+            "What gets given up is stability. With so little mass, off-centre contact twists the head and pace coming in pushes the frame back; blocked returns will tend to land short unless the player swings through them. The soft flex is easy on the arm, but it hands the job of generating pace back to technique. An open 16x17 in a head this large also lets the strings shift and wear out sooner."
+          ]
+        }
+      }
+    },
+    {
+      "racketId": "babolat-evo-drive-lite-white",
+      "generatedAt": "2026-09-25T18:52:30.664Z",
+      "reviewed": false,
+      "model": "claude-opus-5",
+      "locales": {
+        "pt-BR": {
+          "paragraphs": [
+            "A ajuda deste quadro vem do aro e da flexão, não da massa. São aproximadamente 250 g sem encordoamento, o que coloca a raquete entre as mais leves deste catálogo, e o swingweight de 290 fica no piso da faixa registrada aqui. A cabeça de 104 in² é maior que a da maioria dos modelos listados, o RA 62 está entre os mais flexíveis, e o padrão 16x17 deixa as cordas trabalharem. O balanço 4 pontos head-light mantém a ponta leve.",
+            "O perfil serve a quem está começando, a juniores em transição para o quadro adulto, a jogadores de duplas sociais que passam tempo na rede e a quem convive com incômodo no braço ou no ombro: pouca massa para carregar e um quadro macio pedem menos esforço por golpe. Não serve a quem bate forte e plano, tem swing longo e acelerado, ou enfrenta bolas pesadas com frequência — falta peso para segurar o impacto.",
+            "A contrapartida é a estabilidade. Em impactos fora do centro e contra bola com ritmo, a raquete é empurrada, e a defesa tende a sair curta porque não há inércia para devolver. A cabeça grande com padrão relativamente aberto movimenta bastante as cordas, o que encurta a vida delas. Sem massa fazendo o trabalho, a responsabilidade passa para o braço: é preciso acelerar de verdade para a bola andar."
+          ]
+        },
+        "en": {
+          "paragraphs": [
+            "Power here is meant to come from the hoop, not from mass. At 269 g strung this is the lightest frame in the catalog, and the 290 swingweight sits at the bottom of the range too, so there is very little to move and very little momentum carried into contact. A 104 in² head, an RA of 62 among the softest here, and a 16x17 pattern supply the help instead, with a 4 points head-light balance keeping the tip easy to steer.",
+            "That combination fits beginners, juniors stepping up to a full-size frame, social doubles players who spend time at the net, and anyone managing arm or shoulder discomfort, since a soft, low-mass frame asks less of the body on every ball. It does not fit players with long, fast swings or flat, heavy groundstrokes, and it will struggle for anyone regularly returning pace — there is not enough weight behind the strings to hold a line.",
+            "The trade-off is stability and depth. Off-center contact twists a frame this light, and blocked returns against a heavy ball tend to land short because nothing is pushing back. The large head with a relatively open pattern lets strings move and wear faster than a denser bed would. Technique matters too: with no mass doing the work, the player has to generate full racquet head speed, or shots stay tame."
+          ]
+        }
+      }
+    },
+    {
+      "racketId": "babolat-pure-aero-2023",
+      "generatedAt": "2026-09-25T18:49:36.352Z",
+      "reviewed": false,
+      "model": "claude-opus-5",
+      "locales": {
+        "pt-BR": {
+          "paragraphs": [
+            "Aro de 100 in² — menor que o da maioria dos quadros deste catálogo — com padrão aberto 16x19 e 300 g sem corda: a combinação coloca a responsabilidade do giro no swing do jogador, não no quadro. O equilíbrio de 4 pontos head-light mantém a raquete manobrável, e o swingweight fica na mediana do catálogo. É um quadro rápido de conduzir, não um quadro de atravessar a bola pelo peso.",
+            "Faz sentido para o jogador de nível intermediário para cima, com swing completo e longo, que gera a própria velocidade e usa o topspin como controle. Não é escolha para iniciantes: a cabeça é menor que a média daqui e o peso, mesmo mediano, cobra preparação antecipada. Também decepciona quem quer que a raquete segure sozinha a bola pesada do adversário — não há massa nem swingweight sobrando para isso.",
+            "O custo aparece em dois lugares. A rigidez está acima da mediana do catálogo, perto do percentil 60, e o peso apenas mediano filtra parte do impacto, não todo — quem tem histórico de dor no cotovelo ou punho precisa pensar bem na corda e na montagem. E o padrão aberto, que entrega o giro, também serra as cordas mais rápido: troca frequente faz parte do pacote."
+          ]
+        },
+        "en": {
+          "paragraphs": [
+            "The open 16x19 pattern paired with a 100 in² head — smaller than most frames here — puts the spin burden on the swing rather than on the frame's geometry alone. At 318 g strung the weight sits at the catalog median, the swingweight does too, and the 4 points head-light balance keeps the racquet quick to the contact point. This is a fast-swinging all-court frame, not a heavy plow-through one.",
+            "It suits an intermediate-to-advanced player with a long, accelerating stroke who supplies pace and uses topspin to keep the ball down. It is a poor fit for a beginner, who would get more from a larger head and a lighter frame, and equally poor for anyone who wants mass to absorb a hard hitter's pace on the return — there is no surplus weight or swingweight for that job.",
+            "Two caveats follow from the numbers. Stiffness sits above the catalog median while the weight is only average, so the frame damps some of the shock but not a great deal of it; anyone with elbow or wrist history should treat string choice as part of the decision. The open pattern that produces the spin also wears strings faster than a denser one, so budget for more frequent restringing."
+          ]
+        }
+      }
+    },
+    {
+      "racketId": "babolat-pure-aero-2026",
+      "generatedAt": "2026-09-25T18:46:32.963Z",
+      "reviewed": false,
+      "model": "claude-opus-5",
+      "locales": {
+        "pt-BR": {
+          "paragraphs": [
+            "Quatro pontos head-light combinados com um swingweight acima da mediana do catálogo formam um arranjo de propósito: com 300 g sem cordas, a massa fica concentrada perto da mão e o braço acelera sem esforço, mas o quadro ainda chega ao impacto com inércia suficiente para não ser desviado pela bola pesada. Some a cabeça de 100 in², o padrão aberto 16x19 e um RA de 66, e o desenho fica claro — giro e velocidade produzidos por swings longos e completos.",
+            "O perfil atende quem joga do fundo de quadra, prepara cedo e termina o movimento acima do ombro: o padrão aberto morde a bola e a rigidez devolve energia em vez de absorvê-la. Atende menos quem bloqueia com swing curto, porque o swingweight mais alto que a média exige antecipação para girar o quadro a tempo, e também quem procura área de acerto generosa — 100 in² é menor do que boa parte do catálogo.",
+            "As contrapartidas são previsíveis. Um quadro firme transmite mais vibração ao braço, e isso pesa para quem já tem histórico de cotovelo ou ombro. O padrão aberto deixa as cordas se moverem, o que gera giro e também desgaste mais rápido, sobretudo com multifilamentos finos. E a cabeça menor somada ao swingweight elevado estreita a margem em acertos fora do centro: é um quadro que cobra técnica constante."
+          ]
+        },
+        "en": {
+          "paragraphs": [
+            "A 16x19 pattern across a 100 in² head is standard spin geometry, and the rest of the numbers are built around using it. At 318 g strung the frame sits mid-pack for mass, but its swingweight is above the catalog median, so what weight it has is working at contact rather than sitting idle. Four points head-light keeps the handle end free to swing fast, and an RA of 66 puts the layup on the firm side.",
+            "This suits a baseliner who swings long, generates their own racquet-head speed and wants the string bed to grab the ball. The firmer frame returns pace rather than soaking it up. It suits less well a player with a short, blocked stroke, who will find the swingweight slow to bring around, or anyone wanting a large, forgiving hitting area — at 100 in² the head is smaller than most frames here.",
+            "Firm frames with open patterns carry two familiar compromises. Comfort is the first: more of the impact reaches the arm, which matters if you have a sensitive elbow or shoulder. String life is the second, since an open 16x19 bed lets the mains slide and saw against the crosses, so breakage arrives sooner. Add the smaller head and the above-average swingweight and the margin on late or off-centre contact is narrow."
+          ]
+        }
+      }
+    },
+    {
+      "racketId": "babolat-pure-aero-98-2026",
+      "generatedAt": "2026-09-25T18:46:17.368Z",
+      "reviewed": false,
+      "model": "claude-opus-5",
+      "locales": {
+        "pt-BR": {
+          "paragraphs": [
+            "A cabeça de 98 in² está entre os 5% menores do catálogo, e o padrão 16x20 fecha ainda mais o plano de cordas. Em torno disso há 305 g sem corda, equilíbrio 6 pontos head-light e um swingweight acima da mediana: massa recuada no cabo, que precisa ser acelerada para render. Com RA 66, a rigidez fica na faixa moderada para alta. É um quadro de controle apoiado em peso, não em devolução de energia.",
+            "O perfil pede preparação longa, aceleração consistente e um jogador que já produz a própria velocidade de bola. Para esse tipo de swing, a área menor e o padrão fechado entregam previsibilidade de direção e altura. O equilíbrio recuado ajuda na mão rápida na rede e nas defesas curtas, apesar do peso total. Quem tem swing curto, chega atrasado na bola ou espera que a raquete some potência vai remar contra as três características ao mesmo tempo.",
+            "Os limites vêm dos mesmos números. Cabeça pequena com 16 cordas verticais significa ponto doce reduzido, e a bola fora do centro em um quadro pesado e de rigidez acima da média chega ao braço com mais informação do que em um perfil mais flexível. O giro depende da velocidade de cabeça, não da mordida de um padrão aberto. Em compensação, as cordas se deslocam menos e mantêm o alinhamento por mais tempo."
+          ]
+        },
+        "en": {
+          "paragraphs": [
+            "The face is among the smallest in this catalog, and the 16x20 pattern closes the string bed down further. Around it sits 323 g strung, a swingweight above the catalog midpoint and a balance 6 points head-light, so the mass lives in the handle and has to be swung rather than pushed through the ball. At RA 66 the layup is moderately firm. Control here is built on weight, not on a lively frame.",
+            "This asks for long, committed strokes from a player who already supplies pace and wants the ball to land where it was aimed. The small face and tight pattern reward that and give predictable depth. The head-light balance keeps the frame usable at net and on quick blocks despite the total weight. Short or late preparation, a developing swing, or any hope that the racquet will add power all run against this build.",
+            "The caveats come from the same figures. A 98 in² head crossed by 16 mains leaves a modest sweet spot, and off-center contact on a frame this heavy, with stiffness in the upper half of the catalog, transmits more to the arm than a softer profile would. Spin has to be generated by racquet-head speed rather than by strings snapping back. The return is a string bed that shifts less and stays aligned."
+          ]
+        }
+      }
+    },
+    {
+      "racketId": "babolat-pure-aero-lite-2023",
+      "generatedAt": "2026-09-25T18:49:56.356Z",
+      "reviewed": false,
+      "model": "claude-opus-5",
+      "locales": {
+        "pt-BR": {
+          "paragraphs": [
+            "O equilíbrio quase neutro é o que organiza todo o resto. Com cerca de 265 g sem cordas, o quadro é leve, e o swingweight está entre os mais baixos do catálogo, então acelera com pouco esforço. Mas com apenas 1 ponto head-light sobra massa perto da cabeça de 100 in², o que evita a sensação de raquete oca no impacto. Padrão 16x19 e rigidez mediana completam o desenho: uma raquete de velocidade de braço.",
+            "Serve a quem produz potência e giro pela velocidade do swing, com movimento amplo e rápido, e a quem precisa de mãos rápidas na rede e em bloqueios de duplas. Também acomoda a transição de quadros juvenis para adultos. Não serve a quem bate plano e curto contando com a massa da raquete para atravessar a bola, nem a quem enfrenta com frequência bolas pesadas e precisa de penetração vinda do próprio quadro.",
+            "O que se abre mão aqui é estabilidade. Com pouca massa e swingweight baixo, quem impõe o ritmo é a bola que vem: impactos fora do centro e devoluções pesadas torcem a cabeça. E como não há massa para absorver choque, a rigidez mediana se faz sentir mais do que se faria em um quadro mais pesado. O 16x19 aberto também consome cordas mais rápido, especialmente em quem bate forte o bastante para aproveitar o padrão."
+          ]
+        },
+        "en": {
+          "paragraphs": [
+            "The near-even balance is the detail that changes how everything else reads. At 283 g strung this is among the lightest frames in the catalog, and its swingweight sits in the bottom sixth, so it accelerates with very little effort. Yet with only 1 point head-light, enough mass stays out toward the 100 in² hoop to keep contact from feeling hollow. The 16x19 pattern and mid-range stiffness finish the picture: a swing-speed frame.",
+            "This fits a player whose racquet-head speed is the main source of pace and spin, with a long, fast swing, and anyone who needs quick hands at net or on doubles blocks. It also works for a step up from junior frames. It does not fit a flat, compact hitter who leans on the racquet's mass to drive through the ball, or someone regularly absorbing heavy pace and needing the frame to supply penetration.",
+            "What you give up is stability. With little mass and a low swingweight, the incoming ball dictates terms: off-centre contact and heavy returns will turn the head. Because there is not much mass to soak up shock, the mid-range stiffness matters more here than it would in a heavier frame. The open 16x19 layout also chews through strings faster, particularly for the swing speed that makes the pattern worth having."
+          ]
+        }
+      }
+    },
+    {
+      "racketId": "babolat-pure-aero-lite-2026",
+      "generatedAt": "2026-09-25T18:49:51.293Z",
+      "reviewed": false,
+      "model": "claude-opus-5",
+      "locales": {
+        "pt-BR": {
+          "paragraphs": [
+            "O ponto de partida aqui é a velocidade de braço: com 270 g sem cordas e um peso de balanço entre os mais baixos do catálogo, o quadro quase não oferece resistência ao movimento. O equilíbrio apenas 2 pontos head-light mostra que a pouca massa existente está distribuída de forma razoavelmente uniforme, e não concentrada no cabo. Cabeça de 100 in² — menor do que a da maioria dos modelos daqui —, padrão aberto 16x19 e rigidez na mediana completam um conjunto voltado a giro e facilidade de manejo.",
+            "Faz sentido para quem precisa que a raquete trabalhe a favor: jogadores em formação, juniores saindo de modelos menores, duplistas que valorizam mãos rápidas na rede e quem sente ombro ou cotovelo no fim de uma partida longa com quadros pesados. Não faz sentido para quem já gera velocidade de cabeça sozinho, nem para quem enfrenta bolas pesadas com frequência: falta massa para segurar o impacto, e o jogador de fundo mais plano vai sentir a raquete ceder na troca.",
+            "A contrapartida é a estabilidade. Entre as mais leves do catálogo e com peso de balanço baixíssimo, a raquete torce em contatos fora do centro e recua em devoluções de saque forte — e o braço acaba absorvendo o que a massa não absorve. A rigidez mediana não resolve nem agrava esse ponto. Já o padrão 16x19 numa cabeça de 100 in² deixa as cordas se moverem bastante: ajuda no giro, encurta a vida do encordoamento."
+          ]
+        },
+        "en": {
+          "paragraphs": [
+            "A 283 g strung frame that also carries one of the lowest swingweights in the catalog is built around a single idea: getting the racquet through the hitting zone fast. The balance sits only slightly head-light, so the modest mass that is there spreads fairly evenly instead of pooling in the handle. Add a 100 in² head — smaller than most of what is listed here — an open 16x19 pattern and mid-catalog stiffness, and this reads as a speed-and-spin frame.",
+            "It suits players who need the racquet to supply part of the work: juniors stepping up, improving adults still building swing length, doubles players who want quick hands at net, and anyone whose shoulder or elbow protests at heavier setups over a long match. It is the wrong tool for a player who already produces plenty of racquet-head speed, or who regularly faces heavy pace — there simply is not enough mass here to hold a line against it.",
+            "Stability is what gets surrendered. Sitting among the lightest frames in the catalog by strung weight, and with a swingweight lower than almost anything listed, it will twist on off-center contact and get pushed back on returns of a big serve, with the arm absorbing what the mass does not; the mid-range stiffness neither rescues that nor worsens it. The open pattern also lets strings move freely — useful for spin, hard on string life."
+          ]
+        }
+      }
+    },
+    {
+      "racketId": "babolat-pure-aero-plus-2026",
+      "generatedAt": "2026-09-25T18:46:17.332Z",
+      "reviewed": false,
+      "model": "claude-opus-5",
+      "locales": {
+        "pt-BR": {
+          "paragraphs": [
+            "O dado que define o comportamento desta raquete é a inércia: 330, entre as mais altas de todo o catálogo. Combinada com os 300 g sem encordoamento e um balanço 6 pontos cabeça-leve, o resultado é uma moldura que parece equilibrada na mão parada, mas que carrega massa real no impacto. Cabeça de 100 in², menor que a da maioria aqui, rigidez no meio da escala e padrão aberto 16x19: penetração e giro, não potência fácil.",
+            "Serve a quem joga do fundo com swing longo e completo, gera velocidade de cabeça por conta própria e quer sentir a bola sendo empurrada pela massa da raquete. Não serve a quem tem movimento curto e compacto, a quem precisa de mãos rápidas na rede em duplas, nem a jogadores em retomada ou ainda construindo técnica de base. Exige preparação antecipada em toda bola.",
+            "O que essa inércia alta cobra é tempo: chegando atrasado no golpe, a raquete não gira e a bola sai curta. Em partidas longas, o braço sente o esforço. O padrão aberto com cabeça de 100 in² deixa as cordas se moverem bastante, o que gera giro mas encurta a vida do encordoamento. A rigidez fica na média do catálogo, então o conforto depende muito mais de conseguir girar essa massa do que da flexibilidade da moldura."
+          ]
+        },
+        "en": {
+          "paragraphs": [
+            "The swingweight is what dictates how this frame behaves: at 330 it sits in the top tenth of the catalog, while the strung weight of 320 g is only moderately above the middle. Balance is 6 points head-light, so the racquet feels settled at rest and then delivers its mass at contact instead of in the hand. A 100 in² head, smaller than most here, an open 16x19 pattern and mid-range stiffness point to plow-through and spin rather than cheap power.",
+            "This fits a baseliner with long, fully accelerated strokes who creates racquet-head speed independently and wants mass behind the ball. It is a poor match for compact, abbreviated swings, for doubles players who need fast hands at net, and for anyone still building stroke length or returning to the game after a layoff. Preparation has to be early on every ball, without exception.",
+            "What that swingweight demands in return is time. Arrive late and the frame will not rotate, and over long matches the arm will register the effort. The open pattern in a 100 in² head lets the strings move freely, which produces spin but shortens string life. Stiffness sits mid-catalog, neither muted nor harsh, so comfort here depends less on the frame's flex than on whether you can keep swinging the mass properly."
+          ]
+        }
+      }
+    },
+    {
+      "racketId": "babolat-pure-aero-super-lite-2026",
+      "generatedAt": "2026-09-25T18:50:08.315Z",
+      "reviewed": false,
+      "model": "claude-opus-5",
+      "locales": {
+        "pt-BR": {
+          "paragraphs": [
+            "A massa não é o motor aqui. O catálogo não tem raquete mais leve do que esta, e o swingweight também fica no piso da faixa: o quadro chega ao contato com a velocidade que o braço der, e quase nada além disso. Sem cordas, o peso fica em cerca de 250 g. A cabeça de 100 in² é menor que a da maioria das raquetes daqui, então potência e efeito dependem do padrão aberto 16x19 e da aceleração que você produzir.",
+            "Faz sentido para quem ainda não consegue acelerar o quadro sozinho: juniores passando para uma raquete adulta, jogadores de estrutura mais leve, quem volta de um problema no ombro ou no punho e precisa de algo fácil de mover. O balanço levemente no cabo ajuda a girar a cabeça rápido na rede. Não serve para quem já bate forte e rápido e quer que a raquete segure a direção contra ritmo alto.",
+            "A contrapartida está nos mesmos números. Com pouca massa atrás das cordas, bola pesada empurra o quadro no impacto, e contatos fora do centro torcem mais do que em uma raquete pesada: devolução profunda e voleio firme precisam ser golpeados, não bloqueados. A rigidez fica na metade mais macia do catálogo, o que ajuda, mas sobra pouco peso para absorver choque. O padrão aberto também gasta cordas mais rápido que um denso."
+          ]
+        },
+        "en": {
+          "paragraphs": [
+            "Nothing about this frame relies on mass. At 269 g strung it is the lightest in the catalog, and its swingweight sits at the floor of the range as well, so it arrives at contact carrying whatever speed the arm supplies and almost nothing of its own. A 100 in² head is smaller than most here, which means the power and spin side of the picture comes from the open 16x19 pattern and from how fast you can move the frame.",
+            "That makes it a racquet for players who cannot yet generate head speed on their own: juniors sizing up to an adult frame, smaller or lighter-framed adults, anyone coming back from a shoulder or wrist problem who needs something easy to swing. The modest head-light balance keeps the tip quick to redirect at net. It is the wrong choice for a strong hitter who already swings fast and wants the frame to hold its line.",
+            "The trade-off is written into the same numbers. With so little mass behind the strings, heavy balls push the frame back on contact and off-centre hits twist it more than a heavier racquet would; deep returns and firm volleys have to be swung, not blocked. Stiffness sits in the softer half of the catalog, which helps, but there is little weight to absorb shock. The open pattern will also wear strings faster than a denser one."
+          ]
+        }
+      }
+    },
+    {
+      "racketId": "babolat-pure-aero-team-2026",
+      "generatedAt": "2026-09-25T18:46:44.808Z",
+      "reviewed": false,
+      "model": "claude-opus-5",
+      "locales": {
+        "pt-BR": {
+          "paragraphs": [
+            "O swingweight manda aqui: 306, entre os mais baixos do catálogo, somado a um equilíbrio 4 pontos cabeça-leve. São 285 g sem cordas, peso que fica na metade mais leve da lista. Com aro de 100 in² — menor que o da maioria das raquetes daqui —, padrão aberto 16x19 e rigidez 66, acima do meio da faixa do catálogo, o desenho aponta para aceleração e efeito: a velocidade vem do seu braço, não da massa do quadro.",
+            "Serve para quem produz a própria potência, com swing longo e ascendente, e precisa de um quadro que acompanhe o movimento. Funciona bem em duplas e nas trocas curtas perto da rede, onde reação vale mais que inércia. Serve menos para quem bate plano e compacto apoiado no peso da raquete, ou para quem devolve bolas pesadas com frequência. E quem busca tolerância máxima em impactos descentralizados encontra aqui um aro menor que a média.",
+            "A contrapartida aparece em duas frentes. Estabilidade: com swingweight tão baixo, contatos fora do centro e bolas fundas deslocam o aro, e cabe a você completar o golpe para gerar profundidade. Conforto e durabilidade das cordas: a rigidez fica na parte mais firme do catálogo, o que deixa o impacto mais seco, algo a pesar para quem tem histórico de dor no cotovelo — e o padrão aberto que entrega o efeito desgasta as cordas mais rápido."
+          ]
+        },
+        "en": {
+          "paragraphs": [
+            "The swingweight does most of the talking: 306 puts this frame among the easiest-swinging fifth of the catalog, and the 4 points head-light balance pushes the same way. At 301 g strung it sits in the lighter half of the list, and the 100 in² head is smaller than most frames here. With an open 16x19 pattern and an RA of 66, above the catalog midpoint, the design points at racquet-head speed and spin rather than mass.",
+            "It fits a player who supplies their own pace — long, brushing swings that need a frame quick enough to keep up — and doubles or net exchanges where fast hands matter more than plow-through. It fits less well the flat, compact hitter who leans on the racquet's weight to do the work, or anyone regularly absorbing heavy balls from stronger opponents. Players wanting the widest margin on mishits should note the smaller-than-average head.",
+            "Two things follow from the same numbers. Stability first: a frame this easy to swing gets pushed around on off-center contact and against deep, heavy balls, so depth depends on you finishing the stroke rather than the racquet carrying through. Then feel and string life — stiffness on the firmer side of the catalog makes impact direct rather than cushioned, worth weighing if your elbow is sensitive, and the open pattern that creates the spin wears strings faster."
+          ]
+        }
+      }
+    },
+    {
+      "racketId": "babolat-pure-drive-107-2025",
+      "generatedAt": "2026-09-25T18:50:41.434Z",
+      "reviewed": false,
+      "model": "claude-opus-5",
+      "locales": {
+        "pt-BR": {
+          "paragraphs": [
+            "A lógica desse quadro é devolver energia em vez de exigir força. O aro de 107 in² está entre os maiores do catálogo e trabalha junto com uma armação rígida e um swingweight entre os mais baixos daqui. Com cerca de 285 g sem cordas e equilíbrio 5 pontos cabeça-leve, a raquete pede pouco esforço para chegar à bola e produz profundidade mesmo em golpes curtos ou atrasados.",
+            "Faz sentido para quem tem swing compacto, joga muitas duplas, está voltando ao esporte ou simplesmente cansa ao longo da partida: o aro grande perdoa impactos fora do centro e a leveza facilita ajustes rápidos no saque e na rede. Quem já gera potência própria, bate longo e plano ou busca precisão fina vai achar a bola saindo mais do que gostaria, sem massa suficiente para segurar bolas pesadas na devolução.",
+            "A contrapartida está no conforto e na estabilidade. Rigidez no percentil 90 somada a um peso apenas moderado significa impacto seco e pouca absorção em bolas que pegam mal — ponto de atenção para quem tem histórico de dor no cotovelo ou no ombro. O padrão 16x19 em um aro desse tamanho abre bastante as casas: as cordas se movimentam muito, desgastam antes e exigem spin consistente para baixar a bola dentro da quadra."
+          ]
+        },
+        "en": {
+          "paragraphs": [
+            "Power here is built into the frame rather than asked of the swing. A 107 in² hoop sits among the largest in this catalog, and it is paired with a stiff layup and a swingweight among the lowest here. At 301 g strung with a 5 pts head-light balance, the racquet gets to contact quickly and sends the ball deep off short, late or defensive strokes without much help from the player.",
+            "This suits compact swings, doubles-heavy schedules, players returning to the game, or anyone whose arm speed fades late in a match. The oversized face keeps off-centre balls in play and the light feel makes volleys and quick adjustments simple. Players who already generate their own pace, hit flat and long, or want fine placement will find the ball flying, and there is limited mass to absorb a heavy incoming ball.",
+            "What you give up is feel and stability. Stiffness sits at the 90th percentile of the catalog while the weight is only moderate, so mishits come back harsh and the frame gives little cushioning — worth weighing if your elbow or shoulder is sensitive. An open 16x19 pattern stretched over a hoop this size lets strings move freely: expect faster string wear, and expect to supply real spin to bring the extra power down into the court."
+          ]
+        }
+      }
+    },
+    {
+      "racketId": "babolat-pure-drive-2025",
+      "generatedAt": "2026-09-25T18:49:50.999Z",
+      "reviewed": false,
+      "model": "claude-opus-5",
+      "locales": {
+        "pt-BR": {
+          "paragraphs": [
+            "A rigidez é o número que manda nesse quadro. Com RA 69, ele está entre os mais rígidos do catálogo, e é daí que vem a potência — não da massa. Os 300 g sem corda ficam numa faixa intermediária entre os quadros aqui listados, e o swingweight também não puxa para o lado pesado. A cabeça de 100 in² é menor que a da maioria, e o 16x19 com 4 pontos head-light mantém a movimentação rápida na mão.",
+            "Funciona para quem tem swing de médio a rápido e não quer depender só do braço para tirar profundidade: a bola sai com velocidade mesmo em golpes de preparação curta, e o padrão aberto ajuda a subir a bola com giro. Serve ao jogo agressivo de fundo e às duplas, pelo manejo. Menos indicado para quem já produz potência sobrando e busca controle, ou para quem enfrenta bolas pesadas e quer massa para absorver — o swingweight moderado limita essa estabilidade.",
+            "A contrapartida é o conforto. Quadro rígido transmite mais impacto para mão e cotovelo, e quem tem histórico de dor precisa tratar a escolha da corda como parte da decisão, não como detalhe. O padrão aberto acelera o desgaste: as cordas se movimentam mais e rompem antes. E como a potência vem do quadro, e não do seu swing, golpes longos demais saem da quadra com facilidade."
+          ]
+        },
+        "en": {
+          "paragraphs": [
+            "Stiffness is the loudest figure on this sheet. At 69 RA the frame sits in the 90th percentile of the catalog, and that is where the power originates — not in mass. At 318 g strung it lands near the catalog midpoint, with a swingweight a shade under middling. The 100 in² head is smaller than most frames listed here, and the 16x19 pattern with a 4-point head-light balance keeps the swing quick through contact.",
+            "This suits a player with a medium to fast swing who wants depth without manufacturing all of it, and who brushes up on the ball rather than flattening it out. The open pattern and easy handling support that, in singles and doubles alike. It suits less well the player who already generates plenty of pace and wants the frame to hold it down, or anyone facing heavy hitters and hoping for mass to absorb the ball — the moderate swingweight only goes so far.",
+            "Comfort is what gets traded away. A frame this stiff sends more of the impact back up the arm, which matters if you have elbow or shoulder history; string choice becomes part of the decision rather than an afterthought. The open pattern lets strings move and saw, so they wear through sooner. And because the power is built into the frame rather than earned, a long or loose swing will overshoot before it finds the court."
+          ]
+        }
+      }
+    },
+    {
+      "racketId": "babolat-pure-drive-98-2025",
+      "generatedAt": "2026-09-25T18:50:30.196Z",
+      "reviewed": false,
+      "model": "claude-opus-5",
+      "locales": {
+        "pt-BR": {
+          "paragraphs": [
+            "Uma cabeça de 98 in² coloca este quadro entre os menores do catálogo, e o padrão 16x20 fecha ainda mais o leito de cordas. Com 305 g sem cordas e um swingweight perto do teto da faixa, a potência vem da massa em movimento, não da elasticidade do encordoamento. O RA 69 está entre os mais rígidos daqui e completa o quadro: resposta firme, pouca deformação no impacto, trajetória curta e previsível.",
+            "Atende a quem tem swing longo e acelerado, produz o próprio giro e prefere mirar alvos pequenos a depender do quadro para dar profundidade. Os 3 pontos head-light ajudam na condução perto do corpo e nas trocas rápidas, mas o swingweight alto continua exigindo preparação antecipada. Quem está em formação, joga com movimento curto ou passa a partida bloqueando na rede vai sentir a raquete pesada para atravessar a bola.",
+            "O que se perde nessa combinação é conforto e margem. Rigidez alta somada a um leito 16x20 apertado transmite mais impacto para braço e ombro, e há pouca flexão para amortecer a bola mal centrada — com uma face desse tamanho, o erro cai mais longe do centro. O peso elevado também pune o contato atrasado: quando o swing encurta no fim do jogo, o quadro não compensa por você.",
+            "Encordoamento também merece atenção: um padrão fechado como esse prende mais as cordas e tende a poupar o corte, mas cobra rotação gerada pelo braço."
+          ]
+        },
+        "en": {
+          "paragraphs": [
+            "A 98 in² hoop is among the smallest here, and the 16x20 pattern tightens the string bed further. At 323 g strung, with a swingweight sitting near the top of the catalog range, the power comes from what you swing rather than from a springy, open bed. The 69 RA adds a firm, low-deflection response at contact. Taken together, this is a control frame built on mass and stiffness, not on forgiveness.",
+            "It fits a player with long, committed swings who already generates spin and depth and wants to aim at small targets. Three points head-light keeps the handle quick in close exchanges, but the high swingweight still demands early preparation and a full stroke. Developing players, anyone with a compact or late swing, and doubles players who mostly block and volley will find it slow to move through the ball.",
+            "What you give up is comfort and margin for error. A stiff frame with a tight 16x20 bed passes more of the impact into the arm, and there is little flex to soften a mishit — with a face this small, off-centre contact lands further from the middle. The weight also punishes late contact: as the swing shortens over a long match, the frame does not cover the difference."
+          ]
+        }
+      }
+    },
+    {
+      "racketId": "babolat-pure-drive-team-2025",
+      "generatedAt": "2026-09-25T18:50:11.259Z",
+      "reviewed": false,
+      "model": "claude-opus-5",
+      "locales": {
+        "pt-BR": {
+          "paragraphs": [
+            "A rigidez é o que define este quadro: RA 69 está no percentil 90 do catálogo, ou seja, entre os mais rígidos daqui. Combinada com um peso de balanço baixo e 5 pontos head light, ela entrega potência pela reação do aro, não pela massa. Cerca de 285 g sem cordas, cabeça de 100 in² — menor que a da maioria dos modelos listados — e padrão aberto 16x19 para giro.",
+            "Serve a quem tem swing curto ou joga muitas bolas em movimento e precisa que a raquete devolva energia sozinha: quem bate em defesa, quem sobe à rede, quem quer trocar rápido sem carregar peso. Não serve a quem já gera potência própria e precisa de controle — com este nível de rigidez e este aro, a bola sai longa com facilidade se o toque não for preciso.",
+            "O custo aparece no conforto e na estabilidade. Quadros rígidos transmitem mais vibração ao braço, e o peso relativamente contido e o balanço baixo significam menos massa para absorver bolas pesadas — contra quem bate forte, a raquete tende a ser empurrada. O padrão 16x19 morde a bola, mas também desgasta as cordas mais rápido. Vale considerar corda macia e atenção ao histórico de cotovelo."
+          ]
+        },
+        "en": {
+          "paragraphs": [
+            "Stiffness is the defining number here: RA 69 sits in the 90th percentile of this catalog, and that is where most of the power comes from. Pair it with a modest 308 swingweight and 5 points head light, and you get a frame that returns energy off the stringbed rather than through mass. At 301 g strung with a 100 in² head — smaller than most frames listed here — it is built to be swung fast.",
+            "This suits a player with a shorter, faster stroke who needs help on depth: quick exchanges, defensive balls taken late, volleys where a low swingweight gets the frame around in time. It suits big, flat hitters far less. Someone who already supplies their own pace will find the combination of a stiff frame and an open 16x19 pattern sends balls past the baseline unless the contact point is clean.",
+            "The trade-offs are comfort and stability. Stiff frames pass more shock to the arm, and with weight in the lower half of this catalog and a head-light balance, there is limited mass behind the ball when an opponent hits heavy — expect some deflection on hard returns. The open pattern grips the ball but shortens string life. Anyone with elbow or wrist history should think carefully about the string choice."
+          ]
+        }
+      }
+    },
+    {
+      "racketId": "babolat-pure-drive-wimbledon",
+      "generatedAt": "2026-09-25T18:50:04.817Z",
+      "reviewed": false,
+      "model": "claude-opus-5",
+      "locales": {
+        "pt-BR": {
+          "paragraphs": [
+            "A rigidez é o número que comanda esta raquete: 69 RA, acima de 90% do catálogo. A potência vem sobretudo da resposta do quadro, não da massa parada. Com cerca de 300 g sem corda, equilíbrio 4 pontos head-light e um swingweight um pouco abaixo da média, ela é mais fácil de acelerar do que o peso sugere. O aro de 100 in², menor que o da maioria aqui, e o padrão 16x19 aberto fecham um conjunto voltado a bola pesada com giro.",
+            "Faz sentido para quem tem swing longo e rápido e quer profundidade sem precisar empurrar a bola, especialmente no fundo de quadra, onde o padrão aberto e o aro de tamanho médio ajudam a levantar a bola com rotação. Quem procura toque, resposta macia ou controle vindo do quadro tende a se frustrar: nada nesses números aponta para flexão ou amortecimento. Jogadores que já têm potência própria de sobra podem achar a saída longa demais.",
+            "O custo é o de sempre em quadros muito rígidos: impacto seco e pouca filtragem de vibração, o que pesa contra quem tem histórico de dor no braço ou no cotovelo. O padrão 16x19 combinado com a rigidez também acelera o desgaste das cordas. E, apesar do peso intermediário, o swingweight abaixo da média significa menos massa atravessando a bola em trocas contra adversários que batem forte."
+          ]
+        },
+        "en": {
+          "paragraphs": [
+            "Stiffness is the number doing the most work here. At 69 RA the frame sits above 90% of the catalog, which means the power comes from how little the hoop deflects rather than from mass behind the ball. At 318 g strung it lands mid-pack for weight, but the 4 points head-light balance and a swingweight slightly below catalog average make it quicker through the hitting zone than that figure suggests. A 100 in² head and an open 16x19 round it out.",
+            "This fits a player with a full, fast swing who wants depth without having to manufacture all of it, and who hits with topspin — the open pattern and mid-sized head reward that. It is a poor fit for anyone chasing feel, a soft response, or control that comes from the frame flexing. Players who already generate plenty of their own pace may find the ball sailing longer than they want.",
+            "The caveat is comfort. A frame this stiff transmits more of the impact to the hand and arm, which matters if you have any elbow or wrist history. The open 16x19 combined with that stiffness will also chew through strings faster than a denser pattern. And while the weight is average for the catalog, the below-average swingweight leaves less mass behind the ball when you are absorbing heavy pace."
+          ]
+        }
+      }
+    },
+    {
+      "racketId": "babolat-pure-strike-100-16x20-carbon-grey",
+      "generatedAt": "2026-09-25T18:50:59.642Z",
+      "reviewed": false,
+      "model": "claude-opus-5",
+      "locales": {
+        "pt-BR": {
+          "paragraphs": [
+            "Um RA de 60 coloca este quadro entre os mais flexíveis do catálogo, e é essa flexão que organiza o resto da ficha. Com cerca de 305 g sem cordas, equilíbrio 7 pontos head-light e um padrão 16x20 — fechado para uma cabeça de 100 in² — a massa fica concentrada no punho, a resposta sai amortecida e a bola sai mais baixa. É uma raquete de controle com peso de verdade, não de potência fácil.",
+            "Serve a quem tem swing longo e completo e gera a própria velocidade de bola: o quadro devolve pouco por conta própria, então a aceleração precisa vir do braço. O equilíbrio atrás e o swingweight acima da média do catálogo dão estabilidade no fundo sem travar a mão na rede. Não serve a quem bate curto, bloqueia devoluções ou está começando — aí o peso cobra e a flexão não compensa.",
+            "O custo aparece em dois pontos. O padrão 16x20 numa cabeça de 100 in² abre menos espaço entre cordas: a vida do encordoamento tende a ser maior, mas a mordida para giro é menor do que em padrões abertos, e a margem sobre a rede depende mais da sua trajetória de swing. Em troca, a flexão baixa e a massa alta filtram impacto, o que ajuda quem tem histórico de dor no braço."
+          ]
+        },
+        "en": {
+          "paragraphs": [
+            "A 16x20 pattern in a 100 in² hoop is already a control choice, and the rest of the sheet agrees with it. At 323 g strung the frame sits on the heavier side of the catalog, the balance is well back in the handle, and the flex rating falls in the bottom tenth of everything here. The result is a muted, low-launching frame that asks you to supply the pace rather than handing it over.",
+            "It fits a player with a full, accelerating swing who wants the ball to stay down and land deep by their own doing. Handle-weighted mass plus an above-average swingweight means stability against pace without a sluggish frame at net. It does not fit short, blocked swings, beginners, or anyone hoping the racquet adds free depth — the flex simply does not return much on its own.",
+            "Two caveats follow from the numbers. The tighter 16x20 layout in a mid-sized head means fewer open windows for the string to bite, so strings should last longer but spin and net clearance depend more on your swing path. And the weight is real: late preparation on fast exchanges will show. The payoff is impact filtering from low stiffness and high mass, which matters if arm comfort is a constraint."
+          ]
+        }
+      }
+    },
+    {
+      "racketId": "babolat-pure-strike-100-carbon-grey",
+      "generatedAt": "2026-09-25T18:50:50.728Z",
+      "reviewed": false,
+      "model": "claude-opus-5",
+      "locales": {
+        "pt-BR": {
+          "paragraphs": [
+            "O número que manda aqui é o peso de balanço: está entre os mais altos do catálogo e faz a raquete pesar no impacto mais do que os cerca de 300 g sem corda deixam supor. O equilíbrio de 4 pontos leve na cabeça devolve parte dessa manobrabilidade na mão. Junte a isso a flexão de 63 RA, mais baixa que a da maioria, a cabeça de 100 in² e o padrão aberto 16x19: é um quadro de golpes longos e acelerados.",
+            "Faz sentido para quem já gera a própria velocidade e quer massa atravessando a bola no fundo de quadra, com preparação antecipada e swing completo. Não faz sentido para quem joga com golpes curtos, para iniciantes ou para quem depende do quadro para produzir profundidade — a flexão relativamente baixa devolve pouca energia de graça. Quem procura uma área de impacto generosa também vai achar 100 in² apertado diante do que existe aqui.",
+            "O custo principal é tempo de preparação. Com peso de balanço nessa faixa, chegar atrasado na bola aparece na hora, e trocas rápidas na rede pedem punho firme e bloqueio curto. O padrão 16x19 favorece o giro, mas as cordas duram menos, justamente porque a combinação incentiva golpes com muita rotação. Em contrapartida, a flexão mais baixa tende a ser mais gentil com o braço, desde que a técnica dê conta do peso."
+          ]
+        },
+        "en": {
+          "paragraphs": [
+            "At 318 g strung the frame lands squarely at the middle of the catalog by weight, yet it does not swing like a mid-weight: the swingweight sits in the upper quarter of everything here, so mass arrives late in the swing and stays behind the ball. Four points head-light keeps it manageable between shots. A 63 RA flex is softer than most, the 100 in² head smaller than most, and the 16x19 pattern leaves room for spin.",
+            "This asks for a player who already swings fast and long, and who wants weight through contact against pace rather than help producing it. Baseline hitters with time to set up are the fit. Compact, blocked swings, beginners, and anyone relying on the frame for free depth are not: with stiffness around the 30th percentile, the ball comes back with what you put into it. A larger, more forgiving hitting area exists elsewhere in this catalog.",
+            "The demand is preparation. A swingweight this high punishes late contact and makes quick reflex exchanges at net harder work than the static weight suggests. The open 16x19 grips the ball but shortens string life, more so if you hit with the spin the layout invites. On the other side, the softer flex and real mass should keep impact reasonably settled — provided your technique can move the frame on time, every time."
+          ]
+        }
+      }
+    },
+    {
+      "racketId": "babolat-pure-strike-97-carbon-grey",
+      "generatedAt": "2026-09-25T18:50:49.893Z",
+      "reviewed": false,
+      "model": "claude-opus-5",
+      "locales": {
+        "pt-BR": {
+          "paragraphs": [
+            "Cabeça de 97 in² com padrão 16x20 já define a proposta: superfície pequena e trama fechada, que exige contato limpo e devolve pouca potência de graça. O peso, cerca de 315 g sem cordas, está entre os mais altos do catálogo, mas o balanço de 7 pontos head-light puxa a massa para a mão e mantém o swingweight numa faixa intermediária. O RA de 63 fica na metade mais flexível das raquetes listadas aqui.",
+            "Serve a quem tem preparação longa, swing acelerado e produz a própria velocidade de bola. A massa dá estabilidade contra bolas pesadas e penetração nos golpes de fundo, enquanto o balanço voltado ao cabo preserva a manobrabilidade na rede e nas defesas rápidas. Não serve a quem tem preparação curta, técnica ainda em formação ou precisa que a raquete acrescente profundidade: a cabeça é a menor do catálogo e pune o contato descentrado.",
+            "A contrapartida é física. Um peso no percentil 90 dos pesos encordoados do catálogo é administrável em um set e pesa nas pernas e no ombro em três, e isso depende de preparo tanto quanto de técnica. A trama 16x20 tende a preservar as cordas e a manter a bola baixa e direta, mas o spin vem da velocidade de cabeça, não do deslocamento das cordas. A flexibilidade relativa alivia o impacto sem devolver potência."
+          ]
+        },
+        "en": {
+          "paragraphs": [
+            "A 97 in² hoop paired with a 16x20 pattern sets the terms before anything else: a small, tightly spaced face that rewards clean contact and hands back very little free power. At 332 g strung the frame sits among the heaviest in the catalog, yet the 7 points head-light balance pulls that mass toward the hand, so the swingweight lands only around the middle of the range. The RA of 63 places it on the softer half.",
+            "This is a frame for a player with a long, accelerated swing who supplies pace rather than borrowing it. The mass steadies the frame against heavy balls and adds plow-through on drives, while the head-light balance keeps it workable at the net and on quick blocks. It suits the opposite profile poorly: compact strokes, developing technique, or anyone needing the racquet to add depth. The smallest head size here punishes contact away from centre.",
+            "The demand it makes is physical. Weight in the 90th percentile of the catalog's strung figures is manageable over a set and shows up in the shoulder and the legs over three, and conditioning decides that as much as technique does. The dense 16x20 pattern is easier on strings and keeps the ball flat and low, but spin has to come from racquet-head speed rather than string movement. The relatively flexible layup softens impact without returning power."
+          ]
+        }
+      }
+    },
+    {
+      "racketId": "babolat-pure-strike-98-16x19-carbon-grey",
+      "generatedAt": "2026-09-25T18:50:41.872Z",
+      "reviewed": false,
+      "model": "claude-opus-5",
+      "locales": {
+        "pt-BR": {
+          "paragraphs": [
+            "O número que manda aqui é o swingweight de 330: está entre os mais altos de todo o catálogo. Combinado com um balanço 4 pontos head-light e peso desencordoado de cerca de 305 g, o desenho fica claro — massa concentrada onde importa para atravessar a bola, com o cabo leve o bastante para não travar o punho. A cabeça de 98 in² é menor que a da quase totalidade dos quadros daqui, e o RA 64 cai na metade mais flexível.",
+            "É um quadro para quem já tem swing longo, acelera sozinho e quer controle com penetração. Quem bate com preparação completa do fundo encontra estabilidade contra bolas pesadas e uma face pequena que devolve direção precisa. Não serve a iniciantes nem a quem tem golpes curtos ou compactos: com esse swingweight, atraso na preparação vira contato tardio, e a cabeça reduzida não perdoa erro de centro. No voleio, exige mãos rápidas.",
+            "A contrapartida é física. Swingweight alto cansa ao longo de partidas longas, e o cansaço aparece justamente como contato atrasado e bolas fora do miolo — problema maior numa cabeça de 98 in² do que numa face grande. A rigidez abaixo da média do catálogo tende a ser mais amigável ao braço, mas devolve menos potência sozinha: a profundidade precisa vir do seu movimento. O padrão 16x19 numa face pequena favorece giro, com o desgaste de corda que isso implica."
+          ]
+        },
+        "en": {
+          "paragraphs": [
+            "Swingweight is the number doing the most work on this sheet: 330 puts it in the top tenth of the catalog, and it sits under a 98 in² head that is smaller than almost anything else here. At 323 g strung with a 4 points head-light balance, the mass is placed to carry through contact while leaving the handle free to swing. The RA of 64 falls on the softer side of the catalog's middle, and 16x19 is open for a face this size.",
+            "This rewards a long, committed swing. A player who generates pace independently gets plow-through against heavy balls and a small face that reports exactly where the ball went. It is a poor match for beginners, for compact or late strokes, and for anyone who needs the frame to supply power. High swingweight and a small head compound each other: preparation has to be early, every time. Net play demands quick hands to reposition it.",
+            "The trade-off is endurance. A swing this heavy to move tires the arm over long matches, and fatigue shows up as late contact and off-centre hits, which a 98 in² face punishes more than a larger one would. The below-average stiffness should be easier on the arm, but it also returns less depth on its own, so pace stays your responsibility. An open pattern in a small head also means strings move and wear faster."
+          ]
+        }
+      }
+    },
+    {
+      "racketId": "babolat-pure-strike-98-18x20-carbon-grey",
+      "generatedAt": "2026-09-25T18:50:44.753Z",
+      "reviewed": false,
+      "model": "claude-opus-5",
+      "locales": {
+        "pt-BR": {
+          "paragraphs": [
+            "Um aro de 98 in² com trama 18x20 define o teto da bola antes de qualquer outra coisa: saída baixa, previsível, sem ganho fácil de profundidade. O que dá o caráter é a massa em movimento — o swingweight está entre os mais altos de todo o catálogo, e mesmo com equilíbrio 4 pontos leve na cabeça o quadro atravessa o impacto em vez de ser desviado. São cerca de 305 g não encordoados, com rigidez abaixo da média daqui.",
+            "Serve a quem tem swing longo e tempo de preparação, gera a própria velocidade e quer que a bola pare onde foi mirada. Contra bolas pesadas, a inércia trabalha a favor. Não serve a quem joga com movimentos curtos, está em formação, depende do quadro para levantar a bola, ou passa muito tempo defendendo e em trocas rápidas na rede. O aro pequeno ainda cobra centro constante.",
+            "A exigência é física e técnica. Peso alto somado a swingweight elevado cansa em partidas longas e pune preparação tardia, e a rigidez moderada não elimina a carga que a massa transmite ao braço em impactos fora do centro. A trama densa tende a poupar as cordas, mas devolve pouco giro: a rotação precisa vir da aceleração do jogador, não do padrão."
+          ]
+        },
+        "en": {
+          "paragraphs": [
+            "A 98 in² head with an 18x20 layout sets the ceiling on launch angle before anything else is considered — the ball leaves low and stays where it was aimed. What defines the feel is mass in motion: the swingweight sits in the 95th percentile of this catalog, so even with a 4-points head-light balance, the 323 g strung frame pushes through contact rather than being knocked off line by an incoming ball.",
+            "This fits a player with a long, committed swing who creates pace independently and wants the frame to hold its line against heavy hitting. It does not fit short, compact strokes, developing players, or anyone who relies on the racquet to lift the ball. With one of the smaller heads here, it also asks for consistent centre contact, and quick defensive blocks or fast net exchanges will feel late.",
+            "The demand is physical and technical. A heavy frame with one of the highest swingweights in the catalog drains the arm over long matches and punishes late preparation, and while the stiffness sits on the lower side of the range, that does not cancel the load transmitted on off-centre hits. The dense pattern should be easier on strings, but it gives back little spin — rotation has to come from racquet head speed."
+          ]
+        }
+      }
+    },
+    {
+      "racketId": "dunlop-fx-700",
+      "generatedAt": "2026-09-25T18:48:29.953Z",
+      "reviewed": false,
+      "model": "claude-opus-5",
+      "locales": {
+        "pt-BR": {
+          "paragraphs": [
+            "A distribuição de massa é o dado mais revelador deste quadro: uma raquete leve, com cerca de 260 g sem cordas, que mesmo assim tem swingweight acima da maioria do catálogo. Na prática, o peso está concentrado na parte alta do aro. Junte a cabeça de 107 in², o padrão aberto 16x18 e um RA de 67, já na faixa rígida, e a intenção do projeto fica clara: profundidade e giro a partir de swings curtos.",
+            "Faz sentido para quem tem movimento compacto ou mais lento e precisa que a raquete contribua com parte da potência, e para quem quer sentir massa no impacto sem carregar um quadro pesado o jogo inteiro. Faz menos sentido para quem já gera velocidade própria com swings longos, ou para quem depende de mãos rápidas na rede: o swingweight, no quarto superior do catálogo, atrasa correções e mudanças de direção.",
+            "Os custos saem dos mesmos números. Rigidez alta somada a pouco peso estático devolve mais impacto ao braço, e o peso baixo dá pouca resistência a bolas pesadas — devoluções de bloqueio tendem a ser empurradas. O padrão aberto numa face grande deixa as cordas se moverem bastante: bom para giro, ruim para a durabilidade do encordoamento. E a massa adiantada cobra do ombro em partidas longas."
+          ]
+        },
+        "en": {
+          "paragraphs": [
+            "A frame this light that still swings this heavy tells you where the mass went: out toward the hoop. At 278 g strung it sits in the bottom tenth of the catalog by weight, yet its swingweight is higher than most frames here. Add the 107 in² head, an open 16x18 pattern and a stiff-side RA of 67, and the design is aimed at depth and spin from short, unhurried swings.",
+            "This suits a player with a compact or slower swing who wants the racquet to supply part of the pace, and who still wants some weight behind contact without hauling a heavy frame around. It suits less well the player already generating plenty of racquet-head speed, or anyone who needs quick hands at net — the swingweight is in the top quarter of the catalog and resists fast changes of direction.",
+            "The trade-offs come from the same set of numbers. A stiff frame with little static mass sends more of the impact back to the arm, and the low weight gives you less to hold up against heavy incoming balls, so blocked returns can get pushed off line. The open pattern across a large face lets strings move freely, which helps spin and shortens string life, and the forward mass taxes the shoulder late in matches."
+          ]
+        }
+      }
+    },
+    {
+      "racketId": "head-squared",
+      "generatedAt": "2026-09-25T18:47:40.491Z",
+      "reviewed": false,
+      "model": "claude-opus-5",
+      "locales": {
+        "pt-BR": {
+          "paragraphs": [
+            "O dado que mais define esta raquete é o swingweight: está entre os 5% mais baixos do catálogo, ou seja, ela atravessa o movimento muito mais leve do que os 295 g sem corda sugerem. Some a isso um perfil entre os mais flexíveis daqui, uma cabeça de 100 in² menor que a da maioria dos quadros do catálogo e um padrão aberto 16x18. É um quadro de peso intermediário montado para girar rápido, com conforto e efeito vindo da flexão e do espaçamento das cordas.",
+            "Serve bem a quem tem swing longo e acelera a cabeça da raquete, e precisa de um quadro que não atrase a preparação: trocas rápidas, jogo de rede, duplas, bloqueios de devolução. Também é uma opção coerente para quem prioriza o braço, já que a flexibilidade baixa e a corda aberta reduzem o impacto no pulso e no cotovelo. Quem espera peso atravessando a bola, estabilidade contra bolas muito pesadas ou uma cabeça grande e perdoadora vai achar pouco aqui.",
+            "Em troca, há concessões previsíveis. Swingweight baixo significa menos inércia no contato: contra adversários que batem forte, a raquete pode ser empurrada, e a profundidade passa a depender inteiramente do seu swing. A flexão baixa também devolve menos energia bruta — o conforto entra no lugar da potência fácil. E o padrão 16x18, que ajuda no efeito, movimenta mais as cordas e encurta a vida delas. É um quadro que recompensa técnica ativa, não passiva."
+          ]
+        },
+        "en": {
+          "paragraphs": [
+            "The swingweight is the number that sets the tone here: it sits among the very lowest in the catalog, so this frame moves through the hitting zone far quicker than its 309 g strung weight would lead you to expect. Pair that with one of the softer flex ratings in the catalog, a 100 in² head that is smaller than most frames listed here, and an open 16x18 pattern, and you get a mid-weight frame built for racquet-head speed and comfort rather than mass.",
+            "It makes sense for players with long, accelerating swings who want a frame that gets around quickly — fast exchanges, net play, doubles, blocked returns. The soft flex and open string spacing also point to anyone managing arm or elbow issues who still wants spin. Players who rely on the frame's own weight to push through the ball, or who want a large, forgiving head and stability against heavy pace, are better served elsewhere.",
+            "The concessions follow directly. Low swingweight means less inertia at contact, so a hard, deep ball can knock the head back, and depth becomes entirely your job rather than the frame's. The soft flex trades raw ball speed for comfort, which is a real exchange, not a free one. And the 16x18 pattern lets strings move more, which helps spin and shortens string life. This frame rewards a full, active swing."
+          ]
+        }
+      }
+    },
+    {
+      "racketId": "prince-tour-98-2026",
+      "generatedAt": "2026-09-25T18:48:18.128Z",
+      "reviewed": false,
+      "model": "claude-opus-5",
+      "locales": {
+        "pt-BR": {
+          "paragraphs": [
+            "Aro de 98 in², um dos menores de todo o catálogo, e o resto da construção segue a mesma lógica. São cerca de 305 g sem cordas, peso claramente acima da média, com seis pontos de equilíbrio no cabo, o que joga a massa para trás da mão e faz a raquete girar melhor do que o número estático sugere. O swingweight fica no terço mais alto, e o RA 64 cai no lado flexível do meio-termo. Quadro de controle com 16x19 aberto.",
+            "O perfil serve a quem tem golpe longo, preparo antecipado e gera a própria velocidade: a face menor recompensa contato limpo com profundidade previsível, e a massa atravessa bolas pesadas em vez de ser empurrada por elas. Iniciantes e quem joga de bloqueio, com swing curto, vão encontrar pouca ajuda aqui — uma 98 flexível não devolve potência sozinha, e o swingweight exige preparo em devoluções rápidas.",
+            "As contrapartidas são as esperadas nessa fórmula. Face pequena significa que a bola fora do centro perde mais do que perderia num aro grande: o erro aparece no resultado em vez de ser absorvido. O padrão aberto num aro estreito deixa as cordas principais se deslocarem bastante, o que ajuda no giro e encurta a vida do encordoamento. A flexibilidade tende a ser gentil com o braço, mas transfere a responsabilidade pela potência inteiramente para o jogador."
+          ]
+        },
+        "en": {
+          "paragraphs": [
+            "A 98 in² hoop puts this among the smallest faces in the catalog, and the rest of the build follows that logic. At 323 g strung it carries real mass, while six points head-light shifts the balance back toward the hand, so it swings more freely than the static figure implies. The swingweight still lands in the upper third, the 64 RA sits on the softer side of mid, and the 16x19 keeps spin access open.",
+            "This fits a player with long, committed strokes who supplies their own pace. The small face rewards clean contact with precise depth, and the weight holds its line against heavy balls instead of being pushed around. Beginners, or anyone with a short blocking swing, will get little from it: a flexible 98 gives no power on its own, and a swingweight in the upper third demands early preparation on fast returns.",
+            "The trade-offs are built in. A smaller head means off-centre contact drops more than it would on a larger hoop — mishits show up in the result rather than being absorbed. Open spacing on a narrow face lets the main strings move a lot, which helps spin and shortens string life. The flex should be reasonable on the arm, but it hands the job of generating pace entirely back to you."
+          ]
+        }
+      }
+    },
+    {
+      "racketId": "tecnifibre-tfight-blue-300",
+      "generatedAt": "2026-09-25T18:48:42.035Z",
+      "reviewed": false,
+      "model": "claude-opus-5",
+      "locales": {
+        "pt-BR": {
+          "paragraphs": [
+            "Os 100 in² parecem um tamanho padrão, mas este catálogo chega a 120 — a área de impacto aqui é menor que a da maioria das raquetes ao lado. Peso, rigidez e swingweight ficam os três no meio da tabela, e o balanço de quatro pontos head-light concentra a massa perto da mão. Com padrão aberto 16x19, o desenho é o de uma raquete moderna de perfil equilibrado, sem nenhuma característica levada ao extremo.",
+            "Com cerca de 300 g sem corda, pede um jogador que já tenha um swing completo e produza boa parte da própria velocidade de bola: o padrão aberto só gera giro com a cabeça acelerando, e o balanço atrasado premia movimentos longos, não bloqueios curtos. Quem ainda está construindo o golpe, ou quer uma face mais perdoadora e um quadro realmente leve, encontra opções mais adequadas em outras faixas do catálogo.",
+            "A rigidez mediana significa que a raquete não filtra o impacto por você nem entrega sensação de tábua — o conforto vai depender bastante da corda escolhida e da montagem. O padrão aberto movimenta os fios e encurta a vida da corda, sobretudo em multifilamentos. E, com face menor que a média e swingweight apenas mediano, tanto o impacto descentralizado quanto a bola pesada do adversário punem mais do que puniriam num quadro maior e mais pesado.",
+            "O resumo é uma raquete de exigência moderada, que devolve o que o braço coloca nela."
+          ]
+        },
+        "en": {
+          "paragraphs": [
+            "A 100 in² face sounds standard until you notice this catalog stretches to 120, which puts the hitting area on the smaller side of what sits beside it — around the 30th percentile. Weight, stiffness and swingweight all land mid-table at 318 g strung, and four points head-light pulls that mass back toward the hand. With 16x19 spacing, the build is a conventional modern all-court frame with nothing pushed to an extreme.",
+            "This suits a player who already swings fully and supplies a good share of their own pace. The open pattern only bites when the head is moving quickly, and the head-light balance rewards long, accelerated strokes rather than short blocks. Anyone still building a swing shape, or looking for a large forgiving face or a genuinely light frame, is better served elsewhere. It is also not a specialist plow-through frame.",
+            "Mid-range stiffness means the frame neither damps impact for you nor feels boardy — comfort will hang largely on the string and setup you choose. The open pattern moves strings around and will shorten their life, softer multifilaments most of all. And with a smaller-than-average face plus only average swingweight, both off-centre contact and a heavy incoming ball punish you more than they would on a bigger, heavier frame."
+          ]
+        }
+      }
+    },
+    {
+      "racketId": "volkl-vostra-v1-pro",
+      "generatedAt": "2026-09-25T18:48:25.552Z",
+      "reviewed": false,
+      "model": "claude-opus-5",
+      "locales": {
+        "pt-BR": {
+          "paragraphs": [
+            "Um aro de 99 in² com padrão 16x19 e armação firme descreve um quadro voltado a quem já impõe ritmo: a caixa aberta de cordas morde a bola para o efeito, enquanto a rigidez devolve energia em vez de absorver. O peso fica no meio do catálogo — cerca de 300 g sem cordas — e o balanço três pontos head light mantém a cabeça sob controle, com um swingweight um pouco acima da média que sustenta o impacto sem travar a preparação.",
+            "Serve a jogadores de swing completo e técnica formada, que produzem a própria potência e querem direção previsível com margem de topspin. Quem depende do quadro para gerar velocidade, joga com preparações curtas ou está começando tende a sofrer: a cabeça é menor que a da maioria aqui e o ponto doce exige centralização. Também não é a escolha natural para quem prioriza conforto acima de tudo.",
+            "O custo está na rigidez, no percentil 75 do catálogo: quadro firme transmite mais vibração ao braço, e ombros ou cotovelos sensíveis devem considerar isso antes. A combinação de armação rígida com padrão aberto também desgasta cordas mais rápido, sobretudo em quem abusa do efeito. E o swingweight acima do meio cobra preparação antecipada — em pontos longos ou na defesa apressada, o atraso aparece."
+          ]
+        },
+        "en": {
+          "paragraphs": [
+            "A 99 in² head with a 16x19 pattern and a firm layup points to a frame built for players who already supply the pace. The open string bed lets the ball sit and rotate, while the stiffer construction returns energy rather than soaking it up. At 318 g strung it sits right at the middle of the catalog, and three points head light keeps the mass behind the hand, with a swingweight slightly above average that holds its line through contact.",
+            "It fits developed, full-swing players who want a predictable launch and their own spin rather than help from the frame. It is a poor match for short, compact strokes, for beginners, and for anyone who needs the racquet to add depth: the hoop is smaller than most here, so off-centre contact is punished rather than forgiven.",
+            "The caveat is feel. Stiffness in the 75th percentile of the catalog means more of the impact reaches the arm, which matters if you have a history of elbow or shoulder trouble. A firm frame paired with an open pattern is also hard on strings, particularly for heavy spin hitters. And the above-average swingweight rewards early preparation — late on the ball, it will feel like work."
+          ]
+        }
+      }
+    },
+    {
+      "racketId": "wilson-clash-108-v2",
+      "generatedAt": "2026-09-25T18:47:30.143Z",
+      "reviewed": false,
+      "model": "claude-opus-5",
+      "locales": {
+        "pt-BR": {
+          "paragraphs": [
+            "Uma cabeça de 108 in² está entre as maiores do catálogo, e é ela que define o caráter aqui: área de impacto ampla, alavanca generosa e perdão em bolas fora do centro. O peso é baixo, cerca de 280 g sem cordas — valor aproximado —, mas o swingweight fica entre os mais altos daqui. Ou seja: leve na mão, pesado no movimento. Some a isso um perfil flexível e um padrão aberto 16x19.",
+            "Serve a quem joga do fundo com balanços amplos e tempo para preparar, e a quem busca profundidade sem forçar o braço: a flexibilidade baixa a rigidez do impacto e a cabeça grande compensa o contato impreciso. Não serve a quem depende de mãos rápidas na rede, de bloqueios em devoluções fortes ou de reação curta sob pressão — a massa em movimento cobra antecipação. Quem já gera potência própria vai achar a bola longa demais.",
+            "O custo está no controle e na manutenção. Cabeça grande, quadro flexível e padrão aberto empurram a bola para fora quando o golpe não tem estrutura; o efeito ajuda a segurar, mas exige rotação consistente. Cordas em padrão aberto se desgastam mais rápido. E o swingweight elevado, apesar de dar estabilidade, pesa nos sets finais e em trocas rápidas, mesmo com o peso estático modesto."
+          ]
+        },
+        "en": {
+          "paragraphs": [
+            "The 108 in² hood is what organises everything else: a wide hitting area, plenty of leverage, and forgiveness on contact away from centre. At 295 g strung the frame is light in the hand — in the lower quarter of the catalog by weight — yet its swingweight sits well above the catalog midpoint. That gap matters. It carries mass through the ball without feeling heavy to pick up, and the flexible layup keeps impact soft.",
+            "This fits a baseliner with a full, unhurried swing who wants depth without muscling the ball, and anyone prioritising a gentler feel at contact. It fits less well at net, on fast exchanges, or on stretched returns, where the swingweight asks for preparation time the point may not give. Players who already produce their own pace will find the oversize head sending balls deeper than intended.",
+            "The caveats follow from the same numbers. A big head, a flexible frame and an open 16x19 pattern together favour launch over precision; holding the ball in requires reliable spin rather than a flat drive. Open patterns also chew through strings faster. And while the high swingweight buys stability against pace, it becomes work late in a match — the light static weight does not fully offset what the frame demands in the swing."
+          ]
+        }
+      }
+    },
+    {
+      "racketId": "wilson-defyer-100",
+      "generatedAt": "2026-09-25T18:52:17.513Z",
+      "reviewed": false,
+      "model": "claude-opus-5",
+      "locales": {
+        "pt-BR": {
+          "paragraphs": [
+            "O swingweight é o dado que manda aqui. Com cerca de 300 g sem cordas, valor aproximado, a raquete não impressiona pelo peso parado na mão, mas a distribuição de massa muda tudo: o swingweight está entre os mais altos do catálogo, e o balanço 6 pontos head-light devolve parte dessa carga ao punho. Cabeça de 100 in², padrão 16x19 e rigidez um pouco acima do meio completam um quadro feito para atravessar a bola com giro.",
+            "Serve a quem tem swing longo e completo, prepara cedo e quer profundidade sem forçar o braço a cada golpe — a massa na cabeça faz parte do trabalho no fundo de quadra. Não serve a quem joga com movimento curto, precisa de manobra rápida na rede ou está construindo técnica. A cabeça de 100 in² é menor que a da maioria das raquetes aqui, então a área útil não perdoa tanto quanto os quadros maiores do catálogo.",
+            "O que ela cobra é físico. Um swingweight desse porte pune preparação atrasada: chegando tarde na bola, o quadro atravessa em vez de girar, e o desgaste aparece no braço antes de aparecer no placar. A rigidez acima do ponto médio (percentil 60) reforça isso, com resposta firme e mais impacto transmitido. O padrão aberto 16x19 ajuda no giro, mas movimenta as cordas e encurta a vida delas."
+          ]
+        },
+        "en": {
+          "paragraphs": [
+            "Mass placement is the story on this frame. At 318 g strung it sits right at the middle of the catalog for static weight, yet the swingweight lands in the top band of everything listed here — weight pushed toward the hoop, then partly reined in by a 6 pts head-light balance. Pair that with a 100 in² head, a 16x19 pattern and a stiffness reading just above the catalog midpoint, and you have a frame meant to plow through contact with spin.",
+            "It fits a player with long, committed swings who prepares early and wants depth from the baseline without forcing every ball. That kind of swingweight rewards the stroke that is already moving. It does not fit compact takebacks, quick net exchanges where the racquet has to be repositioned late, or anyone still building technique. At 100 in², the hitting area is smaller than most of what this catalog carries, so off-center contact is punished harder.",
+            "The demands are real. A swingweight in the 85th percentile punishes late preparation, and the firmer-than-average stiffness means impact arrives with less cushioning — a combination that shows up in the arm before it shows up in results. The open 16x19 pattern is what generates the spin, but it also lets strings move and wear through faster. Comfort here depends heavily on string choice and on timing that does not slip."
+          ]
+        }
+      }
+    },
+    {
+      "racketId": "wilson-defyer-100ul",
+      "generatedAt": "2026-09-25T18:52:30.425Z",
+      "reviewed": false,
+      "model": "claude-opus-5",
+      "locales": {
+        "pt-BR": {
+          "paragraphs": [
+            "Cerca de 260 g sem cordas, com swingweight entre os mais baixos do catálogo: é um quadro construído em torno da velocidade de braço, não da massa. O balanço de apenas 2 pontos head-light deixa alguma carga próxima da cabeça, o que evita a sensação de raquete vazia comum em modelos leves. A cabeça de 100 in² é menor que a da maioria aqui, e a rigidez fica no meio da faixa: a ajuda vem de quão fácil é acelerar, não de um quadro duro.",
+            "Faz sentido para quem precisa que a raquete se mova sozinha: jogadores em formação, quem volta às quadras depois de uma pausa, quem tem limitação de ombro ou punho e não sustenta peso por uma partida inteira. O padrão aberto 16x19 favorece o giro em golpes curtos e rápidos. Encaixa mal em quem já produz bola pesada ou passa o jogo absorvendo pancada — não há massa suficiente aqui para se apoiar.",
+            "O que se perde com o peso baixo aparece no impacto. Bolas fora do centro torcem a cabeça mais do que num quadro pesado, e bolas velozes empurram a raquete em vez de serem bloqueadas. A rigidez intermediária não torna o quadro agressivo com o braço, mas também não amortece muito por conta própria. Com padrão aberto e cabeça de tamanho moderado, as cordas se movimentam bastante e tendem a durar menos."
+          ]
+        },
+        "en": {
+          "paragraphs": [
+            "A frame this light, with a swingweight in the bottom tenth of the catalog, is built around hand speed rather than mass. At 278 g strung it still balances only 2 points head-light, which keeps a little weight out toward the hoop so the swing doesn't feel hollow. The 100 in² head is smaller than most here, and stiffness sits mid-catalog — whatever free depth this offers comes from how easily it moves, not from a rigid layup.",
+            "It suits players who need the racquet to do the moving: juniors stepping up in frame size, players coming back after time away, anyone whose shoulder or wrist limits how much weight they can carry through a full match. The open 16x19 pattern helps the string bed bite on shorter, faster strokes. It suits poorly anyone who already generates heavy pace, or who spends matches absorbing it, since there is little mass to lean on.",
+            "What the low weight gives up shows at contact. Off-centre balls twist the head more than a heavier frame would, and hard-struck balls tend to push it back rather than being blocked. Mid-range stiffness means the frame is neither harsh nor especially cushioning on its own, so the arm absorbs more of what the mass doesn't. The open pattern lets strings shift freely, which usually shortens their working life."
+          ]
+        }
+      }
+    },
+    {
+      "racketId": "wilson-defyer-98-pro",
+      "generatedAt": "2026-09-25T18:48:02.068Z",
+      "reviewed": false,
+      "model": "claude-opus-5",
+      "locales": {
+        "pt-BR": {
+          "paragraphs": [
+            "Cabeça de 98 in² com trama 16x20 define a intenção antes de qualquer outro número: área de cordas curta, espaçamento fechado, quase nenhuma potência de graça. Com cerca de 305 g sem cordas, é uma raquete pesada para o padrão atual, mas o balanço de 6 pontos para o cabo mantém o swingweight só um pouco acima do meio do catálogo. A massa aparece na firmeza do impacto, não tanto no esforço de levar o quadro até a bola. O RA 64 fica no lado mais flexível da média.",
+            "O perfil serve a quem tem golpe longo e acelerado e gera a própria velocidade de bola. A combinação de peso, cabeça pequena e trama fechada devolve direção e estabilidade contra bolas pesadas, sobretudo na devolução e nas trocas cruzadas longas. Não serve a quem está começando, a quem bate com movimento curto ou de bloqueio, nem a quem espera profundidade sem trabalhar por ela. Peso desse nível ainda precisa ser sustentado até o fim da partida.",
+            "A margem de erro encolhe. Com uma das cabeças mais compactas do catálogo, o impacto fora do centro perde bola de forma evidente, e o 16x20 limita a mordida da corda: o giro tem de vir da velocidade de raquete, não do encordoamento. Em troca, a trama fechada tende a prolongar a vida das cordas, e a rigidez abaixo da média do catálogo ameniza o choque. É um quadro mais tolerante com o braço do que com a técnica."
+          ]
+        },
+        "en": {
+          "paragraphs": [
+            "A 98 in² hoop crossed by a 16x20 pattern announces a control layout before anything else does: short string bed, tight spacing, very little free launch. At 323 g strung the frame sits in the upper third of the catalog for mass, yet 6 points head-light keeps the swingweight only slightly above the middle of the range. The weight shows up as steadiness at contact rather than as effort getting the head to the ball. RA 64 falls on the softer side of average.",
+            "This suits a player with long, accelerated strokes who supplies his own pace and wants the ball to land where it was aimed. Mass plus a dense pattern buys directional precision and stability against heavy incoming balls, especially on the return and in extended crosscourt exchanges. It is a poor fit for beginners, for compact or blocking swings, and for anyone hoping the frame will find depth unaided. The weight also has to be carried through a full match.",
+            "Margin is what shrinks. With one of the smaller heads here — among the most compact 5% of the catalog — contact away from centre loses noticeably more, and the 16x20 spacing restricts how much the bed grips and lifts, so spin has to come from racquet-head speed. In return, the closed pattern tends to extend string life, and a stiffness reading below the catalog average softens impact. The frame asks more of technique than it does of the arm."
+          ]
+        }
+      }
+    },
+    {
+      "racketId": "yonex-muse-107",
+      "generatedAt": "2026-09-25T18:47:50.280Z",
+      "reviewed": false,
+      "model": "claude-opus-5",
+      "locales": {
+        "pt-BR": {
+          "paragraphs": [
+            "A rigidez é o ponto de partida aqui: com RA 56, nenhuma raquete deste catálogo é mais flexível. Some a isso um aro de 107 in², entre os maiores disponíveis, e cerca de 280 g sem cordas, um peso baixo para o padrão do catálogo. A potência não vem de massa atravessando a bola, e sim da área de impacto e do retorno do quadro. O swingweight moderado confirma a ideia: é um conjunto feito para exigir pouco esforço do braço.",
+            "Faz sentido para quem tem golpes curtos ou compactos, para quem joga muito perto da rede em duplas e, principalmente, para quem tem histórico de desconforto em cotovelo, ombro ou punho — o quadro flexível e o peso baixo reduzem a carga transmitida. O padrão 16x18 aberto ajuda a levantar a bola com giro sem swing completo. Não serve a quem já produz velocidade própria e busca controle, nem a quem precisa de peso para segurar bolas pesadas.",
+            "O que se perde nessa combinação é estabilidade. Uma raquete leve com cabeça grande torce mais em impactos descentralizados e cede diante de saques e paralelas rápidas, e o quadro macio devolve menos energia justamente para quem acelera muito o braço — a resposta tende a ser mais surda do que precisa. As 16x18 cordas espalhadas por 107 in² ficam bem espaçadas: mais mordida, porém movimentação frequente e desgaste mais rápido do encordoamento."
+          ]
+        },
+        "en": {
+          "paragraphs": [
+            "Flex defines this frame before anything else — at RA 56 it sits at the bottom of the catalog's stiffness range, meaning nothing here bends more on contact. Pair that with a 107 in² head, in the top tenth of the catalog for size, a strung weight of 295 g on the lighter side, and a modest swingweight, and the power source is clear: hitting area and frame return, not mass driving through the ball. Effort demanded per swing is low.",
+            "This suits players with compact or abbreviated strokes, doubles players spending time at net, and anyone managing elbow, shoulder or wrist discomfort, since the soft layup and light build limit what reaches the arm. The open 16x18 pattern helps lift the ball with spin without a full swing. It is a poor fit for players who generate their own pace and need the frame to contain it, or who regularly face heavy hitting.",
+            "Stability is what gets given up. A light frame with a large head twists more on off-centre contact and gets pushed back by fast, deep balls, and a soft frame returns less to players swinging hard — feedback reads muted rather than precise. Spreading 16 mains and 18 crosses across 107 in² leaves wide gaps: good for bite, but strings will shift out of place and saw through each other faster than a denser pattern would."
+          ]
+        }
+      }
+    }
+  ]
+}

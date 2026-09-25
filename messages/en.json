@@ -372,6 +372,8 @@
     "metaDescription": "{name}: {headSize} in², {weight} strung, {pattern} pattern. Full specs, similar racquets and who this frame suits.",
     "specsTitle": "Specs",
     "specsScale": "Scale: minimum to maximum across the catalog's {count} racquets",
+    "notesTitle": "Reading the specs",
+    "notesDisclosure": "Analysis derived from this racquet's catalog specifications. Not an on-court playtest.",
     "specs": {
       "brand": "Brand",
       "headSize": "Head size",

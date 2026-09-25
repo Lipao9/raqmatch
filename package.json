@@ -12,6 +12,7 @@
     "offers": "node --env-file-if-exists=.env.local --import tsx scripts/offers.ts",
     "data:check": "tsx scripts/check-data.ts",
     "mint": "node --env-file-if-exists=.env.local --import tsx scripts/mint.ts",
+    "notes": "node --env-file-if-exists=.env.local --import tsx scripts/notes.ts",
     "db:up": "docker start fmr-pg || docker run -d --name fmr-pg --restart unless-stopped -e POSTGRES_PASSWORD=dev -e POSTGRES_DB=findmyracquet -p 55432:5432 -v fmr-pg-data:/var/lib/postgresql/data postgres:16-alpine",
     "db:generate": "drizzle-kit generate",
     "db:migrate": "node --env-file-if-exists=.env.local node_modules/drizzle-kit/bin.cjs migrate",
@@ -42,6 +43,7 @@
     "zod": "^4.4.3"
   },
   "devDependencies": {
+    "@anthropic-ai/sdk": "^0.128.0",
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/react": "^19",
